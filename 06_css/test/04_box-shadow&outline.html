@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <title>ccs3 尺寸和边框</title>
+</head>
+<style>
+   /*边框的阴影*/
+   #div_id_yinying1 {
+      width: 200px;
+      height: 200px;
+      background-color: yellow;
+      border: 5px solid orange;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 117px;
+      border-bottom-left-radius: 133px;
+      border-bottom-right-radius: 20px;
+      box-shadow: 11px 11px 0.2px 0.5px #faa;
+   }
+   /*阴影内部 inset*/
+   #div_id_yinying2 {
+      width: 200px;
+      height: 200px;
+      border: solid;
+      border-radius: 50%;
+      /*圆*/
+      background-color: #fff;
+      box-shadow: 0px 108px 0px 0px #f00 inset;
+   }
+   /*margin*/
+   #div_id_margin {
+      width: 20px;
+      height: 80px;
+      border: solid;
+      background-color: #fff;
+      margin-left: 90px;
+      margin-top: -20px;
+   }
+   input {
+      border: solid red;
+      outline: 2px dotted green;
+      outline-style: solid;
+      outline-width: 5px;
+      outline-color: pink;
+   }
+</style>
+<link rel="stylesheet" href="css/css_common.css">
+
+<body>
+   <p>边框的阴影</p>
+   <p>box-shadow: h v blur spread color (inset)</p>
+   <p>最简方式: box-shadow: h-shadow v-shadow</p>
+   <div id="div_id_yinying1"></div>
+   <div id="div_id_yinying2"></div>
+   <div id="div_id_margin"></div>
+   <hr>
+   <p>轮廓</p>
+   <p>outline: width style color</p>
+   
+   <input type="text">
+   <button>123</button>
+
+   <br><br><br><br><br><br><br><br><br>
+</body>
+
+</html>

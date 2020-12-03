@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>background</title>
+
+   <style>
+      #bg1,
+      #bg2,
+      #bg4 {
+         width: 500px;
+         height: 500px;
+      }
+
+      #bg1 {
+         border: 2px solid green;
+         background-color: pink;
+         background-image: url("img/14.png");
+         /*268*268*/
+         /*背景图片平铺*/
+         background-repeat: no-repeat;
+         /*背景图片平铺*/
+         background-position: center;
+         /*背景图片的尺寸*/
+         background-size: 50%;
+      }
+
+      #bg2 {
+         border: 2px solid red;
+         background-image: url("img/bg.png");
+         background-repeat: no-repeat;
+         /*背景图片的尺寸*/
+         background-size: contain;
+      }
+
+      #bg3 {
+         width: 500px;
+         height: 1000px;
+         background-color: #00ffff;
+         background-image: url("img/14.png");
+         background-repeat: no-repeat;
+         /*背景图片的固定*/
+         background-attachment: fixed;
+      }
+
+      #bg4 {
+         /*背景图片的简写*/
+         border: 2px solid;
+         background: pink url("img/14.png") no-repeat scroll center;
+      }
+   </style>
+
+</head>
+
+<body>
+   <p>背景图片的尺寸</p>
+   <div id="bg1"></div>
+   <div id="bg2"></div>
+
+   <hr>
+
+   <p>背景图片的固定</p>
+   <p>background-attachment: value</p>
+   <div id="bg3">
+      背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定背景图片的固定
+   </div>
+
+   <hr>
+
+   <p>背景图片的简写方式</p>
+   <p>background: pink url("img/14.png") no-repeat scroll center;</p>
+   <p>最简写方式: background: color/url("图片");</p>
+   <div id="bg4"></div>
+
+   <br><br><br><br><br><br><br><br>
+</body>
+
+</html>

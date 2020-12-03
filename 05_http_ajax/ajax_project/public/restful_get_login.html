@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>restful get 带参数查询</title>
+	<script>
+        function login() {
+            var _name = uname_id.value;
+            var _pdw = upwd_id.value;
+            if(!_name || !_pdw){
+                alert("用户名或密码不能为空1");
+                return;
+            }
+            
+            //1.创建xhr对象
+            var xhr = new XMLHttpRequest();
+            //4. 创建监听,接收响应
+            xhr.onreadystatechange = function () {
+                if(xhr.status == 200 && xhr.readyState == 4){
+                    var result = xhr.responseText;
+                    console.log(result)
+                    var string = "登录成功"
+                    if(result == -1){
+                        string = "用户名或密码不能为空"
+                    }else if(result == 0){
+                        string = "用户名或密码错误"
+                    }
+                    alert(string);
+                }
+            }
+            //2. 创建请求
+            var url = "ajax/restful_login/"+_name+"&"+_pdw;
+            console.log(url)
+            xhr.open("get", url,true)
+            //3. 发送请求
+            xhr.send();
+        }
+	
+	</script>
+</head>
+<body>
+
+<input type="text" name="uname" id="uname_id"><br>
+<input type="text" name="upwd" id="upwd_id"><br>
+<button onclick="login()">登录</button>
+
+</body>
+</html>

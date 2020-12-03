@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>css_gradient background-image渐变</title>
+	
+	<style>
+		#d1{
+			width: 200px;height: 200px;
+			background-image: linear-gradient(45deg,
+			#FF3399 0px,
+			#333366 10px,
+			#CCCCFF 20px,
+			#FF9966 30px,
+			#FFCC33 40px,
+			#00CC99 50px,
+			#33CC99 60px,
+			#0033CC 70px,
+			#FFCCCC 80px,
+			#99CC66 90px,
+			#CC0000 100px);
+		}
+		#div_gradient1, #div_gradient2, #div_gradient3, #div_gradient4, #div_gradient5{
+			width: 200px; height: 200px;
+		}
+		/*线向渐变*/
+		#div_gradient1{
+			background: linear-gradient(to bottom, red, #00ffff);
+		}
+		#div_gradient2{
+			background-image: linear-gradient(90deg,
+			black 0%, yellow 25%, black 50%, 
+			yellow 75%, black 100%);
+		}
+		/*径向渐变*/
+		#div_gradient3{
+			background-image: radial-gradient(
+				100px at center center,
+				#000, yellow,
+				#000, yellow,
+				#000, yellow,
+				#000, yellow,
+				#000, yellow,
+				#000
+			);
+		}
+		/*重复渐变*/
+		#div_gradient4{
+			background-image: repeating-linear-gradient(to right,
+			#000 5px, #ff0 10px, #000 15px);
+		}
+		#div_gradient5{
+			/*background-image: repeating-radial-gradient(1px at center center,*/
+			/*#000 1px, #0ff 2px, #000 3px);*/
+			background-image: repeating-radial-gradient(200px at center center,
+			#000 1%, #0ff 2%, #000 3%);
+		}
+	</style>
+	
+</head>
+<body>
+
+	<p>线性渐变</p>
+	<p>格式:background-image: linear-gradient(方向, 色标1, 色标2...);</p>
+	<div id="div_gradient1"></div>
+	<p>使用角度</p>
+	<div id="div_gradient2"></div>
+
+	<hr>
+
+	<p>径向渐变</p>
+	<p>background: radial-gradient(半径 at 圆心x 圆心y, 色标1, 色标2...);</p>
+	<div id="div_gradient3"></div>
+
+	<hr>
+
+	<p>重复渐变</p>
+	<p>1: background-image:repeating-linear-gradient(方向, 色标1, 色标2....)</p>
+	<p>2: background-image:repeating-linear-gradient(半径 at 圆心x 圆心y, 色标1, 色标2....)</p>
+	<div id="div_gradient4"></div>
+	<div id="div_gradient5"></div>
+
+	<hr>
+
+	<div id="d1"></div>
+
+<br><br><br><br><br><br><br><br>
+</body>
+</html>

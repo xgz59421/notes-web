@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>delete_user</title>
+	
+	<script>
+		function delte_user() {
+			if(!deluser.value){
+			    alert("id不能为空");
+			    return;
+			}
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function () {
+				if(xhr.status==200 && xhr.readyState==4){
+				    var result = xhr.responseText;
+				    if(result == 1){
+				        alert("删除成功")
+				    }else {
+                        alert("删除失败")
+				    }
+				}
+            }
+            var url = "http://localhost:8080/user/v1/delUser/"+deluser.value;
+            xhr.open("delete", url, true);
+			xhr.send();
+        }
+	</script>
+	
+</head>
+<body>
+
+<input type="text" id="deluser"> <br>
+<button onclick="delte_user()">删除</button>
+
+</body>
+</html>

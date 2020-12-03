@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+      *{padding: 0;margin: 0;}
+      .mt{margin-top: 1rem;}
+
+			#parent{border:2px solid #f00;}
+			#d1,#d2,#d3{
+				width: 100px;height: 100px;
+				float:left;
+			}
+			#d1{background:#0ff;}
+			#d2{background:#ff0;}
+			#d3{background:#f0f;}
+			#d4{clear:both;height: 10px;background-color: #000;}
+
+      #d5{width:100px;height:100px;
+				background-color: #0ff;float:left;
+			}
+			#d6{width:100px;height:100px;
+				background-color: #ff0;float:left;
+			}
+			#d7{
+				width: 300px;height: 60px;
+				background: #f0f;
+				clear:both;
+			}
+
+      #c1,#c2,#c3{
+				width:100px;height: 100px;
+				border: 2px solid #f00;
+				font-size: 50px;
+			}
+			#c1{float:left;}
+			/* #c2{float:left;} */
+		  #c3{margin-left:0px;}
+
+		</style>
+	</head>
+	<body>
+		<div id="parent">
+			<div id="d1"></div>
+			<div id="d2"></div>
+			<div id="d3"></div>
+			<div id="d4"></div>
+    </div>
+    
+    <br><br><hr><br><br>
+    
+		<div id="d5"></div>
+		<div id="d6"></div>
+    <div id="d7"></div>
+    
+    <br><br><hr><br><br>
+
+		<div id="c1">1</div>
+		<div id="c2">2</div>
+		<div id="c3">3</div>
+    <br><br><hr><br><br>
+	</body>
+</html>
