@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>test table</title>
+</head>
+
+<body>
+	<!--
+创建表格4*4, 尺寸400px*400px,表格边框1px,表格水平居中
+单元格内边距5px,外边距10px,边框颜色 blue,背景颜色pink
+-->
+	<table width="400px" height="400px" border="1px" bordercolor="blue" align="center" cellpadding="5px"
+		cellspacing="10px" bgcolor="pink">
+		<tr>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+	<hr>
+	<table width="300px" height="300px" border="1px" bordercolor="red" align="center">
+		<tr>
+			<td colspan="2"></td>
+			<td rowspan="2"></td>
+		</tr>
+		<tr>
+			<td rowspan="2"></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td colspan="2"></td>
+		</tr>
+	</table>
+	<hr>
+	<table width="400px" height="400px" align="center" border="1px" bordercolor="red" bgcolor="#f5f5dc" cellpadding="5px"
+		cellspacing="10px">
+		<caption>我是标题</caption>
+		<tr align="center" valign="bottom" bgcolor="#5f9ea0">
+			<th bgcolor="yellow">小标题</th>
+			<th>2</th>
+			<th>3</th>
+			<th>4</th>
+		</tr>
+		<tr>
+			<th>1</th>
+			<td width="100" height="100" bgcolor="#006400" align="left" valign="bottom">2</td>
+			<td>3</td>
+			<td>4</td>
+		</tr>
+		<tr>
+			<th rowspan="2">跨行</th>
+			<td colspan="2">跨列</td>
+			<td>3</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+		</tr>
+	</table>
+
+
+	<hr>
+
+	<table width="400" height="400" align="center" border="1" bordercolor="pink" cellspacing="5" cellpadding="5">
+		<thead>
+			<tr>
+				<td>11 </td>
+				<td>11</td>
+				<td>11</td>
+				<td>11</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><a href="">222</a></td>
+				<td>22</td>
+				<td>22</td>
+				<td>
+					<table width="120" height="120" border="1" align="center" cellspacing="5" cellpadding="5">
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>22</td>
+				<td>22</td>
+				<td>22</td>
+				<td>22</td>
+			</tr>
+
+			<tr>
+				<td>22</td>
+				<td>22</td>
+				<td>22</td>
+				<td>22</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td>33</td>
+				<td>33</td>
+				<td>33</td>
+				<td>33</td>
+			</tr>
+		</tfoot>
+	</table>
+
+	<br><br><br><br><br><br><br><br><br>
+</body>
+
+</html>
