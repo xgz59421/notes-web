@@ -39,7 +39,19 @@
    4. 默认的表格布局，需要先把所有表格中的内容读取到内存中, 之后一次性渲染到页面上--------表格渲染效率非常低  
    `table-layout: auto/fixed;`  
    auto默认值，表格的自动布局  
-   fixed 固定表格布局    
+   fixed 固定表格布局  
+      ```css
+      table{
+        width:100px;
+        table-layout:fixed;/* 只有定义了表格的布局算法为fixed，下面td的定义才能起作用。 */
+      }
+      td{
+        word-break:keep-all;/* 不换行 */
+        white-space:nowrap;/* 不换行 */
+        overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+        text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用*/
+      }
+      ```  
    ---
       | 表格自动布局 | 固定表格布局 |
       | :----:| :----: |
