@@ -1,0 +1,56 @@
+
+/*6.运算*/
+//例1
+$my-width:5%;
+$my-max-width:$my-width*4;
+$my-min-width:$my-width/2;
+$my-other-width:$my-max-width + $my-width - $my-min-width;
+div{
+  width: $my-other-width;
+}
+//例2
+p{
+  width: 1px + 1in +1pt;
+}
+
+/*加法*/
+p:before{
+  content: "Microsoft" + yahei;
+  font-family: A+"rial";
+}
+
+/*减法*/
+p{
+  //需要前后加空格
+  //width: $my-max-width-$my-min-width;
+  width: $my-max-width - $my-min-width;
+}
+
+/*除法*/
+p{
+  font-size:(10px/5px)+px;
+  $width:1000px;
+  width: $width/2;
+  height: (500px/2);
+  margin: 5px+8px/2px;
+}
+
+/*插值运算*/
+p{
+  content: "zhangdaxian ate #{50+30}baozis";
+}
+
+/*颜色运算*/
+p{
+  color:rgb(1,2,3) + rgb(1,2,3);
+  background: #112233 + #445566;
+  border-color: rgba(1,1,1,0.5) + rgba(2,3,4,0.5);
+}
+
+
+
+
+
+
+
+

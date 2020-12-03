@@ -1,0 +1,23 @@
+@charset "UTF-8";
+/*函数*/
+/*数学函数*/
+p {
+  width: 5px;
+  height: 4px;
+  margin: 5px;
+  padding: 1px;
+  border-width: 0.26998px; }
+
+/*字符串函数*/
+p:after {
+  content: 123;
+  content: "abc";
+  content: ABC;
+  content: abc; }
+
+/*自定义函数*/
+div {
+  width: 7px; }
+
+div {
+  width: 140px; }

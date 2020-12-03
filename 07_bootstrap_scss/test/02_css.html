@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <script src="js/jquery-slim.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <title>02_css</title>
+  
+</head>
+
+<body style="margin-left: 1rem;">
+  <h3>Bootstrap CSS</h3>
+
+  <p class="p_title">1.全局css样式 </p>
+  <div class="div_content">
+    (1)容器 container: <br>
+    <div class="div_content">
+      1.boot不支持超小屏, (支持 xl lg md sm) <br>
+      2.所有的boot都要写在container中 <br>
+      3.定宽容器,不同屏幕下,有写死的最大宽度 <br>
+      4.boot中 <span class="text-danger">1rem = 16px</span> <br>
+      container-fluid 变宽容器 <br>
+    </div>
+    <br>
+
+    (2)按钮相关样式 <br>
+    <div class="div_content">
+      btn: 基本类 (设置了 行内块, 内边距, 文本,过渡 等等) <br>
+      按钮的颜色: btn-success/danger/warning/primary/secondary/info/light/dark.... <br>
+      带边框的按钮: btn-outline-danger/warning...... <br>
+      btn-lg: 大按钮 <br>
+      btn-sm: 小按钮, 通过修改内边距,字号,行高,来实现不同大小 <br>
+      btn-block: 块级按钮 width:100% <br>
+
+      <h4>按钮相关的样式</h4>
+      <a class="btn btn-danger" href="">危险</a>
+      <a class="btn btn-danger btn-sm" href="">危险</a>
+      <a class="btn btn-danger btn-lg" href="">危险</a>
+      <a class="btn btn-danger btn-block" href="">危险</a>
+      <a class="btn btn-danger btn-link" href="">危险</a>
+      <br>
+      <button class="btn btn-success">成功</button>
+      <a class="btn btn-danger" href="">危险</a>
+      <a class="btn btn-primary" href="">重要</a>
+      <a class="btn btn-secondary" href="">次要</a>
+      <a class="btn btn-info" href="">信息</a>
+      <a class="btn btn-light" href="">浅色</a>
+      <a class="btn btn-dark" href="">深色</a>
+      <input class="btn btn-warning" type="button" value="警告">
+      <br>
+      <a class="btn btn-outline-danger" href="">123</a>
+      <a class="btn btn-outline-warning" href="">123</a>
+      <a class="btn btn-outline-info" href="">123</a>
+      <a class="btn btn-outline-success" href="">123</a>
+      <a class="btn btn-outline-primary" href="">123</a>
+      <a class="btn btn-outline-secondary" href="">123</a>
+    </div>
+    <br>
+
+    (3)图片相关 <br>
+    <div class="div_content">
+      1.rounded: 圆角 0.25rem <br>
+      2.rounded-circle: 圆 <br>
+      3.img-thumbnail: 缩略图, 有一圈白色内边, 有边框 <br>
+      4.img-fluid: 响应式图片, 图片可以缩放,但是不会超过原始尺寸 <br>
+      <img class="rounded" src="img/1.jpg" alt="">
+      <img class="rounded-circle" src="img/1.jpg" alt="">
+      <img class="img-thumbnail" src="img/1.jpg" alt="">
+      <img class="img-fluid" src="img/1.jpg" alt="">
+    </div>
+    <br>
+
+    (4) 文本相关 <br>
+    <div class="div_content">
+      1.文本颜色:
+      text-danger/warning/info/ <span class="text-danger">muted</span> (灰色) .... <br>
+      2.文本大小写: <br>
+      <div class="div_content">
+        text-uppercase: 大写 <br>
+        text-lowercase: 小写 <br>
+        text-capitalize: 首字母大写 <br>
+      </div>
+      3.字体粗细: <br>
+      <div class="div_content">
+        font-weight-bold: 粗 <br>
+        font-weight-normal: 正常 <br>
+        font-weight-light: 细 <br>
+      </div>
+      4.字号大小: h1~h6<br>
+
+      5.文本水平对齐方式: <br>
+      <div class="div_content">
+        text-left/center/right: <br>
+        text-justify: 两端 <br>
+      </div>
+      6.文本水平对齐方式:(响应式) <br>
+      <div class="div_content">
+        1.text-xl-left/center/right <br>
+        2.text-lg-left/center/right <br>
+        3.text-md-left/center/right <br>
+        4.text-sm-left/center/right <br>
+        注意: <br>
+        1.响应式的兼容, 屏幕向上兼容 <br>
+        2.响应式的文本对齐, 没有justify,手写justify媒体查询 <br>
+      </div>
+      7.文本溢出变为小点点: <span class="span_red">text-truncate</span> <br>
+
+
+      <h4>文本相关</h4>
+      <div class="text-muted text-capitalize font-weight-bold h6
+		 text-sm-justify text-md-right text-lg-center text-xl-right">Lorem ipsum dolor sit amet, consectetur adipisicing
+        elit. A beatae consequatur cum distinctio dolores ea ipsa molestias non odit voluptatum. Blanditiis dolorum
+        neque placeat quaerat quo! Atque debitis laudantium nisi.</div>
+    </div>
+    <br>
+
+    (5) 列表相关类名 <br>
+    <div class="div_content">
+      <span class="span_red">ul:</span> <br>
+      list-unstyled 去点 ,左内边距清0 <br>
+      list-group 弹性,主轴为 column <br>
+      <span class="span_red">li:</span> <br>
+      list-group-item 块级,内边距,相对定位, 背景,边框 <br>
+      &emsp;第一个li左上,右上圆角. 最后一个li左下,右下圆角 <br>
+      list-group-item-danger/warning/success/info.... 颜色 <br>
+      active: 激活项 <br>
+      disabled: 禁用项 <br>
+
+      <h4>列表相关</h4>
+      <ul class="list-group list-unstyled">
+        <li class="list-group-item list-group-item-danger">拯救大兵瑞恩</li>
+        <li class="list-group-item list-group-item-warning active">肖申克的救赎</li>
+        <li class="list-group-item list-group-item-success">阿甘正传</li>
+        <li class="list-group-item list-group-item-info disabled">泰坦尼克号</li>
+      </ul>
+    </div>
+    <br>
+
+    (5) table相关类名 <br>
+    <div class="div_content">
+      1.table: 基本类<br>
+      <ul class="list-group ">
+        <li>对table本身 width 100% <br></li>
+        <li>对table的后代(th,td,tbody,thead做了定义)</li>
+      </ul>
+      2.table-bordered: 对 table, th,td 设置边框 <br>
+      3.table-info/success/warning 背景色 <br>
+      4.table-striped: 隔行变色 (源码表格的奇数行覆盖一层黑纱)<br>
+      5.table-hover: 鼠标悬停变色 <br>
+      <table class="table table-bordered table-info table-striped table-hover">
+        <tr>
+          <th>序号</th>
+          <th>类型</th>
+          <th>名称</th>
+        </tr>
+        <tr>
+          <td>1001</td>
+          <td>科幻</td>
+          <td>阿丽塔</td>
+        </tr>
+        <tr>
+          <td>1002</td>
+          <td>搞笑</td>
+          <td>色即是空</td>
+        </tr>
+        <tr>
+          <td>1003</td>
+          <td>战争</td>
+          <td>中途岛</td>
+        </tr>
+      </table>
+    </div>
+
+
+  </div>
+  <br>
+
+  <p class="p_title">2.辅助类 </p>
+  <div class="div_content">
+    (1)边框 <br>
+    <div class="div_content">
+      border: 基本类 <br>
+      border-danger/warning.... 边框颜色 <br>
+      border-bottom/top/left/right 单边框设置 <br>
+      border-0 清除边框 <br>
+
+      <div class=" border-top border-bottom border-danger ">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis commodi, culpa cumque dolorum est
+        expedita explicabo fugit in laudantium nemo nisi, praesentium quas quia quibusdam quis quo ratione
+        reprehenderit veritatis!
+      </div>
+    </div>
+    <br>
+
+    (2)圆角 <br>
+    <div class="div_content">
+      rounded 圆角 0.25rem<br>
+      rounded-circle 50%的圆角 <br>
+      rounded-top/right/bottom/left 圆角(top是 左上,右上...) <br>
+      rounded-0 清除圆角 <br>
+      <div class="border rounded border-info ">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis commodi, culpa cumque dolorum est
+        expedita explicabo fugit in laudantium nemo nisi, praesentium quas quia quibusdam quis quo ratione
+        reprehenderit veritatis!
+      </div>
+    </div>
+    <br>
+
+    (3)浮动 <br>
+    <div class="div_content">
+      float-*-left/right/none *:xl/lg/md/sm <br>
+      清除浮动: clearfix <br>
+      <div class="border border-dark clearfix">
+        <div class="border float-lg-left float-md-right float-sm-left border-danger">11</div>
+        <div class="border float-lg-left float-md-right float-sm-left border-warning">qwe</div>
+        <div class="border float-lg-left float-md-right float-sm-left border-info">1234</div>
+      </div>
+    </div>
+    <br>
+
+    (4)显示 <br>
+    <div class="div_content">
+      visible 显示 <br>
+      invisible 隐藏 <br>
+    </div>
+    <br>
+
+    (5)背景颜色 <br>
+    <div class="div_content">
+      bg-info/danger/warning ..... <br>
+      bg-transparent 背景色透明<br>
+      <div class="bg-transparent">
+        1.背景色透明Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, dignissimos adipisicing elit.
+        Blanditiis, dignissimos
+      </div>
+      <div class="bg-info">
+        2.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, dignissimos
+      </div>
+    </div>
+    <br>
+
+    (6)尺寸 <br>
+    <div class="div_content">
+      w-25/50/75/100 width:25% 50% 75% 100% <br>
+      h-25/50/75/100 height:25% 50% 75% 100% <br>
+      mw-100 max-width:100% <br>
+      mh-100 max-height:100% <br>
+      <div class="bg-danger" style="height: 50px">
+        <div class="bg-warning w-25 h25">
+          123
+        </div>
+      </div>
+    </div>
+    <br>
+
+    (7)内外边距 <br>
+    <div class="div_content">
+      <span class="span_red">
+        外边距:m/mt/mr/mb/ml/mx/my-*-0/1/2/3/4/5/auto
+      </span> <br>
+      *:xl/lg/md/sm 响应式<br>
+      mt/mr/mb/ml: 上右下左外边距 <br>
+      mx: ml,mr 左右外边距 <br>
+      my: mt,mb 上下外边距 <br>
+      0: 0 <br>
+      1: 0.25rem <br>
+      2: 0.5rem <br>
+      3: 1rem <br>
+      4: 1.5rem <br>
+      5: 3rem <br>
+      <span class="span_red">
+        内边距:p/pt/pr/pb/pl/px/py-*-0/1/2/3/4/5
+      </span> <br>
+      <div class="bg-info mx-4 p-2">123
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+  <br><br><br><br><br><br><br><br>
+</body>
+
+</html>

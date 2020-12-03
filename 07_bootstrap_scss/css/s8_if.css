@@ -1,0 +1,15 @@
+@charset "UTF-8";
+/*指令*/
+h2 {
+  color: #00f; }
+
+/*练习*/
+/*
+  做一个方法,获取背景色 (混合器,做线性渐变)
+  如果数值>95 bg #f00, #faa
+  如果数值>80 bg #00f, #0ff
+  如果数值>60 bg #ff0, #ffa
+  如果数值<=60 bg #000, #111
+*/
+div {
+  background: linear-gradient(top, #ff0, #ffa); }

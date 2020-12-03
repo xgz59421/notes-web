@@ -1,0 +1,7 @@
+.img_size{
+    width:110%
+}
+
+.breadcrumb-item + .breadcrumb-item:before{
+    content: "|";
+}

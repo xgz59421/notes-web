@@ -52,6 +52,7 @@ a标签不会继承文本颜色
 - 不同浏览器对css解析是不同的，尤其是低版本浏览器
 - css reset 相对平和, 保留有价值的默认值
 - Eric.css 很暴力
+- normalize.css 是css reset的一个变种
 - 为了让代码能够兼容地板浏览器，CSS hack
   ```
   -webkit-

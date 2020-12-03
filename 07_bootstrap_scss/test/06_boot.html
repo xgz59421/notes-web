@@ -1,0 +1,746 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<script src="js/jquery-slim.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<title>boot6</title>
+	<style>
+		.carousel-control-next,
+		.carousel-control-prev{
+			width: 4%; height: 20%;
+			top: 40%;
+			background: #aaa;
+			border-radius: 0.25rem;
+		}
+		
+		.carousel-indicators li{
+			width: 0.7rem;
+			height: 0.7rem;
+			border-radius: 50%;
+			background: #fff;
+		}
+		.carousel-indicators .active {
+			background-color: #0AA1ED;
+		}
+		.breadcrumb-item + .breadcrumb-item::before {
+			content: ">";
+		}
+		
+		.page-item + .page-item {
+			margin-left: 0.4rem;
+		}
+	</style>
+</head>
+<body>
+<h3 style="margin-left: 10px">boot组件</h3>
+
+<ul class="list-unstyled ml-4">
+	<li><a href="#demo1">1.按钮组:btn-group</a></li>
+	<li><a href="#demo2">2.下拉菜单:dropdownd</a></li>
+	<li><a href="#demo3">3.折叠:collapse</a></li>
+	<li><a href="#demo4">4.信息提示框:alert</a></li>
+	<li><a href="#demo5">5.卡片:card</a></li>
+	<li><a href="#demo6">6.手风琴(卡片+折叠):card+collapse</a></li>
+	<li><a href="#demo7">7.媒体对象:media</a></li>
+	<li><a href="#demo8">8.徽章:badge</a></li>
+	<li><a href="#demo9">9.导航:nav (nav-tabs,nav-pills)</a></li>
+	<li><a href="#demo10">10.导航栏:navbar</a></li>
+	<li><a href="#demo11">11.折叠导航栏:navbar + collapse</a></li>
+	<li><a href="#demo12">12.焦点轮播图:carousel</a></li>
+	<li><a href="#demo13">13.模态框:modal</a></li>
+	<li><a href="#demo14">14.巨幕:jumbotron</a></li>
+	<li><a href="#demo15">15.面包屑导航:breadcrumb</a></li>
+	<li><a href="#demo16">16.进度条:progress</a></li>
+	<li><a href="#demo17">17.分页:pagination</a></li>
+</ul>
+
+<div class="container ml-2">
+	网页中一些特殊的复杂效果,之前必须使用js,dom,jq 去编写 <br>
+	boot给我们封装了很多常用的组件, 可以快速的开发 <br>
+	问题: <br>
+	<div class="ml-2">
+		1.由于boot封装的组件,很多自定义的效果,很难实现 <br>
+		2.关于事件,boot封装组件的事件,是使用自定义属性的方式实现的 <br>
+	</div>
+	
+	使用boot封装的事件要注意: <br>
+	<div class="ml-2">
+		1.激活事件的元素 <br>
+		2.事件影响的元素 <br>
+	</div>
+	
+	
+	<div id="demo1" class="font-weight-bold">1.按钮组 </div>
+	<div class="ml-2">
+		div<span class="text-danger">.btn-group:</span>
+		按钮组,横向
+		<div class="ml-2">
+			(1)弹性,x轴主轴,让内部btn挨在一起 <br>
+			(2)同时清空了,除了一个btn 以外的, 左上,左下圆角 <br>
+			(3)同时清空了,除了最后一个btn以外的, 右上,右下圆角 <br>
+		</div>
+		
+		div<span class="text-danger">.btn-group-vertical:</span>
+		按钮组,垂直
+		<div class="ml-2">
+			(1)弹性,y轴主轴 <br>
+			(2)同时清空了,除了一个btn 以外的, 左上,右上圆角 <br>
+			(3)同时清空了,除了最后一个btn以外的, 左下,右下圆角 <br>
+		</div>
+		div<span class="text-danger">.btn-group-sm/md/lg:</span>
+		改变按钮组的大小, 修改内边距和字号 <br>
+		
+		例1:按钮组横向 <br>
+		<div class="btn-group">
+			<button class="btn btn-danger">小鸡炖蘑菇</button>
+			<button class="btn btn-warning">猪肉炖粉条</button>
+			<button class="btn btn-info">铁锅炖大鹅</button>
+		</div>
+		<br>
+		例2:按钮组纵向 <br>
+		<div class="btn-group-vertical btn-group-lg">
+			<button class="btn btn-danger">小鸡炖蘑菇</button>
+			<button class="btn btn-warning">猪肉炖粉条</button>
+			<button class="btn btn-info">铁锅炖大鹅</button>
+		</div>
+		<div class="btn-group-vertical btn-group-sm">
+			<button class="btn btn-danger">小鸡炖蘑菇</button>
+			<button class="btn btn-warning">猪肉炖粉条</button>
+			<button class="btn btn-info">铁锅炖大鹅</button>
+		</div>
+	</div>
+	<br>
+	
+	<div id="demo2" class="font-weight-bold">2.下拉菜单 </div>
+	<div class="ml-2">
+		组件结构: <br>
+		<div class="ml-2">
+			div.dropdownd <br>
+			div>btn .dropdown-toggle(添加向下小箭头) data-toggle="dropdown" <br>
+			div>ul.dropdown-menu <br>
+		</div>
+		事件: <br>
+		<div class="ml-2">
+			1.激活事件的元素: btn 自定义属性
+			<span class="text-danger">data-toggle</span>="dropdown" <br>
+			2.事件影响的元素: 由于外层结构有大div,  不需要指定 <br>
+		</div>
+		例:下拉菜单 <br>
+		<div class="dropdownd">
+			<button data-toggle="dropdown" class="btn btn-danger dropdown-toggle">菜单</button>
+			<ul class="dropdown-menu">
+				<li><a href="">丁丁炒面</a></li>
+				<li><a href="">它似蜜</a></li>
+				<li><a href="">大盘鸡</a></li>
+				<li><a href="">拉条子</a></li>
+			</ul>
+		</div>
+	
+	</div>
+	<br>
+	
+	<div id="demo3" class="font-weight-bold">3.折叠 </div>
+	<div class="ml-2">
+		组件结构: <br>
+		<div class="ml-2">
+			button: <br>
+			div.collapse:  隐藏
+		</div>
+		事件: <br>
+		<div class="ml-2">
+			1.激活事件的元素: button data-toggle="collapse" <br>
+			2.事件影响的元素: data-target="#d1" <br>
+		</div>
+		
+		例: 折叠 <br>
+		<button data-toggle="collapse" data-target="#d1" class="btn btn-danger">折叠按钮</button>
+		<div id="d1" class="collapse">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque blanditiis doloremque fuga ipsam porro quisquam? Fuga minima nostrum quasi repellat unde voluptate? Consequatur iusto nesciunt odit quidem recusandae totam voluptatibus.
+		</div>
+	
+	</div>
+	<br>
+	
+	<div id="demo4" class="font-weight-bold">4.信息提示框 </div>
+	<div class="ml-2">
+		组件结构: <br>
+		<div class="ml-2">
+			div.alert 基本类 <br>
+			div.alert-info/danger/warning.... <br>
+			div>span.close 右浮动, hover <br>
+		</div>
+		事件: <br>
+		<div class="ml-2">
+			1.激活事件的元素: <span class="text-danger">span data-dismiss="alert"</span> <br>
+			2.事件影响的元素, 外面的父元素alert, 不需要指定 <br>
+		</div>
+		例:信息提示框 <br>
+		<div class="alert alert-info">
+			<span>页面跑丢辣,找不到辣!!!</span>
+			<span data-dismiss="alert" class="close">&times;</span>
+		</div>
+	
+	</div>
+	<br>
+	
+	<div id="demo5" class="font-weight-bold">5.卡片 </div>
+	<div class="ml-2">
+		组件结构: <br>
+		<div class="ml-2">
+			div.card 弹性,y主轴,边框,圆角<br>
+			div>div.card-header 背景,边框,内边距<br>
+			div>div.card-body 可以增长,可以缩小,内边距<br>
+			div>div.card-footer 背景,边框,内边距<br>
+			注意: card内部的元素很灵活, 可以不加,可以添加多个 header,body,footer <br>
+		</div>
+		
+		例: 卡片<br>
+		<div class="card">
+			<div class="card-header">
+				<h3>卡片标题</h3>
+			</div>
+			<div class="card-body">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, nemo, omnis? Asperiores ducimus, eum incidunt natus officia quam quas quibusdam ratione similique ullam. Ea illum inventore iure pariatur, unde vitae!</p>
+			</div>
+			<div class="card-footer">
+				<p>联系方式</p>
+			</div>
+		</div>
+	
+	</div>
+	<br>
+	
+	<div id="demo6" class="font-weight-bold">6.手风琴(卡片+折叠) </div>
+	<div class="ml-2">
+		组件结构: <br>
+		<div class="ml-2">
+			父亲: <br>
+			<span class="text-danger">div id="parent"</span> <br>
+			孩子: <br>
+			div>下面这些 <br>
+			div.card <br>
+			div>div.card-head>a.btn  头部 data-toggle="collapse" <br>
+			div>div.collapse 隐藏
+			<span class="text-danger">data-parent="#parent"</span>(关闭其他的名片)<br>
+			div>div.div.card-body <br>
+			注意: 不能把card-body 和 collapse放到同一个div中,隐藏显示会出现卡顿 <br>
+		</div>
+		
+		事件: <br>
+		<div class="ml-2">
+			1.激活事件的元素: data-toggle="collapse", data-parent="#parent" <br>
+			2.事件影响的元素: href="#c1",id="parent"<br>
+		</div>
+		
+		例:手风琴效果 <br>
+		<div id="parent">
+			<div class="card">
+				<div class="card-header">
+					<a class="btn btn-link" href="#c1" data-toggle="collapse">卡片1</a>
+				</div>
+				<div class="collapse" data-parent="#parent" id="c1">
+					<div class="card-body ">
+						Lorem ipsum dolor sit amet
+					</div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-header">
+					<a class="btn btn-danger" href="#c2" data-toggle="collapse">卡片2</a>
+				</div>
+				<div class="collapse" data-parent="#parent" id="c2">
+					<div class="card-body ">
+						Lorem ipsum dolor sit amet
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	
+	<div id="demo7" class="font-weight-bold">7.媒体对象 </div>
+	<div class="ml-2">
+		组件结构: <br>
+		<div class="ml-2">
+			div.media 弹性, x轴主轴 <br>
+		</div>
+		
+		例:媒体对象 <br>
+		<div class="media border p-1">
+			<img class="mr-2" src="img/zhm.png" alt="">
+			<div class="media-body">
+				<h4>张惠妹aMEI</h4>
+				<p class="mb-0">台湾歌手张惠妹</p>
+			</div>
+		</div>
+	
+	</div>
+	<br>
+	
+	<div id="demo8" class="font-weight-bold">8.徽章 </div>
+	<div class="ml-2">
+		把徽章看成非常小的按钮 <br>
+		组件结构: <br>
+		<div class="ml-2">
+			.badge 基本类 <br>
+			.badge-danger/info/warning <br>
+			.badge-pill 胶囊徽章 <br>
+		</div>
+		
+		
+		例:徽章 <br>
+		<ul class="list-group">
+			<li class="list-group-item">
+				赞<a class="badge badge-success badge-pill" href="">246</a>
+			</li>
+			<li class="list-group-item">
+				踩<a class="badge badge-danger" href="">256</a>
+			</li>
+			<li class="list-group-item">
+				关注<a class="badge badge-warning" href="">188</a>
+			</li>
+		</ul>
+	</div>
+	<br>
+	
+	<div id="demo9" class="font-weight-bold text-danger">9.导航*** </div>
+	<div class="ml-2">
+		(1)水平导航 <br>
+		<div class="ml-2">
+			组件结构: <br>
+			<div class="ml-2">
+				ul.nav 弹性,x主轴   <br>
+				<span class="text-danger">ul.nav-justified </span>让内部li等宽显示 <br>
+				ul.justify-content-* 支持弹性的响应式布局 <br>
+				
+				ul>li.nav-item <br>
+				ul>li>a.nav-link  块级,内边距,hover等样式 <br>
+			
+			</div>
+			例:水平导航 <br>
+			<ul class="nav nav-justified">
+				<li class="nav-item"><a class="nav-link" href="">秒杀</a></li>
+				<li class="nav-item"><a class="nav-link" href="">闪购</a></li>
+				<li class="nav-item"><a class="nav-link" href="">优惠券</a></li>
+				<li class="nav-item"><a class="nav-link" href="">plus会员</a></li>
+			</ul>
+		</div>
+		<br>
+		
+		(2)选项卡导航 <span class="text-danger">nav-tabs</span> <br>
+		<div class="ml-2">
+			组件结构: <br>
+			<div class="ml-2">
+				选项卡: <br>
+				ul.nav 弹性,x主轴   <br>
+				<span class="text-danger">ul.nav-tabs</span> 让内部元素  hover出现边框 <br>
+				ul>li.nav-item <br>
+				ul>li>a.nav-link  块级,内边距,hover等样式 <br>
+				ul>li>a.active 显示 <br>
+				内容区域: <br>
+				div<span class="text-danger">.tab-content</span> 内容 <br>
+				div>div<span class="text-danger">.tab-pane</span> 让所有内容隐藏 <br>
+				div>div<span class="text-danger">.active</span> 显示
+			</div>
+			
+			事件: <br>
+			<div class="ml-2">
+				1.激活事件的元素:
+				<span class="text-danger">a标签的 data-toggle="tab"</span><br>
+				2.事件影响的元素: a标签的href(#tab-pane的id), 如: href="#tab2" <br>
+			</div>
+			
+			例:选项卡导航 <br>
+			<!--选项-->
+			<ul class="nav nav-tabs">
+				<li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#tab1">四川菜</a></li>
+				<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#tab2">北京菜</a></li>
+				<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#tab3">云南菜</a></li>
+				<li class="nav-item"><a data-toggle="tab" class="nav-link" href="#tab4">山东菜</a></li>
+			</ul>
+			<!--显示的内容-->
+			<div class="tab-content">
+				<div id="tab1" class="tab-pane active">钵钵鸡,麻辣香锅,麻辣火锅</div>
+				<div id="tab2" class="tab-pane">烤鸭,豆汁,焦圈</div>
+				<div id="tab3" class="tab-pane">汽锅鸡,竹筒饭</div>
+				<div id="tab4" class="tab-pane">煎饼,大葱蘸酱,德州扒鸡</div>
+			
+			</div>
+		
+		</div>
+		<br>
+		
+		(3)胶囊导航 <span class="text-danger">nav-pills</span> <br>
+		<div class="ml-2">
+			组件结构: <br>
+			<div class="ml-2">
+				选项卡: <br>
+				ul.nav 弹性,x主轴   <br>
+				<span class="text-danger">ul.nav-pills</span> 让内部元素  hover出现边框 <br>
+				ul>li.nav-item <br>
+				ul>li>a.nav-link  块级,内边距,hover等样式 <br>
+				ul>li>a.active 显示 <br>
+				内容区域: <br>
+				div.tab-content
+				div>div.tab-pane 让所有内容隐藏
+				div>div.active 显示
+			</div>
+			
+			事件: <br>
+			<div class="ml-2">
+				1.激活事件的元素:
+				<span class="text-danger">a标签的 data-toggle="pill"</span><br>
+				2.事件影响的元素: a标签的href(#id), 如: href="#tab2" <br>
+			</div>
+			
+			例:胶囊导航 <br>
+			<!--选项-->
+			<ul class="nav nav-pills">
+				<li class="nav-item"><a class="nav-link" data-toggle="pill" href="#tab5">四川菜</a></li>
+				<li class="nav-item"><a class="nav-link" data-toggle="pill" href="#tab6">北京菜</a></li>
+				<li class="nav-item"><a class="nav-link" data-toggle="pill" href="#tab7">云南菜</a></li>
+				<li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#tab8">东北菜</a></li>
+			</ul>
+			<!--显示的内容-->
+			<div class="tab-content">
+				<div id="tab5" class="tab-pane">钵钵鸡,麻辣香锅,麻辣火锅</div>
+				<div id="tab6" class="tab-pane">烤鸭,豆汁,焦圈</div>
+				<div id="tab7" class="tab-pane">汽锅鸡,竹筒饭</div>
+				<div id="tab8" class="tab-pane active">锅包肉,烧茄子,溜肉段</div>
+			
+			</div>
+		
+		</div>
+		<br>
+		
+	</div>
+	<br>
+	
+	<div id="demo10" class="font-weight-bold">10.导航栏 </div>
+	<div class="ml-2">
+		组件结构: <br>
+		<div class="ml-2">
+			div.navbar:  弹性,x轴主轴 <br>
+			div.navbar-expand-*: 响应式的导航栏 *:xl/lg/md/sm, 作为后代选择器,让ul的主轴变为x轴 <br>
+			
+			div>ul.navbar-nav: 弹性,y轴主轴, 去点 <br>
+			div>ul>li.nav-item: <br>
+			div>ul>li>a.nav-link: <br>
+		</div>
+		事件: <br>
+		
+		例:导航栏 <br>
+		<div class="navbar navbar-expand-lg">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" href="">导航栏1</a></li>
+				<li class="nav-item"><a class="nav-link" href="">导航栏2</a></li>
+				<li class="nav-item"><a class="nav-link" href="">导航栏3</a></li>
+				<li class="nav-item"><a class="nav-link" href="">导航栏4</a></li>
+			</ul>
+		</div>
+	
+	</div>
+	<br>
+	
+	<div id="demo11" class="font-weight-bold">11.折叠导航栏 </div>
+	<div class="ml-2">
+		效果: <br>
+		<div class="ml-2">
+			(1)最前面的菜单项,永远显示 <br>
+			(2)按钮: 大屏隐藏, 小屏显示 <br>
+			(3)导航: 大屏(显示,横向), 小屏(隐藏,纵向,需要点击按钮显示) <br>
+		</div>
+		
+		组件结构: <br>
+		<div class="ml-2">
+			父亲div: <br>
+			div.navbar <br>
+			div.<span class="text-danger">navbar-dark </span>
+			让div内部所有文本变为浅色 <br>
+			div.bg-dark 配合navbar-dark 设置背景色 <br>
+			div.navbar-expand-md : <br>
+			<div class="ml-2">
+				1.按钮在 md以上隐藏, sm显示 <br>
+				2.ul在 md以上横向, sm纵向 <br>
+			</div>
+			儿子: <br>
+			第一部分: <br>
+			div>a.<span class="text-danger">navbar-brand</span> 行内块,内边距 <br>
+			第二部分: <br>
+			div>button.<span class="text-danger">navbar-toggler</span> 背景透明 <br>
+			div>button>span.navbar-toggler-icon 三条线 <br>
+			第三部分: <br>
+			div>div.collapse 隐藏 源码--display: none<br>
+			div>div.navbar-collapse 配合响应式,md以上显示,md一下隐藏 <br>
+			div>div>ul.navbar-nav 导航栏 <br>
+			div>div>ul>li.nav-item <br>
+			div>div>ul>li>a.nav-link <br>
+			
+		</div>
+		
+		事件: <br>
+		<div class="ml-2">
+			1.激活事件的元素: button data-toggle="collapse" <br>
+			2.事件影响的元素: data-target="#d1" <br>
+		</div>
+		
+		例:折叠导航栏 <br>
+		<div class="navbar navbar-dark bg-dark navbar-expand-md">
+			<!--1.永远显示的菜单  //a标签-->
+			<a class="navbar-brand" href="">Bootstrap中文网</a>
+			<!--2.小屏显示,大屏隐藏的按钮,折叠激发的按钮  //button-->
+			<button data-toggle="collapse" data-target="#d2" class="navbar-toggler">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<!--3.小屏隐藏,纵向显示;大屏显示,横向导航栏  //ul导航 -->
+			<div id="d2" class="collapse navbar-collapse">
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link" href="">Boot3</a></li>
+					<li class="nav-item"><a class="nav-link" href="">Boot4</a></li>
+					<li class="nav-item"><a class="nav-link" href="">Less教程</a></li>
+					<li class="nav-item"><a class="nav-link" href="">组件/jQuery</a></li>
+					<li class="nav-item"><a class="nav-link" href="">项目实例</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<br>
+	
+	<div id="demo12" class="font-weight-bold">12.焦点轮播图 </div>
+	<div class="ml-2">
+		在一个父元素div中有三部分 <br>
+		<div class="ml-2">
+			(1)图片部分 <br>
+			(2)左右箭头 <br>
+			(3)轮播指示器 <br>
+		</div>
+		第一部分:图片 <br>
+		<div class="ml-2">
+			div#id = "demo" <br>
+			div.carousel:   相对定位relative <br>
+			div>div.carousel-inner: 相对定位,溢出隐藏 w-100 <br>
+			div>div>div.carousel-item: 相对定位,w-100,隐藏 <br>
+			
+			事件: <br>
+			data-ride="carousel" <br>
+		</div>
+		第二部分:右箭头 <br>
+		<div class="ml-2">
+			a.carousel-control-next/prev <br>
+			a>span.carousel-control-next-icon <br>
+			事件: <br>
+			data-slide="next" <br>
+			data-slide="prev" <br>
+			href = "#demo";  #demo最外层的id <br>
+			注意: 需要重写样式 <br>
+			由于boot 封装好的样式不符合我们的需求,所以需要重写样式 <br>
+		</div>
+		
+		第三部分:轮播指示器 <br>
+		<div class="ml-2">
+			ul.carousel-indicators 弹性, x轴主轴,居中,绝对定位 <br>
+			ul>li 父元素设置了li的样式 <br>
+			事件: <br>
+			li: data-target="#demo", data-slide-to="图片编号" 编号由0开始 <br>
+		</div>
+		
+		例:焦点轮播图 <br>
+		<div id="demo" class="carousel" data-ride="carousel">
+			<!--1图片-->
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img class="w-100" src="../img/banner1.png" alt="">
+				</div>
+				<div class="carousel-item">
+					<img class="w-100" src="../img/banner2.png" alt="">
+				</div>
+				<div class="carousel-item">
+					<img class="w-100" src="../img/banner3.png" alt="">
+				</div>
+				<div class="carousel-item">
+					<img class="w-100" src="../img/banner4.png" alt="">
+				</div>
+			</div>
+			<!--2左右箭头-->
+			<a href="#demo" class="carousel-control-next" data-slide="next">
+				<span class="carousel-control-next-icon"></span>
+			</a>
+			<a href="#demo" class="carousel-control-prev" data-slide="prev">
+				<span class="carousel-control-prev-icon"></span>
+			</a>
+			<!--3轮播指示器-->
+			<ul class="carousel-indicators">
+				<li class="active" data-target="#demo" data-slide-to="0"></li>
+				<li data-target="#demo" data-slide-to="1"></li>
+				<li data-target="#demo" data-slide-to="2"></li>
+				<li data-target="#demo" data-slide-to="3"></li>
+			</ul>
+		</div>
+	
+	</div>
+	<br>
+	
+	<div id="demo13" class="font-weight-bold">13.模态框 </div>
+	<div class="ml-2">
+		模态框 modal 是覆盖在父窗体上的一个子窗体 <br>
+		模态框可以在不离开父窗体的情况下与用户互动 <br>
+		
+		组件结构: <br>
+		<div class="ml-2">
+			div.modal <br>
+			div>div.modal-dialog <br>
+			div>div>div.modal-content <br>
+			div>div>div>div.modal-header/body/footer <br>
+		</div>
+		
+		例: 模态框<br>
+		<button data-toggle="modal" data-target="#d5" class="btn btn-info">打开模态框</button>
+		<div id="d5" class="modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4>请输入您的昵称</h4>
+						<span data-dismiss="modal" class="close">&times;</span>
+					</div>
+					<div class="modal-body">
+						<input type="text">
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-success">提交</button>
+						<button data-dismiss="modal" class="btn btn-danger">关闭</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	
+	<div id="demo14" class="font-weight-bold">14.巨幕 </div>
+	<div class="ml-2">
+		巨大的内边距 <br>
+		例:巨幕 <br>
+		<div class="jumbotron">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquam asperiores autem distinctio id illo illum, laboriosam libero pariatur porro quaerat repellat sint tempora vitae voluptas voluptate voluptatum? Architecto, quia.
+		</div>
+	</div>
+	<br>
+	
+	<div id="demo15" class="font-weight-bold">15.面包屑导航 </div>
+	<div class="ml-2">
+		组件结构: <br>
+		<div class="ml-2">
+			ul.breadcrumb <br>
+			li.breadcrumb-item <br>
+			li>a <br>
+		</div>
+		
+		事件: <br>
+		<div class="ml-2">
+			1.激活事件的元素: <br>
+			2.事件影响的元素:  <br>
+		</div>
+		
+		例:面包屑导航 <br>
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item"><a href="">首页</a></li>
+			<li class="breadcrumb-item"><a href="">学习用品</a></li>
+			<li class="breadcrumb-item"><a href="">笔记本电脑</a></li>
+			<li class="breadcrumb-item"><a href="">mac</a></li>
+		</ul>
+		例2: <br>
+		<ul class="breadcrumb bg-transparent">
+			<li class="breadcrumb-item">
+				<a href=""><img src="../img/header/care.png" alt=""></a>
+			</li>
+			<li class="breadcrumb-item">
+				<a href=""><img src="../img/header/order.png" alt=""></a>
+			</li>
+			<li class="breadcrumb-item">
+				<a href=""><img src="../img/header/shop_car.png" alt=""></a>
+			</li>
+			<li class="breadcrumb-item"><a class="text-muted" href="">注册</a></li>
+			<li class="breadcrumb-item"><a class="text-muted" href="">登录</a></li>
+		</ul>
+	
+	</div>
+	<br>
+	
+	<div id="demo16"  class="font-weight-bold">16.进度条 </div>
+	<div class="ml-2">
+		组件结构: <br>
+		<div class="ml-2">
+			div.progress <br>
+			div>div.progress-bar bg-danger <br>
+			div>div.progress-bar-striped   条纹 <br>
+			div>div.progress-bar-animated   条纹的动画 <br>
+		</div>
+		
+		事件: <br>
+		<div class="ml-2">
+			1.激活事件的元素: <br>
+			2.事件影响的元素:  <br>
+		</div>
+		
+		例: 进度条<br>
+		<div class="progress">
+			<div class="progress-bar w-50 progress-bar-striped progress-bar-animated"></div>
+			<div class="progress-bar w-50 bg-danger"></div>
+			<div class="progress-bar w-50 bg-info"></div>
+		</div>
+		例: <br>
+		<div class="progress">
+			<div class="progress-bar w-100 bg-danger">简单</div>
+			<div class="progress-bar w-100 bg-warning">中等</div>
+			<div class="progress-bar w-100 bg-success">安全</div>
+		</div>
+	</div>
+	<br>
+	
+	<div id="demo17" class="font-weight-bold">17.分页条 </div>
+	<div class="ml-2">
+		组件结构: <br>
+		<div class="ml-2">
+			ul.pagination 弹性,x轴,去点 <br>
+			ul>li.page-itme .active .disable 激活或禁用, 但是样式作用到了a标签上 <br>
+			ul>li>a.page-link <br>
+		</div>
+		
+		例:分页条 <br>
+		<div class="bg-light p-2">
+			<ul class="pagination mb-0 d-flex justify-content-end">
+				<li class="page-item disabled">
+					<a class="page-link bg-transparent rounded" href="">上一页</a></li>
+				<li class="page-item active">
+					<a class="page-link bg-transparent rounded" href="">1</a></li>
+				<li class="page-item">
+					<a class="page-link bg-transparent rounded" href="">2</a></li>
+				<li class="page-item">
+					<a class="page-link bg-transparent rounded" href="">3</a></li>
+				<li class="page-item">
+					<a class="page-link bg-transparent rounded" href="">4</a></li>
+				<li class="page-item">
+					<a class="page-link bg-transparent rounded" href="">5</a></li>
+				<li class="page-item">
+					<a class="page-link bg-transparent rounded" href="">
+					下一页</a>
+				</li>
+			</ul>
+		</div>
+
+	
+	</div>
+	<br>
+	
+</div>
+
+
+
+<br><br><br><br><br><br><br><br><br>
+<a class="btn btn-info m-5" href="#">返回顶部</a>
+</body>
+</html>

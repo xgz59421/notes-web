@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <script src="js/jquery-slim.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <title>boot4</title>
+</head>
+
+<body>
+
+  <h3 style="margin-left: 10px">弹性布局d-flex</h3>
+
+  <div class="container ml-1">
+    d-*-none/block/inline/inline-block/table/flex/inline-flex; <br>
+    其中 * 为响应式 <br>
+    <br>
+
+    <div class="font-weight-bold">1.主轴方向 </div>
+    <div class="ml-1">
+      flex-*-row/column/row-reverse/column-reverse <br>
+      响应式改变主轴方向, *:xl/lg/md/sm <br>
+
+      例: <br>
+      <div class="border border-dark d-flex flex-lg-row flex-md-column flex-sm-row-reverse">
+        <div class="bg-warning">item1</div>
+        <div class="bg-danger">item1</div>
+        <div class="bg-info">item1</div>
+      </div>
+    </div>
+    <br>
+
+    <div class="font-weight-bold">2.项目在主轴上的排列方式 </div>
+    <div class="ml-1">
+      justify-content-*-start/center/end/around/between <br>
+
+      例: <br>
+      <div
+        class="border border-dark d-flex flex-row justify-content-lg-center justify-content-md-between justify-content-sm-end">
+        <div class="bg-warning">item1</div>
+        <div class="bg-danger">item1</div>
+        <div class="bg-info">item1</div>
+      </div>
+    </div>
+    <br>
+
+    <div class="font-weight-bold">3.主轴上换行 </div>
+    <div class="ml-1">
+      flex-*-wrap/nowrap/wrap-reverse <br>
+      <div class="border border-dark d-flex
+		flex-lg-wrap flex-md-wrap-reverse flex-sm-nowrap">
+        <div class="bg-warning">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores consequatur
+          deleniti, excepturi iste laboriosam laudantium neque non possimus, quia, ratione reprehenderit saepe suscipit
+          tenetur? Dolore nisi provident vitae. Inventore, ullam.</div>
+        <div class="bg-danger">item1</div>
+        <div class="bg-info">item1</div>
+      </div>
+    </div>
+    <br>
+
+    <div class="font-weight-bold">4.交叉轴的对齐 </div>
+    <div class="ml-1">
+      align-items-*-start/end/center/stretch <br>
+      <div style="height: 50px" class="border border-dark d-flex
+		     align-items-end align-items-lg-center align-items-md-stretch align-items-sm-start">
+        <div class="bg-warning">item1</div>
+        <div class="bg-danger">item2</div>
+        <div class="bg-info">item3</div>
+      </div>
+    </div>
+    <br>
+
+    <div class="font-weight-bold">5.弹性和栅格的关系 </div>
+    <div class="ml-1">
+      row的源码: 弹性,x轴主轴,可换行,左右-15px外边距 <br>
+      如果一个父元素,设置了d-flex flex-warp,可以直接当做row来使用 <br>
+      例: <br>
+      row: <br>
+      <div class="row border border-dark">
+        <div class="col-3 border border-danger">item</div>
+        <div class="col-3 border border-warning">item</div>
+        <div class="col-3 border border-success">item</div>
+        <div class="col-3 border border-info">item</div>
+      </div>
+      d-flex: 比起row 没有左右边距-15px<br>
+      <div class="d-flex border border-dark">
+        <div class="col-3 border border-danger">item</div>
+        <div class="col-3 border border-warning">item</div>
+        <div class="col-3 border border-success">item</div>
+        <div class="col-3 border border-info">item</div>
+      </div>
+    </div>
+    <br>
+
+  </div>
+
+
+
+
+
+
+
+  <br><br><br><br><br><br><br>
+
+</body>
+
+</html>

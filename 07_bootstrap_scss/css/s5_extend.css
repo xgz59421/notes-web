@@ -1,0 +1,8 @@
+@charset "UTF-8";
+/*5.继承*/
+.my_parent, .my_child {
+  width: 100px;
+  height: 100px; }
+
+.my_child {
+  color: red; }

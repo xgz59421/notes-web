@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<script src="js/jquery-slim.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<title>03_grid</title>
+</head>
+<body>
+
+<h3 style="margin-left: 10px">栅格布局(重点)</h3>
+
+<div class="container ml-1">
+	<div class="font-weight-bold">1.web 页面常用的布局方式一般3种</div>
+	mx-0: margin-left:0, margin-right:0 <br>
+	<div class="ml-1">
+		<div class="row mx-0 text-center">
+			<div class="col-4 border border-right-0 border-info">table布局</div>
+			<div class="col-4 border border-right-0 border-info">div+css</div>
+			<div class="col-4 border border-info">Boot中的栅格布局</div>
+		</div>
+		<div class="row mx-0">
+			<div class="col-4 border-left  border-info">
+				简单,易控制
+			</div>
+			<div class="col-4 border-left  border-info">
+				语义正确,渲染效率高
+			</div>
+			<div class="col-4 border-left border-right border-info">
+				简单,易控制,语义正确,渲染效率高,支持响应式
+			</div>
+		</div>
+		<div class="row mx-0">
+			<div class="col-4 border border-right-0 border-info">
+				语义错误,渲染效率低下</div>
+			<div class="col-4 border border-right-0 border-info">控制比较繁琐</div>
+			<div class="col-4 border border-info">复杂页面不适合栅格</div>
+		</div>
+	</div>
+	<br>
+	<!--2.使用栅格-->
+	<div class="font-weight-bold">2.使用栅格 </div>
+	<div class="ml-1">
+		把布局看成一行: .row 弹性,x为轴,可换行, 左右外边距-15px <br>
+		把内部每一部分看成列: .col-1, .col-2 ~~ .col-12 左右内边距15px <br>
+		<div class="row border no-gutters">
+			<div class="col-1 border border-danger">col-1</div>
+		</div>
+		<div class="row border no-gutters">
+			<div class="col-4 border border-danger">col-4</div>
+		</div>
+		
+		布局1:1 <br>
+		<div class="row border no-gutters">
+			<div class="col-6 border border-danger">1:1</div>
+			<div class="col-6 border border-danger">1:1</div>
+		</div>
+		布局1:2 <br>
+		<div class="row border no-gutters">
+			<div class="col-4 border border-danger">1:2</div>
+			<div class="col-8 border border-danger">1:2</div>
+		</div>
+		布局1:3 <br>
+		<div class="row border no-gutters">
+			<div class="col-3 border border-danger">1:2</div>
+			<div class="col-9 border border-danger">1:2</div>
+		</div>
+		布局1:2:1 <br>
+		<div class="row border no-gutters">
+			<div class="col-3 border border-danger">1:2:1</div>
+			<div class="col-6 border border-danger">1:2:1</div>
+			<div class="col-3 border border-danger">1:2:1</div>
+		</div>
+		布局1:1:1:1 <br>
+		<div class="row border no-gutters">
+			<div class="col-3 border border-danger">1:1:1:1</div>
+			<div class="col-3 border border-danger">1:1:1:1</div>
+			<div class="col-3 border border-danger">1:1:1:1</div>
+			<div class="col-3 border border-danger">1:1:1:1</div>
+		</div>
+	</div>
+	<br>
+	<!--3.响应式栅格-->
+	<div class="font-weight-bold">3.响应式栅格</div>
+	<div class="ml-1">
+		col-*-1~12 *:xl/lg/md/sm <br>
+		注意 <br>
+		(1)row自带的左右-15的外边距,会让row 变宽 <br>
+		(2)col自带的左右15px内边距,会影响col的布局 <br>
+		(3)向上兼容 <br>
+		(4)通常清除掉: <span class="text-danger">no-gutters</span> <br>
+		no-gutters: <br>
+		清除了 row的 左右-15外边距 <br>
+		清楚了 col的 左右15 内边距 <br>
+		
+		例: <br>
+		<div class="row border border-info no-gutters">
+			<div class="border border-info col-xl-3 col-lg-4 col-md-6 col-sm-12">1</div>
+			<div class="border border-info col-xl-3 col-lg-4 col-md-6 col-sm-12">2</div>
+			<div class="border border-info col-xl-3 col-lg-4 col-md-6 col-sm-12">3</div>
+			<div class="border border-info col-xl-3 col-lg-4 col-md-6 col-sm-12">4</div>
+		</div>
+	</div>
+	<br>
+	
+	<!--4.不带数字的col类-->
+	<div class="font-weight-bold">4.不带数字的col类</div>
+	<div class="ml-1">
+		在整个row中,平均分配所有的col <br>
+		一行的col 可以超过12个, 直到文本和内边距放不下,才会换行 <br>
+		
+		例: <br>
+		<div class="row">
+			<div class="col border border-dark">1</div>
+			<div class="col border border-dark">2</div>
+			<div class="col border border-dark">3</div>
+			<div class="col border border-dark">4</div>
+			<div class="col border border-dark">5</div>
+			<div class="col border border-dark">6</div>
+			<div class="col border border-dark">7</div>
+			<div class="col border border-dark">8</div>
+			<div class="col border border-dark">9</div>
+			<div class="col border border-dark">10</div>
+			<div class="col border border-dark">11</div>
+			<div class="col border border-dark">12</div>
+			<div class="col border border-dark">13</div>
+			<div class="col border border-dark">14</div>
+			<div class="col border border-dark">15</div>
+			<div class="col border border-dark">16</div>
+			<div class="col border border-dark">17</div>
+			<div class="col border border-dark">18</div>
+			<div class="col border border-dark">19</div>
+			<div class="col border border-dark">20</div>
+		</div>
+	</div>
+	<br>
+	
+	<!--5.boot响应式向上兼容问题-->
+	<div class="font-weight-bold">5.boot响应式向上兼容问题</div>
+	<div class="ml-1">
+		sm: 在sm/md/lg/xl 下有效 <br>
+		md: 在md/lg/xl 下有效 <br>
+		lg: 在lg/xl 下有效 <br>
+		xl: 只在xl 下有效 <br>
+		
+		例: <br>
+		<div class="row no-gutters">
+			<div class="col-sm-6 border border-info">sm</div>
+		</div>
+		
+		<div class="row no-gutters">
+			<div class="col-md-6 border border-info">md</div>
+		</div>
+		
+		<div class="row no-gutters">
+			<div class="col-lg-6 border border-info">lg</div>
+		</div>
+		
+		<div class="row no-gutters">
+			<div class="col-xl-6 border border-info">xl</div>
+		</div>
+	</div>
+	<br>
+	
+	<!--6.列偏移-->
+	<div class="font-weight-bold">6.列偏移</div>
+	<div class="ml-1">
+		offset-*-0~11  *:xl/lg/md/sm <br>
+		底层源码就是 左外边距 <br>
+		
+		例: <br>
+		<div class="row border border-dark">
+			<div class="col-3 border border-danger offset-lg-9 offset-sm-6">123</div>
+		</div>
+	</div>
+	<br>
+	
+</div>
+
+
+<br><br><br><br><br><br><br><br>
+
+</body>
+</html>

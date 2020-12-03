@@ -1,0 +1,24 @@
+@charset "UTF-8";
+/*2.嵌套*/
+a {
+  color: #001; }
+  a:hover {
+    color: #002; }
+
+#content {
+  color: #001; }
+  #content .top {
+    color: #002; }
+    #content .top h1 {
+      color: #003; }
+    #content .top p {
+      color: #003; }
+  #content .bottom {
+    color: #002; }
+    #content .bottom p {
+      color: #003; }
+      #content .bottom p a {
+        color: #004; }
+
+div a, .top a, p a, #content a {
+  color: #111; }
