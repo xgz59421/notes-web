@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>elem</title>
+   <style>
+      div {
+         margin-left: 1rem;
+      }
+   </style>
+</head>
+
+<body>
+   <div>追加元素:parent.appendChild(newElem) //父元素最后一位</div>
+   <div>插入元素:parent.insertBefore(newElem, elem) //elem前插入</div>
+   <div>删除元素:parent.removeChild(elem) </div>
+   <div>替换元素:parent.replaceChild(newElem, elem) //替换elem</div>
+   <ul id="menu">
+      <li>首页</li>
+      <li>联系我们</li>
+   </ul>
+   <script>
+      var ul = document.getElementById("menu");
+
+      //1.追加一个元素:appendChild(newElem)
+      var li_new = document.createElement("li");
+      // newLi.innerHTML = "版权声明";
+      li_new.appendChild(document.createTextNode("版权声明"))
+      ul.appendChild(li_new);
+
+      //2.插入一个元素:insertBefore(newElem, elem)
+      var li_new = document.createElement("li");
+      li_new.appendChild(document.createTextNode("新闻"));
+      ul.insertBefore(li_new, ul.lastElementChild);
+
+      //3.删除一个元素removeChild(elem)
+      ul.removeChild(ul.firstElementChild);
+
+      //4.replaceChild(newElem, elem)
+      var newLi = document.createElement("li");
+      newLi.appendChild(document.createTextNode("招聘"));
+      ul.replaceChild(newLi, ul.firstElementChild);
+   </script>
+</body>
+
+</html>

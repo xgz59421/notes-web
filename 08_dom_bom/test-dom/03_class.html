@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+
+<head>
+   <meta charset="UTF-8">
+   <title>实现带样式的表单验证</title>
+   <link rel="Stylesheet" href="css/5.css" />
+</head>
+
+<body>
+   <form id="form1">
+      <h2>增加管理员</h2>
+      <table>
+         <tr>
+            <td>姓名：</td>
+            <td>
+               <input name="username" />
+               <span>*</span>
+            </td>
+            <td>
+               <div class="vali_info">
+                  10个字符以内的字母、数字或下划线的组合
+               </div>
+            </td>
+         </tr>
+
+         <tr>
+            <td>密码：</td>
+            <td>
+               <input type="password" name="pwd" />
+               <span>*</span>
+            </td>
+            <td>
+               <div class="vali_info">6位数字</div>
+            </td>
+         </tr>
+         <tr>
+            <td></td>
+            <td colspan="2">
+               <input type="submit" value="保存" />
+               <input type="reset" value="重填" />
+            </td>
+         </tr>
+      </table>
+   </form>
+   <script>
+      var uname = document.getElementsByName("username")[0];
+      var pwd = document.getElementsByName("pwd")[0];
+
+      pwd.onfocus = uname.onfocus = function () {
+         //div是 父元素兄弟元素的第一个孩子
+         var div = this.parentNode.nextElementSibling.children[0];
+         div.className = "";
+      }
+      uname.onblur = function () {
+         var reg = /^\w{1,10}$/;
+         vali(this, reg);
+
+      }
+      pwd.onblur = function () {
+         var reg = /^\d{6}$/;
+         vali(this, reg);
+
+      }
+
+      function vali(txt, reg) {
+         var div = txt.parentNode.nextElementSibling.children[0];
+         if (reg.test(txt.value)) {
+            div.className = "vali_success"
+         } else {
+            div.className = "vali_fail"
+         }
+      }
+   </script>
+</body>
+
+</html>

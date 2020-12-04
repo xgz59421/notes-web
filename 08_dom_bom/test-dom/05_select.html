@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+   <title>Select对象</title>
+   <meta charset="utf-8" />
+   <style>
+      .hide {display: none;}
+   </style>
+</head>
+
+<body>
+   <h3>Select对象</h3>
+   <div class="ml2">
+      <div>常用属性: </div>
+      <div>1. options</div>
+      <div>2. selectedIndex</div>
+      <div>3. size</div>
+      <br>
+      <div>常用方法:</div>
+      <div>1. add(option) </div>
+      <div>2. remove(index) </div>
+      <br>
+      <div>事件: onchange</div>
+   </div>
+
+   <h3>Option对象</h3>
+   <div class="ml2">
+      <div>创建对象:</div>
+      <div>var o = new Option(text, value) </div>
+      <br>
+      <div>常用属性: </div>
+      <div>1. index</div>
+      <div>2. text</div>
+      <div>3. value</div>
+      <div>4. selected</div>
+      <br>
+
+      <hr>
+      例:省市联动 <br>
+
+      <select name="sel_provs">
+         <option>—请选择—</option>
+         <!--0-->
+         <option>北京市</option>
+         <!--1-->
+         <option>天津市</option>
+         <option>河北省</option>
+      </select>
+
+      <select name="sel_cities" class="hide">
+      </select>
+
+   </div>
+
+   <script>
+      var cities = [
+         [{
+               "name": '东城区',
+               "value": 101
+            },
+            {
+               "name": '西城区',
+               "value": 102
+            },
+            {
+               "name": '海淀区',
+               "value": 103
+            },
+            {
+               "name": '朝阳区',
+               "value": 104
+            }
+         ],
+         [{
+               "name": '河东区',
+               "value": 201
+            },
+            {
+               "name": '河西区',
+               "value": 202
+            },
+            {
+               "name": '南开区',
+               "value": 303
+            }
+         ],
+         [{
+               "name": '石家庄市',
+               "value": 301
+            },
+            {
+               "name": '廊坊市',
+               "value": 302
+            },
+            {
+               "name": '保定市',
+               "value": 303
+            },
+            {
+               "name": '唐山市',
+               "value": 304
+            },
+            {
+               "name": '秦皇岛市',
+               "value": 304
+            }
+         ]
+      ];
+
+
+      var sel_provs = document.getElementsByName("sel_provs")[0];
+      var sel_cities = document.getElementsByName("sel_cities")[0];
+
+      sel_provs.onchange = function () {
+         var index = this.selectedIndex;
+         if (index > 0) {
+            sel_cities.className = "";
+            sel_cities.innerHTML = "";
+            var cityarr = cities[index - 1];
+            for (var city of cityarr) {
+               var option = new Option(city.name, city.value);
+               sel_cities.add(option);
+            }
+         } else {
+            sel_cities.className = "hide";
+         }
+      }
+
+      sel_cities.onchange = function () {
+         var opt = this.options[this.selectedIndex];
+         alert(`选中了${opt.text}`);
+      }
+   </script>
+
+
+   <br><br><br><br>
+</body>
+
+</html>

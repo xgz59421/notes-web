@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>事件冒泡处理</title>
+   <link rel="stylesheet" href="./07_bubble.css">
+   <style>
+      #div_red {
+         left: 200px;
+      }
+   </style>
+</head>
+
+<body>
+   <div id="div_green">
+      <div id="div_blue">
+         <div id="div_red"></div>
+      </div>
+   </div>
+
+   <script>
+      var div_green = document.getElementById("div_green");
+      var div_blue = document.getElementById("div_blue");
+      var div_red = document.getElementById("div_red");
+      //捕获阶段
+      div_green.addEventListener(
+         "click",
+         function () {
+            alert("click 捕获阶段 div_green");
+         },
+         true //是否在捕获阶段就提前触发,默认false
+      );
+
+      div_blue.addEventListener("click",
+         function () {
+            alert("click 捕获阶段 div_blue");
+         },
+         true
+      );
+
+
+      //冒泡阶段
+      div_green.onclick = function (e) {
+         alert("click 冒泡阶段 div_green");
+      }
+
+      div_blue.onclick = function (e) {
+         alert("click 冒泡阶段 div_blue");
+      }
+
+      div_red.onclick = function (e) {
+         e = e || window.event;
+         //阻止冒泡时的事件,但是不能阻止捕获时的事件
+         //兼容
+         if (typeof e.stopPropagation === "function") {
+            e.stopPropagation();
+         } else {
+            e.cancelBubble = true;
+         }
+         alert("click 冒泡阶段 div_red");
+
+      }
+   </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+   <title>读取并修改元素的属性</title>
+   <meta charset="utf-8" />
+   <link rel="stylesheet" href="css/03_tabs.css" />
+   <style>
+      .active {
+         z-index: 10;
+      }
+   </style>
+
+</head>
+
+<body>
+   <h2>实现多标签页效果</h2>
+   <div class="tabs">
+      <ul id="tab">
+         <li><a href="#content1">10元套餐</a></li>
+         <li><a href="#content2">30元套餐</a></li>
+         <li><a href="#content3">50元包月</a></li>
+      </ul>
+      <div id="container">
+         <div id="content1" class="active">
+            10元套餐详情：<br />&nbsp;每月套餐内拨打100分钟，超出部分2毛/分钟
+         </div>
+         <div id="content2">
+            30元套餐详情：<br />&nbsp;每月套餐内拨打300分钟，超出部分1.5毛/分钟
+         </div>
+         <div id="content3">
+            50元包月详情：<br />&nbsp;每月无限量随心打
+         </div>
+      </div>
+   </div>
+   <script>
+      var as = document.querySelectorAll("#tab>li>a");
+      console.log(as);
+      for (var a of as) {
+         a.onclick = function (e) {
+            e.preventDefault(a); //组织a元素自带的默认行为 (比如跳转)
+            // var id = this.href;
+            // console.log(id);
+            //坑: href属性 自动补齐完整url
+            var id = this.getAttribute("href");
+            var div = document.querySelector(id);
+            var div_has_active = document.querySelector("#container>div.active");
+            div_has_active.className = ""
+            console.log(div_has_active);
+
+            div.setAttribute("class", "active");
+         }
+      }
+   </script>
+</body>
+
+</html>

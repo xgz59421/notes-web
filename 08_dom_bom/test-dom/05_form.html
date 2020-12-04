@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+   <title>Form对象</title>
+   <meta charset="utf-8" />
+   <style>
+      .ml2 {
+         margin-left: 1rem;
+      }
+   </style>
+   <link rel="Stylesheet" href="css/03_class.css" />
+</head>
+
+<body>
+
+   <h3>Form对象</h3>
+   <div class="ml2">
+      <div>常用属性: </div>
+      <div>1. action</div>
+      <div>2. method</div>
+      <div>3. enctype</div>
+      <div>4. length 表单中的元素数目</div>
+      <div>5. elements[]: 包含表单中所有元素的数组</div>
+      <br>
+      <div>常用方法:</div>
+      <div></div>
+      <div>1. document.forms --->获得一个html中的forms数组</div>
+      <div>2. form.name ----> 获取元素,name:是表单中元素的name</div>
+      <div>2. reset() </div>
+      <div>3. submit() </div>
+      <div>4. focus() 焦点</div>
+      <br>
+   </div>
+   <div>
+      <img src="img/dom_input.png" width="550px">
+   </div>
+
+
+   <hr>
+   例: <br>
+   <form id="form1">
+      <h2>增加管理员</h2>
+      <table>
+         <tr>
+            <td>姓名：</td>
+            <td>
+               <input name="username" />
+               <span>*</span>
+            </td>
+            <td>
+               <div class="vali_info">
+                  10个字符以内的字母、数字或下划线的组合
+               </div>
+            </td>
+         </tr>
+
+         <tr>
+            <td>密码：</td>
+            <td>
+               <input type="password" name="pwd" />
+               <span>*</span>
+            </td>
+            <td>
+               <div class="vali_info">6位数字</div>
+            </td>
+         </tr>
+         <tr>
+            <td></td>
+            <td colspan="2">
+               <input type="button" value="保存" />
+               <input type="reset" value="重填" />
+            </td>
+         </tr>
+      </table>
+   </form>
+
+   <script>
+      //1. 获取form表单
+      // var form = document.getElementById("form1");
+      var form = document.forms[0];
+      //2.获取 表单元素
+      // console.log(form.elements);
+      var elements = form.elements;
+      // var textName = elements[0];
+      // var textPwd = elements["pwd"];
+      var uname = form.username;
+      var pwd = form.pwd;
+      var btn = elements[form.length - 2];
+      btn.onclick = function () {
+         if (!vali(uname, /^\w{1,10}$/)) {
+            uname.focus();
+         } else if (!vali(pwd, /^\d{6}$/)) {
+            pwd.focus();
+         } else {
+            alert("将来ajax提交");
+         }
+      }
+
+      console.log("-----------------------------------");
+      pwd.onfocus = uname.onfocus = function () {
+         //div是 父元素兄弟元素的第一个孩子
+         var div = this.parentNode.nextElementSibling.children[0];
+         div.className = "";
+      }
+      uname.onblur = function () {
+         var reg = /^\w{1,10}$/;
+         vali(this, reg);
+
+      }
+      pwd.onblur = function () {
+         var reg = /^\d{6}$/;
+         vali(this, reg);
+      }
+
+      function vali(txt, reg) {
+         var div = txt.parentNode.nextElementSibling.children[0];
+         if (reg.test(txt.value)) {
+            div.className = "vali_success";
+            return true;
+         } else {
+            div.className = "vali_fail";
+            return false;
+         }
+      }
+   </script>
+
+
+   <br><br><br><br>
+</body>
+
+</html>

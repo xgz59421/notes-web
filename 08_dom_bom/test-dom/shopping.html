@@ -1,0 +1,142 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+   <title>使用Selector API实现购物车客户端计算</title>
+   <meta charset="utf-8" />
+   <style>
+      table {
+         width: 600px;
+         text-align: center;
+         border-collapse: collapse;
+      }
+
+      td,
+      th {
+         border: 1px solid black
+      }
+
+      td[colspan="3"] {
+         text-align: right;
+      }
+
+      tbody td:last-child {
+         background-color: yellow;
+      }
+
+      tfoot td:last-child {
+         background-color: pink
+      }
+   </style>
+
+</head>
+
+<body>
+   <table id="data">
+      <thead>
+         <tr>
+            <th>商品名称</th>
+            <th>单价</th>
+            <th>数量</th>
+            <th>小计</th>
+         </tr>
+      </thead>
+      <tbody>
+         <tr>
+            <td>iPhone6</td>
+            <td>¥4488.00</td>
+            <td>
+               <button>-</button>
+               <span>1</span>
+               <button>+</button>
+            </td>
+            <td>¥4488.00</td>
+         </tr>
+         <tr>
+            <td>iPhone6 plus</td>
+            <td>¥5288.00</td>
+            <td>
+               <button>-</button>
+               <span>1</span>
+               <button>+</button>
+            </td>
+            <td>¥5288.00</td>
+         </tr>
+         <tr>
+            <td>iPad Air 2</td>
+            <td>¥4288.00</td>
+            <td>
+               <button>-</button>
+               <span>1</span>
+               <button>+</button>
+            </td>
+            <td>¥4288.00</td>
+         </tr>
+      </tbody>
+      <tfoot>
+         <tr>
+            <td colspan="3">Total: </td>
+            <td>¥14064.00</td>
+         </tr>
+      </tfoot>
+   </table>
+   <script>
+      //DOM操作的标准步骤: 4步
+      //1. 查找触发事件的元素
+      //2. 绑定事件处理函数
+      //3. 查找要修改的元素
+      //4. 修改元素
+
+      var table = document.getElementById("data");
+      var btns = table.getElementsByTagName("button");
+      console.log(btns);
+      for (var btn of btns) {
+         btn.onclick = function () {
+            var thisBtn = this;
+            //1.修改数量
+            //获取span方式一
+            // var children = thisBtn.parentNode.children;
+            // var span = children[1];
+            //方式二
+            var td_3 = thisBtn.parentNode //数量td
+            var span = td_3.getElementsByTagName("span")[0];
+            // console.log(span);
+            var number = parseInt(span.innerHTML);
+            if (thisBtn.innerHTML == "+") {
+               number++;
+            } else if (thisBtn.innerHTML == "-") {
+               if (number > 0) {
+                  number--;
+               }
+            }
+            span.innerHTML = number;
+            // console.log(number);
+
+            //2.小计
+            var td_2 = td_3.previousElementSibling; //单价td
+            var td_last = td_3.nextElementSibling; //小计td
+            // console.log(td_2.innerHTML);
+            var price = parseFloat(td_2.innerHTML.slice(1));
+            td_last.innerHTML = `¥${(price*number).toFixed(2)}`
+
+            //3.总价 total
+
+            var tds_last = table.querySelectorAll(
+               "tbody td:last-child");
+            // console.log(tds_last);
+            var total = 0;
+            for (var td of tds_last) {
+               total += parseFloat(td.innerHTML.slice(1));
+            }
+
+            var td_total = table.querySelector(
+               "tfoot td:last-child");
+            console.log(td_total);
+            td_total.innerHTML = `¥${total.toFixed(3)}`;
+
+         }
+      }
+   </script>
+</body>
+
+</html>

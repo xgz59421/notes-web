@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>test</title>
+</head>
+
+<body>
+   <ul>
+      <li>亮亮</li>
+      <li>东东</li>
+      <li>然然</li>
+      <li>涛涛</li>
+   </ul>
+   <script>
+      var lis = document.querySelectorAll("ul>li");
+      var arr = [];
+      //添加属性 data-i 分配随机数
+      for (var li of lis) {
+         li.setAttribute("data-i", Math.random() * 4);
+         arr.push(li);
+      }
+      //根据data-i 排序
+      arr.sort(function (a, b) {
+         return a.getAttribute("data-i") - b.getAttribute("data-i");
+      });
+      for (const li of arr) {
+         console.log(li.getAttribute("data-i"));
+      }
+
+      var ul = document.querySelector("ul");
+      ul.innerHTML = "";
+      for (var li of arr) {
+         ul.appendChild(li)
+      }
+      console.log(ul);
+   </script>
+</body>
+
+</html>

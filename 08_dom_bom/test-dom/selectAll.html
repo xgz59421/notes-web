@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>全选和取消全选</title>
+</head>
+<body>
+	<h2>管理员列表</h2>
+	<table border="1px" width="500px">
+	  <thead>
+		<tr>
+			<th><input type="checkbox"/>全选</th>
+			<th>管理员ID</th>
+			<th>姓名</th>
+			<th>操作</th>
+		</tr>
+	  </thead>
+	  <tbody>
+	  	<tr>
+	  		<td><input type="checkbox"/></td>
+	  		<td>1</td>
+	  		<td>Tester</td>
+	  		<td>修改 删除</td>
+	  	</tr>
+	  	<tr>
+	  		<td><input type="checkbox"/></td>
+	  		<td>2</td>
+	  		<td>Manager</td>
+	  		<td>修改 删除</td>
+	  	</tr>
+	  	<tr>
+	  		<td><input type="checkbox"/></td>
+	  		<td>3</td>
+	  		<td>Analyst</td>
+	  		<td>修改 删除</td>
+	  	</tr>
+	  	<tr>
+	  		<td><input type="checkbox"/></td>
+	  		<td>4</td>
+	  		<td>Admin</td>
+	  		<td>修改 删除</td>
+	  	</tr>
+	  </tbody>
+	</table>
+  <script>
+		/*点上方的全选，控制下方的所有checkbox*/
+		//DOM 4步
+		//1. 查找触发事件的元素
+		//本例中: 查找表头中的input
+		var inputAll=document.querySelector(
+			"table>thead input"//复习第二阶段选择器
+		);
+		//2. 绑定事件处理函数
+		inputAll.onclick=function(){
+			//3. 查找要修改的元素
+			//本例中: 查找tbody下的所有input
+			var inputs=document.querySelectorAll(
+				"table>tbody input"
+			)
+			//4. 修改元素
+			//本例中: 让下边每个input的checked状态和当前点击的全选checkbox的checked状态一致
+			for(var input of inputs){
+				input.checked=this.checked;
+			}
+		}
+
+		/*点下方的每个，都有可能影响上方的全选*/
+		//DOM 4步
+		//1. 查找触发事件的元素
+		//本例中: 查找tbody下所有input
+		var inputs=document.querySelectorAll(
+			"table>tbody input"
+		);
+		//2. 绑定事件处理函数
+		//本例中: 遍历找到的每个input元素
+		for(var input of inputs){
+			//每遍历一个input，就绑定单击事件
+			input.onclick=function(){
+				//3. 查找要修改的元素
+				//本例中: 无论点下方哪个input，都只可能影响thead中的一个input
+				var inputAll=document.querySelector(
+					"table>thead input"
+				);
+				//4. 修改元素
+				//尝试查找tbody下未选中的一个input
+				var unchecked=document.querySelector(
+					"tbody input:not(:checked)"
+				)//复习第二阶段选择器
+				//如果找到未选中的
+				if(unchecked!=null){
+					//上方的全选就不选中！
+					inputAll.checked=false;
+				}else{//否则如果没找到未选中的
+					//上方的全选就选中！
+					inputAll.checked=true;
+				}
+			}
+		}
+	</script>
+</body>
+</html>

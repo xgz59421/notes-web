@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>属性集合</title>
+</head>
+
+<body>
+   <div>元素节点的 attributes属性返回节点的属性集合,NamesNodeMap</div>
+   <a id="bdlink" class="sitelink" href="javascript:;" onclick="jump()">百度搜索</a>
+   <h1 id="title">Welcome</h1>
+   <script>
+      //a标签
+      var a = document.getElementById("bdlink");
+      console.log(a.nodeName);
+      console.log(a.attributes);
+      console.log(a.attributes.length);
+
+      console.log("获得属性节点的对象");
+      console.log(a.attributes[3]);
+      console.log(a.attributes["onclick"]);
+      console.log(a.getAttributeNode("onclick"));
+      console.log("获得属性节点的对象的值");
+      console.log(a.attributes[3].value);
+      console.log(a.attributes["onclick"].value);
+      console.log(a.getAttributeNode("onclick").value);
+      console.log("最简单的获得属性节点的对象的值");
+      console.log(a.getAttribute("onclick"));
+
+      console.log("--------------属性设置--------------");
+      //h1标签
+      var h1 = document.getElementById("title");
+
+      // // 方法1
+      // // 先创建属性节点对象
+      // var classNode = document.createAttribute("class");
+      // // 设置属性节点对象的值
+      // classNode.nodeValue = "highlight"
+      // // 将节点对象添加到元素上
+      // h1.setAttributeNode(classNode);
+
+      //方法2 ie8不支持
+      // h1.setAttribute("class", "highlight");
+
+      //方法3
+      h1.className = "highlight";
+      console.log(h1.attributes);
+
+      console.log("--------------移除属性--------------");
+      //移除a的 class属性
+      //方法1:移除节点方式
+      // var classNode = a.attributes["class"];
+      // a.removeAttributeNode(classNode);
+      console.log(a.hasAttribute("class"));
+      a.removeAttribute("class");
+      console.log(a.attributes);
+
+      console.log("--------------判断属性存在--------------");
+      //hasAttributes 判断元素是否拥有属性
+      console.log(a.hasAttributes());
+
+      console.log(a.hasAttribute("class"));
+      console.log(a.hasAttribute("id"));
+   </script>
+</body>
+
+</html>
