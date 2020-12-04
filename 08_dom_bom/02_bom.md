@@ -5,7 +5,7 @@
 - [4. history](#4)
 - [5. location](#5)
 - [6. navigator](#6)
-- [7. event事件](#6)
+- [7. event事件](#7)
 --------
 ><h2 id='1'>1. 介绍bom</h2>
 - `BOM`: Browser Object Model
@@ -84,11 +84,11 @@
     ```
 2. 判断浏览器是否安装了某个插件:
     ```bash
-    1. 浏览器中安装的所有插件的信息都集中保存在navigator.plugins集合中。
+    1. 浏览器中安装的所有插件的信息都集中保存在'navigator.plugins'集合中。
     2. 如何判断浏览器是否安装某个插件？通过插件全名，强行访问
-    navigator.plugins["完整插件名称"]!==undefined 说明装了该插件
+    # navigator.plugins["完整插件名称"]!==undefined 说明装了该插件
     ```
-    ```html
+    ```javascript
     if(navigator.plugins["Chrome PDF Viewer"]!==undefined){
       document.write(`
       <h3 style="color:green">已安装PDF插件，可浏览电子书</h3>`)
@@ -100,4 +100,49 @@
     }
     ```
 ><h2 id='7'>7. event事件</h2>
- 
+1. 绑定事件: js中: 
+    ```bash
+    1. 一个事件只绑定一个处理函数
+      # 元素.on事件名=function(){ ... }
+    2. 一个事件绑定多个处理函数
+      # 元素.addEventListener("事件名", 事件处理函数)
+    3. 移除一个事件监听: 
+      # 元素.removeEventListener("事件名", 原事件处理函数对象)
+    ```
+2. `事件模型:` 
+- `三个阶段 捕获，目标触发，冒泡`
+  ```bash
+  #a. 捕获: 
+    浏览器会从顶级父元素document->html->...开始由外向内依次遍历当前点击的元素的各级父元素。在遍历过程中，记录哪些父元素上绑定了相同的事件处理函数。'只记录不执行'
+  #b. 目标触发: 
+    浏览器总是优先触发实际点击的这个元素上的事件处理函数。实际点击的元素，也被称为"目标元素"(e.target)
+  # c. 冒泡: 
+    # 由内向外，依次触发各级父元素上的事件处理函数
+  ```
+3. 事件对象: 
+```css
+1. 获得事件对象: 
+  元素.on事件名=function(e){ ... }
+2. 阻止冒泡:  
+    /*e.stopPropagation() */
+3. 当多个子元素都要绑定相同事件时，利用冒泡/事件委托3步: 
+  a. 事件只在父元素上绑定一次
+  b. e.target代替this
+  c. 判断e.target的任意特征是否是我们想要的元素
+4. 阻止元素默认行为: 
+    /* e.preventDefault()*/
+5. 获取鼠标位置: 
+  a. 相对于屏幕左上角的x，y坐标: 
+    e.screenX,  e.screenY
+  b. 相对于文档显示区左上角的x，y用坐标:  
+    e.clientX,  e.clientY
+  c. 相对于事件所在元素左上角的x，y坐标: 
+    e.offsetX   e.offsetY
+6. 页面滚动事件: 
+  window.onscroll=function(){
+    var scrollTop = document.documentElement.scrollTop
+                  ||document.body.scrollTop
+    /* 如果scrollTop>多少，就执行xx操作 */
+    /* 否则就恢复原样 */
+  }
+```
