@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="js/jquery-1.11.3.js"></script>
+  <title>load() & ready()</title>
+</head>
+
+<body>
+  <button id="btn1">click me1</button>
+  <button id="btn2">click me2</button>
+  <script>
+    //第2个onload 会取代第1个onload
+    window.onload = function () {
+
+      $("#btn1").click(function () {
+        alert("1111");
+      });
+    }
+    window.onload = function () {
+      $("#btn2").click(function () {
+        alert("222");
+      });
+    }
+    //load底层 监听事件.addEventListener("load",function(){....})
+    $(window).load(function () {
+      alert("HTML,JS,CSS,和图片加载完成");
+      $("#btn1").click(function () {
+        alert("$1111");
+      });
+    });
+    $(window).load(function () {
+      $("#btn2").click(function () {
+        alert("$2222");
+      });
+    });
+    $(document).ready(function () {
+      alert("仅HTML和JS加载完成");
+      $("#btn1").click(function () {
+        alert("ready1111");
+      });
+    });
+
+    $(document).ready(function () {
+      alert('没有简写')
+      $("#btn2").click(function () {
+        alert("ready2222");
+      });
+    });
+    //$(document).ready()简写
+    function alertString(str) {
+      alert(str)
+    }
+    $().ready(alertString("简写1"));
+    $(alertString("简写2"));
+    $(alertString("简写3"));
+  </script>
+</body>
+
+</html>

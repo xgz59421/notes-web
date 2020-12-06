@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>attr</title>
+  <script src="js/jquery-1.11.3.js"></script>
+  <style>
+    body {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <img src="img/1.jpg" data-target="img/1-l.jpg" class="my-small">
+  <img src="img/2.jpg" data-target="img/2-l.jpg" class="my-small">
+  <img src="img/3.jpg" data-target="img/3-l.jpg" class="my-small">
+  <img src="img/4.jpg" data-target="img/4-l.jpg" class="my-small">
+  <hr />
+  <img src="img/1-l.jpg" class="my-big">
+
+
+  <script>
+    //点击小图片，下方my-big中显示大图片
+    console.log($("[data-target]"));
+    $("[data-target]").click(function () {
+      $(".my-big").attr("src", $(this).attr("data-target"));
+    });
+  </script>
+</body>
+
+</html>

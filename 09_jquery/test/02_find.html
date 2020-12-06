@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>遍历节点</title>
+  <script src="js/jquery-1.11.3.js"></script>
+  <script>
+  </script>
+</head>
+
+<body>
+  <!--    ul.top>(li.parent>ul>li.child*3)*2 -->
+  <ul class="top">
+    <li class="parent1">parent1
+      <ul>
+        <li class="child">child1</li>
+        <li class="child">child2</li>
+        <li class="child">child3</li>
+      </ul>
+    </li>
+    <li class="parent2">parent2
+      <ul>
+        <li class="child">child1</li>
+        <li class="child">child2</li>
+        <li class="child">child3</li>
+      </ul>
+    </li>
+  </ul>
+  <script>
+    //修改class为top的ul的所有直接子元素
+    console.log($("li.child"));
+    $("ul.top").children().css("border", "1px solid red");
+
+    //修改class为top的ul的所有后代li
+    $("ul.top").find("li").css("box-shadow", "0 0 5px green");
+    //为class为child的li绑定单击事件
+    $("li.child").click(function () {
+      //选择当前元素的下一个元素/前一个元素/之前所有/之后所有/除自己之外所有
+      $(this)
+        // .next()
+        // .prev()
+        // .prevAll()
+        // .nextAll()
+        .siblings()
+
+        .css("background-color", "yellow");
+    })
+  </script>
+</body>
+
+</html>

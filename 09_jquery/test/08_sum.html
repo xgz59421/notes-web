@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>jquery 自定义全局函数</title>
+  <script src="js/jquery-1.11.3.js"></script>
+</head>
+
+<body>
+  <ul>
+    <li>85</li>
+    <li>91</li>
+    <li>73</li>
+    <li>59</li>
+  </ul>
+  <script>
+    //自定义函数库myLib.js，为jQuery扩展sum函数，计算找到的所有元素内容的和。
+    jQuery.zhanghao = {
+      sum: function ($jq) {
+        var sum = 0;
+        $.each($jq, function (i, val) {
+          console.dir(val);
+          //如果 当前遍历的元素时一个DOM中的html元素对象
+          if (val instanceof HTMLElement) {
+            sum += parseInt($(val).html());
+          } else {
+            sum += parseInt(val);
+          }
+        });
+        return sum;
+      }
+    }
+    console.log(jQuery.zhanghao.sum($("ul>li")));
+    console.log($.zhanghao.sum($("ul>li")));
+
+    function add() {
+      return $.zhanghao.sum(arguments);
+    }
+    console.log(add(1, 2, 3, 4, 5));
+
+    var arr = [1, 2, 3, 4, 5, 6];
+    console.log($.zhanghao.sum(arr));
+    console.dir($);
+
+    //inArray
+    console.log("inArray 相当于 indexOf");
+
+    console.log($.inArray(3, arr, 0));
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> new document </title>
+  <meta charset="utf-8">
+  <script src="js/jquery-1.11.3.js"></script>
+</head>
+
+<body>
+  <h1>操作元素的内容和值</h1>
+  <form action="">
+    用户名:<input name="uname">
+    <span></span><br>
+    密码:<input type="password" name="upwd">
+    <span></span><br>
+    <input type="button" value="提交注册信息">
+  </form>
+
+  <script>
+    //正确时，使用图片:"<img src='img/ok.png'>"
+    //姓名错误时: "<img src='img/err.png'>用户名必须介于3~9位之间
+    console.log($(":text"));
+    $(":text").blur(function () {
+      var $value = $(this).val();
+      var $span = $(this).next();
+      console.log($span);
+
+      if ($value.length >= 3 && $value.length <= 9) {
+        $span.html("<img src='img/ok.png'>");
+      } else {
+        $span.html("<img src='img/err.png'>用户名必须介于3~9位之间");
+      }
+
+    });
+  </script>
+  <script>
+    /*
+      //正确时，使用图片:"<img src='img/ok.png'>"
+      //姓名错误时: "<img src='img/err.png'>用户名必须介于3~9位之间!"
+      //密码错误时: "<img src='img/err.png'>密码必须介于6~8位之间!"
+
+      //DOM 4步
+      //1. 查找触发事件的元素
+      //2. 绑定事件处理函数
+      //查找type为text的姓名文本框，绑定失去焦点事件
+      $(":text").blur(function () {
+         //调用验证函数，传入规定的四个参数
+         vali($(this), 3, 9, "用户名必须介于3~9位之间!")
+      })
+      //只要一段代码可能反复使用，就要封装在一个函数里
+      //函数中所有自己没有的变量/值，都要定义为形参
+      //在这段函数中，有四个值不确定
+      //1. 验证哪个文本框
+      //2. 最小长度和最大长度分别是多少
+      //3. 如果验证错误，提示信息是什么
+      function vali($txt, minlen, maxlen, msg) {
+         //3. 查找要修改的元素
+         var $span = $txt.next();
+         //4. 修改元素
+         //获得当前文本框的内容:
+         var value = $txt.val();
+         //没参数就执行获取
+         //如果验证当前文本框内容正确
+         if (value.length >= minlen && value.length <= maxlen) { //修改span的内容为正确的提示 $span.html(`<img src='img/ok.png'>`);
+            return true;
+         } else { //否则如果验证当前文本框内容错误
+            //修改span的内容为错误的提示
+            $span.html(`<img src='img/err.png'>${msg}`);
+            return false;
+         }
+      }
+      //为type=password的密码框绑定失去焦点事件
+      $(":password").blur(function () {
+         //调用验证函数，传入规定的四个参数
+         vali($(this), 6, 8, "密码必须介于6~8位之间!")
+      });
+
+      //为提交按钮绑定单击事件
+      //如果验证姓名文本框，不通过
+      //让姓名文本框获得焦点
+      //否则，如果验证密码框，不通过
+      //让密码框获得焦点
+      //否则
+      //弹出提示:注册成功!
+      */
+  </script>
+</body>
+
+</html>

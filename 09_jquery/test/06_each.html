@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>jquery each</title>
+  <script src="js/jquery-1.11.3.js"></script>
+</head>
+
+<body>
+
+  <ul id="list">
+    <li>98</li>
+    <li>85</li>
+    <li>33</li>
+    <li>99</li>
+    <li>52</li>
+  </ul>
+
+  <script>
+    //请给每个不足60分的成绩+10分，并将超过90分的成绩用绿色背景标识出来
+    $("#list>li").each(function (index) {
+      var score = parseInt($(this).html());
+      if (score < 60) {
+        $(this).html(score + 10);
+      }
+      if (score >= 90) {
+        $(this).css("background-color", "lightGreen")
+      }
+    });
+  </script>
+</body>
+
+</html>

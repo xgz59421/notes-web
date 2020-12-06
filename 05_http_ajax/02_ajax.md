@@ -154,5 +154,4 @@ put 与 post 请求 一样
   (4)xml 嵌套与html 相同  
   (5)一个xml文件,有且只有一对根标记  
   (6)每个标记允许自定义属性,但是属性的值,必须使用双引号括起来  
-  <img src="img/xml.png" width="60%">   
-  <a href="ajax_getxml.html">ajax_getxml.html</a>
+  <a href="test/01_ajax_getxml.html">ajax_getxml.html</a>

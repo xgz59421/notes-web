@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>样式操作</title>
+  <script src="js/jquery-1.11.3.js"></script>
+  <style>
+    .btn {
+      padding: 5px 10px;
+      border-radius: 3px;
+      border: 1px solid #aaa;
+      outline: none;
+    }
+
+    .up {
+      background: #fff;
+      color: #333;
+    }
+
+    .down {
+      background: #ddd;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <button class="btn up">双态按钮</button>
+
+
+  <script>
+    //双态按钮: 让按钮的class在up和down之间切换
+    var $btn = $("button");
+    console.log($btn);
+    $btn.click(function () {
+      // if ($btn.hasClass("down")) {
+      //    $btn.removeClass("down");
+      // } else {
+      //    $btn.addClass("down");
+      // }
+      //       等价于
+      //         ↓
+      $btn.toggleClass("down");
+    });
+  </script>
+</body>
+
+</html>

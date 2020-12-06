@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>...</title>
+  <style>
+    ul {
+      list-style: none;
+    }
+
+    ul>li {
+      float: left;
+      width: 100px;
+      height: 50px;
+      text-align: center;
+      line-height: 50px;
+      border: 1px solid #aaa
+    }
+
+    /* 第一个li左上，左下圆角 */
+    ul>li:first-child {
+      border-radius: 5px 0 0 5px;
+    }
+
+    /* 最后一个li右上，右下圆角 */
+    ul>li:last-child {
+      border-radius: 0 5px 5px 0;
+    }
+
+    /* 去掉除第一个之外的所有li的左边框 */
+    ul>li+li {
+      /* ul>li:not(:first-child){ */
+      border-left: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>实现按钮组效果</h1>
+  <ul>
+    <li>上一首</li>
+    <li>播放</li>
+    <li>暂停</li>
+    <li>下一首</li>
+  </ul>
+  <script src="js/jquery-1.11.3.js"></script>
+  <script>
+    //第一个li左上，左下圆角
+    $("ul>li:first")
+      .css("border-radius", "5px 0 0 5px")
+    //最后一个li右上，右下圆角
+    $("ul>li:last")
+      .css("border-radius", "0 5px 5px 0")
+    //去掉除第一个之外的所有li的左边框
+    $("ul>li:gt(0)")
+      .css("border-left", 0)
+  </script>
+  <div style="clear:both"></div>
+
+</body>
+
+</html>

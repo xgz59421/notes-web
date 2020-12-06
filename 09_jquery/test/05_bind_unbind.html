@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> bind & unbind 绑定 </title>
+  <meta charset="utf-8">
+  <script src="js/jquery-1.11.3.js"></script>
+</head>
+
+<body>
+  <h1>事件绑定</h1>
+  <button id="btn1">发射子弹</button>
+  <button id="btn2">发射导弹</button>
+  <button id="btn3">移除导弹</button>
+  <script>
+    //btn1.addEventListener("click", function)
+    //事件处理
+    $("#btn1").bind("click", function () {
+      // console.log("发射子弹");
+    });
+    //简写
+    $("#btn1").click(function () {
+      console.log("发射子弹");
+    });
+
+    function shoot2() {
+      alert("发射导弹");
+    }
+    $("#btn2").click(function () {
+      $("#btn1").click(shoot2);
+    });
+    $("#btn3").click(function () {
+      $("#btn1").unbind("click", shoot2);
+    });
+  </script>
+</body>
+
+</html>

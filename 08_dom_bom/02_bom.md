@@ -119,30 +119,39 @@
   # c. 冒泡: 
     # 由内向外，依次触发各级父元素上的事件处理函数
   ```
+  ```javascript
+   parent.onclick = function (e) {
+      //事件委托获取目标元素,  e.target
+      var target = e.target;
+      if (target.nodeName == "BUTTON") {
+        //target (子元素)  to do
+      }
+   }
+  ```
 3. 事件对象: 
-```css
-1. 获得事件对象: 
-  元素.on事件名=function(e){ ... }
-2. 阻止冒泡:  
-    /*e.stopPropagation() */
-3. 当多个子元素都要绑定相同事件时，利用冒泡/事件委托3步: 
-  a. 事件只在父元素上绑定一次
-  b. e.target代替this
-  c. 判断e.target的任意特征是否是我们想要的元素
-4. 阻止元素默认行为: 
-    /* e.preventDefault()*/
-5. 获取鼠标位置: 
-  a. 相对于屏幕左上角的x，y坐标: 
-    e.screenX,  e.screenY
-  b. 相对于文档显示区左上角的x，y用坐标:  
-    e.clientX,  e.clientY
-  c. 相对于事件所在元素左上角的x，y坐标: 
-    e.offsetX   e.offsetY
-6. 页面滚动事件: 
-  window.onscroll=function(){
-    var scrollTop = document.documentElement.scrollTop
-                  ||document.body.scrollTop
-    /* 如果scrollTop>多少，就执行xx操作 */
-    /* 否则就恢复原样 */
-  }
-```
+    ```css
+    1. 获得事件对象: 
+      元素.on事件名=function(e){ ... }
+    2. 阻止冒泡:  
+        /*e.stopPropagation() */
+    3. 当多个子元素都要绑定相同事件时，利用冒泡/事件委托3步: 
+      a. 事件只在父元素上绑定一次
+      b. e.target代替this
+      c. 判断e.target的任意特征是否是我们想要的元素
+    4. 阻止元素默认行为: 
+        /* e.preventDefault()*/
+    5. 获取鼠标位置: 
+      a. 相对于屏幕左上角的x，y坐标: 
+        e.screenX,  e.screenY
+      b. 相对于文档显示区左上角的x，y用坐标:  
+        e.clientX,  e.clientY
+      c. 相对于事件所在元素左上角的x，y坐标: 
+        e.offsetX   e.offsetY
+    6. 页面滚动事件: 
+      window.onscroll=function(){
+        var scrollTop = document.documentElement.scrollTop
+                      ||document.body.scrollTop
+        /* 如果scrollTop>多少，就执行xx操作 */
+        /* 否则就恢复原样 */
+      }
+    ```

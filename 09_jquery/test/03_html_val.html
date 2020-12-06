@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jquery操作dom</title>
+  <script src="js/jquery-1.11.3.js"></script>
+</head>
+
+<body>
+  <p>
+    来自<a href="javascript:;">&lt;&lt;新华社&gt;&gt;</a>的消息
+  </p>
+
+  <h3 id="msg1">msg1</h3>
+  <h3 id="msg2">msg2</h3>
+  <input type="text" value="请输入"> <br>
+
+  <div id="div1" class="div_red">1111111</div>
+
+  <script>
+    console.log($("p").html());
+    console.log($("p").text());
+    $("#msg1").html($("p").html());
+    $("#msg2").text($("p").html());
+
+    console.log($(":input:text").val());
+    $(":input:text").val("请输入你的密码");
+
+    console.log($("#div1").attr("class"));
+    $("#div1").removeAttr("class")
+    $("#div1").attr("class", "div_green")
+    console.log($("#div1").attr("class"));
+  </script>
+</body>
+
+</html>
