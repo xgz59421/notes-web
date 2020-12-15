@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>生命周期</title>
+  <script src="js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h1>数量:{{count}}</h1>
+  </div>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        count: 0
+      },
+      methods: {},
+      beforeCreate() {
+        console.log(`beforeCreate, 创建组件的data对象之前自动触发!`);
+        // this.count = 2; //无效
+      },
+      created() {
+        console.log(`created, 创建组件的data之后自动触发!`);
+        this.count = 10;
+      },
+      beforeMount() {
+        console.log(`beforeMount, 挂载组件内容到页面前自动触发!`);
+      },
+      mounted() {
+        console.log(`mounted, 挂载组件内容到页后自动触发!`);
+        // setInterval(function () {
+        //    
+        // }.bind(this), 500)
+        setInterval(() => this.count++, 500);
+      },
+      beforeUpdate() {
+        console.log(`beforeUpdate, 更新组件的data中的变量前自动触发!`);
+      },
+      updated() {
+        console.log(`updated, 更新组件的data中的变量后自动触发!`);
+      },
+      beforeDestroy() {
+        console.log(`beforeDestroy, 销毁当前组件前自动触发!`);
+      },
+      destroyed() {
+        console.log(`mounted, 销毁当前组件后自动触发!`);
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>子组件与父组件通信</title>
+  <script src="js/vue.js"></script>
+  <script>
+    //child1
+    var todoAdd = {
+      data() {
+        return {
+          kws: ""
+        }
+      },
+      template: `
+      <div>
+        <input type="text" v-model="kws">
+        <button @click="add">+</button>
+      </div>`,
+      methods: {
+        add() {
+          if (this.kws.trim() !== "") {
+            console.log(this.kws);
+            this.$emit("add", this.kws);
+            this.kws = "";
+          }
+        }
+      }
+    }
+    //child2 ~ child
+    var todoItem = {
+      props: ["i", "t"],
+      template: `
+      <li>{{i+1}} - {{t}} 
+        <a href="javascript:;" @click="del">×</a>
+      </li>`,
+      methods: {
+        del() {
+          console.log(this.i);
+          this.$emit("del");
+        }
+      }
+    }
+    //child2
+    var todoList = {
+      props: ["tasks"],
+      template: `
+      <ul>
+        <todo-item v-for ="(t,i) in tasks" :key="i" :i="i" :t="t" @del="del(i)"></todo-item>
+      </ul>`,
+      components: {
+        todoItem
+      },
+      methods: {
+        del(i) {
+          console.log("i=", i);
+
+          this.$emit("del", i);
+        }
+      }
+    }
+    // father
+    Vue.component("todo", {
+      data: function () {
+        return {
+          tasks: ["吃饭", "睡觉", "打豆豆"]
+        }
+      },
+      template: `
+      <div>
+        <h1>待办事件列表</h1>
+        <todo-add @add="add"></todo-add>
+        <todo-list :tasks="tasks" @del="del"></todo-list>
+      </div>`,
+      components: {
+        todoAdd,
+        todoList
+      },
+      methods: {
+        add(task) {
+          console.log("add", task);
+          this.tasks.push(task);
+        },
+        del(i) {
+          console.log("del", i);
+          this.tasks.splice(i, 1);
+        }
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <div id="app">
+    <todo></todo>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: "#app",
+      data: {
+
+      }
+    })
+  </script>
+</body>
+
+</html>
