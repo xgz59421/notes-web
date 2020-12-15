@@ -4,6 +4,9 @@
 - [2. 创建一个新项目](#2)
 - [3. 引入导出模块](#3)
 - [4. public与src](#4)
+- [5. vue.config.js](#5) 
+- [6. http-proxy方式跨域](#6) 
+- [7. .env](#7)
 
 --------
 ><h2 id='1'>1. 安装或升级</h2>
@@ -72,6 +75,79 @@
     export default axios
     About.vue 没有export default 的一个js文件,也是一个模块,只不过没有js内容的模块而已
     ```
-><h2 id='4'>public与src</h2>
+><h2 id='4'>4. public与src</h2>
 - `public`: 存放引入编译好的第三方文件,比如jq.js, reset.css 
 - `src`: 自己编写的程序
+
+><h2 id='5'>5. vue.config.js</h2>
+- `postcss-px2rem` px转化rem 
+  ```javascript
+  const px2rem = require('postcss-px2rem')
+  // 基准大小 baseSize，需要和rem.js中相同
+  const postcss = px2rem({
+    remUnit: 75
+  })
+  ```
+- 按需加载路由
+  ```javascript
+  chainWebpack: config => {
+    config.plugins.delete("prefetch");
+  }
+  ```
+><h2 id='6'>6. http-proxy方式跨域</h2>
+- 在服务器端没有配置CORS或JSONP跨域的情况下
+  ```javascript
+  vue.config.js中:
+    module.exports={
+      devServer: {
+      // 是否自动打开页面
+      open: true,
+      // 域名
+      host: '0.0.0.0',
+      // 端口号
+      port: '8090',
+      // 是否使用https
+      https: false,
+      proxy: {
+        '/api': { //为所有服务器端接口起一个别名前缀，为了和vue脚手架中其它页面的路由地址区分
+          target: `http://localhost:5050`,
+          changeOrigin: true, //跨域
+          pathRewrite: {
+            //因为真实的服务器端地址中是不包含/api的，所以
+            '^/api': '' //应该将程序中的/api删除(替换为空字符串)，再和target中的基础路径拼接起来作为发送到服务器的最终请求地址。
+          }
+        }
+      }
+    }
+  }
+  ```
+
+><h2 id='7'>7. .evn</h2>
+- 开发环境 vs 生产环境
+  ```javascript
+  同package.json文件创建文件:
+    .env.dev
+    .env.test
+  js中使用文件:
+  console.log('env配置: ', process.env);
+  console.log('env配置api:', process.env.VUE_APP_BASE_API);
+  ```
+  ```bash
+  .env.dev:
+    # 环境
+    NODE_ENV = 'dev'
+    # 接口地址
+    VUE_APP_BASE_API = '/api/dev'
+    # 打包文件名
+    VUE_APP_DIR_NAME = 'dev'
+  ```
+  ```json
+  package.json:
+    "scripts": {
+      "serve": "vue-cli-service serve",
+      "lint": "vue-cli-service lint",
+      "dev": "vue-cli-service serve --mode dev",
+      "test": "vue-cli-service serve --mode test",
+      "build": "vue-cli-service build --mode prod"
+    },
+  ```

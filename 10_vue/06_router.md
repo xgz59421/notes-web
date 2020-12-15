@@ -158,7 +158,7 @@
     ```
 2. 彻底懒加载 (需要时再加载)
     ```javascript
-    vue.config.js
+    //根目录添加 vue.config.js
     module.exports = {
       chainWebpack: config => {
         config.plugins.delete("prefetch");
