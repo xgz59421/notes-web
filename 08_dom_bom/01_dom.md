@@ -136,6 +136,11 @@
         # 父元素.appendChild(frag);
     ```
 3. 删除元素: `父元素.removeChild(子元素)`
+    ```javascript
+    //删除元素本身
+    var guideNode = document.getElementsByClassName('guide')[0];
+    guideNode.parentNode.removeChild(guideNode);
+    ```
 
 ><h2 id='5'>5. HTML DOM常用对象</h2>
 1. image对象
