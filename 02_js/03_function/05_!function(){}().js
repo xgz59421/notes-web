@@ -1,4 +1,6 @@
-console.log('自执行匿名函数：');
+// 立即调用的函数表达式（IIFE）
+// function(){ /* code */ }();  会报错 
+console.log('立即调用的函数表达式');
 !function () { console.log('!'); }();
 ~function () { console.log('~'); }();
 -function () { console.log('-'); }();
@@ -7,6 +9,10 @@ void function () { console.log('void'); }();
 (function (){ console.log('1111'); }());
 (function (){ console.log('()()'); })();
 console.log('end');
+// 这样其实也可以 
+var i = function(){ return 10; }();
+true && function(){ /* code */ }();
+0, function(){ /* code */ }();
 
 // !function(){}()
 
