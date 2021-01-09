@@ -1,4 +1,8 @@
 
+// 只要是new 创建出来的都会继承Object.prototype
+// Object.prototype.valueOf() 转换对象的原始值 
+// Object.prototype.toString() 转换为字符串
+
 // 1.new 创建, 可以将原始类型的值转为对象
 console.log('--------无new 创建----------');
 var v1 = Number(123);   
