@@ -6,6 +6,7 @@ console.log("向下取整:" + Math.floor(3.14));
 console.log("四舍五入取整:" + Math.round(3.49));
 console.log("取最大值:" + Math.max(29,4,89,1));
 console.log("取最小值:" + Math.min(29,4,89,1));
+console.log('数组中最大数',Math.max(...[22,13,6,55,'30'])); // 55
 console.log("x的y次方:" + Math.pow(5,2));//25
 console.log("[0--1)随机数:" + Math.random());//[0--1)
 console.log("0-9随机数:" + Math.floor(Math.random()*10));//
