@@ -23,4 +23,4 @@ console.log('string.split(" ", 2):',array);
 // 正则
 var reg = /\s+/;
 var array = string.split(reg);
-console.log(array);
+console.log('array:', array);
