@@ -47,7 +47,8 @@
      }
      work() {
         super.work(); //执行父类的work
-        console.log(`im ${this.ename}掌握技能 ${this.skill}`);
+        console.log(
+          `姓名:${this.ename},年龄 ${this.eage},技能 ${this.skill}`);
      }
      static introduce() {
         console.log(`这是一个员工类`);
@@ -57,5 +58,4 @@
   var p1 = new Programmer("张三", 18, "js");
   console.log(p1);
   p1.work();
-  console.log(p1.eage);
-  pProgrammer1.introduce();
+  // console.log(p1.eage);
