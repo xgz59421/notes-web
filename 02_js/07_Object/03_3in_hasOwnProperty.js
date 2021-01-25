@@ -3,6 +3,9 @@ function Hero() {
   // this.name = "jscript"
 }
 Hero.prototype.name = "javascript";
+Hero.prototype.run = function () {
+  console.log('im run');
+}
 
 var hero1 = new Hero();
 hero1.age = 18;
@@ -12,16 +15,14 @@ hero1.age = 18;
 console.log("1. hasOwnProperty的使用:");
 console.log(hero1.hasOwnProperty("age") ? "age是自有属性" : "age是自有属性");
 console.log(hero1.hasOwnProperty("name") ? "name是自有属性 " : "name是原型属性");
+
 //2.判断哪个属性可用 
 console.log("2. in的使用:");
 console.log("age" in hero1);
 console.log("name" in hero1);
 console.log("salary" in hero1);
-//3.getPrototypeOf 
-console.log('3. getPrototypeOf:', 
-    Object.getPrototypeOf(hero1) == Hero.prototype);
 
-// 4. 删除属性
+// 3. 删除属性
 console.log('delete');
 console.log(hero1.name, hero1.age);
 delete hero1.age; //删除了自有属性
