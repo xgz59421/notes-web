@@ -7,6 +7,7 @@
   <script src="js/vue.js"></script>
   <title>复合组件</title>
   <script>
+    // 局部组件注册
     var todoAdd = {
       template: `<div><input type="text"><button>+</button></div>`
     };
@@ -24,6 +25,7 @@
         todoItem
       }
     };
+    // 全局组件注册
     Vue.component("todo", {
       template: `
         <div>
@@ -37,6 +39,7 @@
       }
 
     });
+  
   </script>
 </head>
 

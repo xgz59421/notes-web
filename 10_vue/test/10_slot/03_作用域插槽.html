@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>作用域插槽</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <p>
+      三、作用域插槽：把子组件data中的数据或者子组件props中的数据传到父组件的插槽中使用 <br>
+      1） 两个属性合并成了一个 v-slot : 插槽名称 = ' 传过来的值 ' 。<br>
+      2） 组件页面中slot的内容没有变化 。<br>
+      3） v-slot 不能用在 html 标签上 。
+      4） 如果是默认插槽 可以写成 v-slot='xxx'。<br>
+      5） 还增加了 可以解构插槽props 和 设置默认值的内容，具体的可以查看官网 解构插槽<br>
+    </p>
+    <hr>
+    <my-component :message='msg'>
+      <!--这里的val也是随便取的名称，不与任何地方对应-->
+      <template v-slot:listbox='val'>
+        <p>{{val.send.text}}</p>
+      </template>
+      <!--这里的thing是随便取的名称，不与任何地方对应-->
+      <div slot='sayWhat' slot-scope='thing'>这是2.60版本前的写法：{{thing.said}}</div>
+      <!-- 注意作用域插槽最好用于子组件的slot是批量循环的情况，
+        子组件的slot是非批量循环的情况下无效，子组件中slot我们这样想：
+        如果只是传一个值，有没有必要使用插槽？直接在子组件中写就行了，何必多次一举。 -->
+    </my-component>
+  </div>
+</body>
+<script type="text/javascript">
+  Vue.component('my-component', {
+    template: `
+        <div>
+          <slot name='listbox' v-for='value in list' :send='value'></slot>
+          <slot name='sayWhat' :said='message'></slot>
+        </div>
+      `,
+    props: ['message'],
+    data() {
+      return {
+        list: [{
+          "id": 10,
+          "text": "苹果"
+        }, {
+          "id": 20,
+          "text": "香蕉"
+        }, {
+          "id": 30,
+          "text": "梨"
+        }, {
+          "id": 40,
+          "text": "芒果"
+        }, ]
+      }
+    }
+  })
+  let app = new Vue({
+    el: "#app",
+    data: {
+      msg: '这是动态传入的slot的内容',
+    }
+  })
+</script>
+
+</html>

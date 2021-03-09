@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>路由嵌套/跳转</title>
+
+  <script src="../js/vue.js"></script>
+  <script src="../js/vue-router.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <p>
+      <router-link to="/user/foo">/user/foo</router-link> <br>
+      <router-link to="/user/foo/profile">/user/foo/profile</router-link> <br>
+      <router-link to="/user/foo/posts">/user/foo/posts</router-link>
+    </p>
+    <div>
+      <button @click='go(-1)'>go(-1)</button>
+      <button @click='go(1)'>go(1)</button>
+    </div>
+    <div>
+      <button @click='press(1)'>clear</button>
+      <button @click='press(2)'>profiles</button>
+      <button @click='press(3)'>posts</button>
+    </div>
+    <router-view></router-view>
+  </div>
+  <script>
+    const User = {
+      template: `
+        <div class="user">
+          <h2>User {{ $route.params.id }}</h2>
+          <router-view></router-view>
+        </div>
+      `
+    }
+    const UserHome = { template: '<div>Home</div>' }
+    const UserProfile = { template: '<div>Profile</div>' }
+    const UserPosts = { template: '<div>Posts</div>' }
+    // 路由字典
+    const router = new VueRouter({
+      routes: [
+        { path: '/user/:id', component: User,
+          children: [
+            { path: '', component: UserHome },
+            { path: 'profile', component: UserProfile },
+            { path: 'posts', component: UserPosts }
+          ]
+        }
+      ]
+    })
+
+    var vm = new Vue({
+      el: "#app",
+      router,
+      methods: {
+        go(index){
+          // this.$router.push('/user/foo/profile');
+          this.$router.go(-1)
+        },
+        press(index){
+          switch (index) {
+            case 1:
+              this.$router.push('/');
+              break;
+            case 2:
+              this.$router.push('/user/foo/profile');
+              break;
+            case 3:
+              this.$router.push({ path: '/user/foo/posts', query: { userId:01 }})
+              break;
+            default:
+              break;
+          }
+          console.log(this.$route);
+        }
+      },
+    });
+  </script>
+</body>
+
+</html>

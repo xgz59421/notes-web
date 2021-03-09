@@ -13,7 +13,10 @@
     <!-- <input type="text" v-model:value="kw"> -->
     <!-- 简写 -->
     <input type="text" v-model="kw">
+    <!-- .lazy change 事件_之后_进行同步 -->
+    <!-- <input type="text" v-model.lazy="kw"> -->
     <button @click="search()">百度一下</button>
+    <p>{{kw}}</p>
 
   </div>
   <script>
