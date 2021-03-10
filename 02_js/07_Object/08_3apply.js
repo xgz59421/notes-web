@@ -11,7 +11,6 @@ function paySalary(base, bonus1, bonus2){
 
 var lilei = { ename:"Li Lei" };
 var hmm = { ename:"Han Meimei" };
-
 //lilei想用计算器函数计算自己的薪资
 var arr=[10000, 2000, 3000];
 //错误: 
@@ -26,7 +25,9 @@ paySalary.apply(lilei,      arr          );
 //            ↓
 //           this.ename
 paySalary.apply(hmm,      [1,2,3]          );
-
+console.log(lilei);
+console.log(hmm);
+console.log('-------------------------------');
 // 利用这一点，可以做一些有趣的应用
 // 1. 求数组中最大的数
 var array = [10, 2, 4, 15, 9];
