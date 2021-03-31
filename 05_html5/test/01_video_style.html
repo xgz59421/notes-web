@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>video style</title>
+  <style>
+    .box {
+      width: 460px;
+      height: 460px;
+      margin: 10px 0 20px;
+      background-color: black;
+      overflow: hidden;
+      /* 规定用户是否可以调整元素大小 */
+      /* none:不能, both:可以调整宽高 */
+      resize: both;
+      border: 1px solid red;
+    }
+
+    .box img {
+      width: 100%;
+      height: 100%;
+      background-color: #cd0000;
+      /* background: #cd0000; */
+    }
+
+    /* .box img {
+      width: 100%;
+      height: 100%;
+      background: #cd0000;
+    } */
+  </style>
+</head>
+
+<body>
+
+  <h3>视频与图片专用样式 object-fit</h3>
+  <h5>object-fit: fill 填充</h5>
+  <div class="box">
+    <img src="res/birds.png" style="object-fit: fill">
+  </div>
+
+  <h5>object-fit: contain 包含</h5>
+  <div class="box">
+    <img src="res/birds.png" style="object-fit: contain;">
+  </div>
+
+  <h5>object-fit: conver 覆盖</h5>
+  <div class="box">
+    <img src="res/birds.png" style="object-fit: cover;">
+  </div>
+</body>
+
+</html>

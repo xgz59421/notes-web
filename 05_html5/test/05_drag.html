@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>drag</title>
+</head>
+
+<body>
+  <h2>拖动删除元素示例</h2>
+  <img src="res/trash.png" id="trash">
+
+  <div class="container">
+    <img src="res/p3.png" id="p3">
+    <img src="res/p4.png" id="p4">
+    <img src="res/p5.png" id="p5">
+  </div>
+
+
+  <script>
+    //选择的飞机id
+    var pid = -1;
+
+    var trash = document.getElementById("trash");
+    var list = document.querySelectorAll(".container img");
+
+    // 源对象
+    for (const item of list) {
+      // 开始拖动
+      item.ondragstart = function () {
+        pid = this.id;
+        console.log("ondragstart", this.id);
+
+      }
+      // 拖动中
+      item.ondrag = function () {
+        // console.log("ondrag");
+
+      }
+      // 拖动结束
+      item.ondragend = function () {
+        // console.log("ondragend");
+
+      }
+    }
+
+
+    // 目标对象
+    // 拖动的进入
+    trash.ondragenter = function () {
+      // console.log("ondragenter");
+
+    }
+    // 拖动的悬停
+    trash.ondragover = function (e) {
+      // console.log("ondragover");
+      // 默认行为: 悬停结束后立刻触发离开
+      e.preventDefault();
+
+    }
+    // 拖动的离开
+    trash.ondragleave = function () {
+      // console.log("ondragleave");
+
+    }
+    // 拖动的释放
+    trash.ondrop = function () {
+      console.log("ondrop");
+      var item = document.getElementById(pid);
+      item.remove();
+    }
+  </script>
+</body>
+
+</html>

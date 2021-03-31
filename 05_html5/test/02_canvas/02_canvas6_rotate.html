@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>canvas rotate</title>
+  <style>
+    body{
+      text-align: center;
+    }
+    #canvas{
+      background-color: #cccccc;
+    }
+  </style>
+</head>
+<body>
+  <h3>演示 canvas旋转</h3>
+  <canvas id="canvas" width="500" height="400"></canvas>
+
+  <script>
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+
+    // 创建图片对象
+    var img = new Image();  
+    // 加载图片
+    img.src = "../res/p3.png"; 
+    // 加载完成回调
+    img.onload = function () {
+      ctx.drawImage(img, 0, 0);
+      
+      // // 旋转
+      // ctx.rotate(25 * Math.PI/180);
+      // ctx.drawImage(img, 0, 0);
+      
+      // // 旋转会效果会累加
+      // ctx.rotate(25 * Math.PI/180);
+      // ctx.drawImage(img, 0, 0);
+
+      // 移动原点
+      ctx.translate(250,200);
+
+      setInterval(()=>{
+        ctx.clearRect(-250,-200,500,400);
+        ctx.rotate(5 * Math.PI/180);
+        ctx.drawImage(img, -100, -50, 200 , 100);
+      },200);
+
+
+    }
+
+  </script>
+</body>
+</html>

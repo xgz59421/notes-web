@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>echarts</title>
+  <style>
+    #main, #main2, #main3, #main4{
+      width: 700px;
+      height: 500px;
+      background-color: #ccc;
+      margin: 0 auto;
+    }
+  </style>
+  <script src="js/echarts.js"></script>
+</head>
+<body>
+  <div id = "main"></div>
+  <hr>
+  <div id = "main2"></div>
+  <hr>
+  <div id = "main3"></div>
+  <hr>
+  <div id = "main4"></div>
+
+  <script>
+    // 示例1
+    var main = document.getElementById("main");
+    var myechart = echarts.init(main);
+    var option = {
+      title : {text: "柱状图"},
+      xAxis : {data: ["衬衫", "裤子", "外套", "鞋子", "背包"]},
+      yAxis : {},
+      series : [
+        {type:"bar",data: [100,88,15,3,23]},
+        {type:"line",data: [2,88,15,3,23]},
+      ]
+    }
+    myechart.setOption(option);
+    // 示例2
+    var list = [
+      {name : "北京", value : 19000},
+      {name : "上海", value : 23000},
+      {name : "杭州", value : 17600},
+      {name : "广州", value : 29000},
+    ]
+    var xlist = [];
+    var data = [];
+    for (const item of list) {
+      xlist.push(item.name);
+      data.push(item.value);
+    }
+    console.log(xlist);
+    console.log(data);
+    
+    var main2 = document.getElementById("main2");
+    var myechart2 = echarts.init(main2);
+    var option2 = {
+      title : {text : "分公司销售统计图"},
+      xAxis : {data: xlist},
+      yAxis : {},
+      series : [
+        {type : "bar", data : data}
+      ]
+    }
+    myechart2.setOption(option2);
+
+    // 饼状图
+    var main3 = document.getElementById("main3");
+    var myechart3 = echarts.init(main3);
+    var option3 = {
+      title : {text : "饼状图"},
+      series : [
+      {
+        type : "pie", 
+        radius : "65%", //饼图半径占画布比例
+        center : ["50%", "50%"], //圆心x, y
+        data :[
+          {name : "js", value : 122},
+          {name : "css", value : 121},
+          {name : "html", value : 61},
+        ]
+      }
+      ]
+    }
+    myechart3.setOption(option3);
+
+    // 仪表图
+    var main4 = document.getElementById("main4");
+    var myechart4 = echarts.init(main4);
+    var option4 = {
+      title : {text : "仪表图"},
+      series : [
+        {
+          name : "业务指标",
+          type : "gauge", 
+          detail : {formatter : "{value}%"},
+          data : [{value : 0, name : "完成率"}]
+        }
+      ]
+    }
+    myechart4.setOption(option4);
+    // 练习 修改仪表板数据 0~100
+    var n = 0 ;
+    var time = setInterval(()=>{
+      option4.series[0].data[0].value = n++;
+      myechart4.setOption(option4, true);
+      if(n>100){
+        clearInterval(time);
+      }
+    },100)
+  </script>
+</body>
+</html>

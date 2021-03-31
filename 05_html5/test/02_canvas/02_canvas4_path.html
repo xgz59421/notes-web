@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>canvas path</title>
+  <style>
+    body{
+      text-align: center;
+    }
+    #canvas{
+      background-color: #cccccc;
+    }
+  </style>
+</head>
+<body>
+  <h3>演示 canvas路径</h3>
+  <canvas class="xxx" id="canvas" width="500" height="400"></canvas>
+
+  <script>
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+
+    // 画路径
+    ctx.beginPath(); //开始一条新路径(上一条路径结束)
+    ctx.moveTo(150,200);
+    ctx.lineTo(250,200);
+    ctx.lineTo(250,300);
+    ctx.closePath();
+    ctx.fill(); //填充
+
+    ctx.beginPath();
+    ctx.moveTo(50,200);
+    ctx.lineTo(150,200);
+    ctx.lineTo(150,300);
+    ctx.closePath();
+    ctx.stroke();
+
+    // 画圆弧
+    ctx.beginPath(); //开始一条新路径(上一条路径结束)
+    ctx.arc(100, 100, 20, 0, 2 * Math.PI);
+    ctx.stroke();
+
+    ctx.beginPath(); //开始一条新路径(上一条路径结束)
+    ctx.arc(200, 100, 20, 0, Math.PI);
+    ctx.stroke();
+
+    ctx.beginPath(); //开始一条新路径(上一条路径结束)
+    ctx.arc(300, 100, 20, 0, 90/180 * Math.PI);
+    ctx.stroke();
+
+    
+
+    
+    // 进度条
+    var start = -90;
+    var end = -90;
+    var num = 0;
+    ctx.font = "20px SimHei";
+    var time = setInterval(()=>{
+      ctx.clearRect(300,0,200,180);
+      num += 1;
+      end += 3.6;
+      ctx.fillText(num+"%", 388, 105);
+      //背景图
+      ctx.beginPath();
+      ctx.strokeStyle = "#f00";
+      ctx.lineWidth = 5;
+      ctx.arc(400, 100, 50, 0, 2 * Math.PI);
+      ctx.stroke();
+
+      // 转动的
+      ctx.beginPath();
+      ctx.strokeStyle = "#0f0";
+      ctx.arc(400, 100, 50, start/180 * Math.PI, end/180 * Math.PI);
+      ctx.stroke();
+      if(num >= 100){
+        clearInterval(time);
+      }
+    },100)
+    
+
+    // 闭嘴
+    function closemouth() {
+      // 眼睛
+      ctx.fillStyle = "#00f";
+      ctx.beginPath();
+      ctx.arc(420, 230, 10, 0, 2 * Math.PI);
+      ctx.fill();
+
+      // 眼球白
+      ctx.fillStyle = "#fff";
+      ctx.beginPath();
+      ctx.arc(420, 230, 3, 0, 2 * Math.PI);
+      ctx.fill();
+
+      //脸
+      ctx.beginPath();
+      ctx.arc(400, 250, 50, 0, 2 * Math.PI);
+      ctx.lineTo(400,250);
+      ctx.stroke();
+    }
+    // 张嘴
+    function openmouth() {
+      ctx.fillStyle = "#00f";
+      ctx.beginPath();
+      ctx.arc(420, 230, 10, 0, 2 * Math.PI);
+      ctx.fill();
+
+      ctx.fillStyle = "#fff";
+      ctx.beginPath();
+      ctx.arc(420, 230, 3, 0, 2 * Math.PI);
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(400, 250, 50, 40/180 * Math.PI, 340/180 * Math.PI);
+      ctx.lineTo(400,250);
+      ctx.closePath();
+      ctx.stroke();
+    }
+    // 吃豆
+    var temp = 0;
+    var time2 = setInterval(()=>{
+      ctx.clearRect(300,190,200,180);
+      temp++;
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = "#00f";
+      if(temp%2==0){
+        openmouth();
+      }else{
+        closemouth()
+      }
+    },200);
+  </script>
+</body>
+</html>

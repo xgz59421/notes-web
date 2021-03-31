@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>video event & style</title>
+</head>
+
+<body>
+  <div class="container">
+    <video src="res/angrybirds.mp4" controls></video>
+  </div>
+
+  <script>
+    var video = document.querySelector(".container video");
+    video.playbackRate = 5; //播放速度
+    // 当视频加载结束后
+    video.addEventListener("canplaythrough", () => {
+      console.log("canplaythrough");
+      console.log("视频时长:", video.duration);
+
+    });
+
+    // 当前视频播放结束
+    video.addEventListener("ended", () => {
+      console.log("ended");
+    });
+
+    // 视频播放中
+    video.addEventListener("timeupdate", () => {
+      console.log("timeupdate");
+      console.log("currentTime:", video.currentTime);
+
+    });
+  </script>
+</body>
+
+</html>
