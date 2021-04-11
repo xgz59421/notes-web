@@ -1,0 +1,18 @@
+
+<view>----------test1------------</view>
+<template name="odd">
+  <view> odd </view>
+</template>
+<template name="even">
+  <view> even </view>
+</template>
+<block wx:for="{{numberArray}}">
+  <template is="{{item % 2 == 0 ? 'even' : 'odd'}}"/>
+</block>
+<view>----------test2------------</view>
+<view wx:for="{{list}}" wx:key="index" wx:if="{{item.id!=1}}">
+  <text>{{item.id}} : </text>
+  <text>{{item.name}}</text>
+</view>
+<view>----------test3------------</view>
+<switch wx:for="{{numberArray}}" wx:key="*this" > {{item}} </switch>

@@ -1,0 +1,26 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/wxml/wxdata/wxdata",
+    "pages/wxml/wxif/wxif",
+    "pages/wxml/wxfor/wxfor",
+    "pages/component/component",
+    "pages/event/event",
+    "pages/lifestyle/lifestyle",
+    "pages/navigator/navigator",
+    "pages/request/request",
+    "pages/cloud/storage/storage",
+    "pages/cloud/database/database",
+    "pages/cloud/function/function",
+    "pages/todolist/todolist"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

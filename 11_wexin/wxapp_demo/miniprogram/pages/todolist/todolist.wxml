@@ -1,0 +1,22 @@
+<view class="container">
+  <view class="title">待办事项列表</view>
+  <!-- 输入框与按钮区域开始 -->
+  <view class="header">
+    <input type="text" placeholder="请输入待办事项" bindinput="input" value="{{todoItem}}"></input>
+    <button type="primary" bindtap="add">添加</button>
+  </view>
+  <!-- 输入框与按钮区域结束 -->
+  <!-- 没有待办事项时的提示区域开始 -->
+  <view class="tip" wx:if="{{todoList.length == 0}}">对不起,暂无待办事项</view>
+  <!-- 没有待办事项时的提示区域结束 -->
+  <!-- 有待办事项时的提示区域开始 -->
+  <view class="todolist" wx:else>
+    <!-- 待办事项开始 -->
+    <view class="todolist-item" wx:for="{{todoList}}" wx:key="index">
+        <text>{{index+1}}.{{item}}</text>
+        <image bindtap="remove" data-id="{{index}}" src="/images/remove.png"></image>
+    </view>
+     <!-- 待办事项结束 -->
+  </view>
+  <!-- 有待办事项时的提示区域结束 -->
+</view>

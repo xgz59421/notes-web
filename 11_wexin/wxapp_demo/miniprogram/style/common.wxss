@@ -1,0 +1,19 @@
+.container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+}
+.container text{
+  width: 200rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  background-color: lightgreen;
+  margin-top: 20rpx;
+  margin-left: 37rpx;
+}
+.title{
+  display: block;
+  margin-top: 20rpx;
+  margin-left: 37rpx;
+}

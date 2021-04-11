@@ -1,0 +1,22 @@
+
+<text class="title">主要功能:</text>
+<view class="container">
+  <text bindtap="btnPress" data-path="wxdata" data-package="wxml">数据绑定</text>
+  <text bindtap="btnPress" data-path="wxif" data-package="wxml">wx:if</text>
+  <text bindtap="btnPress" data-path="wxfor" data-package="wxml">wx:for</text>
+  <text bindtap="btnPress" data-path="component">component</text>
+  <text bindtap="btnPress" data-path="event">event</text>
+  <text bindtap="btnPress" data-path="lifestyle">lifestyle</text>
+  <text bindtap="btnPress" data-path="navigator">navigator</text>
+  <text bindtap="btnPress" data-path="request">request</text>
+</view>
+<text class="title">云开发:</text>
+<view class="container">
+  <text bindtap="btnPress" data-path="storage" data-package="cloud">云存储</text>
+  <text bindtap="btnPress" data-path="database" data-package="cloud">云数据库</text>
+  <text bindtap="btnPress" data-path="function" data-package="cloud">云函数</text>
+</view>
+<text class="title">示例:</text>
+<view class="container">
+  <text bindtap="btnPress" data-path="todolist">todolist</text>
+</view>

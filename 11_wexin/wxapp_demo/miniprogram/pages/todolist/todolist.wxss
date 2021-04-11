@@ -1,0 +1,40 @@
+.container{
+  margin:0 15rpx;
+}
+.title{
+  margin-bottom:15rpx;
+  font-size:44rpx;
+  color:'#333';
+  font-weight:bold;
+}
+.header{
+  display: flex;
+  align-items: center;
+  margin-bottom: 15rpx;
+}
+.header input{
+  flex: 5;
+  margin-right:16rpx;
+  padding:14rpx 5rpx;
+  border:1rpx solid #999;
+}
+.header button{
+  flex: 1;
+}
+.tip{
+  font-size:32rpx;
+  color:#900;
+}
+.todolist-item{
+  display: flex;
+  padding:20rpx;
+  align-items: center;
+}
+.todolist-item text{
+  flex: 5;
+  font-size:32rpx;
+}
+.todolist-item image{
+  width:24px;
+  height:24px;
+}

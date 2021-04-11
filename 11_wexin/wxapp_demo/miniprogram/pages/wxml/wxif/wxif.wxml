@@ -1,0 +1,9 @@
+<!-- hidden -->
+<view hidden="{{price>=100}}">显示</view>
+<view hidden="{{price<100}}">隐藏</view>
+
+<!-- if else -->
+
+<view wx:if="{{price>=90}}">成绩: A</view>
+<view wx:elif="{{price>=60}}">成绩: B</view>
+<view wx:else="{{price<60}}">成绩: C</view>
