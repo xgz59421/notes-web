@@ -8,12 +8,15 @@
     "pages/event/event",
     "pages/lifestyle/lifestyle",
     "pages/navigator/navigator",
+    "pages/navigator/pageB",
     "pages/request/request",
     "pages/cloud/storage/storage",
     "pages/cloud/database/database",
     "pages/cloud/function/function",
-    "pages/todolist/todolist"
+    "pages/todolist/todolist",
+    "pages/cloudtest/cloudtest"
   ],
+  "entryPagePath": "pages/index/index",
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",

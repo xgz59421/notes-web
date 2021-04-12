@@ -1,1 +1,14 @@
-/* pages/event/event.wxss */
+.outer, .inner, .innersmall{
+  border: 1px solid red;
+  width: 160px;
+  height: 50px;
+}
+.inner{
+  border-color: blue;
+}
+.innersmall{
+  width: 80px;
+  height: 40px;
+  border-color: blue;
+  float: right;
+}

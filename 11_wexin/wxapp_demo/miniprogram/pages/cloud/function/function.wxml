@@ -1,2 +1,5 @@
-<!--pages/cloud/function/function.wxml-->
-<text>pages/cloud/function/function.wxml</text>
+
+a: <input type="number" placeholder="请输入" bindinput="onInput" id="a"></input>
+b: <input type="number" placeholder="请输入" bindinput="onInput" id="b"></input>
+<button type="primary" bindtap="sum">调用云函数sum</button>
+<text>sum: {{a}} + {{b}} = {{sum}}</text>

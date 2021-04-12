@@ -1,0 +1,24 @@
+<text>第一步选择图片: (选择后上传)</text>
+<button type="primary" bindtap="chooseImage">选择图片</button>
+
+<view wx:if="{{images.length}}">
+  <block wx:for="{{images}}" wx:key="index">
+    <image 
+      class="img" mode="widthFix" 
+      src="{{item}}" bindtap="previewImage" data-current="{{item}}"></image>
+  </block>
+  <button type="primary" bindtap="uploadFile">上传图片</button>
+</view>
+
+<text>第二步获取图片列表:</text>
+<!-- <button type="primary" bindtap="removeImages">删除数据库列表</button> -->
+<button type="primary" bindtap="getImages">获取数据库列表</button>
+<view wx:if="{{cloudImages.length}}">
+  <view class="fileItem" wx:for="{{cloudImages}}" wx:key="index">
+    <text class="index">{{index+1}}</text>
+    <image class="title" src="{{item.fileID}}"></image>
+    <text class="preview" bindtap="preview" data-item="{{item}}">预览</text>
+    <text class="delete" bindtap="delete" data-item="{{item}}">删除</text>
+  </view>  
+</view>
+

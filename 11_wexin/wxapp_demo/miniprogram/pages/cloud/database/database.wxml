@@ -1,2 +1,12 @@
-<!--pages/cloud/database/database.wxml-->
-<text>pages/cloud/database/database.wxml</text>
+<!-- <view>操作云数据库</view> -->
+<button bindtap="add">添加</button>
+<button bindtap="update">更新</button>
+<button bindtap="search">查询</button>
+<button bindtap="search_one">按条件查询</button>
+<button bindtap="deleteForAge">云函数批量删除</button>
+<view wx:for="{{list}}" wx:key="index">
+  <text>姓名:{{item.name}}</text>
+  <text>, 年龄:{{item.age}}</text>
+  <text>, 性别:{{item.sex}}</text>
+  <text bindtap="delete" data-id="{{item._id}}">, DELETE</text>
+</view>

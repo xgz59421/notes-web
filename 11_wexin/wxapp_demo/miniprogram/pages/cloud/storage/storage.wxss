@@ -1,1 +1,3 @@
-/* pages/cloud/storage/storage.wxss */
+.img{
+  width: 250rpx;
+}

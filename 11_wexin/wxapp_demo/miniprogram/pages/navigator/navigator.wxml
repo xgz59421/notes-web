@@ -1,2 +1,6 @@
-<!--pages/navigator/navigator.wxml-->
-<text>pages/navigator/navigator.wxml</text>
+<navigator url="/pages/navigator/pageB?user='tom'" open-type="navigate">
+  pageB navigator组件
+</navigator>
+<text type="primary" bindtap="tap2PageB">
+  pageB wx.navigateTo
+</text>

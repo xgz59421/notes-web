@@ -1,2 +1,31 @@
-<!--pages/event/event.wxml-->
-<text>pages/event/event.wxml</text>
+
+
+<view class="outer" bindtap="handle_tap"> 触碰事件</view>
+<view class="inner" bindlongpress="handle_longpress"> 长按</view>
+
+<text>事件冒泡 bind</text>
+<view class="outer" bindtap="tap_outer">
+  父元素
+  <view class="innersmall" bindtap="tap_inner">子元素</view>
+</view>
+<text>阻止事件冒泡 catch</text>
+<view class="outer" catchtap="catch_outer">
+  父元素
+  <view class="innersmall" catchtap="catch_inner">子元素</view>
+</view>
+
+
+<view wx:for="{{products}}" wx:key="index">
+  id: {{item.id}}
+  name: {{item.name}}
+  price:{{item.price}} 
+  <button size="mini" type="warn" 
+          bindtap="del" data-id="{{item.id}}"
+          data-name='zs'
+          data-product-desc='ms'>
+  删除
+  </button>
+</view>
+
+
+

@@ -1,2 +1,10 @@
-<!--pages/cloud/storage/storage.wxml-->
-<text>pages/cloud/storage/storage.wxml</text>
+<button type="primary" bindtap="chooseImage">选择图片</button>
+
+<view wx:if="{{images.length}}">
+  <block wx:for="{{images}}" wx:key="index">
+    <image 
+      class="img" mode="widthFix" 
+      src="{{item}}" bindtap="previewImage" data-current="{{item}}"></image>
+  </block>
+  <button type="primary" bindtap="uploadFile">上传图片</button>
+</view>

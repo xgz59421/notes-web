@@ -19,4 +19,5 @@
 <text class="title">示例:</text>
 <view class="container">
   <text bindtap="btnPress" data-path="todolist">todolist</text>
+  <text bindtap="btnPress" data-path="cloudtest">cloudtest</text>
 </view>

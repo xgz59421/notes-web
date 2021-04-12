@@ -1,0 +1,18 @@
+.img{
+  width: 250rpx;
+}
+.fileItem{
+  display: flex;
+}
+.index{
+  flex: 1;
+}
+.title{
+  flex: 6;
+}
+.preview{
+  flex: 1;
+}
+.delete{
+  flex: 1;
+}

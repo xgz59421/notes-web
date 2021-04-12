@@ -1,66 +1,55 @@
-// pages/cloud/storage/storage.js
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    images: []
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  // 选取图片
+  chooseImage(){
+    wx.chooseImage({
+      count: 9,
+      sourceType: ["album","camera"],
+      success: (res)=>{
+        console.log(res);
+        this.setData({
+          images: res.tempFilePaths 
+        })
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  // 预览图片
+  previewImage(event){
+    var current_item = event.target.dataset.current;
+    wx.previewImage({
+      urls: this.data.images,
+      current: current_item,
+      success: (res) => {},
+      fail: (res) => {},
+      complete: (res) => {},
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
+  // 上传图片
+  uploadFile(){
+    var images = this.data.images
+    for (let i = 0; i < images.length; i++) {
+      let img = images[i];
+      // 获取图片扩展名
+      // var extension = /\.\w+$/.exec(img)[0];
+      // var extension = item.slice(img.lastIndexOf('.'))
+      let extension = /\.\w+$/.exec(img)[0];
+      let mainname = '' + Date.now() + Math.ceil(Math.random()*9999);
+      let filename = mainname + extension;
+      console.log(filename);
+      wx.cloud.uploadFile({
+        filePath: img,
+        cloudPath: 'web2021/' + filename,
+        success: (res) => {console.log(res);},
+        fail: (res) => {console.log(res);},
+        complete: (res) => {console.log(res);},
+      });
+    }
+    this.setData({
+      images: []
+    });
 
   }
 })

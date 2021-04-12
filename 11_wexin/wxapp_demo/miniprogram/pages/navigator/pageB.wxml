@@ -1,0 +1,8 @@
+
+<text>接收到上级页面传来的数据: {{user}}</text>
+<navigator url="/pages/navigator/navigator" open-type="navigateBack">
+  返回 navigator组件 
+</navigator>
+<text type="primary" bindtap="back">
+  返回 wx.navigateBack
+</text>

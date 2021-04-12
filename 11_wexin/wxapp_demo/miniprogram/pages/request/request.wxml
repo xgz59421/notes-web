@@ -1,2 +1,3 @@
-<!--pages/request/request.wxml-->
-<text>pages/request/request.wxml</text>
+<view wx:for="{{femalelist}}" wx:key="index">
+  <text>{{index+1}}-{{item.title}}</text>
+</view>
