@@ -1,0 +1,16 @@
+<!--pages/testing/input/input.wxml-->
+<input type="text" placeholder="type:text"
+  placeholder-style="color:red;"
+  placeholder-class="ph"/>
+<input type="number" placeholder="type:number"/>
+<input type="digit" placeholder="type:digit"/>
+<input type="idcard" placeholder="type:idcard"/>
+<input type="text" placeholder="type:text"
+       password="true"/>
+
+<input type="text" placeholder="text"  confirm-type="done" />
+<input type="text" placeholder="text"  confirm-type="go" />
+<input type="text" placeholder="text"  confirm-type="next" />
+<input type="text" placeholder="text"  confirm-type="search" />
+<input type="text" placeholder="text"  confirm-type="send" />
+      

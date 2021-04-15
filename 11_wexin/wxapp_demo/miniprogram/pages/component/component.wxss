@@ -1,1 +1,1 @@
-/* pages/component/component.wxss */
+@import '../../style/common.wxss'

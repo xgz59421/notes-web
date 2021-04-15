@@ -1,0 +1,15 @@
+/* pages/testing/view/view.wxss */
+.v1 {
+  width: 300px; height: 200px;
+  border: 1px solid black; 
+}
+.v1-hover {
+  background-color: rosybrown;
+}
+.v2 {
+  width: 100px; height:100px; margin:30px;
+  border: 1px solid red;
+}
+.v2-hover{
+  background-color: seagreen;
+}

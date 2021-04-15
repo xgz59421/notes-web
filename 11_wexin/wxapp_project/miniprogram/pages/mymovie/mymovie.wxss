@@ -1,0 +1,7 @@
+/* pages/mymovie/mymovie.wxss */
+.image-list image{
+  width: 200rpx;
+  height: 200rpx;
+  margin-right: 10rpx;
+  padding: 10rpx;
+}

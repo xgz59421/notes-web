@@ -1,0 +1,6 @@
+<!--pages/testing/switch/switch.wxml-->
+
+<text>选中状态：{{val ? '开' : '关'}}</text>
+<switch checked="true"
+  color="#e22"
+  bindchange="changeSwitch">开关</switch>

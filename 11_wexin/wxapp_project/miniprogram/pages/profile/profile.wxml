@@ -1,0 +1,15 @@
+<!--pages/profile/profile.wxml-->
+<view class="profile">
+  <!-- 用户头像 -->
+  <view class="profile-img">
+    <open-data type="userAvatarUrl"></open-data>
+  </view>
+  <!-- 用户姓名 -->
+  <view class="profile-uname">
+    <open-data type="userNickName"></open-data>
+  </view>
+</view>
+
+<button open-type="getUserInfo" bindgetuserinfo="handleGetInfo">获取用户信息</button>
+<button bindtap="navigate" data-path="mymovie">我喜欢的电影</button>
+<button bindtap="navigate" data-path="movie">电影</button>

@@ -1,0 +1,8 @@
+<!--pages/testing/button/button.wxml-->
+<text>pages/testing/button/button.wxml</text>
+<button size="default" type="default">测试按钮</button>
+<button size="default" type="primary">测试按钮</button>
+<button size="default" type="warn">测试按钮</button>
+<button size="mini" type="default">测试按钮</button>
+<button size="mini" type="primary">测试按钮</button>
+<button size="mini" type="warn" open-type="openSetting">测试按钮</button>

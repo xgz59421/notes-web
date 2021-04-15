@@ -1,0 +1,48 @@
+<view class="city-list-container">
+  <view class="city-title">定位城市</view>
+  <view class="city-inline" bindtap="tapLocCity">
+    <text class="location-city">{{locationCity}}</text>
+  </view>
+  <view class="city-list">
+    <view class="city-left">
+      <scroll-view 
+          scroll-y="true" 
+          style="height:100vh"
+          enable-back-to-top="true"
+          scroll-into-view="{{selectedLetter}}">
+          <!-- 城市组 -->
+          <view class="city-group-item"
+            wx:for="{{citymap}}" 
+            wx:key="index">
+              <!-- 
+                为城市组的标题添加唯一id 
+                为了动态滚动到相应位置
+              -->
+              <view class="city-group-title"
+                    id="{{index}}">{{index}}</view>
+              <view class="city-fullname"
+                wx:for="{{item}}"
+                wx:for-index="i"
+                wx:for-item="cityObj"
+                wx:key="i"
+                data-cityname="{{cityObj.fullName}}"
+                bindtap="tapCityItem">
+                <text>{{cityObj.fullName}}</text>
+              </view>
+          </view>    
+
+      </scroll-view>
+    </view>
+    <view class="city-right"
+        catchtouchmove="touchLetter">
+      
+      <view class="py-item" 
+        wx:for="{{letters}}" wx:key="index"
+        style="padding:0; height:20px;">
+        <text data-letter="{{item}}" 
+              bindtap="tapLetter">{{item}}</text>
+      </view>    
+      
+    </view>
+  </view>
+</view>

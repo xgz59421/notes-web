@@ -1,0 +1,63 @@
+.swiper-container{
+  margin-bottom: 15rpx;
+}
+.swiper{
+  height:204px;
+}
+.swiper image{
+  width:750rpx;
+  height: 204px;
+}
+.cate-item{
+  margin-bottom: 10rpx;
+  background-color: #fff;
+}
+.cate-item-header{
+  font-size:18px;
+  font-weight: bold;
+  font-family: 'Microsoft Yahei';
+  line-height: 2em;
+  padding-left:15px;
+}
+.book-item{
+  display: flex;
+  align-items: top;
+  margin:0 15rpx 15rpx 15rpx;
+}
+.book-item-image{
+  margin-right:10px;
+}
+.book-item-image image{
+  width:75px;
+  border-radius: 5px;
+}
+.book-item-subject{
+  font-size:16px;
+  font-family: 'Microsoft Yahei';
+}
+.book-item-desc{
+  font-size:14px;
+  font-family: 'Microsoft Yahei';
+  color:#999;
+  line-height: 1.5em;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin:12rpx 0;
+}
+.book-item-info{
+  font-size:14px;
+  font-family: 'Microsoft Yahei';
+  color:#999;
+  display: flex;
+  align-items: center;
+}
+.author{
+  flex: 1;
+}
+.cate-info{
+  flex: 1;
+  text-align: right;
+  color:#333;
+}

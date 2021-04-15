@@ -1,0 +1,21 @@
+<!--pages/testing/image/image.wxml-->
+<text>pages/testing/image/image.wxml</text>
+
+<image src="/images/ewm.jpg"
+       show-menu-by-longpress="true"
+       mode="aspectFit"></image>
+
+<!-- image默认大小：320px*240px -->
+<image src="/images/chuan.jpg"
+       show-menu-by-longpress="true"></image>
+
+<!-- 宽度占满全屏 可以使用100%  也可以使用750rpx-->
+<image src="/images/chuan.jpg"
+  style="width: 750rpx; height:500rpx;"></image>
+
+
+<image class="img1" 
+       src="/images/chuan.jpg"></image>
+<image class="img1" 
+       src="/images/chuan.jpg"
+       mode="aspectFill"></image>

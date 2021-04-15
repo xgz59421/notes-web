@@ -1,0 +1,101 @@
+<!--pages/testing/scrollview/scrollview.wxml-->
+<scroll-view scrollX="true" 
+  enableFlex="true" 
+  enhanced="true" showScrollbar="{{showbar}}">
+  <view class="item">
+    <image src="/images/ranran.jpg"></image>
+    <text>然然</text>
+  </view>
+  <view class="item">
+    <image src="/images/ranran.jpg"></image>
+    <text>然然</text>
+  </view>
+  <view class="item">
+    <image src="/images/ranran.jpg"></image>
+    <text>然然</text>
+  </view>
+  <view class="item">
+    <image src="/images/ranran.jpg"></image>
+    <text>然然</text>
+  </view>
+  <view class="item">
+    <image src="/images/ranran.jpg"></image>
+    <text>然然</text>
+  </view>
+  <view class="item">
+    <image src="/images/ranran.jpg"></image>
+    <text>然然</text>
+  </view>
+  <view class="item">
+    <image src="/images/ranran.jpg"></image>
+    <text>然然</text>
+  </view>
+  <view class="item">
+    <image src="/images/ranran.jpg"></image>
+    <text>然然</text>
+  </view>
+  <view class="item">
+    <image src="/images/ranran.jpg"></image>
+    <text>然然</text>
+  </view>
+  <view class="item">
+    <image src="/images/ranran.jpg"></image>
+    <text>然然</text>
+  </view>
+  <view class="item">
+    <image src="/images/ranran.jpg"></image>
+    <text>然然</text>
+  </view>
+  <view class="item">
+    <image src="/images/ranran.jpg"></image>
+    <text>然然</text>
+  </view>
+  <view class="item">
+    <image src="/images/ranran.jpg"></image>
+    <text>然然</text>
+  </view>
+  <view class="item">
+    <image src="/images/ranran.jpg"></image>
+    <text>然然</text>
+  </view>
+  <view class="item">
+    <image src="/images/ranran.jpg"></image>
+    <text>然然</text>
+  </view>
+  <view class="item">
+    <image src="/images/ranran.jpg"></image>
+    <text>然然</text>
+  </view>
+  <view class="item">
+    <image src="/images/ranran.jpg"></image>
+    <text>然然</text>
+  </view>
+  <view class="item">
+    <image src="/images/ranran.jpg"></image>
+    <text>然然</text>
+  </view>
+  <view class="item">
+    <image src="/images/ranran.jpg"></image>
+    <text>然然</text>
+  </view>
+  <view class="item">
+    <image src="/images/ranran.jpg"></image>
+    <text>然然</text>
+  </view>
+  <view class="item">
+    <image src="/images/ranran.jpg"></image>
+    <text>然然</text>
+  </view>
+  <view class="item">
+    <image src="/images/ranran.jpg"></image>
+    <text>然然</text>
+  </view>
+  <view class="item">
+    <image src="/images/ranran.jpg"></image>
+    <text>然然</text>
+  </view>
+  <view class="item">
+    <image src="/images/ranran.jpg"></image>
+    <text>然然</text>
+  </view>
+</scroll-view>

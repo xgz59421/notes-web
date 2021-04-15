@@ -1,0 +1,9 @@
+/* pages/testing/input/input.wxss */
+input {
+  border: 1px solid #444;
+  margin: 5px; padding: 10px;
+}
+.ph {
+  font-weight: bold;
+  font-style: italic;
+}

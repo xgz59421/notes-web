@@ -1,0 +1,11 @@
+<!--pages/testing/radio/radio.wxml-->
+<text>您的账号是：</text>
+<input type="text" placeholder="请输入账号"/>
+
+<text>您选择的性别是：{{sex}}</text>
+<radio-group bindchange="changeSex">
+  <radio value="M" checked="true" color="#36D">男</radio>
+  <radio value="F" color="#d11">女</radio>
+</radio-group>
+
+

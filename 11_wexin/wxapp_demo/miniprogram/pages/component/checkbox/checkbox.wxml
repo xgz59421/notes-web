@@ -1,0 +1,9 @@
+<!--pages/testing/checkbox/checkbox.wxml-->
+
+请选择然哥的爱好：{{hobby}}
+<checkbox-group bindchange="changeHobby">
+  <checkbox checked="true" value="健身" color="#36d">健身</checkbox>
+  <checkbox checked="true" value="游泳" color="#36d">游泳</checkbox>
+  <checkbox value="瑜伽" color="#36d">瑜伽</checkbox>
+  <checkbox value="拉丁" color="#36d">拉丁</checkbox>
+</checkbox-group>

@@ -1,0 +1,14 @@
+/* pages/testing/scrollview/scrollview.wxss */
+scroll-view{
+  display: flex;
+}
+.item{
+  width: 80px; height: 140px; margin: 5px;
+}
+.item image{
+  width: 80px; height: 112px;
+}
+.item text{
+  display: block; text-align: center;
+  font-size: 14px;
+}

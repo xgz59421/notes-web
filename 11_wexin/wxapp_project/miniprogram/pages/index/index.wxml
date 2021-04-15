@@ -1,0 +1,47 @@
+<!-- 轮播图开始 -->
+<view class="swiper-container">
+  <swiper 
+      autoplay="true" 
+      class="swiper"
+      circular="true"
+      indicator-dots="true"
+      indicator-color="#999999"
+      indicator-active-color="#00cc4c">
+    <swiper-item><image src="../../images/04602ce5c95642e787be93338f35f44f.jpg"/></swiper-item>
+    <swiper-item><image src="../../images/74ed2b1ced2b48fa9492decc2a868fb0.jpg"/></swiper-item>
+    <swiper-item><image src="../../images/aa514fd4d83b464da4efa5be69ac2ac0.jpg"/></swiper-item>
+    <swiper-item><image src="../../images/c4887a0da7b24d3b8a0ceccf20b7fb9a.jpg"/></swiper-item>
+    <swiper-item><image src="../../images/d2df3c7134fa4e60a5e9bef1d7b80966.jpg"/></swiper-item>
+  </swiper>
+</view>
+<!-- 轮播图结束 -->
+<!-- 分类容器开始 -->
+<view class="cate-container">
+  <!-- 单一分类容器开始 -->
+  <view class="cate-item" wx:for="{{epub}}" wx:key="index">
+    <!-- 分类标题开始 -->
+    <view class="cate-item-header">{{item.title}}</view>
+    <!-- 分类标题结束 -->
+    <!-- 分类图书列表开始 -->
+    <view class="book-container">
+      <!-- 单一图书信息开始 -->
+      <view  wx:for="{{item.books}}" wx:for-item="book" wx:key="index">
+          <navigator url="/pages/article/article?id={{book._id}}" class="book-item">
+            <view class="book-item-image"><image mode="widthFix" src="http://statics.zhuishushenqi.com{{book.cover}}"/></view>
+            <view class="book-item-text">
+                <view class="book-item-subject">{{book.title}}</view>
+                <view class="book-item-desc">{{book.shortIntro}}</view>
+                <view class="book-item-info">
+                  <text class="author">{{book.author}}</text>
+                  <text class="cate-info">{{book.minorCate}}</text>
+                </view>
+            </view>
+          </navigator>
+      </view>
+      <!-- 单一图书信息结束 -->
+    </view>
+    <!-- 分类图书列表结束 -->
+  </view>
+  <!-- 单一分类容器结束 -->
+</view>
+<!-- 分类容器结束 -->

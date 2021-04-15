@@ -1,0 +1,18 @@
+<!--pages/testing/swiper/swiper.wxml-->
+<swiper autoplay="true"
+        circular="true" 
+        interval="3000" 
+        duration="2000"
+        indicator-dots="true"
+        indicator-active-color="#0f0"
+        easing-function="easeInOutCubic">
+  <swiper-item>
+    <image src="/images/1.jpg"></image>
+  </swiper-item>
+  <swiper-item>
+    <image src="/images/2.jpg"></image>
+  </swiper-item>
+  <swiper-item>
+    <image src="/images/3.jpg"></image>
+  </swiper-item>
+</swiper>

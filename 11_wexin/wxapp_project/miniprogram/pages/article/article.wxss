@@ -1,0 +1,75 @@
+.book-info{
+  display: flex;
+  align-items:center;
+  padding:15rpx;
+  background-color: #fff;
+  margin-bottom: 15rpx;
+}
+.book-image{
+  margin-right: 5px;
+}
+.book-image image{
+  width:75px;
+  border-radius: 5px;
+}
+.book-text-subject{
+  font-size:20px;
+  font-family: 'Microsoft Yahei';
+}
+.book-text-author{
+  margin:22rpx 0;
+  font-size:16px;
+  font-family: 'Microsoft Yahei';
+}
+.book-text-money{
+  font-size:16px;
+  font-family: 'Microsoft Yahei';
+}
+.description,.comments{
+  padding:15rpx;
+  background-color: #fff;
+  margin-bottom:15rpx;
+}
+.description-title,.comments-title{
+  font-size:18px;
+  font-weight: bold;
+  line-height: 2em;
+  font-family: 'Microsoft Yahei';
+}
+.description-text{
+  font-size:16px;
+  font-family: 'Microsoft Yahei';
+  line-height: 1.5em;
+}
+.comment-item{
+  padding-bottom:15rpx;
+  margin-bottom:15rpx;
+  border-bottom:1rpx solid #ccc;
+}
+.comment-author{
+  display: flex;
+  align-items: center;
+  margin-bottom:15rpx;
+}
+.author-avatar{
+  width:24px;
+  height: 24px;
+  border-radius: 100%;
+  margin-right:10rpx;
+}
+.author-nickname{
+  font-size:14px;
+  color:#999;
+}
+.comment-subject{
+  font-size:16px;
+  font-family: 'Microsoft Yahei';
+  color:#333;
+  margin-bottom:15rpx;
+}
+.comment-text{
+  font-size:14px;
+  font-family: 'Microsoft Yahei';
+  color:#333;
+  line-height: 1.5em;
+}

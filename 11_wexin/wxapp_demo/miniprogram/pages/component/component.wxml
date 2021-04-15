@@ -1,2 +1,15 @@
-<!--pages/component/component.wxml-->
-<text>pages/component/component.wxml</text>
+<view class="container">
+  <text bindtap="btnPress" data-package="component" data-path="button">button</text>
+  <text bindtap="btnPress" data-package="component" data-path="view">view</text>
+  <text bindtap="btnPress" data-package="component" data-path="radio">radio</text>
+  <text bindtap="btnPress" data-package="component" data-path="checkbox">checkbox</text>
+  <text bindtap="btnPress" data-package="component" data-path="switch">switch</text>
+  <text bindtap="btnPress" data-package="component" data-path="text">text</text>
+  <text bindtap="btnPress" data-package="component" data-path="image">image</text>
+  <text bindtap="btnPress" data-package="component" data-path="input">input</text>
+  <text bindtap="btnPress" data-package="component" data-path="picker">picker</text>
+  <text bindtap="btnPress" data-package="component" data-path="progress">progress</text>
+  <text bindtap="btnPress" data-package="component" data-path="scrollview">scrollview</text>
+  <text bindtap="btnPress" data-package="component" data-path="swiper">swiper</text>
+  <text bindtap="btnPress" data-package="component" data-path="map">map</text>
+</view>

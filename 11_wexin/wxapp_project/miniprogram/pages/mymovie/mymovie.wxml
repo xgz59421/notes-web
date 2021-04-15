@@ -1,0 +1,24 @@
+<!--pages/mymovie/mymovie.wxml-->
+<view>
+电影名称:
+  <van-field
+    value="{{ movie_name }}"
+    placeholder="请输入电影名称"
+    bind:change="onChangeMovieName"
+  />
+  <text>写一点喜欢的原因:</text>
+  <van-field
+    value="{{ content }}"
+    placeholder="请留言"
+    bind:change="onChangeContent"
+  />
+
+  <!-- 上传图片按钮 -->
+  <van-button type="info" size="large" bindtap="upload_img">上传你喜欢的图片</van-button>
+  <!-- 图片预览区域 -->
+  <view class="image-list">
+    <image wx:for="{{img_list}}" wx:key="index" src="{{item}}"></image>
+  </view>
+</view>
+<van-button type="primary"  bindtap="submit" size="large">提交</van-button>
+<van-button type="warning"  bindtap="showDetail" size="large">显示喜欢电影列表</van-button>

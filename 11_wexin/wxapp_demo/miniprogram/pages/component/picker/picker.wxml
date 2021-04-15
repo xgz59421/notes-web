@@ -1,0 +1,27 @@
+<!--pages/testing/picker/picker.wxml-->
+<text>pages/testing/picker/picker.wxml</text>
+
+<!-- selector 单列滚动选择器-->
+<picker mode="selector" 
+        range="{{countryList}}"
+        value="2"
+        bindchange="changeCountry">
+  请选择国籍：
+  {{countryList[selectedIndex]}}
+</picker>
+
+<picker mode="selector"
+  range="{{countryObjList}}"
+  range-key="name"
+  bindchange="changeCountry2">
+  请选择国籍：{{countryObjList[selectedIndex2].fullname}}
+</picker>
+
+<picker mode="multiSelector"
+  range="{{multiData}}"
+  bindchange="changeData">
+  请选择：
+  {{multiData[0][selectedIndex3[0]]}},
+  {{multiData[1][selectedIndex3[1]]}},
+  {{multiData[2][selectedIndex3[2]]}}
+</picker>

@@ -1,0 +1,15 @@
+<!--pages/testing/view/view.wxml-->
+<text>pages/testing/view/view.wxml</text>
+<!-- view组件 -->
+<view class="v1" 
+      hover-class="v1-hover"
+      hover-stay-time="1000"
+      hover-start-time="0">
+  
+  <view class="v2" 
+        hover-class="v2-hover"
+        hover-stay-time="1000"
+        hover-stop-propagation="true">
+  </view>
+
+</view>

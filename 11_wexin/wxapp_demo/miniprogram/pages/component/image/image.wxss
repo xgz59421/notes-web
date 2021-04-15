@@ -1,0 +1,4 @@
+/* pages/testing/image/image.wxss */
+.img1{
+  width: 250px;  height: 250px; border:1px solid black;
+}

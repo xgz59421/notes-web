@@ -1,0 +1,50 @@
+page{
+  background-color: #fff;
+  padding:0 10rpx;
+}
+.cate{
+  margin-bottom:15rpx;
+}
+.cate-item-header{
+  font-size:18px;
+  font-weight: bold;
+  font-family:'Microsoft Yahei';
+  text-align: center;
+  margin-bottom:15rpx;
+  color:#666;
+}
+.cate-list{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.cate-item{
+  display: flex;
+  align-items: center;
+  padding:10rpx;
+  margin: 10rpx;
+  width:44%;
+  background-color:#f5f5f5;
+}
+.cate-item-text{
+  flex:1;
+  margin-right:5px;
+}
+.item-subject{
+  margin-bottom:20rpx;
+  font-size:16px;
+  font-weight: bold;
+  color:#333;
+  font-family:'Microsoft Yahei';
+}
+.item-number{
+  font-size:12px;
+  color:#999;
+}
+.cate-item-image{
+  flex:1;
+  text-align: right;
+}
+.cate-item-image image{
+  width:50px;
+}

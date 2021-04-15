@@ -5,6 +5,9 @@
     "pages/wxml/wxif/wxif",
     "pages/wxml/wxfor/wxfor",
     "pages/component/component",
+    "pages/component/button/button",
+    "pages/component/checkbox/checkbox",
+    "pages/component/map/map",
     "pages/event/event",
     "pages/lifestyle/lifestyle",
     "pages/navigator/navigator",
@@ -21,7 +24,7 @@
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarTitleText": "my demo",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",

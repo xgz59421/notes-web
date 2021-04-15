@@ -1,0 +1,40 @@
+<!-- 图书的基本信息开始 -->
+<view class="book-info">
+  <view class="book-image"><image mode="widthFix" src="http://statics.zhuishushenqi.com{{book.cover}}"/></view>
+  <view class="book-text">
+      <view class="book-text-subject">{{book.title}}</view>
+      <view class="book-text-author">{{book.author}}</view>
+      <view class="book-text-money">5书币/千字：{{book.wordCount}}字</view>
+  </view>
+</view>
+<!-- 图书的基本信息结束 -->
+<!-- 图书的简介信息开始 -->
+<view class="description">
+  <view class="description-title">简介</view>
+  <view class="description-text">{{book.longIntro}}</view>
+</view>
+<!-- 图书的简介信息结束 -->
+<!-- 图书的评论信息开始 -->
+<view class="comments">
+  <view class="comments-title">热书书评</view>
+  <view class="comments-list" wx:if="{{reviews.length}}">
+    <!-- 单一评论开始 -->
+    <view class="comment-item" wx:for="{{reviews}}" wx:key="index">
+        <!-- 作者信息开始 -->
+        <view class="comment-author">
+            <image class="author-avatar" src="http://statics.zhuishushenqi.com{{item.author.avatar}}"></image>
+            <text class="author-nickname">{{item.author.nickname}}</text>
+        </view>
+        <!-- 作者信息结束 -->
+        <!-- 评论标题开始 -->
+        <view class="comment-subject">{{item.title}}</view>
+        <!-- 评论标题结束 -->
+        <!-- 评论内容开始 -->
+        <view class="comment-text">{{item.content}}</view>
+        <!-- 评论内容结束 -->
+    </view>
+    <!-- 单一评论结束 --> 
+  </view>
+  <view class="no-comment" wx:else>暂无评论</view>
+</view>
+<!-- 图书的评论信息结束 -->

@@ -1,0 +1,16 @@
+<view class="cate" wx:for="{{cateLists}}" wx:key="index">
+  <view class="cate-item-header"> · {{item.title}} · </view>
+  <!-- 子类列表开始 -->
+  <view class="cate-list">
+    <!-- 子类开始 -->
+    <view class="cate-item" wx:for="{{item.subcates}}" wx:for-item="subcate" wx:key="index">
+        <view class="cate-item-text">
+          <view class="item-subject">{{subcate.name}}</view>
+          <view class="item-number">{{subcate.bookCount}}本</view>
+        </view>
+        <view class="cate-item-image"><image src="http://statics.zhuishushenqi.com{{subcate.bookCover[0]}}" mode="widthFix"/></view>
+    </view>
+    <!-- 子类结束 -->
+  </view>
+  <!-- 子类列表结束 -->
+</view>

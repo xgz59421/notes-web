@@ -1,0 +1,5 @@
+<progress percent="25" show-info="true"
+  border-radius="6" stroke-width="10" font-size="20"
+  activeColor="red" backgroundColor="##f" 
+  active="true"
+></progress>
