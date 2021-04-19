@@ -59,6 +59,33 @@ coll.update({data:{salary:66}})
     fail:res=>{},
     complete:res=>{},
   })
+
+  创建云函数 
+  1.创建云函数 movielist1905
+  2.在当前云函数安装第三方ajax库
+    #不同云函数之间第三方库不能共享
+  3.右键->movielist1905->打开终端(下面命令顺序)
+    npm install -S request         #安装依赖库
+    npm install -S request-promise  #ajax库
+  4.创建云函数 index.js
+    (1)引入request-promise库 
+    const rp = require("request-promise");
+    (2)发送请求获取返回结果返回给调用者
+    exports.main = async (event,context)=>{
+      return rp(豆瓣网址).then(res=>{
+          return res;
+      })
+      .catch(err=>{
+        console.log(err);
+      })
+    }
+    #event 传递参数
+    var url = " http://api.douban.com/v2/movie/in_theaters ";
+    url+="?apikey=0df993c66c0c636e29ecbb5344252a4a "
+    url+=`&start=${event.start}&count=${event.count}`
+    #count 数据条数 5  4  10
 ```
+百度坐标拾取系统
+定位: http://api.map.baidu.com/lbsapi/getpoint/index.html
 <img src='./img/06_cloudfun1.png'/>
 <img src='./img/06_cloudfun2.png'/>
