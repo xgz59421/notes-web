@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>if</title>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      class Demo extends React.Component{
+        names = ["东东", "然然", "亮亮", "小新", "凯哥", "华哥"];
+        emps = [
+          { name: "东东", age: 33, phone: "18877443332" },
+          { name: "凯凯", age: 22, phone: "18873333332" },
+          { name: "然然", age: 23, phone: "18877433332" },
+          { name: "小新", age: 18, phone: "18874445332" },
+        ];
+
+        //数组里放 JSX 语法
+        btns = [<button>东东</button>, <button>小新</button>, <button>然然</button>];
+
+        // 声明方法, 负责改造数组
+        showBtns() {
+          let arr = [];
+
+          this.names.forEach((item, index) => {
+            // vue中: 循环生成的项目必须带有 :key
+            // reac中: 数组中的JSX元素必须带 唯一标识 key
+            arr.push(<button key={index}>{item}</button>);
+          });
+
+          return arr;
+        }
+
+        showLis() {
+          let arr = [];
+
+          this.names.forEach((item, index) => {
+            arr.push(<li key={index}>{item}</li>);
+          });
+
+          return arr;
+        }
+
+        showPerson() {
+          let arr = [];
+
+          this.emps.forEach((item, index) => {
+            arr.push(
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{item.name}</td>
+                <td>{item.age}</td>
+                <td>{item.phone}</td>
+              </tr>
+            );
+          });
+
+          return arr;
+        }
+
+        showNames() {
+          return this.names.map((item, index) => {
+            return <button key={index}>{item}</button>;
+          });
+
+          // return arr;
+        }
+
+        showMapLi() {
+          return this.names.map((item, index) => {
+            return <li key={index}>{item}</li>;
+          });
+        }
+
+        showEmps() {
+          return this.emps.map((item, index) => {
+            return (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{item.name}</td>
+                <td>{item.age}</td>
+                <td>{item.phone}</td>
+              </tr>
+            );
+          });
+        }
+        render(){
+          return (
+            <div>
+              <ul>{this.showMapLi()}</ul>
+              {this.showNames()}
+
+              <hr />
+
+              <div>{this.names}</div>
+              {/* <div>{this.btns}</div> */}
+              {/* 如果是vue */}
+              <div>{this.showBtns()}</div>
+              <ul>{this.showLis()}</ul>
+
+              <table border="1">
+                <thead>
+                  <tr>
+                    <td>序号</td>
+                    <td>姓名</td>
+                    <td>年龄</td>
+                    <td>手机号</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.showPerson()}
+                  {this.showEmps()}
+                </tbody>
+              </table>
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<Demo />, root);
+    </script>
+  </body>
+</html>

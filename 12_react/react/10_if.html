@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>if</title>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      class Demo extends React.Component{
+        // 数字, 点击按钮时发生变化
+        // 数据 绑定 在UI上, 实时变化
+        // state: 状态值  负责更新页面上具体内容; 配合 setState()
+        state = { num: 1, isLogin: false };
+
+        // 变化: 一定和state有关系
+
+        // 普通方法 && 事件触发 && 方法中使用了this
+        _doAdd() {
+          this.setState({ num: this.state.num + 1 });
+        }
+
+        //条件渲染: 通过 if 判断来决定显示什么
+        showLevel() {
+          /**
+           * 问题:
+           * 1. 为什么调用时没写bind(this):  此方法不是事件触发, 而是刷新时就触发, 所以没有this指向问题
+           * 2. 判断的条件一定是和 state 相关的值;  setState 更新时, 就是自动刷新与 state 有关的UI
+           */
+          if (this.state.num == 1) return <h3>您的当前称号是:青铜</h3>;
+          if (this.state.num == 2) return <h3>您的当前称号是:白银</h3>;
+          if (this.state.num == 3) return <h3>您的当前称号是:黄金</h3>;
+          if (this.state.num == 4) return <h3>您的当前称号是:钻石</h3>;
+          if (this.state.num > 4) return <h3>您的当前称号是:荣耀</h3>;
+        }
+        // 条件渲染, 必须在外部声明方法
+        showUser() {
+          if (this.state.isLogin) {
+            return (
+              <div>
+                欢迎, xxx
+                <button onClick={() => this.setState({ isLogin: false })}>
+                  退出
+                </button>
+                |<a href="">用户中心</a>
+              </div>
+            );
+          } else {
+            return (
+              <div>
+                <button onClick={() => this.setState({ isLogin: true })}>登录</button>
+                |<button>注册</button>
+              </div>
+            );
+          }
+        }
+        render(){
+          return (
+            <div>
+              <div>当前等级: {this.state.num}</div>
+              <button onClick={this._doAdd.bind(this)}>增加</button>
+              {this.showLevel()}
+              <hr />
+
+              {this.showUser()}
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<Demo />, root);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+  </head>
+  <body>
+    <!-- jsx语法 -->
+    <div id="root"></div>
+    <!-- type="text/babel": 代表此脚本 必须使用babel编译 -->
+    <script type="text/babel">
+      // 需求: 显示当前时间
+      // <h3 class="danger" id='time'>当前时间: xxxx</h3>  添加到 id='root' 标签中
+      let now = new Date().toLocaleTimeString();
+      // JSX: 在 JS 中书写 XML 格式的 DOM 操作代码;  html是 xml的一种, 即标签语言
+      // JSX属于特殊语法, 不被浏览器认知:  浏览器无法识别.
+      // babel: 此工具可以帮助把 JSX 语法翻译成普通的 02_react.html 中的代码
+      let h3 = (
+        <h3 className="danger" id="time">
+          当前时间: {now}
+        </h3>
+      );
+      // vue,angular, 小程序:  {{ js代码 }}
+      // jsx中: { js代码 }
+      ReactDOM.render(h3, root);
+    </script>
+  </body>
+</html>
+
+<!-- 
+要想把动态数据: 例如当前时间 显示到页面上, 必须用 JS DOM操作.
+
+1. 原生DOM写法: 比较复杂 原始
+
+2. React写法: 使用函数/类 封装特征进行了代码的封装, 希望达到简化效果
+         然而: 并不足够简单, 差强人意!
+
+3. 跳出原始框架, 自制了新语法 JSX:   在 JS 脚本中书写 XML/HTML.
+   浏览器无法识别JSX, 需要babel工具进行编译之后 才能识别.
+  -->

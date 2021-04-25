@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      // 提前设计:
+      // <Hello name="东东" age="19" sex="男" />
+      // 真正运行时 Hello({name:'东东', age:'19', sex:'男'})
+      function Hello(props) {
+        return (
+          <div>
+            <p>name: {props.name}</p>
+            <p>age: {props.age}</p>
+            <p>sex: {props.sex}</p>
+          </div>
+        );
+      }
+ 
+      ReactDOM.render(<Hello name="东东" age="21" sex="男" />, root);
+
+      // <Hello name="东东" age="19" sex="男" />
+      class Hello1 extends React.Component {
+        // 构造方法: new 类时自动触发
+        // constructor(props) {
+        //   // 带有 this. 前缀, 说明props 是成员属性:  成员属性可以跨方法使用
+        //   this.props = props;
+        // }
+        render() {
+          return (
+            <div>
+              <p>name: {this.props.name}</p>
+              <p>age: {this.props.age}</p>
+              <p>sex: {this.props.sex}</p>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<Hello1 name="东东" age="19" sex="男" />, root);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>if</title>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      class Demo extends React.Component{
+        // 双向绑定的值: 会变化
+        state = {
+          uname: "dongdong",
+          upwd: "123456",
+          agree: false,
+        };
+        _changeAgree = (event) => {
+          // event.persist();
+          // console.log(event);
+
+          let agree = event.target.checked;
+
+          this.setState({ agree });
+        };
+
+        // 事件触发的方法 会带有 event 参数,  即事件本身
+        _onChange = (event) => {
+          // 事件默认是 DOM 事件,  但是在React中 对DOM事件进行了处理;  处理之后的事件 叫做 同步事件
+          // 同步事件: 当把值传入之后  会自动销毁自身;
+          // 要想打印出事件中的值则必须调用: event.persist()
+          // event.persist();
+          // persist(): 调用之后才能看到打印, 看到的是之前的值, 并非实时的值:  只对打印有影响; 对于实际读值没有关系
+          // console.log(event);
+
+          let upwd = event.target.value;
+          console.log(upwd);
+          // 新的值更新到 输入框的值
+
+          this.setState({ upwd }); //语法糖: {upwd: upwd} -> {upwd}
+        };
+        render(){
+          return (
+            <div>
+            {/* vue中: v-model */}
+            {/* ng中: [(ngModel)] */}
+
+            {/* 报错: value被指定, 导致输入框锁死, 只读. 用户无法录入数据 */}
+            {/* 错误的解决有两种方式: 1. 声明为 只读属性*/}
+            <input
+              type="text"
+              placeholder="用户名"
+              value={this.state.uname}
+              readOnly
+            />
+            <br />
+            {/* 使用 onChange 事件 实现方向2:  UI变化时, 数据也变化; 输入框的值变化时触发 onChange */}
+            <input
+              type="password"
+              placeholder="密码"
+              value={this.state.upwd}
+              onChange={this._onChange}
+            />
+            <br />
+            {/* 直接把 onChange 的箭头函数写在JSX里 */}
+            <input
+              type="text"
+              value={this.state.uname}
+              onChange={this._changeAgree}
+            />
+            <br />
+
+            <div>
+              <input
+                type="checkbox"
+                checked={this.state.agree}
+                onChange={this._changeAgree}
+              />
+              <input
+                type="checkbox"
+                checked={this.state.agree}
+                onChange={(event) => this.setState({ agree: event.target.checked })}
+              />
+              同意协议条款
+            </div>
+
+            <button
+              onClick={() => alert(this.state.uname + this.state.upwd)}
+              disabled={!this.state.agree}
+            >
+              登录
+            </button>
+          </div>
+          );
+        }
+      }
+      ReactDOM.render(<Demo />, root);
+    </script>
+  </body>
+</html>

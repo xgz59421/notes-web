@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      // 类方式制作组件: 创建具有强大能力的组件 要求必须 继承父类
+      class HelloWorld extends React.Component {
+        // 固定方法: 语法糖转化时, 固定调用 render()
+        render() {
+          return <h1>Hello World!</h1>;
+        }
+      }
+      // 使用
+      // ReactDOM.render(new HelloWorld().render(), root);
+      // 语法糖简化
+      // <HelloWorld />  在运行前，babel会自动编译为 new HelloWorld().render()
+      ReactDOM.render(<HelloWorld />, root);
+      // 复用性
+      let more = (
+        <div>
+          <HelloWorld />
+          <HelloWorld />
+          <HelloWorld />
+          <HelloWorld />
+        </div>
+      );
+      ReactDOM.render(more, root);
+    </script>
+  </body>
+</html>

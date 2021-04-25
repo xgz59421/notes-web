@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      //使用事件这种高级功能, 通常采用类方式
+      class Demo extends React.Component {
+        show() {
+          console.log("点击事件触发!");
+        }
+        _onBlur() {
+          console.log("失去焦点");
+        }
+        name = "孙凯老师";
+        //普通函数中的this 是如何决定的??
+        // obj.函数名();   函数中的this 就是 obj;
+        // 函数是谁调用的 则其中的this就指向谁
+        showName() {
+          // Cannot read property 'name' of undefined
+          // 不能够对 undefined 读取属性 'name',  即代表 this 是undefined
+          console.log(this.name);
+        }
+
+        showName1 = () => {
+          console.log(this.name);
+        };
+
+        render() {
+          return (
+            <div>
+              <button onClick={this.show}>点击事件</button>
+              {/* 注释符号写法 */}
+              {/* JSX: XML 要求标签必须闭合 */}
+              <input type="text" onBlur={this._onBlur} />
+
+              {/* window点击时 执行了 当前对象中的 showName 方法:  window执行的函数, 函数中的this是undefined */}
+              {/* 解决办法: 强制替换 showName 中的this;  bind(), call(), apply() */}
+              {/* {}代码在运行时会直接执行  new Demo().render() */}
+              <button onClick={this.showName.bind(this)}>显示名字</button>
+
+              {/* 第二种解决方案: 利用箭头函数 ()=>{}   箭头函数中的this 与声明时位置一致 */}
+              <hr />
+              <button onClick={() => this.showName()}>显示名字</button>
+              <button
+                onClick={() => {
+                  this.showName();
+                }}
+              >
+                显示名字
+              </button>
+
+              <hr />
+              <button onClick={this.showName1}>显示名字</button>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<Demo />, root);
+    </script>
+  </body>
+</html>

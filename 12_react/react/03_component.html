@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+  </head>
+  <body>
+    <!-- 使用函数方式 创建组件 -->
+    <div id="root"></div>
+    <script type="text/babel">
+      //type="text/babel" 代表此脚本中的内容需要使用 babel 进行编译
+      // JSX语法浏览器默认无法识别, 必须编译为普通的JS代码.
+      // 组件: 复用性
+      // 函数名要求大驼峰: 作为组件使用的函数用大驼峰  这样就可以从命名上 区分函数作用
+      function HelloWorld() {
+        return <h1>Hello World!</h1>;
+      }
+      ReactDOM.render(HelloWorld(), root);
+      // 相当于 ReactDOM.render(<h1>Hello World!</h1>, root);
+      // 语法糖写法: <HelloWorld />  babel自动编译成 HelloWorld()
+      ReactDOM.render(<HelloWorld />, root);
+      // render(): 非新增操作, 是覆盖操作
+      // 复用性
+      let more = (
+        <div>
+          <HelloWorld />
+          <HelloWorld />
+          <HelloWorld />
+          <HelloWorld />
+        </div>
+      );
+
+      ReactDOM.render(more, root);
+    </script>
+  </body>
+</html>

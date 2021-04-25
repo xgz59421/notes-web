@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script>
+      // React提供两个类, 分别实现:
+      // 1. React: 负责创建元素
+      // 2. ReactDOM: 负责渲染元素 到其他元素中
+
+      // 需求: 显示当前时间
+      // <h3 class="danger" id='time'>当前时间: xxxx</h3>  添加到 id='root' 标签中
+      // 原生DOM完成:
+      let now = new Date().toLocaleTimeString();
+
+      // 利用React创建元素
+      let h3 = React.createElement(
+        "h3",
+        { id: "time", className: "danger" },
+        "当前时间:" + now
+      );
+
+      // 利用 ReactDOM 渲染元素到 id='root' 的标签中
+      ReactDOM.render(h3, root);
+    </script>
+  </body>
+</html>
+
+<!-- 
+  React工程师最初  采用 封装 特征 对原生DOM操作进行了封装, 希望操作DOM可以更简单.
+
+  然而!!!
+  实际情况, 并不简单..
+
+  既然 原生提供的封装方式无法实现需求,  那干脆!!!  创建一个新的语法.  使用新的语法来简化需求:  JSX
+ -->

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      // state 状态值: 只有 class 类方式创建的组件 才能使用 state
+      class Demo extends React.Component {
+        // vue,angular: 只要修改数据, 页面就会自动变更
+        // 小程序, react: 必须 使用 data 和 setData;   state 和 setState 配合
+        state = { count: 1 };
+        // _doAdd(): 普通函数;  this绑定 与调用者有关系;  点击事件是window触发, 方法中的this是undefined
+        _doAdd() {
+          // this.state.count++;
+          // state状态中的数据 必须使用 setState 更新 才会刷新页面
+          // setState({}, 回调函数): 渲染成功时,会自动调用参数2
+          this.setState({ count: this.state.count + 1 }, () => {
+            console.log("回调函数:", this.state.count);
+          });
+
+          //setState: 两件事: 修改数据 + 修改UI
+
+          console.log(this.state.count);
+
+          // setState: 方法的异步性导致
+          // setState需要更新数据 +更新UI;  更新数据简单 但是 更新UI 需要重新渲染页面, 所以属于耗时操作
+          // 电脑CPU 是多线程操作,  同一时间可以做很多件事.
+        }
+
+        // 箭头函数 自带 this 保持, 不会因为事件是 window触发的 而 导致this指向出现问题
+        _doAdd1 = () => {
+          // 自增自减运算符特征
+          // a=5;  console.log(a++);   5
+          // a=5;  console.log(++a);   6
+          // 阅读顺序 从左向右,  先++ 就先+,  先a 就先用a
+
+          let obj = { count: this.state.count++ };
+
+          this.setState(obj, () => {
+            console.log("页面更新完毕:", this.state.count);
+          });
+
+          console.log(this.state.count);
+        };
+
+        render() {
+          return (
+            <div>
+              <h3>{this.state.count}</h3>
+              <button onClick={this._doAdd.bind(this)}>点击</button>
+              <br />
+              <button onClick={this._doAdd1}>点击+</button>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<Demo />, root);
+    </script>
+  </body>
+</html>

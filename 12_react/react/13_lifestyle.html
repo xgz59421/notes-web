@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>if</title>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      class Son extends React.Component {
+        state = { count: 1 };
+
+        // 生命周期 钩子函数:
+        // 组件在 生成  更新  销毁  过程中, 都会调用固定的函数
+        componentDidMount() {
+          // mount: 挂载, 代表组件首次生成并展示出来
+          console.log("componentDidMount 触发: 代表组件生成并展示");
+
+          // 通常在此方法中发送网络请求, 获取数据
+
+          // 利用成员属性保存定时器:  成员属性可以夸方法使用!
+          // JS语法:   a = 5;   一个变量如果没有声明, 则首次使用时会自动声明1
+
+          this.timer = setInterval(() => {
+            this.setState({ count: this.state.count + 1 });
+          }, 1000);
+        }
+
+        componentWillUnmount() {
+          // unmount: 卸载
+          console.log("componentWillUnmount: 组件即将销毁时");
+
+          // 通常在此方法中 销毁一些资源防止内存泄漏等问题:  例如 定时器
+          clearInterval(this.timer);
+        }
+
+        // 组件中的数据更新时
+        componentDidUpdate(props, state) {
+          console.log("componentDidUpdate");
+          // props: 属性, 接受外来传入参数
+          // state: 状态值, 组件本身变化的值;   参数state 是原值, 旧值
+          console.log("原/旧props:", props, "新值:", this.props);
+          console.log("原/旧state:", state, "新值:", this.state);
+        }
+
+        // 面试时经常问: 如何提高React 的渲染效率!
+        // 答: 通过此函数 按照项目本身设计一些策略, 来决定什么时候需要刷新 什么时候不需要刷新; 降低刷新的频率.
+        shouldComponentUpdate(props, state) {
+          console.log("shouldComponentUpdate");
+          // 通过此方法的返回值 来决定页面要不要重新渲染: 刷新
+
+          // props,state: 代表即将变化的值. 即将显示的值;
+          if (state.count % 2 == 0) {
+            // false: 代表 偶数不会刷新到页面上; 页面不刷新 则 didUpdate 周期函数也不会触发
+            return false; //偶数 false
+          } else {
+            return true;
+          }
+        }
+
+        render() {
+          return <h1>我是子组件: {this.state.count}</h1>;
+        }
+      }
+      class Demo extends React.Component{
+        // 状态值: 数据影响UI, 动态变更UI
+        state = { show: false };
+
+        // 条件渲染:if
+        showSon() {
+          if (this.state.show) return <Son name="凯凯" />;
+        }
+        render(){
+          return (
+            <div>
+              <button onClick={() => this.setState({ show: !this.state.show })}>
+                切换子组件的显示状态
+              </button>
+              {this.showSon()}
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<Demo />, root);
+    </script>
+  </body>
+</html>

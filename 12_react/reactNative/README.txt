@@ -1,0 +1,1 @@
+改成App.js 放入rn工程中 替换App.js

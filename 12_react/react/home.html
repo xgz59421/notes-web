@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+    <style>
+      .news {
+        width: 600px;
+        margin: 0 auto;
+      }
+
+      .cell {
+        display: flex;
+        padding: 6px;
+        border-bottom: 1px dashed gray;
+        align-items: center;
+      }
+
+      .cell > span:last-child {
+        margin-left: auto;
+      }
+
+      .cell > img {
+        width: 12px;
+        height: 12px;
+        margin-right: 10px;
+      }
+
+      .page {
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      .page > span {
+        display: inline-block;
+        padding: 1px 5px;
+        color: gray;
+        border: 1px solid gray;
+        border-radius: 3px;
+        margin: 0 3px;
+        /* 无法选中 */
+        user-select: none;
+      }
+
+      .page > span:not(.cur):hover {
+        color: orange;
+        border-color: orange;
+        cursor: pointer;
+      }
+
+      .page > .cur {
+        background-color: orange;
+        color: white;
+        border-color: orange;
+      }
+
+      .default {
+        border-color: lightgray !important;
+        color: lightgray !important;
+        cursor: default !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      class Demo extends React.Component{
+        url = "http://101.96.128.94:9999/mfresh/data/news_select.php?pageNum=";
+        // 网络请求的数据: 异步加载的.   刚开始没有数据 -> 发请求获取数据 -> 页面要进行刷新显示
+        state = { data: null };
+          // 发送请求: 挂载周期中
+        componentDidMount() {
+          this.getData(1);
+        }
+        getData(pno) {
+          fetch(this.url + pno)
+          .then((res) => res.json())
+          .then((data) => {
+            this.setState({ data: data });
+          })
+          .catch(err=>console.log(err))
+        }
+        // 列表渲染
+        showContent() {
+          console.log(this.state.data);
+          return this.state.data.data.map((item, index) => {
+            // vue,angular中有 {{xxx| xxx}} 过滤器/管道  filter/pipe
+            // react中 不存在管道/过滤器的写法: 只能靠原生的js代码
+
+            let pubTime = item.pubTime * 1; //快速字符串 转数字 相当于 parseInt(xxx)
+            let date = new Date(pubTime);
+
+            pubTime = `${date.getFullYear()}-${
+              date.getMonth() + 1
+            }-${date.getDate()}`;
+
+            return (
+              <div key={index} className="cell">
+                {/* webpack: 打包工具要求本地图片 使用 require 来引入 
+                <img src={require("./img/right.png")} alt="" />*/}
+                <span>{item.title}</span>
+                <span>{pubTime}</span>
+              </div>
+            );
+          });
+        }
+
+        // 条件渲染
+        showPrev() {
+          if (this.state.data.pageNum === 1) {
+            return <span className="default">上一页</span>;
+          } else {
+            return (
+              <span onClick={() => this.getData(this.state.data.pageNum - 1)}>
+                上一页
+              </span>
+            );
+          }
+        }
+
+        //下一页
+        showNext() {
+          if (this.state.data.pageNum === this.state.data.pageCount) {
+            return <span className="default">下一页</span>;
+          } else {
+            return (
+              <span onClick={() => this.getData(this.state.data.pageNum + 1)}>
+                下一页
+              </span>
+            );
+          }
+        }
+        showPages() {
+          let arr = [];
+          for (let i = 1; i <= this.state.data.pageCount; i++) {
+            arr.push(
+              <span
+                key={i}
+                className={this.state.data.pageNum === i ? "cur" : ""}
+                onClick={() => this.getData(i)}
+              >
+                {i}
+              </span>
+            );
+          }
+          return arr;
+        }
+        render(){
+          if (!this.state.data) {
+            return <div>没有数据</div>
+          }
+          return (
+            <div className="news">
+              <div className="content">{this.showContent()}</div>
+              <div className="page">
+                {this.showPrev()}
+                {this.showPages()}
+                {this.showNext()}
+              </div>
+            </div>
+          )
+        }
+      }
+
+      ReactDOM.render(<Demo />, root);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      class Demo extends React.Component {
+        name = "东东";
+        age = 18;
+        married = true;
+
+        names = ["东东", "然然", "亮亮"];
+
+        boss = { name: "华哥", age: 32 };
+
+        render() {
+          return (
+            <div>
+              <div>{this.name}</div>
+              <div>{this.age}</div>
+              <div>{this.married}</div>
+              <div>{this.names}</div>
+              <div>{this.names[0]}</div>
+              <div>{this.boss.name}</div>
+
+              {/* 数学运算符 */}
+              <div>{5 + 2}</div>
+              <div>{5 - 2}</div>
+              <div>{5 * 2}</div>
+              <div>{5 / 2}</div>
+              <div>{5 % 2}</div>
+
+              {/* 比较运算符 */}
+              <div>{this.age > 19 ? "true" : "false"}</div>
+              <div>{this.age >= 19 ? "true" : "false"}</div>
+              <div>{this.age <= 19 ? "true" : "false"}</div>
+              <div>{this.age < 19 ? "true" : "false"}</div>
+              <div>{this.age == 19 ? "true" : "false"}</div>
+              <div>{this.age != 19 ? "true" : "false"}</div>
+
+              {/* 逻辑运算符  &&  ||  ! 
+              && 逻辑与 并且   全真为真,有假为假
+              || 逻辑或 或者   有真则真,都假为假
+              !  逻辑非 不     非真为假,非假为真
+              */}
+              <div>{true && true ? "true" : "false"}</div>
+              <div>{true && false ? "true" : "false"}</div>
+              <div>{true || false ? "true" : "false"}</div>
+              <div>{false || false ? "true" : "false"}</div>
+              <div>{!true ? "true" : "false"}</div>
+              <div>{!false ? "true" : "false"}</div>
+              <div></div>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<Demo />, root);
+    </script>
+  </body>
+</html>
