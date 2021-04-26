@@ -21,12 +21,19 @@
   git status 
 # 查看日志
   git log 
+  git reflog
 # 回滚提交
   git reset --hard b83af4861b3dd232 (SHA) 
 # 切到主分支:
   geit merge --squash 要合并的分支名字如 dev_zh
 # 修改 git 用户名/密码
-  windows 凭据  普通凭据  
+  windows 凭据  普通凭据 
+# 分支
+  git branch aa  创建aa分支
+  git branch   分支列表
+  git checkout aa  切换分支
+  git branch -d aa 删除分支
+
 ```
 # github
 ```bash
