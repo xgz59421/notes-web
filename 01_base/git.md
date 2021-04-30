@@ -44,3 +44,14 @@
   git push origin 
   git pull origin 拉取
 ```
+
+# 同步github 和 gitee
+```js
+.git下的 config 修改如下
+[remote "origin"]
+  url = https://gitee.com/xgz59421/notes_web.git
+  url = https://github.com/xgz59421/notes_web.git
+
+// 第一次提交请使用强行提交，避免抱错
+// git push -f origin master
+```
