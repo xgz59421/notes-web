@@ -23,7 +23,16 @@ const todos = {
   learn: ['语文', '数学', '外语'],
   work: ['喝茶'],
   [Symbol.iterator]: function * () {
-    const all = [...this.life, ...this.learn, ...this.work]
+    const all = [...this.life, ...this.learn, ...this.work];
+    // let index = 0
+    // return {
+    //   next: function () {
+    //     return {
+    //       value: all[index],let index = 0
+    //       done: index++ >= all.length
+    //     }
+    //   }
+    // }
     for (const item of all) {
       yield item
     }

@@ -44,7 +44,6 @@ const arr = [100, 200, 300, 400]
 // }
 
 // 普通对象不能被直接 for...of 遍历
-
 // const obj = { foo: 123, bar: 456 }
 
 // for (const item of obj) {

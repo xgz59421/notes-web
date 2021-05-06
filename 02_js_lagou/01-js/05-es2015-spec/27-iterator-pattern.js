@@ -18,6 +18,7 @@ const todos = {
   },
 
   // 提供迭代器（ES2015 统一遍历访问接口）
+  // 可以使用 for of 
   [Symbol.iterator]: function () {
     const all = [...this.life, ...this.learn, ...this.work]
     let index = 0

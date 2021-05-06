@@ -1,10 +1,9 @@
 // let 声明的成员只会在所声明的块中生效 -------------------------------------------
-// if (true) {
-//   // var foo = 'zce'
-//   let foo = 'zce'
-//   console.log(foo)
-// }
-
+if (true) {
+  var foo = 'zce'
+  // let foo = 'zce'
+}
+console.log(foo)
 // let 在 for 循环中的表现 ---------------------------------------------------
 
 // for (var i = 0; i < 3; i++) {
@@ -51,34 +50,29 @@
 
 // for 循环会产生两层作用域 ----------------------------------
 
-// for (let i = 0; i < 3; i++) {
-//   let i = 'foo'
-//   console.log(i)
-// }
+for (let i = 0; i < 3; i++) {
+  let i = 'foo'
+  console.log(i)
+}
 
+// 解读为-------------begin
 // let i = 0
-
 // if (i < 3) {
 //   let i = 'foo'
 //   console.log(i)
 // }
-
 // i++
-
 // if (i < 3) {
 //   let i = 'foo'
 //   console.log(i)
 // }
-
 // i++
-
 // if (i < 3) {
 //   let i = 'foo'
 //   console.log(i)
 // }
-
 // i++
-
+// 解读为-------------end
 
 // let 修复了变量声明提升现象 --------------------------------------------
 

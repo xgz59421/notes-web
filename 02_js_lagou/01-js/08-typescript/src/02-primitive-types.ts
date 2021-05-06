@@ -12,6 +12,7 @@ const c: boolean = true // false
 // const d: number = null
 // const d: boolean = null
 
+// 严格模式下为undefined, 不可null
 const e: void = undefined
 
 const f: null = null
