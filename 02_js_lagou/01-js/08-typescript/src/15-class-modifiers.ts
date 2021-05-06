@@ -22,6 +22,7 @@ class Person {
 class Student extends Person {
   private constructor (name: string, age: number) {
     super(name, age)
+    // protected修饰符, 可以在继承中使用
     console.log(this.gender)
   }
 
@@ -32,7 +33,7 @@ class Student extends Person {
 
 const tom = new Person('tom', 18)
 console.log(tom.name)
-// console.log(tom.age)
-// console.log(tom.gender)
+// console.log(tom.age)  // private 访问不到
+// console.log(tom.gender)  // protected 访问不到
 
 const jack = Student.create('jack', 18)
