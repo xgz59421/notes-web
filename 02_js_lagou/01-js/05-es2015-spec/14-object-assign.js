@@ -14,7 +14,8 @@
 //   a: 456,
 //   c: 456
 // }
-
+// 将多个源对象的属性复制到一个目标对象中, 相同的值会被覆盖掉
+//                              目标对象, 源对象...
 // const result = Object.assign(target, source1, source2)
 
 // console.log(target)

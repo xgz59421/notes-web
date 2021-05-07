@@ -18,35 +18,35 @@
 
 // =========================================================
 
-// const s = Symbol()
-// console.log(s)
-// console.log(typeof s)
+const s = Symbol()
+console.log(s)
+console.log(typeof s)
 
 // 两个 Symbol 永远不会相等
 
-// console.log(
-//   Symbol() === Symbol()
-// )
+console.log(
+  Symbol() === Symbol()
+)
 
 // Symbol 描述文本
 
-// console.log(Symbol('foo'))
-// console.log(Symbol('bar'))
-// console.log(Symbol('baz'))
+console.log(Symbol('foo'))
+console.log(Symbol('bar'))
+console.log(Symbol('baz'))
 
 // 使用 Symbol 为对象添加用不重复的键
 
-// const obj = {}
-// obj[Symbol()] = '123'
-// obj[Symbol()] = '456'
-// console.log(obj)
+const obj = {}
+obj[Symbol()] = '123'
+obj[Symbol()] = '456'
+console.log(obj)
 
 // 也可以在计算属性名中使用
 
-// const obj = {
-//   [Symbol()]: 123
-// }
-// console.log(obj)
+const obj1 = {
+  [Symbol()]: 123
+}
+console.log(obj1)
 
 // =========================================================
 
