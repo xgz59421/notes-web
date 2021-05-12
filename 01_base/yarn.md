@@ -38,3 +38,9 @@
 // yarn remove jquery
 // yarn remove bootstrap zepto
 ```
+#### 6. 链接
+```js
+// yarn link
+// yarn link "xxx"
+// yarn unlink
+```
