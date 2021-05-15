@@ -1,5 +1,9 @@
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+//  魔法注释
+/* webpackChunkName: 'components' */
+// 本例 index.js 中介绍
+// 会打包到  components.bundle.js 中
 
 module.exports = {
   mode: 'none',

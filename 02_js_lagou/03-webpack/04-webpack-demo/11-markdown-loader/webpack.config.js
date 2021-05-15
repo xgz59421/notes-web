@@ -11,6 +11,7 @@ module.exports = {
   module: {
     rules: [
       {
+        // 配置了一个 自定义的loader
         test: /.md$/,
         use: [
           'html-loader',

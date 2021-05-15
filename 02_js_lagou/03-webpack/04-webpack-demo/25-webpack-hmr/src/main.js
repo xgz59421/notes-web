@@ -13,12 +13,14 @@ document.body.appendChild(img)
 
 // console.log(createEditor)
 
+// 手动处理editor.js 的 `hmr` 热替换
+// 本模块仍然不支持hmr
 if (module.hot) {
   let lastEditor = editor
   module.hot.accept('./editor', () => {
     // console.log('editor 模块更新了，需要这里手动处理热替换逻辑')
     // console.log(createEditor)
-
+    // 模拟实现 hmr
     const value = lastEditor.innerHTML
     document.body.removeChild(lastEditor)
     const newEditor = createEditor()
@@ -26,7 +28,7 @@ if (module.hot) {
     document.body.appendChild(newEditor)
     lastEditor = newEditor
   })
-
+  // 处理 图片的 hmr
   module.hot.accept('./better.png', () => {
     img.src = background
     console.log(background)

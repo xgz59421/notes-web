@@ -36,10 +36,13 @@ module.exports = {
         }
       },
       {
+        // yarn add html-loader --dev
         test: /.html$/,
         use: {
+          // 打包html文件 //默认处理 img.scr 的属性
           loader: 'html-loader',
           options: {
+            // 配置`html`中 其他的属性
             attrs: ['img:src', 'a:href']
           }
         }

@@ -90,54 +90,62 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _heading_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _main_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
-/* harmony import */ var _main_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_main_css__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _icon_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(8);
-/* harmony import */ var _icon_png__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_icon_png__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _main_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_main_css__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _footer_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(8);
+/* harmony import */ var _footer_html__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_footer_html__WEBPACK_IMPORTED_MODULE_1__);
+// ////////////////////////////////////////////////////////////////////////////////
+// // 1. 支持 ES Modules 的 import 声明
+// ////////////////////////////////////////////////////////////////////////////////
+// import createHeading from './heading.js'
+// import better from './better.png'
+// import './main.css'
+// const heading = createHeading()
+// const img = new Image()
+// img.src = better
+// document.body.append(heading)
+// document.body.append(img)
+// ////////////////////////////////////////////////////////////////////////////////
+// // 2. 支持 CommonJS 的 require 函数
+// ////////////////////////////////////////////////////////////////////////////////
+// const createHeading = require('./heading.js').default
+// const better = require('./better.png')
+// require('./main.css')
+// const heading = createHeading()
+// const img = new Image()
+// img.src = better
+// document.body.append(heading)
+// document.body.append(img)
+// ////////////////////////////////////////////////////////////////////////////////
+// // 3. 支持 AMD 的 require / define 函数
+// ////////////////////////////////////////////////////////////////////////////////
+// define(['./heading.js', './better.png', './main.css'], (createHeading, better) => {
+//   const heading = createHeading.default()
+//   const img = new Image()
+//   img.src = better
+//   document.body.append(heading)
+//   document.body.append(img)
+// })
+// require(['./heading.js', './better.png', './main.css'], (createHeading, better) => {
+//   const heading = createHeading.default()
+//   const img = new Image()
+//   img.src = better
+//   document.body.append(heading)
+//   document.body.append(img)
+// })
+////////////////////////////////////////////////////////////////////////////////
+// 4. 部分 loader 加载的资源中一些用法也会触发资源模块加载
+////////////////////////////////////////////////////////////////////////////////
 
 
-
-
-const heading = Object(_heading_js__WEBPACK_IMPORTED_MODULE_0__["default"])()
-
-document.body.append(heading)
-
-const img = new Image()
-img.src = _icon_png__WEBPACK_IMPORTED_MODULE_2___default.a
-
-document.body.append(img)
-
+document.write(_footer_html__WEBPACK_IMPORTED_MODULE_1___default.a);
 
 /***/ }),
 /* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _heading_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
-/* harmony import */ var _heading_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_heading_css__WEBPACK_IMPORTED_MODULE_0__);
-
-
-/* harmony default export */ __webpack_exports__["default"] = (() => {
-  const element = document.createElement('h2')
-
-  element.textContent = 'Hello world'
-  element.classList.add('heading')
-  element.addEventListener('click', () => {
-    alert('Hello webpack')
-  })
-
-  return element
-});
-
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var api = __webpack_require__(3);
-            var content = __webpack_require__(4);
+var api = __webpack_require__(2);
+            var content = __webpack_require__(3);
 
             content = content.__esModule ? content.default : content;
 
@@ -157,7 +165,7 @@ var update = api(content, options);
 module.exports = content.locals || {};
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -432,24 +440,28 @@ module.exports = function (list, options) {
 };
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(5);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(4);
+var ___CSS_LOADER_AT_RULE_IMPORT_0___ = __webpack_require__(5);
+var ___CSS_LOADER_GET_URL_IMPORT___ = __webpack_require__(6);
+var ___CSS_LOADER_URL_IMPORT_0___ = __webpack_require__(7);
 exports = ___CSS_LOADER_API_IMPORT___(false);
+exports.i(___CSS_LOADER_AT_RULE_IMPORT_0___);
+var ___CSS_LOADER_URL_REPLACEMENT_0___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_0___);
 // Module
-exports.push([module.i, ".heading {\r\n  padding: 20px;\r\n  background: #343a40;\r\n  color: #fff;\r\n}\r\n", ""]);
+exports.push([module.i, "/*css-loader 同样支持 sass/less 风格的 @import 指令*/\r\n/*@import 'reset.css';*/\r\n\r\nbody {\r\n  min-height: 100vh;\r\n  background: #f4f8fb;\r\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\r\n  background-size: cover;\r\n}\r\n", ""]);
 // Exports
 module.exports = exports;
 
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
 
 /*
   MIT License http://www.opensource.org/licenses/mit-license.php
@@ -457,6 +469,7 @@ module.exports = exports;
 */
 // css base code, injected by the css-loader
 // eslint-disable-next-line func-names
+
 module.exports = function (useSourceMap) {
   var list = []; // return the list of modules as css string
 
@@ -545,47 +558,75 @@ function toComment(sourceMap) {
 }
 
 /***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var api = __webpack_require__(3);
-            var content = __webpack_require__(7);
-
-            content = content.__esModule ? content.default : content;
-
-            if (typeof content === 'string') {
-              content = [[module.i, content, '']];
-            }
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = api(content, options);
-
-
-
-module.exports = content.locals || {};
-
-/***/ }),
-/* 7 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(5);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(4);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "body {\r\n  margin: 0 auto;\r\n  padding: 0 20px;\r\n  max-width: 800px;\r\n  background: #f4f8fb;\r\n}\r\n", ""]);
+exports.push([module.i, "* {\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n", ""]);
 // Exports
 module.exports = exports;
 
 
 /***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (url, options) {
+  if (!options) {
+    // eslint-disable-next-line no-param-reassign
+    options = {};
+  } // eslint-disable-next-line no-underscore-dangle, no-param-reassign
+
+
+  url = url && url.__esModule ? url["default"] : url;
+
+  if (typeof url !== 'string') {
+    return url;
+  } // If url is already wrapped in quotes, remove them
+
+
+  if (/^['"].*['"]$/.test(url)) {
+    // eslint-disable-next-line no-param-reassign
+    url = url.slice(1, -1);
+  }
+
+  if (options.hash) {
+    // eslint-disable-next-line no-param-reassign
+    url += options.hash;
+  } // Should url be wrapped?
+  // See https://drafts.csswg.org/css-values-3/#urls
+
+
+  if (/["'() \t\n]/.test(url) || options.needQuotes) {
+    return "\"".concat(url.replace(/"/g, '\\"').replace(/\n/g, '\\n'), "\"");
+  }
+
+  return url;
+};
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "7ab8f6bdf1a3577794e20a1876d69a4c.png";
+
+/***/ }),
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "aaa0e8af948e470ee7dd81a36b503e18.png";
+module.exports = "<footer>\r\n  <!-- <img src=\"better.png\" alt=\"better\" width=\"256\"> -->\r\n  <a href=\"" + __webpack_require__(9) + "\">download png</a>\r\n</footer>\r\n";
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "469042abffe6754e261435f69e45c58d.png";
 
 /***/ })
 /******/ ]);

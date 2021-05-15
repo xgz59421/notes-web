@@ -10,6 +10,7 @@ module.exports = {
     main: './src/index.js'
   },
   output: {
+    // 配置带有hash的.js 解决缓存  
     filename: '[name]-[contenthash:8].bundle.js'
   },
   optimization: {
@@ -38,6 +39,14 @@ module.exports = {
       filename: 'index.html'
     }),
     new MiniCssExtractPlugin({
+      // 三种哈希
+      // 1. 项目级别的, 任何文件修改, 整个项目文件都要重新打包
+      // filename: '[name]-[hash].bundle.css' 
+      // 2. 目录级别的, 同一目录需要重新打包 
+      // filename: '[name]-[chunckhash].bundle.css'
+      // 3. 文件级别的, 相关文件进行重新打包
+      // filename: '[name]-[contenthash].bundle.css'
+      // 指定hash的长度 :8  推荐
       filename: '[name]-[contenthash:8].bundle.css'
     })
   ]

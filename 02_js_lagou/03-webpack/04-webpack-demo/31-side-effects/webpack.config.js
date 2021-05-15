@@ -16,6 +16,7 @@ module.exports = {
     ]
   },
   optimization: {
+    // 副作用 (除了导出 做了其他事情)
     sideEffects: true,
     // 模块只导出被使用的成员
     // usedExports: true,
