@@ -11,6 +11,7 @@ export default {
   plugins: [
     json(),
     resolve(),
+    // 加载commonjs 模块
     commonjs()
   ]
 }

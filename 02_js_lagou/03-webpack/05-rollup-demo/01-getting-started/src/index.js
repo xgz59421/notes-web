@@ -6,3 +6,5 @@ import messages from './messages'
 const msg = messages.hi
 
 log(msg)
+
+// yarn rollup ./src/index.js --format  iife --file dist/bundle.js

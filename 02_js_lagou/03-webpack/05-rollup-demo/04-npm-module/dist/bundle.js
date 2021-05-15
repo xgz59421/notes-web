@@ -303,6 +303,40 @@
     return augend + addend;
   }, 0);
 
+  /** Used to match a single whitespace character. */
+  var reWhitespace = /\s/;
+
+  /**
+   * Used by `_.trim` and `_.trimEnd` to get the index of the last non-whitespace
+   * character of `string`.
+   *
+   * @private
+   * @param {string} string The string to inspect.
+   * @returns {number} Returns the index of the last non-whitespace character.
+   */
+  function trimmedEndIndex(string) {
+    var index = string.length;
+
+    while (index-- && reWhitespace.test(string.charAt(index))) {}
+    return index;
+  }
+
+  /** Used to match leading whitespace. */
+  var reTrimStart = /^\s+/;
+
+  /**
+   * The base implementation of `_.trim`.
+   *
+   * @private
+   * @param {string} string The string to trim.
+   * @returns {string} Returns the trimmed string.
+   */
+  function baseTrim(string) {
+    return string
+      ? string.slice(0, trimmedEndIndex(string) + 1).replace(reTrimStart, '')
+      : string;
+  }
+
   /**
    * Checks if `value` is the
    * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
@@ -335,9 +369,6 @@
 
   /** Used as references for various `Number` constants. */
   var NAN$1 = 0 / 0;
-
-  /** Used to match leading and trailing whitespace. */
-  var reTrim = /^\s+|\s+$/g;
 
   /** Used to detect bad signed hexadecimal string values. */
   var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
@@ -388,7 +419,7 @@
     if (typeof value != 'string') {
       return value === 0 ? value : +value;
     }
-    value = value.replace(reTrim, '');
+    value = baseTrim(value);
     var isBinary = reIsBinary.test(value);
     return (isBinary || reIsOctal.test(value))
       ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
@@ -2781,7 +2812,7 @@
    * _.keysIn(new Foo);
    * // => ['a', 'b', 'c'] (iteration order is not guaranteed)
    */
-  function keysIn$1(object) {
+  function keysIn(object) {
     return isArrayLike(object) ? arrayLikeKeys(object, true) : baseKeysIn(object);
   }
 
@@ -2817,7 +2848,7 @@
    * // => { 'a': 1, 'b': 2, 'c': 3, 'd': 4 }
    */
   var assignIn = createAssigner(function(object, source) {
-    copyObject(source, keysIn$1(source), object);
+    copyObject(source, keysIn(source), object);
   });
 
   /**
@@ -2850,7 +2881,7 @@
    * // => { 'a': 1, 'b': 2 }
    */
   var assignInWith = createAssigner(function(object, source, srcIndex, customizer) {
-    copyObject(source, keysIn$1(source), object, customizer);
+    copyObject(source, keysIn(source), object, customizer);
   });
 
   /**
@@ -4841,7 +4872,7 @@
    * @returns {Object} Returns `object`.
    */
   function baseAssignIn(object, source) {
-    return object && copyObject(source, keysIn$1(source), object);
+    return object && copyObject(source, keysIn(source), object);
   }
 
   /** Detect free variable `exports`. */
@@ -5027,7 +5058,7 @@
    * @returns {Array} Returns the array of property names and symbols.
    */
   function getAllKeysIn(object) {
-    return baseGetAllKeys(object, keysIn$1, getSymbolsIn);
+    return baseGetAllKeys(object, keysIn, getSymbolsIn);
   }
 
   /* Built-in method references that are verified to be native. */
@@ -5829,10 +5860,11 @@
     if (arrLength != othLength && !(isPartial && othLength > arrLength)) {
       return false;
     }
-    // Assume cyclic values are equal.
-    var stacked = stack.get(array);
-    if (stacked && stack.get(other)) {
-      return stacked == other;
+    // Check that cyclic values are equal.
+    var arrStacked = stack.get(array);
+    var othStacked = stack.get(other);
+    if (arrStacked && othStacked) {
+      return arrStacked == other && othStacked == array;
     }
     var index = -1,
         result = true,
@@ -6059,10 +6091,11 @@
         return false;
       }
     }
-    // Assume cyclic values are equal.
-    var stacked = stack.get(object);
-    if (stacked && stack.get(other)) {
-      return stacked == other;
+    // Check that cyclic values are equal.
+    var objStacked = stack.get(object);
+    var othStacked = stack.get(other);
+    if (objStacked && othStacked) {
+      return objStacked == other && othStacked == object;
     }
     var result = true;
     stack.set(object, other);
@@ -7249,7 +7282,7 @@
 
     while (++index < length) {
       var source = sources[index];
-      var props = keysIn$1(source);
+      var props = keysIn(source);
       var propsIndex = -1;
       var propsLength = props.length;
 
@@ -7357,7 +7390,7 @@
    * // => { 'a': 1, 'b': 2, 'c': 3 }
    */
   function toPlainObject(value) {
-    return copyObject(value, keysIn$1(value));
+    return copyObject(value, keysIn(value));
   }
 
   /**
@@ -7467,7 +7500,7 @@
         }
         assignMergeValue(object, key, newValue);
       }
-    }, keysIn$1);
+    }, keysIn);
   }
 
   /**
@@ -8274,7 +8307,7 @@
    * _.toPairsIn(new Foo);
    * // => [['a', 1], ['b', 2], ['c', 3]] (iteration order is not guaranteed)
    */
-  var toPairsIn = createToPairs(keysIn$1);
+  var toPairsIn = createToPairs(keysIn);
 
   /** Used to map characters to HTML entities. */
   var htmlEscapes = {
@@ -8608,6 +8641,10 @@
    * // The `_.property` iteratee shorthand.
    * _.filter(users, 'active');
    * // => objects for ['barney']
+   *
+   * // Combining several predicates using `_.overEvery` or `_.overSome`.
+   * _.filter(users, _.overSome([{ 'age': 36 }, ['age', 40]]));
+   * // => objects for ['fred', 'barney']
    */
   function filter(collection, predicate) {
     var func = isArray(collection) ? arrayFilter : baseFilter;
@@ -9309,7 +9346,7 @@
   function forIn(object, iteratee) {
     return object == null
       ? object
-      : baseFor(object, castFunction(iteratee), keysIn$1);
+      : baseFor(object, castFunction(iteratee), keysIn);
   }
 
   /**
@@ -9341,7 +9378,7 @@
   function forInRight(object, iteratee) {
     return object == null
       ? object
-      : baseForRight(object, castFunction(iteratee), keysIn$1);
+      : baseForRight(object, castFunction(iteratee), keysIn);
   }
 
   /**
@@ -9499,7 +9536,7 @@
    * // => ['a', 'b', 'c']
    */
   function functionsIn(object) {
-    return object == null ? [] : baseFunctions(object, keysIn$1(object));
+    return object == null ? [] : baseFunctions(object, keysIn(object));
   }
 
   /** Used for built-in method references. */
@@ -11354,6 +11391,9 @@
    * values against any array or object value, respectively. See `_.isEqual`
    * for a list of supported value comparisons.
    *
+   * **Note:** Multiple values can be checked by combining several matchers
+   * using `_.overSome`
+   *
    * @static
    * @memberOf _
    * @since 3.0.0
@@ -11369,6 +11409,10 @@
    *
    * _.filter(objects, _.matches({ 'a': 4, 'c': 6 }));
    * // => [{ 'a': 4, 'b': 5, 'c': 6 }]
+   *
+   * // Checking for several possible values
+   * _.filter(objects, _.overSome([_.matches({ 'a': 1 }), _.matches({ 'a': 4 })]));
+   * // => [{ 'a': 1, 'b': 2, 'c': 3 }, { 'a': 4, 'b': 5, 'c': 6 }]
    */
   function matches(source) {
     return baseMatches(baseClone(source, CLONE_DEEP_FLAG$5));
@@ -11386,6 +11430,9 @@
    * `srcValue` values against any array or object value, respectively. See
    * `_.isEqual` for a list of supported value comparisons.
    *
+   * **Note:** Multiple values can be checked by combining several matchers
+   * using `_.overSome`
+   *
    * @static
    * @memberOf _
    * @since 3.2.0
@@ -11402,6 +11449,10 @@
    *
    * _.find(objects, _.matchesProperty('a', 4));
    * // => { 'a': 4, 'b': 5, 'c': 6 }
+   *
+   * // Checking for several possible values
+   * _.filter(objects, _.overSome([_.matchesProperty('a', 1), _.matchesProperty('a', 4)]));
+   * // => [{ 'a': 1, 'b': 2, 'c': 3 }, { 'a': 4, 'b': 5, 'c': 6 }]
    */
   function matchesProperty(path, srcValue) {
     return baseMatchesProperty(path, baseClone(srcValue, CLONE_DEEP_FLAG$6));
@@ -12107,6 +12158,10 @@
       var key = toKey(path[index]),
           newValue = value;
 
+      if (key === '__proto__' || key === 'constructor' || key === 'prototype') {
+        return object;
+      }
+
       if (index != lastIndex) {
         var objValue = nested[key];
         newValue = customizer ? customizer(objValue, key, nested) : undefined;
@@ -12333,8 +12388,21 @@
    * @returns {Array} Returns the new sorted array.
    */
   function baseOrderBy(collection, iteratees, orders) {
+    if (iteratees.length) {
+      iteratees = arrayMap(iteratees, function(iteratee) {
+        if (isArray(iteratee)) {
+          return function(value) {
+            return baseGet(value, iteratee.length === 1 ? iteratee[0] : iteratee);
+          }
+        }
+        return iteratee;
+      });
+    } else {
+      iteratees = [identity];
+    }
+
     var index = -1;
-    iteratees = arrayMap(iteratees.length ? iteratees : [identity], baseUnary(baseIteratee));
+    iteratees = arrayMap(iteratees, baseUnary(baseIteratee));
 
     var result = baseMap(collection, function(value, key, collection) {
       var criteria = arrayMap(iteratees, function(iteratee) {
@@ -12496,6 +12564,10 @@
    * Creates a function that checks if **all** of the `predicates` return
    * truthy when invoked with the arguments it receives.
    *
+   * Following shorthands are possible for providing predicates.
+   * Pass an `Object` and it will be used as an parameter for `_.matches` to create the predicate.
+   * Pass an `Array` of parameters for `_.matchesProperty` and the predicate will be created using them.
+   *
    * @static
    * @memberOf _
    * @since 4.0.0
@@ -12522,6 +12594,10 @@
    * Creates a function that checks if **any** of the `predicates` return
    * truthy when invoked with the arguments it receives.
    *
+   * Following shorthands are possible for providing predicates.
+   * Pass an `Object` and it will be used as an parameter for `_.matches` to create the predicate.
+   * Pass an `Array` of parameters for `_.matchesProperty` and the predicate will be created using them.
+   *
    * @static
    * @memberOf _
    * @since 4.0.0
@@ -12541,6 +12617,9 @@
    *
    * func(NaN);
    * // => false
+   *
+   * var matchesFunc = _.overSome([{ 'a': 1 }, { 'a': 2 }])
+   * var matchesPropertyFunc = _.overSome([['a', 1], ['a', 2]])
    */
   var overSome = createOver(arraySome);
 
@@ -12777,8 +12856,8 @@
       : string;
   }
 
-  /** Used to match leading and trailing whitespace. */
-  var reTrimStart = /^\s+/;
+  /** Used to match leading whitespace. */
+  var reTrimStart$1 = /^\s+/;
 
   /* Built-in method references for those with the same name as other `lodash` methods. */
   var nativeParseInt = root.parseInt;
@@ -12813,7 +12892,7 @@
     } else if (radix) {
       radix = +radix;
     }
-    return nativeParseInt(toString(string).replace(reTrimStart, ''), radix || 0);
+    return nativeParseInt(toString(string).replace(reTrimStart$1, ''), radix || 0);
   }
 
   /** Used to compose bitmasks for function metadata. */
@@ -14358,15 +14437,15 @@
    * var users = [
    *   { 'user': 'fred',   'age': 48 },
    *   { 'user': 'barney', 'age': 36 },
-   *   { 'user': 'fred',   'age': 40 },
+   *   { 'user': 'fred',   'age': 30 },
    *   { 'user': 'barney', 'age': 34 }
    * ];
    *
    * _.sortBy(users, [function(o) { return o.user; }]);
-   * // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 40]]
+   * // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 30]]
    *
    * _.sortBy(users, ['user', 'age']);
-   * // => objects for [['barney', 34], ['barney', 36], ['fred', 40], ['fred', 48]]
+   * // => objects for [['barney', 34], ['barney', 36], ['fred', 30], ['fred', 48]]
    */
   var sortBy = baseRest(function(collection, iteratees) {
     if (collection == null) {
@@ -14403,11 +14482,14 @@
    *  into `array`.
    */
   function baseSortedIndexBy(array, value, iteratee, retHighest) {
-    value = iteratee(value);
-
     var low = 0,
-        high = array == null ? 0 : array.length,
-        valIsNaN = value !== value,
+        high = array == null ? 0 : array.length;
+    if (high === 0) {
+      return 0;
+    }
+
+    value = iteratee(value);
+    var valIsNaN = value !== value,
         valIsNull = value === null,
         valIsSymbol = isSymbol(value),
         valIsUndefined = value === undefined;
@@ -15299,10 +15381,25 @@
     }
   };
 
+  /** Error message constants. */
+  var INVALID_TEMPL_VAR_ERROR_TEXT = 'Invalid `variable` option passed into `_.template`';
+
   /** Used to match empty string literals in compiled template source. */
   var reEmptyStringLeading = /\b__p \+= '';/g,
       reEmptyStringMiddle = /\b(__p \+=) '' \+/g,
       reEmptyStringTrailing = /(__e\(.*?\)|\b__t\)) \+\n'';/g;
+
+  /**
+   * Used to validate the `validate` option in `_.template` variable.
+   *
+   * Forbids characters which could potentially change the meaning of the function argument definition:
+   * - "()," (modification of function parameters)
+   * - "=" (default value)
+   * - "[]{}" (destructuring of function parameters)
+   * - "/" (beginning of a comment)
+   * - whitespace
+   */
+  var reForbiddenIdentifierChars = /[()=,{}\[\]\/\s]/;
 
   /**
    * Used to match
@@ -15458,11 +15555,11 @@
 
     // Use a sourceURL for easier debugging.
     // The sourceURL gets injected into the source that's eval-ed, so be careful
-    // with lookup (in case of e.g. prototype pollution), and strip newlines if any.
-    // A newline wouldn't be a valid sourceURL anyway, and it'd enable code injection.
+    // to normalize all kinds of whitespace, so e.g. newlines (and unicode versions of it) can't sneak in
+    // and escape the comment, thus injecting code that gets evaled.
     var sourceURL = hasOwnProperty$n.call(options, 'sourceURL')
       ? ('//# sourceURL=' +
-         (options.sourceURL + '').replace(/[\r\n]/g, ' ') +
+         (options.sourceURL + '').replace(/\s/g, ' ') +
          '\n')
       : '';
 
@@ -15495,12 +15592,16 @@
 
     // If `variable` is not specified wrap a with-statement around the generated
     // code to add the data object to the top of the scope chain.
-    // Like with sourceURL, we take care to not check the option's prototype,
-    // as this configuration is a code injection vector.
     var variable = hasOwnProperty$n.call(options, 'variable') && options.variable;
     if (!variable) {
       source = 'with (obj) {\n' + source + '\n}\n';
     }
+    // Throw an error if a forbidden character was found in `variable`, to prevent
+    // potential command injection attacks.
+    else if (reForbiddenIdentifierChars.test(variable)) {
+      throw new Error(INVALID_TEMPL_VAR_ERROR_TEXT);
+    }
+
     // Cleanup code by stripping empty strings.
     source = (isEvaluating ? source.replace(reEmptyStringLeading, '') : source)
       .replace(reEmptyStringMiddle, '$1')
@@ -15930,9 +16031,6 @@
     return index;
   }
 
-  /** Used to match leading and trailing whitespace. */
-  var reTrim$1 = /^\s+|\s+$/g;
-
   /**
    * Removes leading and trailing whitespace or specified characters from `string`.
    *
@@ -15958,7 +16056,7 @@
   function trim(string, chars, guard) {
     string = toString(string);
     if (string && (guard || chars === undefined)) {
-      return string.replace(reTrim$1, '');
+      return baseTrim(string);
     }
     if (!string || !(chars = baseToString(chars))) {
       return string;
@@ -15970,9 +16068,6 @@
 
     return castSlice(strSymbols, start, end).join('');
   }
-
-  /** Used to match leading and trailing whitespace. */
-  var reTrimEnd = /\s+$/;
 
   /**
    * Removes trailing whitespace or specified characters from `string`.
@@ -15996,7 +16091,7 @@
   function trimEnd(string, chars, guard) {
     string = toString(string);
     if (string && (guard || chars === undefined)) {
-      return string.replace(reTrimEnd, '');
+      return string.slice(0, trimmedEndIndex(string) + 1);
     }
     if (!string || !(chars = baseToString(chars))) {
       return string;
@@ -16007,8 +16102,8 @@
     return castSlice(strSymbols, 0, end).join('');
   }
 
-  /** Used to match leading and trailing whitespace. */
-  var reTrimStart$1 = /^\s+/;
+  /** Used to match leading whitespace. */
+  var reTrimStart$2 = /^\s+/;
 
   /**
    * Removes leading whitespace or specified characters from `string`.
@@ -16032,7 +16127,7 @@
   function trimStart(string, chars, guard) {
     string = toString(string);
     if (string && (guard || chars === undefined)) {
-      return string.replace(reTrimStart$1, '');
+      return string.replace(reTrimStart$2, '');
     }
     if (!string || !(chars = baseToString(chars))) {
       return string;
@@ -16691,7 +16786,7 @@
    * // => [1, 2, 3] (iteration order is not guaranteed)
    */
   function valuesIn(object) {
-    return object == null ? [] : baseValues(object, keysIn$1(object));
+    return object == null ? [] : baseValues(object, keysIn(object));
   }
 
   /**
@@ -17141,7 +17236,7 @@
     extend: assignIn, extendWith: assignInWith, findKey, findLastKey, forIn,
     forInRight, forOwn, forOwnRight, functions, functionsIn,
     get, has, hasIn, invert, invertBy,
-    invoke, keys, keysIn: keysIn$1, mapKeys, mapValues,
+    invoke, keys, keysIn, mapKeys, mapValues,
     merge, mergeWith, omit, omitBy, pick,
     pickBy, result, set, setWith, toPairs,
     toPairsIn, transform, unset, update, updateWith,
@@ -17320,7 +17415,7 @@
    */
 
   /** Used as the semantic version number. */
-  var VERSION = '4.17.15';
+  var VERSION = '4.17.21';
 
   /** Used to compose bitmasks for function metadata. */
   var WRAP_BIND_KEY_FLAG$6 = 2;
@@ -17915,28 +18010,8 @@
     lodash.prototype[symIterator$1] = seq.toIterator;
   }
 
-  const log = msg => {
-    console.log('---------- INFO ----------');
-    console.log(msg);
-    console.log('--------------------------');
-  };
-
-  var messages = {
-    hi: 'Hey Guys, I am zce~'
-  };
-
-  var name = "05-commonjs";
-  var version = "0.1.0";
-
   // 导入模块成员
 
-  // 使用模块成员
-  const msg = messages.hi;
-
-  log(msg);
-
-  log(name);
-  log(version);
-  log(lodash.camelCase('hello world'));
+  console.log(lodash.camelCase('hello world'));
 
 }());
