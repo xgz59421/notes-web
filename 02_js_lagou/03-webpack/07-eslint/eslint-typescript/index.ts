@@ -4,3 +4,5 @@ function foo(ms: string): void{
 }
 
 foo("hello typescript~")
+
+// yarn eslint ./index.ts

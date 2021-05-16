@@ -6,6 +6,7 @@ module.exports = {
   extends: [
     'standard'
   ],
+  // 语法解析器
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 11

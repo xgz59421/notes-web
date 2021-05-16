@@ -1,0 +1,14 @@
+@charset "UTF-8";
+/*1.变量*/
+div::after {
+  content: "abc";
+  border: 100px dotted #f10215;
+  height: 100px; }
+
+div {
+  color: #f10215;
+  background: #123;
+  width: 100px; }
+
+p {
+  border: 1px dotted #00f; }
