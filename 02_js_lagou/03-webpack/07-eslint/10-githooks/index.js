@@ -1,7 +1,7 @@
 const a=1
 
 console.log(a)
-2223
+222344
 
 // 检查
 // package.json: yarn lint
