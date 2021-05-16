@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "lint": "eslint ./index.js"
+  },
   "devDependencies": {
     "eslint": "^7.26.0",
     "eslint-config-standard": "^16.0.2",
