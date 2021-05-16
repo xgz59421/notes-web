@@ -11,6 +11,7 @@ module.exports = {
         use: 'babel-loader'
       },
       {
+        // 添加es-loader
         test: /\.js$/, 
         exclude: /node_modules/, 
         use: 'eslint-loader',
@@ -32,9 +33,12 @@ module.exports = {
   ]
 }
 
+// https://github.com/zce/zce-react-app.git
 // 安装 eslint 模块
 // yarn add eslint --dev
 // 安装 eslint-loader 模块
 // yarn add eslint-loader --dev
 // 初始化 .eslintrc.js 配置文件
 // yarn eslint --init
+
+// yarn webpack
