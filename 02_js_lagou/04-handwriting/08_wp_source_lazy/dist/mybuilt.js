@@ -71,10 +71,12 @@
       value = __webpack_require__(value)
     }
 
+    // commonjs 规范
     if (mode & 8) {  // 加载了可以直接返回使用的内容
       return value
     }
 
+    // esmodule 规范
     if ((mode & 4) && typeof value === 'object' && value && value.__esModule) {
       return value
     }
@@ -86,6 +88,7 @@
 
     Object.defineProperty(ns, 'default', { enumerable: true, value: value })
 
+    // 如果是对象
     if (mode & 2 && typeof value !== 'string') {
       for (var key in value) {
         __webpack_require__.d(ns, key, function (key) {

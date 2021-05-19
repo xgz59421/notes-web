@@ -14,6 +14,7 @@ compiler.run((err, stats) => {
 })
 
 /**
+ * 主要的钩子函数
  * beforeRun
  * run
  * thisCompilation

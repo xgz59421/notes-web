@@ -1,3 +1,4 @@
+// loophook:循环钩子, 如果当前未返回false 则一直执行
 const { SyncLoopHook } = require('tapable')
 
 let hook = new SyncLoopHook(['name', 'age'])

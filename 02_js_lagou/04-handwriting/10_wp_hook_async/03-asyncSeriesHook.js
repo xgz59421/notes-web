@@ -1,3 +1,4 @@
+// 库异步串行钩子
 const { AsyncSeriesHook } = require('tapable')
 
 let hook = new AsyncSeriesHook(['name'])
@@ -25,3 +26,8 @@ hook.promise('foo').then(function () {
   console.log('~~~~')
   console.timeEnd('time')
 })
+
+// fn1---> foo
+// fn2---> foo
+// ~~~~        
+// time: 3.035s
