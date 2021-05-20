@@ -33,3 +33,8 @@ module.exports = {
     })
   ]
 }
+
+// yarn add webpack-merge --dev
+// 通过 merge 合并 公共的webpack选项
+// 因为没有 `webpack.config.js`
+// yarn webpack --config webpack.prod.js
