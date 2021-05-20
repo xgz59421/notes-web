@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>用户登录</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-item>
+      <ion-label position="floating">用户名:</ion-label>
+      <ion-input [(ngModel)]="uname" placeholder="请输入用户名" (ngModelChange)="unameChange()"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">密码:</ion-label>
+      <ion-input [(ngModel)]="upwd" placeholder="请输入密码"></ion-input>
+    </ion-item>
+  </ion-card>
+  <ion-button  expand="block" (click)="dologin()">
+    登录
+  </ion-button>
+
+  <ion-item lines="none">
+    <ion-label>其他方式登录</ion-label>
+  </ion-item>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="2" >
+        <ion-button >
+          xx
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

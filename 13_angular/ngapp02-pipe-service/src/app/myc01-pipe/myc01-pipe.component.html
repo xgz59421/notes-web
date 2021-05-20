@@ -1,0 +1,34 @@
+<div>myc01-pipe works!</div>
+<h3>自定义管道(过滤器) pipe</h3>
+<div class="mb1">
+  <div>1--> {{1 | sex}}</div>
+  <div>1(en)--> {{1 | sex: "en"}}</div>
+  <div [title]="empList.zzmm | zzmm">{{10}}--> {{empList.zzmm | zzmm:"long"}}</div>
+</div>
+
+<h3>预定义管道(过滤器) pipe</h3>
+<div class="mb1">
+  <div>原数据: Tom and jarry</div>
+  <div>1. lowercase: 转小写</div>
+  <div class="mb1">{{"Tom and jarry" | lowercase }}  </div> 
+  <div>2. uppercase: 转大写</div>
+  <div class="mb1">{{"Tom and jarry" | uppercase }}  </div>
+  <div>3. titlecase: 首字母大写</div>
+  <div class="mb1">{{"Tom and jarry" | titlecase }}  </div>
+  <div>4. slice: start [: end] --> 截取</div>
+  <div class="mb1">{{"Tom and jarry" | slice:2  }}  </div>
+  <div class="mb1">{{"Tom and jarry" | slice:2 :5  }}  -->(2, 5) </div>
+  <div>5. json: 把js对象序列化为 json字符串</div>
+  <div class="mb1">{{empList | json}}</div>
+  <div>6. number:整数最少5位, 点后最少1位, 最多3位: (5.1-3) </div>
+  <div class="mb1">默认: {{empList.salary | number}}</div>
+  <div class="mb1">(5.1-3) {{empList.salary | number: "5.1-3"}}</div>
+  <div class="mb1">(4.2-2) {{empList.salary | number: "4.2-2"}}</div>
+  <div>7. currency:"¥" 数字转货币</div>
+  <div class="mb1">{{empList.salary | currency}}</div>
+  <div class="mb1">{{empList.salary | currency:"¥"}}</div>
+  <div>8. date: "yyyy-MM-dd hh:mm:ss" 日期</div>
+  <div class="mb1">{{empList.birthday | date: "yyyy-MM-dd hh:mm:ss" }}</div>
+</div>
+
+<hr>

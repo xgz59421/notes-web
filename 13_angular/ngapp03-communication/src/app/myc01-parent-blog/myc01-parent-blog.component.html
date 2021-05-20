@@ -1,0 +1,11 @@
+<div #parent style="background-color: #cf8; padding: 15px;">
+  <h2>{{userName}}的博客</h2>
+  <hr>
+  <!-- 第一个子组件 -->
+  <app-myc02-child1-modify #c1 (sonEvent)="doSonEvent($event)"></app-myc02-child1-modify> 
+  <!-- 第二个子组件 -->
+  <app-myc03-child2-photo #c2 [child2Name]="userName"></app-myc03-child2-photo>
+
+
+  <button (click)="print()">输出内部有识别符的组件</button>
+</div>

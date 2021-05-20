@@ -1,0 +1,25 @@
+<div>myc02 works!</div>
+
+<h3>HTML绑定</h3>
+<div>用户名: {{uname}}</div>
+<div>年龄: {{age}}</div>
+<div>后年年龄: {{age+2}}</div>
+<div>成年了吗: {{age>=18}}</div>
+<div>成年了吗: {{age>=18? "成年": "未成年"}}</div>
+<div>是否在工作年龄: {{age>=18 && age<=60}}</div>
+<div>用户名长度: {{uname.length}}</div>
+<div>用户名大写: {{uname.toUpperCase()}}</div>
+<div>用户名下标为2的字符: {{uname[2]}}</div>
+<!-- <div>当前时间: {{new Date()}}</div> -->
+<!-- <div>JSON字符串: {{JSON.stringify({})}}</div> -->
+<br>
+<h3>属性绑定</h3>
+<div title="{{lorem}}">
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium odio sunt voluptas enim aliquam illo eius rerum, quisquam doloremque esse corporis. Eveniet dolorum eaque tenetur sunt maxime aperiam dolore voluptatem.
+</div>
+<br>
+<div [title]="lorem">
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo harum debitis pariatur eligendi praesentium quos error maiores, accusamus, veniam atque dicta fugit nemo nihil odit corporis deleniti ad illum? Veritatis?
+</div>
+
+<hr>

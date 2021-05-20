@@ -1,0 +1,77 @@
+<ion-content>
+
+  
+  <!-- Default Item -->
+<ion-item>
+  <ion-label>
+    Item
+  </ion-label>
+</ion-item>
+
+<!-- Item Full Lines -->
+<ion-item lines="full">
+  <ion-label>Item Lines Full</ion-label>
+</ion-item>
+
+<!-- Item None Lines -->
+<ion-item lines="none">
+  <ion-label>Item Lines None</ion-label>
+</ion-item>
+
+
+<!-- Item as a Button -->
+<ion-item button (click)="buttonClick()">
+  <ion-label>
+    Button Item
+  </ion-label>
+</ion-item>
+
+<!-- Item as an Anchor -->
+<ion-item href="https://www.ionicframework.com">
+  <ion-label>
+    Anchor Item
+  </ion-label>
+</ion-item>
+
+<ion-item color="secondary">
+  <ion-label>
+    Secondary Color Item
+  </ion-label>
+</ion-item>
+
+<ion-item detail>
+  <ion-label>
+    Standard Item with Detail Arrow
+  </ion-label>
+</ion-item>
+
+<ion-item button (click)="buttonClick()">
+  <ion-avatar slot="start">
+    <img src="../../assets/2.jpg" alt="">
+  </ion-avatar>
+  <ion-label>
+    Avatar Start, Button Item
+  </ion-label>
+</ion-item>
+
+<ion-item href="#">
+  <ion-label>
+    Thumbnail End, Anchor Item
+  </ion-label>
+  <ion-thumbnail slot="end">
+    <img src="../../assets/1.jpg" alt="">
+  </ion-thumbnail>
+</ion-item>
+
+<ion-item>
+  <ion-thumbnail slot="start">
+    <img src="../../assets/3.jpg" alt="">
+  </ion-thumbnail>
+  <ion-label>
+    <h2>H2 Title Text</h2>
+    <p class="red">Button on right</p>
+  </ion-label>
+  <ion-button fill="outline" slot="end">View</ion-button>
+</ion-item>
+
+</ion-content>

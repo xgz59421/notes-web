@@ -1,0 +1,29 @@
+<div>myc03-service-http works!</div>
+<h3>依赖注入 (官方提供的:httpClient)</h3>
+
+<table>
+  <tr *ngIf="productList.length==0 else th">
+    <td>暂时没有数据</td>
+  </tr>
+  <ng-template #th>
+    <tr>
+      <th>lid</th>
+      <th>title</th>
+      <th>pic</th>
+      <th>price</th>
+      <th>button</th>
+    </tr>
+  </ng-template>
+  
+  <tr *ngFor="let item of productList; let i = index">
+    <!-- <td>{{i+1}}</td> -->
+    <td>{{item.lid}}</td>
+    <td>{{item.title}}</td>
+    <td>{{item.pic}}</td>
+    <td>{{item.price}}</td>
+    <td><button on-click="delete(i)">delete</button></td>
+  </tr>
+</table>
+<button (click)="loadMore()">加载更多数据</button>
+
+<hr>

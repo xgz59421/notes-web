@@ -1,0 +1,21 @@
+<div>myc04-ngfor works!</div>
+<h3>指令: *ngFor</h3>
+<ul>
+  <li *ngFor="let item of emplist">{{item}}</li>
+</ul>
+
+<ul>
+  <li *ngFor="let item of emplist; let i = index">{{i}} - {{item}}</li>
+</ul>
+
+<ul>
+  <li *ngFor="let item of emplist; index as a">{{a}} - {{item}}</li>
+</ul>
+
+<h3>指令: *ngIf</h3>
+<button *ngIf="hasMore; else noMore" (click)= "loadMore()">加载更多</button>
+<ng-template #noMore>
+  <div>已经到达底部</div>
+</ng-template>
+
+<hr>

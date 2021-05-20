@@ -1,0 +1,31 @@
+<ion-content class="ion-padding">
+  <h3>默认的输入框</h3>
+  <input type="text" [(ngModel)]="uname" (ngModelChange)="changeUname()">
+  <ion-input  placeholder="请输入"></ion-input>
+  <ion-input type="password" clearInput placeholder="请输入密码"></ion-input>
+  <h3>带标签的输入框(ion-item)</h3>
+
+  <ion-item>
+    <ion-label>用户名:</ion-label>
+    <ion-input ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Floating Label</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label position="fixed">Fixed Label</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label position="stacked">Stacked Label</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <ion-button (click)="onClick()" >
+    提交
+  </ion-button>
+</ion-content>

@@ -1,0 +1,14 @@
+<div>myc03 works!</div>
+<h3>事件绑定 ()="xxx"</h3>
+<button (click)="pintUname()">输出用户名</button> <br>
+<button on-click="pintAge()">输出年龄</button> <br>
+
+<button [title]="'当前购买数 ' + count" on-click="minus()"> - </button>
+<span>{{count}}</span>
+<button [title]="'当前购买数 ' + count" (click)="add()"> + </button>
+<br>
+
+<img [src]="'../../assets/'+imgPath" alt="">
+
+
+<hr>

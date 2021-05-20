@@ -1,0 +1,18 @@
+<p>myc07-ngmodel works!</p>
+
+<h3>指令: [ngmodel]</h3>
+
+<input [(ngModel)]="uname" placeholder="请输入用户名" (ngModelChange)="unameChange()">
+
+<p>输入的名字是: {{uname}}</p> 
+
+<input [(ngModel)]="upwd" (ngModelChange)="upwdChange()"> 
+<span>{{pwdtip}}</span>
+
+<h3>自定义指令: qiangdiao</h3>
+<div id="d1" appQiangdiao>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque nam nostrum dolorum voluptatum rem odio non illum consequuntur vero nisi, consequatur veniam aperiam culpa neque iste similique qui? Dolor, debitis?
+</div>
+
+
+<hr>

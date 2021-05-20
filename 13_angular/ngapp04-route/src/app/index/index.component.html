@@ -1,0 +1,12 @@
+<p>index works!</p>
+<!-- 传统的超链接可以跳转, 但属于DOM树重建 -->
+<!-- <a href="/ucenter">进入用户中心</a> <br> -->
+<h3>一: 使用模板方式跳转</h3>
+<a routerLink="/ucenter">进入用户中心</a>
+<div routerLink="/ucenter">进入用户中心</div>
+<button routerLink="/ucenter">进入用户中心</button>
+<div routerLink="/plist">进入商品列表</div>
+
+
+<h3>二: 使用脚本方式跳转</h3>
+<button (click)="jumpProductList()">进入商品列表</button>

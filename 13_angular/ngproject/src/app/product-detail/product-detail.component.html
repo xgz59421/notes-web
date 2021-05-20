@@ -1,0 +1,70 @@
+<!-- 商品详情 页头 -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>商品详情</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/cart">
+        <ion-icon  slot="icon-only" name="cart"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <!-- 产品型号 -->
+  <ion-item>
+    <ion-label>产品型号: {{product.lname}}</ion-label>
+  </ion-item>
+  <!-- 轮播图 -->
+  <ion-slides pager="true">
+    <ion-slide *ngFor="let item of product.picList">
+      <img [src]="url.host + item.md" alt="">
+    </ion-slide>
+  </ion-slides>
+  <!-- 卡片:详情 -->
+  <ion-card class="ion-padding">
+    <ion-card-title>{{product.title}}</ion-card-title>
+    <ion-card-subtitle>{{product.subtitle}}</ion-card-subtitle>
+  </ion-card>
+
+  <ion-item >
+    <ion-label color="danger">{{product.price | currency:"¥"}}</ion-label>
+    <ion-button slot="end" size="large" color="danger">
+      <ion-icon slot="start" name="cart"></ion-icon>
+      添加到购物车
+    </ion-button>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>cpu: {{product.cpu}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>内存: {{product.memory}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>硬盘: {{product.disk}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>系统: {{product.os}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>承诺: {{product.promise}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>显卡: {{product.video_card}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>显存: {{product.video_memory}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>上市时间: {{product.shelf_time | date : "yyyy年MM月dd日" }}</ion-label>
+  </ion-item>
+  <div>{{product.details | imgUrl}}</div>
+  <div [innerHTML] = "product.details | imgUrl"></div>
+
+</ion-content>
+

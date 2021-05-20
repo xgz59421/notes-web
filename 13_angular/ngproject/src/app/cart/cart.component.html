@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>我的购物车</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- 主体 -->
+<ion-content>
+  <ion-card>
+    <ion-item>
+      <!-- introduce -->
+      <ion-label >
+        Apple MacBook
+        <p>4核i5/8G内存</p>
+      </ion-label>
+      <!-- price -->
+      <ion-text color="danger" >
+        <p>{{35.5|currency}}</p>
+      </ion-text>
+      <!-- buttons -->
+      <ion-button slot="end" fill="outline" shape="round" size="default"> - </ion-button>
+      <ion-text slot="end" color="danger">
+        <p>{{1}}</p>
+      </ion-text>
+      <ion-button slot="end" shape="round" size="default"> + </ion-button>
+
+    </ion-item>
+  </ion-card>
+</ion-content>

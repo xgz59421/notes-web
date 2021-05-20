@@ -1,0 +1,50 @@
+<!-- 商品列表页头 -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  
+    <ion-searchbar ></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+<!-- 商品列表主体 -->
+<ion-content>
+  <ion-card>
+    <ion-item detail *ngFor="let item of product_list">
+      <ion-thumbnail slot="start">
+        <img [src]="url.host + item.pic" >
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{item.title}}</h2>
+        <ion-text color="danger">
+          <p >{{item.price | currency: "¥"}}</p>
+        </ion-text>
+      </ion-label>
+      <!-- product-detail -->
+      <!-- 方式1:(click)="jumpdetail(item.lid)" -->
+      <!-- 方式2: routerLink="product-detail"-->
+      <ion-button slot="end" [routerLink]="'/product-detail/'+item.lid">
+      <!-- <ion-button slot="end" (click)="jumpdetail(item.lid)"> -->
+        产看详情
+      </ion-button>
+    </ion-item>
+  </ion-card>
+
+  <!-- 无线滚动 -->
+  <ion-infinite-scroll *ngIf="hasMore; else mybtton" threshold="50px" (ionInfinite)="loadMore()" #myscroll>
+    <ion-infinite-scroll-content 
+    loadingSpinner="bubbles" loadingText="加载更多数据...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <!-- 没有更多数据 -->
+  <ng-template #mybtton>
+    <ion-button expand="block" disabled="true">
+      没有更多数据了
+    </ion-button>
+  </ng-template>
+
+
+</ion-content>

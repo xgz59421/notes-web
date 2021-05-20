@@ -1,0 +1,24 @@
+<div>test-component works! 练习管道</div>
+
+
+<table>
+  <tr>
+    <th>编号</th>
+    <th>姓名</th>
+    <th>工资</th>
+    <th>生日</th>
+    <th>性别</th>
+    <th>政治面貌</th>
+    <th>操作</th>
+  </tr>
+  <tr *ngFor="let item of empList; let i = index">
+    <td>{{item.eid}}</td>
+    <td>{{item.ename}}</td>
+    <td>{{item.salary}}</td>
+    <td>{{item.birthday}}</td>
+    <!-- 使用冒号给管道传参 -->
+    <td>{{item.sex | sex:"en"}}</td>
+    <td>{{item.zzmm | zzmm}}</td>
+    <td><button (click)="deleteEmp(i)">删除</button></td>
+  </tr>
+</table>
