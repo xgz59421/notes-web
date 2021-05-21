@@ -12,7 +12,7 @@ export default class VueRouter {
       beforeCreate () {
         if (this.$options.router) {
           _Vue.prototype.$router = this.$options.router
-          this.$options.router.init()
+          // this.$options.router.init()
         }
       }
     })
@@ -25,7 +25,7 @@ export default class VueRouter {
     this.data = _Vue.observable({
       current: '/'
     })
-    // this.init()
+    this.init()
   }
 
   init () {
