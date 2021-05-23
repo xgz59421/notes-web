@@ -35,9 +35,11 @@
 
     // 测试
     let dep = new Dep()
-    let watcher = new Watcher()
+    let watcher1 = new Watcher()
+    let watcher2 = new Watcher()
 
-    dep.addSub(watcher)
+    dep.addSub(watcher1)
+    dep.addSub(watcher2)
 
     dep.notify()
   </script>

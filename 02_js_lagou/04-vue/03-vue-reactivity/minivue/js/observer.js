@@ -1,3 +1,5 @@
+// 负责数据劫持 
+// 把 $data 中的成员转换成 getter/setter
 class Observer {
   constructor (data) {
     this.walk(data)
@@ -7,11 +9,12 @@ class Observer {
     if (!data || typeof data !== 'object') {
       return
     }
-    // 2. 遍历data对象的所有属性
+    // 2. 遍历data对象的所有属性 设置为 getter/setter
     Object.keys(data).forEach(key => {
       this.defineReactive(data, key, data[key])
     })
   }
+  // 定义响应式成员
   defineReactive (obj, key, val) {
     let that = this
     // 负责收集依赖，并发送通知

@@ -1,5 +1,16 @@
 class Compiler {
   constructor (vm) {
+    // el: 
+    // <div id="app">
+    //   <h1>差值表达式</h1>
+    //   <h3>{{ msg }}</h3>
+    //   <h3>{{ count }}</h3>
+    //   <h1>v-text</h1>
+    //   <div v-text="msg"></div>
+    //   <h1>v-model</h1>
+    //   <input type="text" v-model="msg">
+    //   <input type="text" v-model="count">
+    // </div>
     this.el = vm.$el
     this.vm = vm
     this.compile(this.el)
@@ -7,7 +18,9 @@ class Compiler {
   // 编译模板，处理文本节点和元素节点
   compile (el) {
     let childNodes = el.childNodes
+    // console.log(childNodes);
     Array.from(childNodes).forEach(node => {
+      // console.log(node, node.nodeType);
       // 处理文本节点
       if (this.isTextNode(node)) {
         this.compileText(node)
@@ -66,10 +79,12 @@ class Compiler {
   compileText (node) {
     // console.dir(node)
     // {{  msg }}
+    // 正则中() 为分组, RegExp.$1取到的就是第一个分组中的内容
     let reg = /\{\{(.+?)\}\}/
     let value = node.textContent
     if (reg.test(value)) {
       let key = RegExp.$1.trim()
+      // console.log(reg, key, value);
       node.textContent = value.replace(reg, this.vm[key])
 
       // 创建watcher对象，当数据改变更新视图

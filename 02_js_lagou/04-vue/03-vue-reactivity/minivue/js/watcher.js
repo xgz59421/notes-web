@@ -10,6 +10,7 @@ class Watcher {
     Dep.target = this
     // 触发get方法，在get方法中会调用addSub
     this.oldValue = vm[key]
+    // 防止重复添加
     Dep.target = null
   }
   // 当数据发生变化的时候更新视图

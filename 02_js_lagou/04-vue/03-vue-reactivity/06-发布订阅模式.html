@@ -11,11 +11,17 @@
     class EventEmitter {
       constructor () {
         // { 'click': [fn1, fn2], 'change': [fn] }
+        // this.subs = {} 同面
         this.subs = Object.create(null)
       }
 
       // 注册事件
       $on (eventType, handler) {
+        // if (!this.subs[eventType]) {
+        //   this.subs[eventType] = [];
+        // }
+        // this.subs[eventType].push(handler)
+       
         this.subs[eventType] = this.subs[eventType] || []
         this.subs[eventType].push(handler)
       }
