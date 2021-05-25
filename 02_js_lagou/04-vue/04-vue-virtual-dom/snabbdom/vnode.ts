@@ -36,6 +36,23 @@ export interface VNodeData {
   [key: string]: any // for any other 3rd party module
 }
 
+/**
+ * 
+ * @param sel 标签+选择器
+ * @param data 存放用户设置的钩子函数
+ * @param children 子节点 与 text互斥, 只能存在一个
+ * @param text 文本 
+ * @param elm 真实的dom
+ * const key (有可能有)
+ * @returns vnode
+ * vnode:
+    children: undefined
+    data: {hook: {…}}
+    elm: div#container.cls
+    key: undefined
+    sel: "div#container.cls"
+    text: "Hello World"
+ */
 export function vnode (sel: string | undefined,
   data: any | undefined,
   children: Array<VNode | string> | undefined,

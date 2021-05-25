@@ -6,6 +6,7 @@ export type VNodeChildElement = VNode | string | number | undefined | null;
 export type ArrayOrElement<T> = T | T[];
 export type VNodeChildren = ArrayOrElement<VNodeChildElement>;
 
+// svg
 function addNS(
   data: any,
   children: VNodes | undefined,

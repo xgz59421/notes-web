@@ -31,7 +31,7 @@ function createTextNode (text: string): Text {
 function createComment (text: string): Comment {
   return document.createComment(text)
 }
-
+// 已有的子节点前插入一个新的子节点
 function insertBefore (parentNode: Node, newNode: Node, referenceNode: Node | null): void {
   parentNode.insertBefore(newNode, referenceNode)
 }
@@ -65,14 +65,17 @@ function getTextContent (node: Node): string | null {
 }
 
 function isElement (node: Node): node is Element {
+  // 元素节点
   return node.nodeType === 1
 }
 
 function isText (node: Node): node is Text {
+  // 元素的文本内容
   return node.nodeType === 3
 }
 
 function isComment (node: Node): node is Comment {
+  // 注释
   return node.nodeType === 8
 }
 

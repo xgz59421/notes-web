@@ -2,9 +2,11 @@ import { vnode, VNode } from './vnode'
 import { htmlDomApi, DOMAPI } from './htmldomapi'
 
 export function toVNode (node: Node, domApi?: DOMAPI): VNode {
+  // domApi: 如果不指定, 或者不传参数, 默认是htmldom
   const api: DOMAPI = domApi !== undefined ? domApi : htmlDomApi
   let text: string
   if (api.isElement(node)) {
+    // 元素节点
     const id = node.id ? '#' + node.id : ''
     const cn = node.getAttribute('class')
     const c = cn ? '.' + cn.split(' ').join('.') : ''
@@ -26,12 +28,15 @@ export function toVNode (node: Node, domApi?: DOMAPI): VNode {
     }
     return vnode(sel, { attrs }, children, undefined, node)
   } else if (api.isText(node)) {
+    // 文本
     text = api.getTextContent(node) as string
     return vnode(undefined, undefined, undefined, text, node)
   } else if (api.isComment(node)) {
+    // 注释
     text = api.getTextContent(node) as string
     return vnode('!', {}, [], text, node as any)
   } else {
+    // 空字符串
     return vnode('', {}, [], undefined, node as any)
   }
 }
