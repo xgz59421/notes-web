@@ -19,6 +19,7 @@ class Compiler {
   compile (el) {
     let childNodes = el.childNodes
     // console.log(childNodes);
+    // 转数组  Array.from(伪数组)
     Array.from(childNodes).forEach(node => {
       // console.log(node, node.nodeType);
       // 处理文本节点
@@ -39,6 +40,7 @@ class Compiler {
   compileElement (node) {
     // console.log(node.attributes)
     // 遍历所有的属性节点
+    // done 转数组  Array.from(伪数组)
     Array.from(node.attributes).forEach(attr => {
       let attrName = attr.name
       // if (attrName.startsWith('v-on')) {

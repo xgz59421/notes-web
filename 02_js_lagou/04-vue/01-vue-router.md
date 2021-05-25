@@ -5,6 +5,7 @@
 - [4. 编程式导航](#4)
 - [5. Hash模式和History模式的区别](#5)
 - [6. 手写vue-router](#6)
+- [7. Vue runtimeCompiler](#7)
 
 --------
 
@@ -131,4 +132,20 @@ export default class VueRouter {
   ...
 }
 
+```
+><h2 id='7'>7. Vue runtimeCompiler</h2>>
+```js
+// vue-cli默认runtimeCompiler 为false, 提前把template 编译为render函数
+// 如果代码插件中使用template, 则需, runtimeCompiler: true
+`vue.config.js`:
+module.exports = {
+
+  // Vue 的构建版本
+  // 1. 运行时版: 效率更高,不支持template, 可以使用runder函数, vuecli 默认
+  // 2. 完整版: 包含运行时版和编译器, 体积比运行时版大10k左右, 程序运行时把模板转换成render函数
+  // 编译器作用: 把template编程runder函数
+
+  // runtimeCompiler切换为 完整版, 默认false
+  // runtimeCompiler: true
+}
 ```
