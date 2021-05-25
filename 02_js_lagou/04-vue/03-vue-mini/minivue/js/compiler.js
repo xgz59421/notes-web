@@ -40,8 +40,16 @@ class Compiler {
     // console.log(node.attributes)
     // 遍历所有的属性节点
     Array.from(node.attributes).forEach(attr => {
-      // 判断是否是指令
       let attrName = attr.name
+      // if (attrName.startsWith('v-on')) {
+      //   let type = attrName.substr(5)
+      //   let key = attr.value
+      //   node.addEventListener(type, ()=>{
+      //     console.log(this.vm.$options.methods[key]);
+      //     this.vm.$options.methods[key]()
+      //   })
+      // }
+      // 判断是否是指令
       if (this.isDirective(attrName)) {
         // v-text --> text
         attrName = attrName.substr(2)
@@ -50,10 +58,24 @@ class Compiler {
       }
     })
   }
-
+  // // v-on
+  // onUpdater(node, value, key){
+  //   // console.log(this.vm.$options.methods); 
+  //   node.addEventListener('click', ()=>{
+  //     this.vm.$options.methods[key]()
+  //   })
+  // }
   update (node, key, attrName) {
     let updateFn = this[attrName + 'Updater']
     updateFn && updateFn.call(this, node, this.vm[key], key)
+  }
+
+  // v-html
+  htmlUpdater(node, value, key) {
+    node.textContent = value
+    new Watcher(this.vm, key, (newValue) => {
+      node.textContent = newValue
+    })
   }
 
   // 处理 v-text 指令

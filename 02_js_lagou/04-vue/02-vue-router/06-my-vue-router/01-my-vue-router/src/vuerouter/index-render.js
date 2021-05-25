@@ -31,7 +31,7 @@ export default class VueRouter {
   init () {
     this.createRouteMap()
     this.initComponent(_Vue)
-    // this.initEvent()
+    this.initEvent()
   }
 
   createRouteMap () {
