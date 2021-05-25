@@ -3,4 +3,5 @@ test.html
 test.js
 yarn.lock
 package-lock.json
-pdf
+.cache
+dist
