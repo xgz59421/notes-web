@@ -4,6 +4,8 @@ import Vue from 'vue'
 // import VueRouter from '../vuerouter/index-template'
 // render 运行时版
 import VueRouter from '../vuerouter/index-render'
+// hash 版
+// import VueRouter from '../vuerouter/index-hash'
 import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
