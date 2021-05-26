@@ -4,4 +4,3 @@ test.js
 yarn.lock
 package-lock.json
 .cache
-dist
