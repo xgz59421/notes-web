@@ -1,0 +1,10 @@
+{
+  // 开启/禁用javascript 验证
+  "javascript.validate.enable": true,
+  // 底部状态栏颜色
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#323232",
+    "statusBar.noFolderBackground": "#1A1A1A",
+    "statusBar.debuggingBackground": "#511f1f"
+  }
+}
