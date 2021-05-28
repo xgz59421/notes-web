@@ -296,6 +296,7 @@ function initMethods (vm: Component, methods: Object) {
 function initWatch (vm: Component, watch: Object) {
   for (const key in watch) {
     const handler = watch[key]
+    // 可以使数组
     if (Array.isArray(handler)) {
       for (let i = 0; i < handler.length; i++) {
         createWatcher(vm, key, handler[i])
@@ -312,9 +313,16 @@ function createWatcher (
   handler: any,
   options?: Object
 ) {
+  // watch: {
+  // 'user': {
+  //   handler: function (newValue, oldValue) {
+  //     this.user.fullName = this.user.firstName + ' ' + this.user.lastName
+  //   }
+  // }
+  // 判断是否是对象
   if (isPlainObject(handler)) {
     options = handler
-    handler = handler.handler
+    handler = handler.handler  // 对象中的 方法
   }
   if (typeof handler === 'string') {
     handler = vm[handler]
@@ -350,7 +358,7 @@ export function stateMixin (Vue: Class<Component>) {
 
   Vue.prototype.$watch = function (
     expOrFn: string | Function,
-    cb: any,
+    cb: any, // 可以是对象也可以是函数
     options?: Object
   ): Function {
     // 获取 Vue 实例 this

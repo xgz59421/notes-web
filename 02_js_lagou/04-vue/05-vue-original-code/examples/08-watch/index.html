@@ -14,6 +14,16 @@
 
   <script src="../../dist/vue.js"></script>
   <script>
+    /*
+    调试 watch
+    位置 core-observer-watcher constructor: this.vm = vm
+    */
+    // 三种类型的 watcher
+    // 1. computed 计算属性watcher 第一个被创建 id: 1
+    // 2. $watcher 监听器的watcher(用户watcher) 第二个被创建 id: 2
+    // 3. $mount montComponent 渲染watcher 第三个被创建 id: 3
+    // 执行的时候 在flushSchedulerQueue函数中 按id 从小到大 执行
+
     const vm = new Vue({
       el: '#app',
       data: {

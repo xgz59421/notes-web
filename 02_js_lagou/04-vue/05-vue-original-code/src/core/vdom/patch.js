@@ -75,6 +75,7 @@ export function createPatchFunction (backend) {
   // nodeOps 节点操作
   const { modules, nodeOps } = backend
 
+  // cbs[钩子函数]的初始化
   for (i = 0; i < hooks.length; ++i) {
     // cbs['update'] = []
     cbs[hooks[i]] = []
@@ -770,7 +771,7 @@ export function createPatchFunction (backend) {
       // empty mount (likely as component), create new root element
       isInitialPatch = true
       // 创建新的 VNode
-      createElm(vnode, insertedVnodeQueue)
+      createElm(vnode, insertedVnodeQueue) // 创建DOM, 但没有挂载
     } else {
       // 新的和老的 VNode 都存在，更新
       const isRealElement = isDef(oldVnode.nodeType)

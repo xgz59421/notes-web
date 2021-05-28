@@ -1,6 +1,6 @@
 {
   // 开启/禁用javascript 验证
-  "javascript.validate.enable": true,
+  "javascript.validate.enable": false,
   // 底部状态栏颜色
   "workbench.colorCustomizations": {
     "statusBar.background": "#323232",

@@ -16,6 +16,14 @@
 
   <script src="../../dist/vue.js"></script>
   <script>
+    /*
+    set调试:
+    位置: 
+      core-observer-index.js:  function set
+    delete调试: 
+    位置: 
+      core-observer-index.js:  function del
+    */
     const vm = new Vue({
       el: '#app',
       data: {
@@ -25,6 +33,18 @@
         arr: [1, 2, 3]
       }
     })
+    // -----------vm.$set/Vue.set---------------
+    // vm.obj.name = 'tom' // 不起作用
+    // Vue.set(vm.obj, 'name', 'jerry')
+    // vm.$set(vm.obj, 'name', 'jerry')
+
+    // vm.arr[0] = 100  // 不起作用
+    // vm.$set(vm.arr, 0, 100)
+
+    // -----------vm.$delete---------------
+    // vm.$delete(vm.obj, 'title')
+    // vm.$delete(vm.arr, 0)
+    // Vue.delete(vm.arr, 2)
   </script>
 </body>
 </html>

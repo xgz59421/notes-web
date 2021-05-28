@@ -9,11 +9,14 @@
   <div id="app">
     <button @click="handler">按钮</button>
     <ul>
+      <!-- 设置key, dom执行了一次 -->
+      <!-- 不设置key, dom执行了4次 -->
       <li v-for="value in arr" :key="value">{{value}}</li>
     </ul>
   </div>
   <script src="../../dist/vue.js"></script>
   <script>
+    // 调试updateChildren
     const vm = new Vue({
       el: '#app',
       data: {

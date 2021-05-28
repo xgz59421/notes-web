@@ -22,13 +22,19 @@
         }
       }
     })
-
+    /*
+      参数1: 监视的属性
+      参数2: 回调函数
+      参数3: options 可选项
+    */
     vm.$watch('user',
       function (newValue, oldValue) {
         this.user.fullName = newValue.firstName + ' ' + newValue.lastName
-      }, {
-        immediate: true,
-        deep: true
+      }, 
+      // 可选项
+      {
+        immediate: true,  // 回调函数立即执行
+        deep: true // 深度监听 (监听 user对象的子属性)
       }
     )
   </script>
