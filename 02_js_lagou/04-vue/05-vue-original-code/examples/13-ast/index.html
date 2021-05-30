@@ -13,6 +13,12 @@
   </div>
   <script src="../../dist/vue.js"></script>
   <script>
+    /*
+      调试模板编译过程
+      断点位置: 
+      platforms/web/entry-runtime-with-compiler.js compileToFunctions
+      compiler/create-compiler.js baseCompile
+    */
     const vm = new Vue({
       el: '#app',
       data: {
