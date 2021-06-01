@@ -10,9 +10,12 @@ export function initAssetRegisters (Vue: GlobalAPI) {
   // 遍历 ASSET_TYPES 数组，为 Vue 定义相应方法
   // ASSET_TYPES 包括了directive、 component、filter
   ASSET_TYPES.forEach(type => {
+    // const Comp = Vue.component('comp', {
+    //   template: `<div>hellow Component</div>`
+    // })
     Vue[type] = function (
-      id: string,
-      definition: Function | Object
+      id: string,   //id comp
+      definition: Function | Object  // template: `<div>hellow Component</div>`
     ): Function | Object | void {
       if (!definition) {
         return this.options[type + 's'][id]
@@ -22,6 +25,7 @@ export function initAssetRegisters (Vue: GlobalAPI) {
           validateComponentName(id)
         }
         // Vue.component('comp', { template: '' })
+        // isPlainObject === '[object Object]'   第二个参数是否是一个对象
         if (type === 'component' && isPlainObject(definition)) {
           definition.name = definition.name || id
           // 把组件配置转换为组件的构造函数
