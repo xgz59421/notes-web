@@ -27,6 +27,12 @@
 import json from 'rollup-plugin-json'
 import resolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
+// format:
+// amd - 输出成AMD模块规则，RequireJS可以用
+// cjs - CommonJS规则，适合Node，Browserify，Webpack 等
+// es - 默认值，不改变代码
+// iife - 输出自执行函数，最适合导入html中的script标签，且代码更小
+// umd - 通用模式，amd,cjs,iife都能用
 export default {
   input: 'src/index.js',
   output: {
