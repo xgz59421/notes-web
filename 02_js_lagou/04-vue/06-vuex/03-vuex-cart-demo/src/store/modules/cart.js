@@ -36,6 +36,7 @@ const mutations = {
       prod.totalPrice = prod.count * prod.price
     } else {
       state.cartProducts.push({
+        // product {id, price, title}
         ...product,
         count: 1,
         isChecked: true,

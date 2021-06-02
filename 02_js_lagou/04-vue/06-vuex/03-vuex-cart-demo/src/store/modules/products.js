@@ -9,11 +9,14 @@ const mutations = {
   }
 }
 const actions = {
+  // async getProducts (context)
+  // 解构 context
   async getProducts ({ commit }) {
     const { data } = await axios({
       method: 'GET',
       url: 'http://127.0.0.1:3000/products'
     })
+    // context.commit('setProducts', data)
     commit('setProducts', data)
   }
 }

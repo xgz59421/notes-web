@@ -18,8 +18,11 @@
       <el-table-column
         prop="address"
         label="操作">
+        <!-- 2.6以前 -->
         <!-- <template slot-scope="scope"> -->
+        <!-- 2.6以后 -->
         <template v-slot="scope">
+          <!-- scope.row 当前行 -->
           <el-button @click="addToCart(scope.row)">加入购物车</el-button>
         </template>
       </el-table-column>
