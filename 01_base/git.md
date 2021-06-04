@@ -32,6 +32,7 @@
   git branch aa  创建aa分支
   git branch   分支列表
   git checkout aa  切换分支
+  git checkout -b aa 创建并切换到aa分支
   git branch -d aa 删除分支
 
 ```
