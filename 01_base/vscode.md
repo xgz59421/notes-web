@@ -47,3 +47,38 @@
     // todo
     ```
 23. REST Client 接口调试
+
+```js
+// 设置用户代码片段
+// 以vue 命令为例
+// 其中 $1, $2 为生成片段之后光标所在的位置，$0 是光标最后所在的位置。使用 tab 键切换光标，用于快速输入。
+{
+  "vue template": {  // 该片段的名称（用于分辨各片段）
+    "prefix": "vue", // 关键字（输入该关键字使用 tab 键即可快速生成）
+    "body": [
+      "<template>",
+      "  <div class=''>$2</div>",
+      "</template>",
+      "",
+      "<script>",
+      "export default {",
+      "  name: '',",
+      "  components: {},",
+      "  props: {},",
+      "  data() {",
+      "    return {}",
+      "  },",
+      "  computed: {},",
+      "  watch: {},",
+      "  created() {},",
+      "  mounted() {},",
+      "  methods: {},",
+      "}",
+      "</script>",
+      "",
+      "<style scoped></style>"
+    ],
+    "description": "vue template"
+  }
+}
+```
