@@ -1,6 +1,6 @@
 const express = require('express')
 const fs = require('fs')
-const template = require('art-template')
+const template = require('art-template')  // 渲染模板  npm i art-template
 
 const app = express()
 
