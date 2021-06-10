@@ -40,6 +40,8 @@
 ```bash
 # clone
   git clone 公共仓库地址
+  # 只下载最后一次提交记录
+  git clone https://github.com/xxx.git --depth=1  
   git clone https://username:password @gitadress
 # 推送到来源 
   git push origin 
