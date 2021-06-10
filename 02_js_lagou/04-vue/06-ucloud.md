@@ -10,7 +10,7 @@
 
 --------
 
-><h2 id='1'>1. 创建项目</h2>
+><h2 id='1'>1. ucloud账户信息</h2>
 ```js
 uclound: 广州B
 uname: 8725@qq.com
