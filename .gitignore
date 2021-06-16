@@ -3,4 +3,5 @@ test.html
 test.js
 yarn.lock
 .cache
+.tmp
 .nuxt

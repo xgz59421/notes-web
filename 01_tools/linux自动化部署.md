@@ -94,13 +94,13 @@ https://github.com/settings/tokens   (Generate new token)
 2. 配置到项目的secrets中 
 https://github.com/xgz59421/realworld-nuxtjs/settings/secrets/actions
 ```
-<img src='./img/CICD.png'>
-<img src='./img/cicd1.png'>
-<img src='./img/cicd2.png'>
-<img src='./img/cicd3.png'>
-<img src='./img/cicd4.png'>
-<img src='./img/cicd5.png'>
-<img src='./img/cicd6.png'>
-<img src='./img/cicd7.png'>
-<img src='./img/cicd8.png'>
-<img src='./img/cicd9.png'>
+<img src='./img/linux/CICD.png'>
+<img src='./img/linux/cicd1.png'>
+<img src='./img/linux/cicd2.png'>
+<img src='./img/linux/cicd3.png'>
+<img src='./img/linux/cicd4.png'>
+<img src='./img/linux/cicd5.png'>
+<img src='./img/linux/cicd6.png'>
+<img src='./img/linux/cicd7.png'>
+<img src='./img/linux/cicd8.png'>
+<img src='./img/linux/cicd9.png'>
