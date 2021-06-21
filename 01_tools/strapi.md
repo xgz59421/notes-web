@@ -12,6 +12,8 @@
 - [5. 设置关联](#5)
 - [6. 请求测试](#6)
 - [7. strapi graphQL](#7)
+- [8. 修改数据库](#8)
+- [9. webhooks](#9)
 
 --------
 ><h2 id='1'>1. 创建项目</h2>
@@ -98,6 +100,16 @@ https://strapi.io/documentation/developer-docs/latest/development/plugins/graphq
   // https://www.gridsome.cn/plugins/@gridsome/source-strapi
   // npm install @gridsome/source-strapi
 ```
+
 <img src='./img/strapi/8.png'/><br/>
+
+><h2 id='8'>8. 修改数据库</h2>
+<img src='./img/strapi/9.png'/><br/>
+<img src='./img/strapi/10.png'/><br/>
+
+
+><h2 id='9'>9. webhooks</h2>
+<img src='./img/strapi/11.png'/><br/>
+<img src='./img/strapi/12.png'/><br/>
 
 
