@@ -6,3 +6,4 @@ yarn.lock
 .tmp
 .nuxt
 .temp
+.DS_Store
