@@ -1,0 +1,5 @@
+{"_id":{"$oid":"5fa2c32ed6b0014c93906a92"},"name":"Vue","createdAt":{"$date":"2020-11-04T15:05:18.881Z"},"updatedAt":{"$date":"2020-11-04T15:05:18.881Z"},"__v":0}
+{"_id":{"$oid":"5fa11a0bfbe98b811e09d1ea"},"name":"Node","createdAt":{"$date":"2020-11-03T08:51:23.925Z"},"updatedAt":{"$date":"2020-11-03T08:51:23.925Z"},"__v":0}
+{"_id":{"$oid":"5fa2c4ddd6b0014c93906a97"},"name":"JavaScript","createdAt":{"$date":"2020-11-04T15:12:29.363Z"},"updatedAt":{"$date":"2020-11-04T15:12:29.363Z"},"__v":0}
+{"_id":{"$oid":"5fa11a10fbe98b811e09d1eb"},"name":"Angular","createdAt":{"$date":"2020-11-03T08:51:28.518Z"},"updatedAt":{"$date":"2020-11-03T08:51:28.518Z"},"__v":0}
+{"_id":{"$oid":"5fa11a1afbe98b811e09d1ec"},"name":"React","createdAt":{"$date":"2020-11-03T08:51:38.004Z"},"updatedAt":{"$date":"2020-11-03T08:51:38.004Z"},"__v":0}
