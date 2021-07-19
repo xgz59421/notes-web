@@ -1,0 +1,23 @@
+<h3 class="container-sm" style="width: 350px; text-align: center;">Angular Todolist</h3>
+<div class="container-sm mt-4 form-inline" style="width: 350px;">
+  <input type="text" [(ngModel)]="todoitem" (ngModelChange)="changeTodo()" class="form-control mr-sm-3 mb-2"
+    placeholder="add todo">
+  <button (click)='addTodo()' type="submit" class="btn btn-outline-danger mb-2 ">添加</button>
+  <!-- <div>
+    <pre>
+      {{todos | async | json}}
+    </pre>
+  </div> -->
+</div>
+
+<div class="container-sm mt-2" style="width: 350px;">
+  <ul class="list-group" #ul>
+    <li *ngFor='let todo of todos | async'
+      class="list-group-item d-flex align-items-center p-1  justify-content-between">
+      <input type="checkbox" [value]="todo.id" (change)="onCheckbox($event)" />
+      <div class="pl-1" style="flex:1">{{ todo.title }}</div>
+      <button (click)='deleteTodo(todo.id)' type="button" class="btn btn-outline-danger btn-sm">删除</button>
+    </li>
+
+  </ul>
+</div>

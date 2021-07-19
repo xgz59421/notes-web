@@ -1,0 +1,16 @@
+<div class="container mt-4">
+  <input #AddTodoInput type="text" class="form-control" placeholder="请输入待办事件">
+  
+  <!-- <div>
+    <pre>
+      {{todos | async | json}}
+    </pre>
+  </div> -->
+  <ul class="list-group">
+    <li *ngFor='let todo of todos | async' 
+      class="list-group-item d-flex align-items-center justify-content-between">
+      {{todo.title}}
+      <button (click)='deleteTodo(todo.id)' type="button" class="btn btn-danger btn-sm">删除</button>
+    </li>
+  </ul>
+</div>
