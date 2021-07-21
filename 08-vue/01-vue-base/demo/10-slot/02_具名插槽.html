@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>具名插槽</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <p>这是2.60版本后使用v-slot引入插槽名称</p>
+    <p>子组件中有多个插槽，通过给插槽指定名称方式实现一 一对应</p>
+    <my-component>
+      <template v-slot:first>nihao</template>
+      <template v-slot:last>hi</template>
+    </my-component>
+    <hr>
+    <!-- 这是具名插槽缩写方案 v-slot:缩写为 # -->
+    <my-component>
+      <template #first>nihao</template>
+      <template #last>hi</template>
+    </my-component>
+  </div>
+</body>
+<script type="text/javascript">
+  Vue.component('my-component', {
+    template: `
+      <div>
+        <h4>这是第一个具名插槽</h4>
+        <slot name='first'></slot>
+        <h4>这是第二个具名插槽</h4>
+        <slot name='last'></slot>
+      </div>`
+  })
+  let app = new Vue({
+    el: "#app",
+    data: {
+
+    }
+  })
+</script>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>observe</title>
+</head>
+<body>
+  <div id="app">
+    <h1>{{ msg }}</h1>
+
+    {{ msg }}
+
+    <hr>
+
+    {{ count }}
+  </div>
+
+  <script src="../../dist/vue.js"></script>
+  <script>
+    /*
+      --收集依赖调试-- 
+      调试位置: 
+      1. core-instance-lifecycle.js :
+         function mountComponent : new Watcher
+      2. core-observer-watcher.js
+         class Watcher : this.get()
+    */
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'Hello Vue',
+        count: 100
+      }
+    })
+  </script>
+</body>
+</html>

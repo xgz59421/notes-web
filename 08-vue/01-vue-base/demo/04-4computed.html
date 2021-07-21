@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>computed属性</title>
+  <script src="js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h1>1总价: ¥{{total.toFixed(2)}}</h1>
+    <h1>2总价: ¥{{m_total().toFixed(2)}}</h1>
+    <ul>
+      <li v-for="(p,i) in cart" :key="i">
+        {{p.lid}} |
+        {{p.lname}} |
+        ¥{{p.price.toFixed(2)}} |
+        {{p.count}} |
+        小计:¥{{(p.price*p.count).toFixed(2)}}
+      </li>
+    </ul>
+    <button @click="addprice">addprice</button>
+    <!-- computed为 计算属性 不是方法不要加()-->
+    <!-- 1.计算属性的值会被Vue 缓存起来 -->
+    <!-- 2.methods每次都会执行 -->
+    <h1>1总价: ¥{{total.toFixed(2)}}</h1>
+    <h1>2总价: ¥{{m_total().toFixed(2)}}</h1>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        cart: [{
+            lid: 1,
+            lname: "华为",
+            price: 5599,
+            count: 2
+          },
+          {
+            lid: 2,
+            lname: "小米",
+            price: 3399,
+            count: 3
+          },
+          {
+            lid: 3,
+            lname: "苹果",
+            price: 8899,
+            count: 1
+          }
+        ]
+      },
+      methods: {
+        m_total() {
+          var sum = 0;
+          for (var p of this.cart) {
+            sum += p.price * p.count;
+          }
+          console.log("m_total");
+          return sum;
+        },
+        addprice(){
+          // console.log(this.cart);
+          this.cart.push({
+            lid: 3,
+            lname: "苹果",
+            price: 8899,
+            count: 1
+          });
+        }
+      },
+      computed: {
+        total() {
+          var sum = 0;
+          for (var p of this.cart) {
+            sum += p.price * p.count;
+          }
+          console.log("computed");
+          return sum;
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

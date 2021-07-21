@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-show</title>
+  <script src="../js/vue.js"></script>
+  <style>
+    #pop {
+      position: fixed;
+      width: 350px;
+      height: 100px;
+      background-color: red;
+      color: yellow;
+      top: 50%;
+      left: 50%;
+      margin-left: -175px;
+      margin-top: -50px;
+      padding: 10px;
+    }
+
+    #pop>span {
+      float: right;
+      cursor: pointer;
+    }
+
+    #pop>span:hover {
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <button @click="open">检查浏览器版本</button>
+    <div id="pop" v-show="show">
+      <span @click="close">×</span>
+      <p>您的浏览器版本过低, 清升级到新版浏览器</p>
+    </div>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        show: false
+      },
+      methods: {
+        open() {
+          this.show = true;
+        },
+        close() {
+          this.show = false;
+        }
+      }
+    });
+
+    console.log(vm);
+  </script>
+</body>
+
+</html>

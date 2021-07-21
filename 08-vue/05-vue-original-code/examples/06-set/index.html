@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>set</title>
+</head>
+<body>
+  <div id="app">
+    {{ obj.title }}
+    <hr>
+    {{ obj.name }}
+    <hr>
+    {{ arr }}
+  </div>
+
+  <script src="../../dist/vue.js"></script>
+  <script>
+    /*
+    set调试:
+    位置: 
+      core-observer-index.js:  function set
+    delete调试: 
+    位置: 
+      core-observer-index.js:  function del
+    */
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        obj: {
+          title: 'Hello Vue'
+        },
+        arr: [1, 2, 3]
+      }
+    })
+    // -----------vm.$set/Vue.set---------------
+    // vm.obj.name = 'tom' // 不起作用
+    // Vue.set(vm.obj, 'name', 'jerry')
+    // vm.$set(vm.obj, 'name', 'jerry')
+
+    // vm.arr[0] = 100  // 不起作用
+    // vm.$set(vm.arr, 0, 100)
+
+    // -----------vm.$delete---------------
+    // vm.$delete(vm.obj, 'title')
+    // vm.$delete(vm.arr, 0)
+    // Vue.delete(vm.arr, 2)
+  </script>
+</body>
+</html>

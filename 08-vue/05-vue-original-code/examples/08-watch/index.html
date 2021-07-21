@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>watcher</title>
+</head>
+<body>
+  <div id="app">
+    {{ reversedMessage }}
+    <hr>
+    {{ user.fullName }}
+  </div>
+
+  <script src="../../dist/vue.js"></script>
+  <script>
+    /*
+    调试 watch
+    位置 core-observer-watcher constructor: this.vm = vm
+    */
+    // 三种类型的 watcher
+    // 1. computed 计算属性watcher 第一个被创建 id: 1
+    // 2. $watcher 监听器的watcher(用户watcher) 第二个被创建 id: 2
+    // 3. $mount montComponent 渲染watcher 第三个被创建 id: 3
+    // 执行的时候 在flushSchedulerQueue函数中 按id 从小到大 执行
+
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue',
+        user: {
+          firstName: '诸葛',
+          lastName: '亮',
+          fullName: ''
+        }
+      },
+      computed: {
+        reversedMessage: function () {
+          return this.message.split('').reverse().join('')
+        }
+      },
+      watch: {
+        // 'user.firstName': function (newValue, oldValue) {
+        //   this.user.fullName = this.user.firstName + ' ' + this.user.lastName
+        // },
+        // 'user.lastName': function (newValue, oldValue) {
+        //   this.user.fullName = this.user.firstName + ' ' + this.user.lastName
+        // },
+        'user': {
+          handler: function (newValue, oldValue) {
+            this.user.fullName = this.user.firstName + ' ' + this.user.lastName
+          },
+          deep: true,
+          immediate: true
+        }
+      }
+    })
+  </script>
+</body>
+</html>

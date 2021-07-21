@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-for</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div>遍历时,of和in 都可以,没有区别</div>
+    <ul>
+      <li v-for="(li,i) of names" :key="i">{{i+1}} - {{li}}</li>
+    </ul>
+    <ul>
+      <!-- 也可以用上面的{{}} -->
+      <li v-for="(value,key ) in lilei" :key="key" v-text=`${key}:${value}`></li>
+    </ul>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        names: ["亮亮", "然然", "东东"],
+        lilei: {
+          sname: "li lei",
+          age: 18
+        }
+      },
+      methods: {
+
+      }
+    });
+    console.log(vm);
+  </script>
+</body>
+
+</html>

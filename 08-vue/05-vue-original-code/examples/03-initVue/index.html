@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>initVue</title>
+</head>
+<body>
+  <div id="app">
+    <div><h1>Hello World</h1></div>
+    {{ msg }}
+  </div>
+
+  <script src="../../dist/vue.js"></script>
+  <script>
+    /*
+    F11 一步一步的调试
+    F10 跳过方法
+    调试 vue初始化 
+      core-instance-index.js:  initMixin(Vue)  实例成员
+      core-index.js: initGlobalAPI(Vue) 静态成员
+      platforms-web-runtime-index.js: Vue.config.must 
+      platforms-web-entry-runtime-with-compiler.js: const mount  把模板变为runder函数
+    调试 首次渲染过程
+      core-instance-index.js:  this._init(options)
+      */
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'Hello Vue'
+      }
+    })
+  </script>
+</body>
+</html>
