@@ -1,0 +1,9 @@
+/* index.css */
+@import './base.css';
+
+.hello {
+    background: #fdd;
+    color: #a33;
+    padding: 10px;
+    border: 1px solid red;
+}
