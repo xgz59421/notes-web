@@ -9,7 +9,7 @@ ArrayBuffer.prototype.split = function (sep) {
     ret.push(this.slice(start, offset))
     start = offset + len
   }
-  ret.push(this.slice(start))
+  ret.push(this.slice(start)) // 最后一个值
   return ret
 }
 
