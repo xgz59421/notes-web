@@ -1,0 +1,31 @@
+/*函数*/
+
+/*数学函数*/
+p{
+  width: round(4.5)+px;
+  height: ceil(3.1)+px;
+  margin: max(1,2,3,4,5)+px;
+  padding: min(1,2,3,4,5)+px;
+  border-width: random()+px;
+}
+/*字符串函数*/
+p:after{
+  content: unquote("123");
+  content: quote(abc);
+  content: to_upper_case(abc);
+  content: to_lower_case(abc);
+}
+/*自定义函数*/
+@function add($n1, $n2){
+  @return $n1+$n2+px;
+}
+div{
+  width: add(3,4);
+}
+
+@function get_width($n){
+  @return $n*max(60,10) + $n*min(60,10)+px;
+}
+div{
+  width:get_width(2);
+}

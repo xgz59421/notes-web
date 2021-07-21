@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>transform</title>
+
+   <style>
+      #d0,#d1, #d2 {width: 200px;height: 200px;position: absolute;top: 0px;left: 0;}
+      #d0 { position: relative }
+      #d1 { background: #00ffff; }
+      #d2 {
+         background: rgba(255, 255, 0, 0.5);
+         /*2D转换*/
+         /*1.位移效果*/
+         transform: translate(300px);
+         /*  !*向下移动*!*/
+         /* transform: translatey(300px); */
+         /*transform:translate(300px) rotate(45deg);*/
+         /*transform:translate(300px,100px);*/
+         /*2.缩放*/
+         /*transform:scale(-1);*/
+         /*transform:scaleX(2);*/
+         /*transform:scaleY(3);*/
+         /*3.旋转*/
+         /*transform:rotate(45deg);*/
+         /*转换原点*/
+         /*transform-origin: right bottom;*/
+         /*transform-origin: 10px 50%;*/
+         /*4.倾斜*/
+         /*transform: translate(200px) skewX(45deg);*/
+         /*transform: translate(200px) skewY(45deg);*/
+         /*transform: translate(200px) skew(50deg,145deg);*/
+      }
+
+      /*3D转换*/
+      #parent3D {
+         width: 400px;height: 400px;border: 3px solid #f00;margin: 100px auto;
+         /*透视距离*/
+         perspective: 200px;
+      }
+      #sub1 {
+         width: 200px; height: 200px;background: green;font: bold 36px 黑体; margin: 100px auto;
+         /*transform: rotate3d(1,1,1,45deg);    !*3条轴一起旋转*!*/
+         /*transform:rotateX(45deg); !*以x轴为中心轴 旋转*!*/
+         /*transform:rotateY(45deg); !*以x轴为中心轴 旋转*!*/
+         /*transform:rotateZ(22deg);  !*以z轴为中心轴 旋转*!*/
+      }
+   </style>
+</head>
+
+<body>
+  <p>转换transform</p>
+    <div id="d0">
+      <div id="d1">参考元素</div>
+      <div id="d2">转换元素</div>
+    </div>
+  </div>
+
+  <hr>
+
+  <p>3D转换</p>
+  <div id="parent3D">
+    <div id="sub1">3D旋转</div>
+  </div>
+
+   <br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>

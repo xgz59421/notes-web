@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test_animation</title>
+	
+	<style>
+
+		@keyframes jump_img {
+			0% {transform: translateY(0px)}
+			25% {transform: translateY(-50px)}
+			50% {transform: translateY(0px)}
+			65% {transform: translateY(-30px)}
+			80% {transform: translateY(0px)}
+			90% {transform: translateY(-10px)}
+			100% {transform: translateY(0px)}
+		}
+		img{
+			position: absolute;
+			top: 100px;
+			left: 400px;
+			animation-name: jump_img;
+			animation-duration: 1s;
+			animation-fill-mode: both;
+		}
+		@keyframes jump_p {
+			from{transform: translateY(-40px)}
+			to{transform: translateY(0px)}
+		}
+		p{
+			position: absolute;
+			top: 207px;
+			left: 340px;
+			font-size: 20px;
+			color: #666;
+			animation: jump_p 1s;
+		}
+		
+		#clock{
+			position: absolute;
+			top: 300px;
+			left: 340px;
+			width: 400px; height: 400px;
+			border: 5px solid #00f;
+			border-radius: 50%;
+		}
+		@keyframes time1 {
+			from{transform: rotate(0deg)}
+			to{transform: rotate(360deg)}
+		}
+		#minute{
+			width: 10px; height: 100px;
+			background: #0ff;
+			position: absolute;
+			top: 100px;
+			left: 195px;
+			animation: time1 3600s;
+			transform-origin: center bottom;
+		}
+		
+		#second{
+			width: 6px; height: 140px;
+			background: #f0f;
+			position: absolute;
+			top: 60px;
+			left: 197px;
+			animation: time1 60s;
+			transform-origin: center bottom;
+		}
+		
+  
+    .p_animate{
+			width: 130px; height: 40px;
+			margin: 50px auto;
+			background: #00ffff;
+			text-align: center;
+			line-height: 40px;
+			border-radius: 3px;
+			animation: hinge 2s;
+		}
+	</style>
+	
+	<link rel="stylesheet" href="css/animate.css">
+</head>
+<body>
+<img  src="img/lookforward_img1.png" alt="">
+<p>服务暂未上线 敬请期待!!</p>
+
+<div id="clock">
+	<div id="minute"></div>
+	<div id="second"></div>
+</div>
+
+<p class="p_animate">animate的演示</p>
+
+</body>
+</html>

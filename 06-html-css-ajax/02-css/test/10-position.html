@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>css_position</title>
+
+  <style>
+    /*相对定位*/
+    #d1 {
+      width: 200px;
+      height: 200px;
+      background-color: yellow;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      left: 100px;
+      top: 10px;
+    }
+
+    #d2 {
+      width: 100px;
+      height: 100px;
+      background-color: #0ff;
+      position: relative;
+      top: 20px;
+      left: 20px;
+    }
+
+    #d3 {
+      width: 200px;
+      height: 200px;
+      background-color: #f0f;
+    }
+
+    /*绝对定位*/
+    #d0 {
+      width: 400px;
+      height: 200px;
+      border: 2px solid #ff0000;
+      position: relative;
+    }
+
+    #d4 {
+      width: 200px;
+      height: 200px;
+      background-color: yellow;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      left: 100px;
+    }
+
+    #d5 {
+      width: 100px;
+      height: 100px;
+      background-color: #0ff;
+      position: absolute;
+      left: 20px;
+      top: 20px;
+    }
+
+    #d6 {
+      width: 200px;
+      height: 200px;
+      background-color: #f0f;
+    }
+
+    /*练习*/
+    #content {
+      width: 609px;
+      height: 377px;
+      background-color: #069;
+      position: relative;
+      margin: 0 auto;
+    }
+
+    #desc {
+      width: 245px;
+      height: 243px;
+      background-color: green;
+      position: absolute;
+      top: 55px;
+      left: 65px;
+    }
+
+    #img_computer {
+      position: absolute;
+      top: 56px;
+      right: 30px;
+    }
+
+    /*固定定位*/
+    .left,
+    .right {
+      width: 50px;
+      height: 200px;
+      background: #00ffff;
+      position: fixed;
+      top: 200px;
+    }
+
+    .left {
+      left: 10px;
+    }
+
+    .right {
+      left: 50%;
+    }
+
+    /*堆叠顺序*/
+    .d40 {
+      width: 100px;
+      height: 150px;
+      position: relative;
+    }
+
+    #d41,
+    #d42,
+    #d43 {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+    }
+
+    #d41 {
+      background: #ff0;
+      top: 0;
+      left: 0;
+      z-index: 100;
+    }
+
+    #d42 {
+      background: #0ff;
+      top: 25px;
+      left: 25px;
+      z-index: 50;
+    }
+
+    #d43 {
+      background: #f0f;
+      top: 50px;
+      left: 50px;
+      z-index: 101;
+    }
+
+    #d44 {
+      width: 50px;
+      height: 50px;
+      background: #000;
+      top: 0px;
+      left: 0px;
+      z-index: 1;
+      position: absolute;
+    }
+  </style>
+
+  <link rel="stylesheet" href="css/css_common.css">
+
+</head>
+
+<body>
+  <p>1.相对定位</p>
+    <div id="d1">
+      <div id="d2"></div>
+    </div>
+    <div id="d3"></div>
+    <br>
+  </div>
+  <br>
+  <p>2.绝对定位</p>
+    <div id="d0">
+      <div id="d4">相对定位
+        <div id="d5">绝对定位</div>
+      </div>
+    </div>
+
+    <span class="right">3.固定定位</span>
+
+    <p>4.堆叠顺序</p>
+    <div class="d40">
+      <div id="d41"></div>
+      <div id="d42"></div>
+      <div id="d43">
+        <div id="d44"></div>
+      </div>
+    </div>
+  <br><br><br><br><br><br><br><br>
+</body>
+
+</html>

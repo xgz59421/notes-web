@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>get xml</title>
+</head>
+
+<body>
+  <div id="d1"></div>
+  <button onclick="show()">显示xml数据</button>
+  <script>
+    function show() {
+      //1.创建xhr异步对象
+      var xhr = new XMLHttpRequest();
+      //2.创建监听接收响应
+      xhr.onreadystatechange = function () {
+        if (xhr.status == 200 && xhr.readyState == 4) {
+          var result = xhr.responseXML;
+          var string;
+          console.log(result)
+          // //第一种方法 找name
+          // var obj = result.getElementsByTagName("uname")
+          // string = obj[1].innerHTML;
+          // console.log(obj[1].innerHTML)
+          //第二种方法
+          var stulist = result.getElementsByTagName("stulist");
+          var stus = stulist[0].getElementsByTagName("stu");
+          var unames = stus[1].getElementsByTagName("uname");
+          console.log(unames[0])
+          console.log(unames[0].innerHTML)
+          string = unames[0].innerHTML;
+          d1.innerHTML = string;
+        }
+      }
+      //3.创建请求
+      xhr.open("get", "02-student.xml", true)
+      //4.发送请求
+      xhr.send();
+    }
+  </script>
+</body>
+
+</html>

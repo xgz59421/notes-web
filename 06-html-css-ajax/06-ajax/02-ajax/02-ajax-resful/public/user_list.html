@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <title>userlist</title>
+
+   <script>
+      function get_all_data() {
+         var xhr = new XMLHttpRequest();
+         xhr.onreadystatechange = function () {
+            if (xhr.status == 200 && xhr.readyState == 4) {
+               var result = xhr.responseText;
+               showlist(JSON.parse(result));
+            }
+         }
+         var url = "http://localhost:8080/user/v1/userlist";
+         xhr.open("get", url, true);
+         xhr.send();
+      }
+
+      function showlist(data) {
+         var string = `
+			<table border="1" bordercolor="blue" cellspacing="0" align="center" width="700">
+				<tr>
+					<th>编号</th>
+					<th>用户名</th>
+					<th>密码</th>
+					<th>邮箱</th>
+					<th>电话</th>
+					<th>姓名</th>
+					<th>性别</th>
+					<th>操作</th>
+				</tr>`;
+         for (let i = 0; i < data.length; i++) {
+            console.log(data[i]);
+            var gender = "不详";
+            if (data[i].gender == 1) {
+               gender = "男";
+            } else if (data[i].gender == 0) {
+               gender = "女";
+            }
+            var user_name = data[i].user_name;
+            if (user_name == null) {
+               user_name = "不详";
+            }
+            string +=
+               `<tr>
+                    <td align="center">${data[i].uid}</td>
+                    <td>${data[i].uname}</td>
+                    <td>${data[i].upwd}</td>
+                    <td>${data[i].email}</td>
+                    <td>${data[i].phone}</td>
+                    <td>${user_name}</td>
+                    <td>${gender}</td>
+                    <td><a href="http://localhost:8080/user_search.html?uid=${data[i].uid}">修改</a>
+                    <a href="javascript:delte_user(${data[i].uid})">删除</a></td>
+                </tr>`;
+
+         }
+
+         string += "</table>";
+         divlist.innerHTML = string;
+      }
+
+      function delte_user(uid) {
+         var xhr = new XMLHttpRequest();
+         xhr.onreadystatechange = function () {
+            if (xhr.status == 200 && xhr.readyState == 4) {
+               var result = xhr.responseText;
+               if (result == 1) {
+                  alert("删除成功")
+                  get_all_data();
+               } else {
+                  alert("删除失败")
+               }
+            }
+         }
+         var url = "http://localhost:8080/user/v1/delUser/" + uid;
+         xhr.open("delete", url, true);
+         xhr.send();
+      }
+   </script>
+
+</head>
+
+<body onload="get_all_data()">
+
+   <div id="divlist"></div>
+
+
+
+
+</body>
+
+</html>

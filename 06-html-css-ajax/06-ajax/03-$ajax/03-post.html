@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=get, initial-scale=1.0">
+  <title>post</title>
+  <script src="js/jquery-1.11.3.js"></script>
+</head>
+
+<body>
+  用户名<input type="text"> <br>
+  密码<input type="password"> <br>
+  <button>登录</button>
+
+  <script>
+    //S语法: post("地址", "参数", 回调, 回调类型)
+    //uname:dingding upwd:123456
+    //result 通过 ok:1  没通过 ok:0
+
+    $("button").click(function () {
+      var baseurl = "http://xzserver.applinzi.com";
+      var url = baseurl + "/users/signin";
+      console.log(url);
+
+      var params = {
+        uname: $(":text").val(),
+        upwd: $(":password").val()
+      }
+      $.post(url, params, function (result) {
+        console.log(result);
+      }, "json");
+    });
+  </script>
+</body>
+
+</html>

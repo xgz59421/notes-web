@@ -1,0 +1,8 @@
+/*5.继承*/
+.my_parent{
+  width: 100px; height: 100px;
+}
+.my_child{
+  color: red;
+  @extend .my_parent;
+}

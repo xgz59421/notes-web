@@ -1,0 +1,57 @@
+.my_gray{
+    background:linear-gradient(to bottom, #f0f0f0,#e0e0e0);
+}
+a:hover{
+    text-decoration: none;
+}
+.my_btn1{
+    width: 1.5rem;height: 1.5rem;
+    border:0;
+    color: white;
+    font-weight: bolder;
+    outline: 0;
+}
+.my_input1{
+    width: 20%; outline: 0;
+    box-shadow: none;
+}
+.my_img1{
+    transition: 1s;
+}
+.my_img1:hover{
+    transform: scale(1.1);
+}
+
+/*分页*/
+.page-item .page-link{
+    border-radius: 0.25rem;
+    border-color: #dddddd;
+}
+.page-item.active .page-link{
+    background-color: #007bff !important;
+}
+.page-item .page-link:hover{
+    border-color: #0AA1ED;
+}
+.page-item + .page-item{margin-left: 0.5rem;}
+
+
+/*右边*/
+.my_input2{
+    width: 10%; outline: 0;
+    box-shadow: none;
+    border: 0;
+}
+.my_btn2{
+    width: 1.5rem;height: 1.5rem;
+    border:0;
+    color: white;
+    font-weight: bolder;
+    outline: 0;
+}
+.my_btn2:focus{
+    outline: 0;
+}
+.border-top{
+    border-top:1px dashed #999 !important;
+}

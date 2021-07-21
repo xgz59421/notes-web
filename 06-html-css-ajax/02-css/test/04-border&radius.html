@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <title>边框和倒角</title>
+</head>
+
+<style>
+   /*边框*/
+   #div_id_biankuang1 {
+      width: 300px;
+      height: 60px;
+      border: 3px dotted rgba(0, 255, 0, 1)
+   }
+
+   #div_id_biankuang2 {
+      width: 300px;
+      height: 60px;
+      border: double
+   }
+
+   /*单边定义*/
+   #div_id_biankuang3 {
+      width: 300px;
+      height: 60px;
+      border-left: double #0000ff;
+      border-right: dotted #ff0000;
+      border-top: solid green;
+      border-bottom: dashed #00ff00
+   }
+
+   #div_id_biankuang4 {
+      width: 0px;
+      border-top: 10px solid #666;
+      border-color: red;
+      border-bottom: 10px solid transparent;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+   }
+   /*单边单属性*/
+   #div_id_biankuang5 {
+      width: 300px;
+      height: 60px;
+      border: solid;
+      border-bottom-color: red
+   }
+   /*边框的倒角*/
+   #div_id_daojiao1 {
+      width: 300px;
+      height: 60px;
+      background-color: green;
+      border-radius: 3px
+   }
+   #div_id_daojiao2 {
+      width: 200px;
+      height: 200px;
+      background-color: yellow;
+      border: 5px solid orange;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 117px;
+      border-bottom-left-radius: 133px;
+      border-bottom-right-radius: 20px;
+   }
+</style>
+
+<body>
+   <p>边框</p>
+   <div id="div_id_biankuang1"></div>
+   <p>最简方式</p>
+   <p>格式: border: style ; 只保留一个style</p>
+   <div id="div_id_biankuang2"></div>
+   <p>单边定义</p>
+   <p>格式: boder-方向: width style colro</p>
+   <div id="div_id_biankuang3"></div>
+   <div id="div_id_biankuang4"></div>
+   <p>单边单属性</p>
+   <div id="div_id_biankuang5"></div>
+
+   <p>边框的倒角</p>
+   <div id="div_id_daojiao1"></div>
+   <div id="div_id_daojiao2"></div>
+
+   <br><br><br><br><br><br><br>
+</body>
+
+</html>

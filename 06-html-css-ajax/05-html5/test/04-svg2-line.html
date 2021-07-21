@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>svg-line</title>
+  <style>
+    body {
+      text-align: center;
+    }
+
+    svg {
+      background-color: #dddddd;
+    }
+  </style>
+</head>
+
+<body>
+  <h3>line</h3>
+  
+  <svg width="500" height="800" id="svg">
+    <defs>
+      <!-- 线性渐变 -->
+      <linearGradient id="lg1"
+        x1="0%" y1="0%"
+        x2="100%" y2="0%"
+        >
+        <stop offset="0%" stop-color="red" />
+        <stop offset="50%" stop-color="blue" stop-opacity=""/>
+        <stop offset="100%" stop-color="yellow" />
+      </linearGradient>
+
+      <!-- 定义滤镜 -->
+      <filter id="filter" x="" y="" width="" height="">
+        <!-- 模糊滤镜 -->
+        <<feGaussianBlur stdDeviation="2"/>
+      </filter>
+    </defs>  
+    <!-- text 模糊滤镜 -->
+    <text x="30"  y="300" font-size="30" filter="url(#filter)" >中的威锋网任务分为</text>
+    <image xlink:href="res/1.jpg" x="0" y="400" filter="url(#filter)"/>
+    <!-- 矩形 线性渐变 -->
+    <rect x="0" y="0" width="270" height="130" fill="url(#lg1)"/>
+
+
+    <!-- stroke-linecap 线的圆角 -->
+    <line x1="200" y1="30" x2="250" y2="30" stroke="red" stroke-width="5" stroke-linecap="round"></line>
+
+    <line x1="189" y1="80" x2="190" y2="80" stroke="black" stroke-width="5" stroke-linecap="round"></line>
+    <line x1="200" y1="80" x2="250" y2="80" stroke="black" stroke-width="5" stroke-linecap="round"></line>
+
+    <!-- 折线 -->
+    <polyline points="200,150 250,150 250,200 200,150" stroke="red" 
+      stroke-width="3" stroke-linecap="round" fill="#ff0"></polyline>
+
+  </svg>
+</body>
+
+</html>

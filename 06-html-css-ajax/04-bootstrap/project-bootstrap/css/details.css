@@ -1,0 +1,6 @@
+.breadcrumb-item + .breadcrumb-item::before {
+    content: ">";
+}
+.my_img1 img{
+    width: 5rem; margin-right: 0.5rem;
+}

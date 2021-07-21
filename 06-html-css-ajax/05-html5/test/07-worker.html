@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>worker 多线程</title>
+</head>
+<body>
+  <p>111</p>
+  <!-- <script src="./07_worker.js"></script> -->
+  <script>
+    //创建worker线程
+    var w = new Worker("07_worker.js");
+    // 向worker发送数据
+    w.postMessage("1234567");
+
+    // 接受worker数据
+    w.onmessage = function (event) {
+      console.log("接受worker数据, ", event.data);
+      var msg = document.getElementById("msg");
+      msg.innerHTML = event.data;
+    }
+  </script>
+  <p>222</p>
+  <div id="msg"></div>
+</body>
+</html>

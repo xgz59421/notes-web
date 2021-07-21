@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>search</title>
+	
+	<script>
+        var bool_uname = false;
+        var bool_email = false;
+        var bool_phone = false;
+        var bool_user_name = false;
+		
+		function msg_uname() {
+            uname_span.innerHTML = "用户名不能为空"
+        }
+        function check_uname() {
+	       if(!uname.value){
+               bool_uname = false;
+               uname_span.innerHTML = "&times";
+	       }else {
+               bool_uname = true;
+               uname_span.innerHTML = "√";
+	       }
+        }
+
+        function msg_email() {
+            email_span.innerHTML = "email不能为空"
+        }
+        function check_email() {
+            if(!email.value){
+                bool_email = false;
+                email_span.innerHTML = "&times";
+            }else {
+                bool_email = true;
+                email_span.innerHTML = "√";
+            }
+        }
+
+        function msg_phone() {
+            phone_span.innerHTML = "phone不能为空"
+        }
+        function check_phone() {
+            if(!phone.value){
+                bool_phone = false;
+                phone_span.innerHTML = "&times";
+            }else {
+                bool_phone = true;
+                phone_span.innerHTML = "√";
+            }
+        }
+
+        function msg_user_name() {
+            user_name_span.innerHTML = "姓名不能为空"
+        }
+        function check_user_name() {
+            console.log("1111111111111111111111111111111")
+            if(!user_name.value){
+                bool_user_name = false;
+                user_name_span.innerHTML = "&times";
+            }else {
+                bool_user_name = true;
+                user_name_span.innerHTML = "√";
+            }
+        }
+		
+		function search_user() {
+			//获取地址栏中的 uid
+			//1.location 通过字符串方式截取
+            console.log("href",location.href)
+            console.log("search",location.search)
+			//2.URLSearchParams
+			var urlParams = new URLSearchParams(location.search);
+            // console.log(urlParams)
+            var uid = urlParams.get("uid");
+            console.log(uid)
+			
+			//1.创建异步对象
+			var xhr = new XMLHttpRequest();
+			//4.监听,接收响应
+			xhr.onreadystatechange = function () {
+				if(xhr.status == 200 && xhr.readyState == 4){
+				    var result = xhr.responseText;
+                    console.log(result)
+					if(result == 0){
+                        alert("查无此人");
+						return;
+					}
+					var obj =JSON.parse(result);
+                    uname.value = obj.uname;
+                    email.value = obj.email;
+                    phone.value = obj.phone;
+                    
+                    if(obj.user_name == null){
+                        obj.user_name = "不详"
+                    }
+                    
+                    user_name.value = obj.user_name;
+                    
+                    man.checked = false;
+                    woman.checked =false;
+                    none.checked =false;
+                    if(obj.gender == 1){
+                        man.checked = true;
+                    }else if(obj.gender == 0){
+                        woman.checked = true;
+                    }else {
+                        none.checked =true;
+                    }
+
+				}
+            }
+			//2.创建请求对象
+			var url = "http://localhost:8080/user/v1/searchUser/" + uid;
+            console.log(url)
+			xhr.open("get",url,true);
+			//3.发送请求
+			xhr.send();
+        }
+        
+        function update_user() {
+		    // if(bool_uname && bool_email && bool_phone && bool_user_name){
+		    //
+		    // }else {
+		    //     alert("信息不完整");
+		    //     return;
+		    // }
+		    
+            //获取html urd
+	        var urlParams = new URLSearchParams(location.search);
+	        var uid = urlParams.get("uid");
+            console.log(uid);
+            
+            var gender = -1;
+            if(man.checked){
+                gender = 1;
+            }else if(woman.checked){
+                gender = 0;
+            }
+		    
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if(xhr.status == 200 && xhr.readyState == 4){
+                    var result = xhr.responseText;
+                    console.log(result)
+                    if(result == 1){
+                        alert("修改成功");
+                        location.href = "user_list.html";
+                    }else {
+                        alert("修改失败")
+                    }
+                }
+            }
+            var url = "http://localhost:8080/user/v1/updateUser";
+            xhr.open("put", url, true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            var formdata = "uid="+uid + "&email=" + email.value +"&user_name=" +user_name.value
+                + "&phone=" + phone.value + "&gender=" + gender;
+            xhr.send(formdata);
+        }
+        
+      
+	</script>
+	
+</head>
+<body onload="search_user()">
+
+<p>
+	用户名:<input type="text" id="uname" onfocus="msg_uname()" onblur="check_uname()">
+	<span id="uname_span"></span>
+</p>
+<p>
+	邮箱:&emsp;<input type="text" id="email" onfocus="msg_email()" onblur="check_email()">
+	<span id="email_span"></span>
+</p>
+<p>
+	电话:&emsp;<input type="text" id="phone" onfocus="msg_phone()" onblur="check_phone()">
+	<span id="phone_span"></span>
+</p>
+<p>
+	姓名:&emsp;<input type="text" id="user_name" onfocus="msg_user_name()" onblur="check_user_name()">
+	<span id="user_name_span"></span>
+</p>
+<p>
+	<input type="radio" name="gender" id="man">
+	<label for="man">男</label>
+	<input type="radio" name="gender" id="woman">
+	<label for="woman">女</label>
+	<input type="radio" name="gender" id="none">
+	<label for="none">保密</label>
+</p>
+<button onclick="update_user()">修改</button>
+
+
+</body>
+</html>

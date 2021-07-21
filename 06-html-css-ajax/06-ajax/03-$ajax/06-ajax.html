@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=get, initial-scale=1.0">
+  <title>ajax()</title>
+  <script src="js/jquery-1.11.3.js"></script>
+</head>
+
+<body>
+  用户名<input type="text"> <br>
+  密码<input type="password"> <br>
+  <button>登录</button>
+  <script>
+    //ajax 的get()请求
+    var url = "http://xzserver.applinzi.com/index";
+    $.ajax({
+      url: url,
+      type: "get",
+      dataType: "json",
+      success: function (result) {
+        console.log("不带参数的ajax get请求");
+        console.log(result);
+      },
+      error: function (err) {
+        console.log(err);
+
+      }
+    });
+
+    var url = "http://xzserver.applinzi.com/details";
+    $.ajax({
+      url: url,
+      type: "get",
+      data: {
+        lid: 1
+      },
+      dataType: "json",
+      success: function (result) {
+        console.log("带参数的ajax get请求");
+
+        console.log(result);
+      },
+      error: function (err) {
+        console.log(err);
+
+      }
+    });
+  </script>
+  <script>
+    //ajax post()请求
+    $("button").click(function () {
+      var baseurl = "http://xzserver.applinzi.com";
+      var url = baseurl + "/users/signin";
+      console.log(url);
+
+      var params = {
+        uname: $(":text").val(),
+        upwd: $(":password").val()
+      }
+      // $.post(url, params, function (result) {
+      //    console.log(result);
+      // }, "json");
+      $.ajax({
+        url: url,
+        type: "post",
+        data: params,
+        dataType: "json",
+        success: function (result) {
+          console.log(result);
+        },
+        error: function (err) {
+          console.log(err);
+        }
+      });
+
+    });
+  </script>
+</body>
+
+</html>

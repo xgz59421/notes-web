@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>worker 多线程</title>
+</head>
+<body>
+  <input type="number" id="number">
+  <button id="button">计算和</button>
+  <div id="sum"></div>
+
+  <script>
+    var w = new Worker("07_worker2.js");
+    var number = document.getElementById("number");
+    var button = document.getElementById("button");
+    var sum = document.getElementById("sum");
+
+    button.addEventListener("click",function () {
+      var n = number.value;
+      if(!n){
+        alert("请输入一个数字!");
+      }
+      w.postMessage(number.value);
+    });
+    w.onmessage = function (event) {
+      console.log("接收到worker数据:",event.data);
+      
+      sum.innerHTML = event.data;
+    }
+  </script>
+</body>
+</html>
