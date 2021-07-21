@@ -1,0 +1,54 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>取消与利用冒泡</title>
+  <meta charset="utf-8" />
+</head>
+
+<body>
+  <div id="keys">
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>4</button><br>
+    <button>C</button>
+    <button>+</button>
+    <button>-</button>
+    <button>=</button>
+  </div>
+  <textarea id="sc" style="resize:none;width:200px; height:50px;" readonly></textarea>
+  <script>
+    var keys = document.getElementById("keys");
+    var sc = document.getElementById("sc");
+    //因为div下多个元素都需要单击事件处理函数,所以应该用事件委托优化!
+    //只在父元素上依次绑定处理函数,子元素通过冒泡触发父元素公共的函数
+    keys.onclick = function (e) {
+      //事件委托获取目标元素,  e.target
+      var target = e.target;
+      console.log(target.nodeName);
+      if (target.nodeName == "BUTTON") {
+        console.log(target.innerHTML);
+        switch (target.innerHTML) {
+          case "C":
+            sc.value = "";
+            break;
+          case "=":
+            if (sc.value) {
+              try {
+                sc.value = eval(sc.value);
+              } catch (error) {
+                sc.value = error;
+              }
+            }
+            break;
+          default:
+            sc.value += target.innerHTML;
+
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

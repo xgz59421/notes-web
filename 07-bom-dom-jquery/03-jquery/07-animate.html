@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> jquery & css 动画 </title>
+  <meta charset="utf-8">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #target {
+      border-radius: 10px;
+      background: #eee;
+    }
+
+    .fade {
+      /*动画起始状态*/
+      height: 0;
+      /* width: 0; opacity: 0; */
+      overflow: hidden;
+
+      border: 1px solid #aaa;
+      transition: all 2s linear;
+
+    }
+
+    .in {
+      /*动画结束状态*/
+      height: 104px;
+      /* width: 970px; */
+      opacity: 1;
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>jQuery动画函数——显示隐藏动画</h1>
+  <button id="btn1">显示/隐藏div</button>
+  <div id="target" class="fade in">
+    <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore debitis animi sint iste sequi sunt ad
+        excepturi error labore molestiae est expedita eos nisi placeat provident dolorem quos facilis!
+        Sapiente!</span><span>Accusamus neque id reprehenderit! Voluptatem in deleniti laboriosam commodi facere
+        magnam impedit minima corrupti distinctio culpa amet optio natus esse. Inventore incidunt ab id perspiciatis
+        atque minus magnam tempore harum.</span></p>
+  </div>
+  <script src="js/jquery-1.11.3.js"></script>
+  <script>
+    $("#btn1").click(function () {
+      var $div = $("#target");
+      //1.实现隐藏/显示
+      // console.log($div.is(":visible"));
+      // if ($div.is(":visible")) {
+      //    $div.hide(2000);
+      // } else {
+      //    $div.show(2000);
+      // }
+
+      //2.瞬间显示/隐藏
+      // if ($div.is(":visible")) {
+      //    $div.hide()
+      // } else {
+      //    $div.show()
+      // }
+
+      //3.实现上滑下滑
+      // if ($div.is(":visible")) {
+      //    $div.slideUp(1000);
+      // } else {
+      //    $div.slideDown(1000);
+      // }
+
+      //4.淡入淡出
+      // if ($div.is(":visible")) {
+      //    $div.fadeOut(1000);
+      // } else {
+      //    $div.fadeIn(1000);
+      // }
+
+
+
+
+      //使用css 方式实现
+      //方法1: css add/remove in
+      // if ($div.hasClass("in")) {
+      //    $div.removeClass("in");
+      // } else {
+      //    $div.addClass("in");
+      // }
+      //方法2: css toggleClass in
+      $div.toggleClass("in");
+    });
+  </script>
+</body>
+
+</html>

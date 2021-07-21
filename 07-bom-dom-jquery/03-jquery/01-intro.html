@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jquery</title>
+  <script src="js/jquery-1.11.3.js"></script>
+</head>
+
+<body>
+  <h1>jQueryAPI 特点</h1>
+  <button id="btn1">click me(0)</button>
+  <button id="btn2">click me(0)</button>
+  <button id="btn3">click me(0)</button>
+
+  <script>
+    // //dom 版本
+    // var btns = document.getElementsByTagName("button");
+    // console.log(btns);
+    // for (var btn of btns) {
+    //    btn.onclick = function () {
+    //       var number = parseInt(this.innerHTML.slice(9, -1));
+    //       number++;
+    //       this.innerHTML = `click me(${number})`;
+    //    }
+    // }
+
+    //jquery 版本
+    var $btns = $("button");
+    console.log($btns);
+    $btns.click(function () {
+      //相当于遍历了 btns的 每个btn
+      var $btn = $(this);
+      var number = parseInt($btn.html().slice(9, -1));
+      number++;
+      console.log(number);
+
+      $btn.html(`click me(${number})`);
+    });
+
+
+    // for (let i = 0; i < $btns.length; i++) {
+    //    var $btn = $($btns[i]);
+    //    console.log($btn);
+    //    $btn.click(function () {
+    //       var $self = $(this);
+    //       var number = parseInt($self.html().slice(9, -1));
+    //       number++;
+    //       console.log(number);
+
+    //       $self.html(`click me(${number})`);
+    //    });
+    // }
+  </script>
+</body>
+
+</html>

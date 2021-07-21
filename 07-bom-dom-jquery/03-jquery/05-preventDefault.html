@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="js/jquery-1.11.3.js"></script>
+  <title>preventDefault 阻止默认</title>
+</head>
+
+<body>
+  <form method="get">
+    <input type="text" name="uname">
+    <input type="submit">
+  </form>
+  <script>
+    $(":submit").click(function (event) {
+
+      if ($(":text").val().trim() === "") {
+        // alert("用户名不能为空");
+        event.preventDefault();
+      }
+    });
+  </script>
+</body>
+
+</html>

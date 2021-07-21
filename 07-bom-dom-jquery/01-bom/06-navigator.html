@@ -1,0 +1,27 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>navigator对象常用属性</title>
+<meta charset="utf-8" />
+
+</head>
+<body>
+	<script>
+    //判断当前浏览器是否安装了Chrome PDF Viewer插件
+    if(navigator.plugins["Chrome PDF Viewer"]!==undefined){
+      document.write(`<h3 style="color:green">已安装PDF插件，可浏览电子书</h3>`)
+    }else{
+      document.write(`<h3 style="color:red">未安装PDF插件，<a href="javascript:;">点此下载安装</a></h3>`)
+    }
+
+    //判断当前浏览器是否安装了Shockwave Flash插件
+    if(navigator.plugins["Shockwave Flash"]!==undefined){
+      document.write(`<h3 style="color:green">已安装Flash插件，可浏览电子书</h3>`)
+    }else{
+      document.write(`<h3 style="color:red">未安装Flash插件，<a href="javascript:;">点此下载安装</a></h3>`)
+    }
+
+    document.write(navigator.userAgent);
+  </script>
+</body>
+</html>

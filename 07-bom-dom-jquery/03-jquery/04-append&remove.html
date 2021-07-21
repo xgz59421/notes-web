@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> append & remove </title>
+  <meta charset="utf-8">
+  <script src="js/jquery-1.11.3.js"></script>
+  <style>
+    .container {
+      border: 1px solid #aaa;
+      overflow: hidden;
+    }
+
+    .block {
+      float: left;
+      margin: 10px;
+      border: 1px solid #aaa;
+      background: #faa;
+      width: 150px;
+      height: 150px;
+    }
+
+    .block:hover {
+      box-shadow: 0 5px 6px #000;
+    }
+
+    .close {
+      float: right;
+      padding: 5px;
+      font-weight: bold;
+      opacity: .2;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      opacity: .5;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>添加/删除节点</h1>
+  <button id="add-block">添加区块</button>
+
+  <div class="container">
+    <!-- <div class="block">
+        <span class="close">×</span>
+      </div> -->
+  </div>
+
+  <script>
+    $("#add-block").click(function () {
+      var $div = $(`
+        <div class="block">
+          <span class="close">×</span>
+        </div>
+        `);
+      //随机一个颜色
+      $div.css("background-color",
+        `rgb(${parseInt(Math.random()*256)}, 
+            ${parseInt(Math.random()*256)}, 
+            ${parseInt(Math.random()*256)})`);
+
+      $(".container").prepend($div);
+    });
+
+
+    //本例中,所有block都是新添加的,所以无法绑定事件
+    //.close 都可以点击, 所以,用事件委托优化
+    //事件绑定在公共的 container上
+    $(".container").click(function (e) {
+      e = e || event;
+      var $close = $(e.target);
+      console.log($close);
+      if ($close.hasClass("close")) {
+        $close.parent().remove();
+      }
+    });
+  </script>
+
+</body>
+
+</html>

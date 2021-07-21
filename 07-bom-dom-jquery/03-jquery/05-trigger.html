@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="js/jquery-1.11.3.js"></script>
+  <title>trigger 模拟事件</title>
+</head>
+
+<body>
+  <input type="text">
+  <button>百度一下</button>
+
+  <script>
+    var $button = $("button");
+    $button.click(function () {
+      var kw = $(":text").val().trim();
+      if (kw != "") {
+        console.log(`搜索${kw}相关的内容`);
+      }
+    });
+
+
+
+
+    //回车时模拟click
+    $(":text").keyup(function (e) {
+      //13 回车
+      if (e.keyCode == 13) {
+        $button.trigger("click");
+      }
+    });
+
+    //同步输入(input事件 没有简写)模拟click
+    $(":text").bind("input", function () {
+      // $button.trigger("click");
+      //trigger简写
+      $button.click();
+    });
+  </script>
+
+</body>
+
+</html>
