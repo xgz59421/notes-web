@@ -1,1 +1,0 @@
-module.exports = '拉勾教育'

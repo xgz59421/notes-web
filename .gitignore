@@ -1,6 +1,4 @@
 node_modules
-test.html
-test.js
 yarn.lock
 .cache
 .tmp
