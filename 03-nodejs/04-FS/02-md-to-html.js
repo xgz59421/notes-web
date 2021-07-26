@@ -11,7 +11,8 @@ const browserSync = require('browser-sync')
  * 05 使用 browser-sync 来实时显示 Html 内容
  */
 
-let mdPath = path.join(__dirname, process.argv[2])
+// node 02-md-to-html.js index.md
+let mdPath = path.join(__dirname, (process.argv[2] || 'index.md'))
 let cssPath = path.resolve('github.css')
 let htmlPath = mdPath.replace(path.extname(mdPath), '.html')
 

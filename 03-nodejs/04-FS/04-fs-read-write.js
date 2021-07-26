@@ -1,3 +1,5 @@
+// 大文件读写操作
+
 const fs = require('fs')
 
 // read ： 所谓的读操作就是将数据从磁盘文件中写入到 buffer 中
@@ -12,8 +14,8 @@ let buf = Buffer.alloc(10)
  */
 /* fs.open('data.txt', 'r', (err, rfd) => {
   console.log(rfd)
-  fs.read(rfd, buf, 1, 4, 3, (err, readBytes, data) => {
-    console.log(readBytes)
+  fs.read(rfd, buf, 0, 4, 3, (err, readBytes, data) => {
+    console.log(readBytes)  // 读了多少个字节
     console.log(data)
     console.log(data.toString())
   })
@@ -22,8 +24,10 @@ let buf = Buffer.alloc(10)
 // write 将缓冲区里的内容写入到磁盘文件中
 buf = Buffer.from('1234567890')
 fs.open('b.txt', 'w', (err, wfd) => {
-  fs.write(wfd, buf, 2, 4, 0, (err, written, buffer) => {
-    console.log(written, '----')
+  // @param3 读的起始位置
+  fs.write(wfd, buf, 1, 4, 0, (err, written, buffer) => {
+    console.log(written) // 实际写入的字节数量
+    console.log(buffer.toString())
     fs.close(wfd)
   })
 })
