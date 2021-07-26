@@ -9,7 +9,7 @@
 
 --------
 
-><h2 id='1'>1. 使用步骤</h2>>
+><h2 id='1'>1. 使用步骤</h2>
 ```js
 1. 创建 router 对象，router/index.js
   import Vue from 'vue' 
@@ -133,7 +133,7 @@ export default class VueRouter {
 }
 
 ```
-><h2 id='7'>7. Vue runtimeCompiler</h2>>
+><h2 id='7'>7. Vue runtimeCompiler</h2>
 ```js
 // vue-cli默认runtimeCompiler 为false, 提前把template 编译为render函数
 // 如果代码插件中使用template, 则需, runtimeCompiler: true
