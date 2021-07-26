@@ -10,7 +10,7 @@
 ```
 --------
 
-><h2 id='1'>1. 虚拟DOM作用</h2>>
+><h2 id='1'>1. 虚拟DOM作用</h2>
 ```js
 1. 维护视图和状态的关系
 2. 复杂是图情况下提升渲染性能
@@ -21,7 +21,7 @@
    小程序(mpvue/ uni-app)等
 ```
 
-><h2 id='2'>2. 虚拟DOM库</h2>>
+><h2 id='2'>2. 虚拟DOM库</h2>
 ```js
 1. Snabbdom
    Vue.js 2.x 内部使用的虚拟DOM就是改造的 Snabbdom
@@ -32,7 +32,7 @@
 2. virtual-dom
 ```
 
-><h2 id='3'>3. Snabbdom</h2>>
+><h2 id='3'>3. Snabbdom</h2>
 - src 目录结构
   ```
   ├── package
@@ -60,7 +60,7 @@
   │   ├── tsconfig.json			ts 的编译配置文件
   │   └── vnode.ts					虚拟节点定义
   ```
-><h2 id='4'>4. Snabbdom h函数</h2>>
+><h2 id='4'>4. Snabbdom h函数</h2>
 ```js
 // h 函数的重载, 根据个数, 类型
 export function h(sel: string): VNode;
@@ -69,7 +69,7 @@ export function h(sel: string, children: VNodeChildren): VNode;
 export function h(sel: string,data: VNodeData | null,
   children: VNodeChildren): VNode;
 ```
-><h2 id='5'>5. Snabbdom init</h2>>
+><h2 id='5'>5. Snabbdom init</h2>
 ```js
 // 返回 patch()函数（高阶函数）
 const patch = init([])
@@ -82,7 +82,7 @@ let vnode = h(
 let node = patch(app, vnode)
 ```
 
-><h2 id='6'>6. Snabbdom diff 算法过程</h2>>
+><h2 id='6'>6. Snabbdom diff 算法过程</h2>
 ```js
 一. 入口 patch(oldVnode, newNode)
 patch(oldVnode, newNode){

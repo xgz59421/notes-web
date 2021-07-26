@@ -6,7 +6,7 @@
 
 --------
 
-><h2 id='1'>1. 数据响应式的核心原理</h2>>
+><h2 id='1'>1. 数据响应式的核心原理</h2>
 ```js
 // Object.defineProperty 浏览器兼容 IE8 以上（不兼容 IE8）
 <div id="app">
@@ -61,7 +61,7 @@ let vm = new Proxy(data, {
 })
 
 ```
-><h2 id='2'>2. 发布/订阅模式</h2>>
+><h2 id='2'>2. 发布/订阅模式</h2>
 ```js
 `发布/订阅模式`
  1. `订阅者`
@@ -108,7 +108,7 @@ class EventEmitter {
   }
 }
 ```
-><h2 id='3'>3. 观察者模式</h2>>
+><h2 id='3'>3. 观察者模式</h2>
 ```js
 `观察者(订阅者)` -- Watcher
   update()：当事件发生时，具体要做的事情
@@ -151,7 +151,7 @@ dep.addSub(watcher1)
 dep.addSub(watcher2)
 dep.notify()
 ```
-><h2 id='4'>4. Vue 响应式原理模拟</h2>>
+><h2 id='4'>4. Vue 响应式原理模拟</h2>
 <img src='./img/reactive.jpg'>
 
 ```js
