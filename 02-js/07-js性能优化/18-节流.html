@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>节流函数实现</title>
+  <style>
+    body {
+      height: 5000px;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    // 节流：我们这里的节流指的就是在自定义的一段时间内让事件进行触发
+
+    function myThrottle(handle, wait) {
+      if (typeof handle !== 'function') throw new Error('handle must be an function')
+      if (typeof wait === 'undefined') wait = 400
+
+      let previous = 0  // 定义变量记录上一次执行时的时间 
+      let timer = null  // 用它来管理定时器
+
+      return function proxy(...args) {
+        let now = new Date() // 定义变量记录当前次执行的时刻时间点
+        let self = this
+        let interval = wait - (now - previous)
+
+        if (interval <= 0) {
+          // 此时就说明是一个非高频次操作，可以执行 handle 
+          clearTimeout(timer)
+          timer = null
+          handle.call(self, ...args)
+          previous = new Date()
+        } else if (!timer) {
+          // 当我们发现当前系统中有一个定时器了，就意味着我们不需要再开启定时器
+          // 此时就说明这次的操作发生在了我们定义的频次时间范围内，那就不应该执行 handle
+          // 这个时候我们就可以自定义一个定时器，让 handle 在 interval 之后去执行 
+          timer = setTimeout(() => {
+            clearTimeout(timer) // 这个操作只是将系统中的定时器清除了，但是 timer 中的值还在
+            timer = null
+            handle.call(self, ...args)
+            previous = new Date()
+          }, interval)
+        }
+      }
+
+    }
+
+    // 定义滚动事件监听
+    function scrollFn() {
+      console.log('滚动了')
+    }
+
+    // window.onscroll = scrollFn
+    window.onscroll = myThrottle(scrollFn, 600)
+  </script>
+</body>
+
+</html>

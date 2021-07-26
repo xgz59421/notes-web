@@ -1,5 +1,7 @@
 
 ## promise
+https://es6.ruanyifeng.com/#docs/decorator
+
 - [1. 运行配置](#1)
 - [2. 弱类型/强类型](#2)
 - [3. 类型](#3)
