@@ -19,7 +19,7 @@ class Observer {
     let that = this
     // 负责收集依赖，并发送通知
     let dep = new Dep()
-    // 如果val是对象，把val内部的属性转换成响应式数据
+    // TODO 如果val是对象，把val内部的属性转换成响应式数据
     this.walk(val)
     Object.defineProperty(obj, key, {
       enumerable: true,
@@ -34,6 +34,8 @@ class Observer {
           return
         }
         val = newValue
+        // 此时that 指向 data对象
+        // vm.msg = { test: 'Hello' } 为新属性test 添加getter setter
         that.walk(newValue)
         // 发送通知
         dep.notify()

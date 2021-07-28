@@ -6,9 +6,14 @@ class Vue {
     this.$el = typeof options.el === 'string' ? document.querySelector(options.el) : options.el
     // 2. 把data中的成员转换成getter和setter，注入到vue实例中
     this._proxyData(this.$data)
-    // 3. 调用observer对象，监听数据的变化
+    // 3. 调用observer对象
+      // 3.1 把$data 中的成员转换成 getter/setter
+      // 3.2 负责收集依赖，并发送通知
     new Observer(this.$data)
-    // 4. 调用compiler对象，解析指令和差值表达式
+    // 4. 调用compiler对象
+      // 4.1 编译模板，处理文本节点和元素节点(包括子节点)
+      // 4.2 解析指令和差值表达式
+      // 4.3 创建watcher对象, 当数据改变时更新视图
     new Compiler(this)
   }
   _proxyData (data) {

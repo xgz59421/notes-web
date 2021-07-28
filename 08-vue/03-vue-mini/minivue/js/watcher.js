@@ -8,7 +8,7 @@ class Watcher {
 
     // 把watcher对象记录到Dep类的静态属性target
     Dep.target = this
-    // 触发get方法，在get方法中会调用addSub
+    // vm[key] 触发get方法，在get方法中会调用addSub
     this.oldValue = vm[key]
     // 防止重复添加
     Dep.target = null
