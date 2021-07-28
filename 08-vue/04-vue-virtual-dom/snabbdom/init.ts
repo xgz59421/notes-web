@@ -294,7 +294,7 @@ export function init (modules: Array<Partial<Module>>, domApi?: DOMAPI) {
         oldEndVnode = oldCh[--oldEndIdx]
         newEndVnode = newCh[--newEndIdx]
       } 
-      // 3. 旧开始节点, 旧结束节点
+      // 3. 旧开始节点, 新结束节点
       else if (sameVnode(oldStartVnode, newEndVnode)) { // Vnode moved right
         patchVnode(oldStartVnode, newEndVnode, insertedVnodeQueue)
         // 把旧的开始节点dom元素, 移动到旧的结束节点dom元素之后
@@ -311,7 +311,7 @@ export function init (modules: Array<Partial<Module>>, domApi?: DOMAPI) {
         newStartVnode = newCh[++newStartIdx]
       } else {
         // 开始和结尾比较之后
-        // 开始比较key
+        // 非上面4种情况, 比较key
         if (oldKeyToIdx === undefined) {
           oldKeyToIdx = createKeyToOldIdx(oldCh, oldStartIdx, oldEndIdx)
         }
@@ -325,6 +325,7 @@ export function init (modules: Array<Partial<Module>>, domApi?: DOMAPI) {
         else {
           elmToMove = oldCh[idxInOld]//存储老节点
           if (elmToMove.sel !== newStartVnode.sel) {
+            // 创建新节点插入到最前面
             api.insertBefore(parentElm, createElm(newStartVnode, insertedVnodeQueue), oldStartVnode.elm!)
           } else {
             patchVnode(elmToMove, newStartVnode, insertedVnodeQueue)

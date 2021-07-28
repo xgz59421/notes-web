@@ -6,8 +6,7 @@
 - [4. module](#4)
 - [5. 使用](#5)
 
-<img src='./img/vuex1.png'>
-<img src='./img/vuex2.png'>
+<img src='vuex.png'>
 --------
 
 ><h2 id='1'>1. 什么是vuex</h2>

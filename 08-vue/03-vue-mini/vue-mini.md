@@ -152,11 +152,11 @@ dep.addSub(watcher2)
 dep.notify()
 ```
 ><h2 id='4'>4. Vue 响应式原理模拟</h2>
-<img src='./img/reactive.jpg'>
+<img src='vue.jpg'>
 
 ```js
 `Vue`
-  1. 记录传入的选项，设置 $data/$el/$options
+  1. 通过属性保存选项的数据, $data/$el/$options
   2. 把 data 的成员注入到 Vue 实例
   3. 负责调用 Observer 实现数据响应式处理（数据劫持）
   4. 负责调用 Compiler 编译指令/插值表达式等
