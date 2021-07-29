@@ -18,4 +18,4 @@ vnode = h('ul', [
   h('li', { key: 'c' }, '微博'),
   h('li', { key: 'b' }, '视频')
 ])
-patch(oldVnode, vnode)
+patch(oldVnode, vnode) // 此处断点调试
