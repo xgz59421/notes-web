@@ -22,9 +22,9 @@
       --收集依赖调试-- 
       调试位置: 
       1. core-instance-lifecycle.js :
-         function mountComponent : new Watcher
+         new Watcher
       2. core-observer-watcher.js
-         class Watcher : this.get()
+         pushTarget(this)
     */
     const vm = new Vue({
       el: '#app',
@@ -32,7 +32,8 @@
         msg: 'Hello Vue',
         count: 100
       }
-    })
+    });
+
   </script>
 </body>
 </html>

@@ -14,11 +14,11 @@
   <script>
     /*
       --数据响应式调试--
-      调试位置: core-observer-index.js  
+      core/observer/index.js  
       断点位置: 
-        1. function observe: ob = new Observer(value)
-        2. function defineReactive:  中 Dep.target
-      调试位置: core-observer-dep.js    
+        1. ob = new Observer(value)
+        2. if (Dep.target)
+      core/observer/dep.js    
       断点位置: 
         notify ()
     */
@@ -27,12 +27,14 @@
       data: {
         arr: [2, 3, 5]
       }
-    })
+    });
 
     // vm.arr.push(8)
     // vm.arr[0] = 100
     // vm.arr.length = 0
-    
+    // vm.arr.splice(0, 1, 100)
+    // vm.arr.splice(0)
+    // vm.arr = 8
   </script>
 </body>
 </html>

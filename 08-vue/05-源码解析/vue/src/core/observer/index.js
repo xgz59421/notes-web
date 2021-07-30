@@ -33,6 +33,7 @@ export function toggleObserving (value: boolean) {
  * object. Once attached, the observer converts the target
  * object's property keys into getter/setters that
  * collect dependencies and dispatch updates.
+ * Observer 为每个属性添加 getter/setter 收集依赖, 派发更新
  */
 export class Observer {
   // 观测对象
@@ -150,7 +151,7 @@ export function defineReactive (
   key: string,
   val: any,
   customSetter?: ?Function,
-  shallow?: boolean
+  shallow?: boolean // false 深度监听, true 监听第一层
 ) {
   // 创建依赖对象实例
   const dep = new Dep()
@@ -164,6 +165,7 @@ export function defineReactive (
   const getter = property && property.get
   const setter = property && property.set
   if ((!getter || setter) && arguments.length === 2) {
+    // 参数是2个的时候, 设置val
     val = obj[key]
   }
   // 判断是否递归观察子对象，并将子对象属性都转换成 getter/setter，返回子观察对象
