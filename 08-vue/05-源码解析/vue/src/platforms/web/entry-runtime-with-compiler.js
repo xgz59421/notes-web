@@ -22,8 +22,6 @@ Vue.prototype.$mount = function (
 ): Component {
   // 获取 el 对象
   el = el && query(el)
-
-  /* istanbul ignore if */
   // el 不能是 body 或者 html
   if (el === document.body || el === document.documentElement) {
     process.env.NODE_ENV !== 'production' && warn(
@@ -31,10 +29,11 @@ Vue.prototype.$mount = function (
     )
     return this
   }
-
+  
   const options = this.$options
   // resolve template/el and convert to render function
   // 把 template/el 转换成 render 函数
+  // 有render函数则跳过
   if (!options.render) {
     let template = options.template
     // 如果模板存在

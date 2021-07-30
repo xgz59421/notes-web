@@ -1,7 +1,7 @@
 ## vue2源码解析
 https://github.com/vuejs/vue
 
-#### 目录结构
+#### 1. 目录结构
 ```js
 src
 ├── compiler  编译器(把模板转换render函数)
@@ -20,7 +20,7 @@ src
 └── shared    公共的代码
 ```
 
-#### 调试设置构建不同的版本
+#### 2. 调试设置
 ```js
 1. npm i 
 2. 设置 sourcemap (开启代码地图)
@@ -32,13 +32,14 @@ src
 4. npm run build
   
 ```
+
+#### 3. 构建不同的版本
 [不同版本的构建](https://cn.vuejs.org/v2/guide/installation.html#%E6%9C%AF%E8%AF%AD)
 
-#### 入口文件
+#### 4. 入口文件
 ```js
-`src\platforms\web\entry-runtime-with-compiler.js`
-
+根据`scripts/config.js`找出入口文件
+`entry-runtime-with-compiler.js`
+对其进行断点调试, 查看堆栈结果
 ```
-
-
-
+<img src='images/entry-runtime.png'>

@@ -59,6 +59,7 @@ setting.json 配置:
     // todo
     ```
 23. REST Client 接口调试
+24. Babel JavaScript  语法高亮显示
 
 
 ### vscode 快捷键
