@@ -12,6 +12,7 @@ let content = fs.readFileSync('test.txt', 'utf-8')
 let fn = new Function('age', "return age + 1")
 console.log(fn(age)) */
 
+// vm.runInThisContext(content)
 vm.runInThisContext("age += 10")
 
 console.log(age)

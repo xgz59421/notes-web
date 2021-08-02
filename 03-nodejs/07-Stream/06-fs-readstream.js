@@ -19,15 +19,17 @@ let rs = fs.createReadStream('test.txt', {
   }, 1000)
 }) */
 
-/* rs.on('readable', () => {
-  let data = rs.read()
-  console.log(data)
+rs.on('readable', () => {
+  // let data = rs.read()
+  // console.log(data)
   let data
   while((data = rs.read(1)) !== null) {
     console.log(data.toString())
-    console.log('----------', rs._readableState.length)
+    // _readableState.length
+    // 缓冲区长度 highWaterMark, read一个数据, 长度减一
+    console.log('----------', rs._readableState.length) 
   }
-}) */
+})
 
 rs.on('open', (fd) => {
   console.log(fd, '文件打开了')

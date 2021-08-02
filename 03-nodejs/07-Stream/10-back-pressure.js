@@ -1,3 +1,4 @@
+// 背压机制
 let fs = require('fs')
 
 let rs = fs.createReadStream('test.txt', {
