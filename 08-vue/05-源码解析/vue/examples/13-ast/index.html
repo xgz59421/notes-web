@@ -16,8 +16,14 @@
     /*
       调试模板编译过程
       断点位置: 
-      platforms/web/entry-runtime-with-compiler.js compileToFunctions
-      compiler/create-compiler.js baseCompile
+      platforms/web/entry-runtime-with-compiler.js 
+        compileToFunctions
+      compiler/create-compiler.js 
+        const compiled = baseCompile
+      compiler/index.js 
+        const ast = parse(template.trim(), options)
+      compiler/to-function.js
+        res.render = createFunction
     */
     const vm = new Vue({
       el: '#app',

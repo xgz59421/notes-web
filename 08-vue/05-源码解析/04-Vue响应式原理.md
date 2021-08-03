@@ -8,7 +8,7 @@
   2. 判断value是否有__ob__, 如果有则, return (说明做过响应化的处理)
   3. return ob = new Observer(value)
 ```
-3. class Observer (数组做响应式化处理)
+3. class Observer
 ```js  
   1. 给value对象定义一个不可枚举的__ob__属性, 记录当前的observer对象
   2. 如果value是数组, 做数组的响应式处理

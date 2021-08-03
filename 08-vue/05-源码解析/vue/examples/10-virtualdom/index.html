@@ -14,13 +14,17 @@
     const vm = new Vue({
       el: '#app',
       render (h) {
+        /** h函数 vm.$createElement(tag, data, children, normalizeChildren)
+         * @param tag 标签/组件对象
+         * @param data DOM属性或标签属性  
+         * @param children 字符串/子节点
+         * @return Vnode { tag, data, children, text, elm(真实DOM), key }
+        */  
         // h(tag, data, children)
         // return h('h1', this.msg)
         // return h('h1', { domProps: { innerHTML: this.msg } })
         // return h('h1', { attrs: { id: 'title' } }, this.msg)
-        const vnode = h(
-          'h1', 
-          { 
+        const vnode = h('h1', { 
             attrs: { id: 'title' } 
           },
           this.msg
@@ -32,7 +36,8 @@
       data: {
         msg: 'Hello Vue'
       }
-    })
+    });
+
   </script>
 </body>
 </html>
