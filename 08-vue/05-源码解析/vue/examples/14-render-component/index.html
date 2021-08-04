@@ -12,6 +12,13 @@
   
   <script src="../../dist/vue.js"></script>
   <script>
+    // 组件注册过程
+      // 先创建父组件, 再创建子组件
+    // 组件挂载过程
+      // 先挂载子组件, 再挂载父组件
+    // 断点 core/global-api/assets.js
+        // if (!definition)
+        // definition = this.options._base.extend(
     const Comp = Vue.component('comp', {
       template: `<div>hellow Component</div>`
     })
@@ -20,7 +27,8 @@
       render(h){
         return h(Comp);
       }
-    })
+    });
+
   </script>
 </body>
 </html>

@@ -18,7 +18,7 @@ F8 下一个断点
   注册和平台相关的全局指令: 
     v-model, v-show
   注册和平台相关的全局组件: 
-    v-transition, v-transition-group
+    transition, transition-group
   全局方法: 
     __patch__: 把虚拟DOM转换真实DOM
     $mount: 挂载方法
