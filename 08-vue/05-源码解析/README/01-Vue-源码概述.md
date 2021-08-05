@@ -41,5 +41,13 @@ src
 根据`scripts/config.js`找出入口文件
 `entry-runtime-with-compiler.js`
 对其进行断点调试, 查看堆栈结果
+
+调试页面: 
+`vue/examples/03-initVue/index.html`
+F11 一步一步的调试
+F10 跳过方法
+F8 下一个断点
+`Watch`中添加 `Vue`字段进行监视
 ```
-<img src='images/entry-runtime.png'>
+<img src='images/Call-Stack.png'>
+<img src='images/Watch-Vue.png'>

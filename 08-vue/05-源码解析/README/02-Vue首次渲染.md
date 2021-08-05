@@ -2,16 +2,14 @@
 
 ##### 1. Vue 初始化
 ```js
-1. 定义Vue的构造函数
 // src/core/instance/index.js
-2. Vue 初始化实例成员
-// src/core/instance/index.js
-3. 初始化Vue的静态成员
+1. 定义Vue的构造函数, 初始化实例成员
 // src/core/index.js: initGlobalAPI(Vue) 
-4. 注册Vue.prototype.$mount
+2. 初始化Vue的静态成员
 // src/platforms/web/runtime-index.js
-5. 重写Vue.prototype.$mount
+3. 注册Vue.prototype.$mount
 // src/platforms/web/entry-runtime-with-compiler.js
+4. 重写Vue.prototype.$mount
 ```
 ##### 2. 页面创建对象 new Vue()
 
@@ -20,15 +18,15 @@
 // src/core/instance/init.js
 初始化 vm
 // 调用 $mount() 挂载
+// scr/platforms/web/entry-runtime-with-compiler.js
 vm.$mount(vm.$options.el)
 ```
 
 ##### 4. 调用$mount 将模板编译成render函数
 ```js
-// scr/platforms/web/entry-runtime-with-compiler.js
 如果没有render函数,则,把template/el 编译为render函数
 compileToFUnctions() 生成render()函数
-options.render = render
+mount()---$mount // src/platforms/web/runtime-index.js
 ```
 
 ##### 5. 调用$mount
