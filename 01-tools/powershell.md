@@ -5,6 +5,9 @@
 如果没有，可以使用`new-item -path $profile -itemtype file -force`命令来创建它。
 然后再使用`notepad $profile`来快捷的打开它来编辑
 
+
+如果有 vscode 可以cmd 执行命令: code $profile
+
 方案一:  
 // PS>
 function prompt
