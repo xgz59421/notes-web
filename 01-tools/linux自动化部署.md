@@ -18,8 +18,8 @@ pwd: xgz5
 
 ssh: 
 用户名: root
-密码: Xgz5
-外网ip: 106.75.154.132
+密码: xgz5
+外网ip: 117.50.15.6
 
 cmd/gitbash/xshell 登录:
 ssh root@106.75.154.132(外网ip) 
