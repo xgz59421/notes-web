@@ -347,10 +347,35 @@ https://api.example.com/v1/
   字段值：Bearer token数据
 ```
 
+#### 七. Express 实现原理
+```js
+Express 源码
+  ES5 写的
+  异步控制采用的回调方式
+  源码目录结构
 
-#### Express 调试
+├── index.js # 入口模块
+├── lib
+│   ├── application.js # app 模块
+│   ├── express.js # 组织导出模块
+│   ├── middleware # 内置中间件
+│   │   ├── init.js
+│   │   └── query.js
+│   ├── request.js # 扩展 req 对象
+│   ├── response.js # 扩展 res 对象
+│   ├── router # 路由系统
+│   │   ├── index.js
+│   │   ├── layer.js
+│   │   └── route.js
+│   ├── utils.js # 工具方法
+│   └── view.js # 模板引擎处理
+└── package.json
+
+```
+
+#### 八. Express 调试
 https://code.visualstudio.com/docs/editor/debugging
 
-#### Express 性能调优
+#### 九. Express 性能调优
 https://zhuanlan.zhihu.com/p/25549988
 https://expressjs.com/en/advanced/best-practice-performance.html
