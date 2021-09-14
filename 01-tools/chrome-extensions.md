@@ -8,3 +8,4 @@
 1. crxMouse Chrome™ (鼠标手势)
 1. FeHelper (前端助手)
 1. AdBlock (广告拦截)
+1. Tampermonkey (油猴)

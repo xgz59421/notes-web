@@ -34,7 +34,7 @@ wget http://soft.vpser.net/lnmp/lnmp1.7.tar.gz -cO lnmp1.7.tar.gz && tar zxf lnm
   1 回车
   任意键回车
 ```
-<img src= './img/linux/sql1.jpg'>
-<img src= './img/linux/sql2.jpg'>
-<img src= './img/linux/sql3.jpg'>
-<img src= './img/linux/sql4.jpg'>
+<img src= './image/sql1.jpg'>
+<img src= './image/sql2.jpg'>
+<img src= './image/sql3.jpg'>
+<img src= './image/sql4.jpg'>
