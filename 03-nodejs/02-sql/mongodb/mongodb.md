@@ -55,64 +55,66 @@ https://www.mongodb.com/try/download/community
 ```
 #### 1. Linux 安装 MongoDB
 详见官方文档说明：https://docs.mongodb.com/manual/administration/install-on-linux/。
-##### 安装
 ```shell
-一、配置 yum 程序包管理系统
-创建 /etc/yum.repos.d/mongodb-org-4.4.repo 并写入以下内容：
-# [mongodb-org-4.4]
-# name=MongoDB Repository
-# baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.4/x86_64/
-# gpgcheck=1
-# enabled=1
-# gpgkey=https://www.mongodb.org/static/pgp/server-4.4.asc
+1. 配置 yum 程序包管理系统
+vi /etc/yum.repos.d/mongodb-org-4.4.repo 
+创建并写入以下内容：
 
-二、安装 MongoDB
+[mongodb-org-4.4]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.4/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-4.4.asc
+
+2. 安装 MongoDB
 要安装最新的稳定版MongoDB，请发出以下命令：
-# sudo yum install -y mongodb-org
+方法一: (优先)
+sudo yum install -y mongodb-org
 
-或者，要安装特定版本的 MongoDB，请分别指定每个组件包，并将版本号附加到包名中，如以下示例所示：
+方法二: (略)
+# 或者，要安装特定版本的 MongoDB，请分别指定每个组件包，并将版本号附加到包名中，如以下示例所示：
 # sudo yum install -y mongodb-org-4.4.1 mongodb-org-server-4.4.1 mongodb-org-shell-4.4.1 mongodb-org-mongos-4.4.1 mongodb-org-tools-4.4.1
-
-您可以指定任何可用的 MongoDB 版本。但是，当有新版本可用时，yum 会升级软件包。为防止意外升级，请固定版本。要固定软件包，请在 /etc/yum.conf 文件中添加以下 exclude 指令：
+# 您可以指定任何可用的 MongoDB 版本。但是，当有新版本可用时，yum 会升级软件包。为防止意外升级，请固定版本。要固定软件包，请在 /etc/yum.conf 文件中添加以下 exclude 指令：
 # exclude=mongodb-org,mongodb-org-server,mongodb-org-shell,mongodb-org-mongos,mongodb-org-tools
 
-此外还有一点需要说明的是通过 yum 包管理器安装的 MongoDB 会自动创建 MongoDB 服务运行所需的数据目录：
-# /var/lib/mongo 数据存储目录
-# /var/log/mongodb 日志存储目录
+通过 yum 包管理器安装的 MongoDB 
+会自动创建 MongoDB 服务运行所需的数据目录：
+/var/lib/mongo 数据存储目录
+/var/log/mongodb 日志存储目录
+
+3. 设置远程连接
+vi /etc/mongod.conf
+设置 bindIp: 0.0.0.0 
 ```
 ##### 管理服务
 ```shell
 1. 启动服务
-  # sudo systemctl start mongod
+  sudo systemctl start mongod
 
   如果启动mongod时收到与以下类似的错误：
   Failed to start mongod.service: Unit mongod.service not found.
   则执行下面的命令解决：
-  # sudo systemctl daemon-reload
+  sudo systemctl daemon-reload
   然后再次运行上面的启动命令。
 
 2. 查看启动状态
-  # sudo systemctl status mongod
+  sudo systemctl status mongod
   active 表示运行中
   inactive 表示未运行
   可以选择通过发出以下命令来确保 MongoDB 在系统重新引导后启动：
-  # sudo systemctl enable mongod
+  sudo systemctl enable mongod
 
 3. 停止服务
-  # sudo systemctl stop mongod
+  sudo systemctl stop mongod
 
 4. 重启服务
-  # sudo systemctl restart mongod
-```
-##### 卸载 MongoDB
-```shell
-1、停止 MongoDB 服务
-  # sudo systemctl stop mongod
-2、删除 MongoDB 程序包
-  # sudo yum erase $(rpm -qa | grep mongodb-org)
-3、删除数据库和日志文件
-  # sudo rm -r /var/log/mongodb
-  # sudo rm -r /var/lib/mongo
+  sudo systemctl restart mongod
+5. 卸载 MongoDB
+  sudo yum erase $(rpm -qa | grep mongodb-org)
+  删除数据库和日志文件
+  sudo rm -r /var/log/mongodb
+  sudo rm -r /var/lib/mongo
 ```
 
 #### 2. macOS 安装 MongoDB
