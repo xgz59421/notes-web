@@ -17,6 +17,7 @@
   git reset HEAD
 # 提交命令
   git commit -m "版本说明"
+  git commit --no-verify -m "版本说明"
 # 查看git状态
   git status 
 # 查看日志
@@ -25,7 +26,7 @@
 # 回滚提交
   git reset --hard b83af4861b3dd232 (SHA) 
 # 切到主分支:
-  geit merge --squash 要合并的分支名字如 dev_zh
+  git merge --squash 要合并的分支名字如 dev_zh
 # 修改 git 用户名/密码
   windows 凭据  普通凭据 
 # 分支
