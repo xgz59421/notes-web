@@ -1,4 +1,4 @@
-// 1.排序, 改变原始数组
+// 排序, 改变原始数组
 // array.sort(sortfunction)
 // sortfunction 可选。规定排序顺序。必须是函数。
 
@@ -20,10 +20,3 @@ var names = [
 })
 console.log(names);
 
-console.log('---------reverse---------');
-var array = [1, 2, 3, 4, 5];
-// 2.颠倒数组中元素的顺序, 改变原数组
-// array.reverse()
-// 返回: Array
-array.reverse()
-console.log('array:', array);
