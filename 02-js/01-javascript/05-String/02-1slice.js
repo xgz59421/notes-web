@@ -13,6 +13,9 @@ console.log('slice(0):',ntxt);
 var ntxt = txt.slice(1);
 console.log('slice(1):',ntxt);  
 
+var ntxt = txt.slice(0, -1);
+console.log('slice(0, -1):',ntxt);  
+
 var ntxt = txt.slice(2,4);
 console.log('slice(2,4):',ntxt);  
 // end < start

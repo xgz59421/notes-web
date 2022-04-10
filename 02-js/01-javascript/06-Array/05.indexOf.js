@@ -1,3 +1,15 @@
+// array.indexOf(item,start)
+// start 可选, 检索的位置
+// 返回值: number, 没有检索到返回-1
+
+var arr = [1, 2, 3, 4, 3, 2, 1, 1];
+var index = arr.indexOf(3);
+console.log(index != -1 ? `在${index}位置发现3` : "没有3了");
+index = arr.indexOf(3, index + 1);
+console.log(index != -1 ? `在${index}位置发现3` : "没有3了");
+index = arr.indexOf(3, index + 1);
+console.log(index != -1 ? `在${index}位置发现3` : "没有3了");
+
 // //如果当前浏览器Array的原型对象中没有indexOf函数
 // // if(1){  //测试
 // if (Array.prototype.indexOf === undefined) {
@@ -21,12 +33,3 @@
 //   }
 // }
 // console.log(Array);
-
-//ES5标准中 
-var arr = [1, 2, 3, 4, 3, 2, 1, 1];
-var index = arr.indexOf(3 /*,0*/ );
-console.log(index != -1 ? `在${index}位置发现3` : "没有3了");
-index = arr.indexOf(3, index + 1);
-console.log(index != -1 ? `在${index}位置发现3` : "没有3了");
-index = arr.indexOf(3, index + 1);
-console.log(index != -1 ? `在${index}位置发现3` : "没有3了");
