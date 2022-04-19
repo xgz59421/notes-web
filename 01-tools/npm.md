@@ -1,82 +1,95 @@
 ## npm
 官方链接: 
  [https://docs.npmjs.com/cli/v6](https://docs.npmjs.com/cli/v6)
-  ```js
-  npm是用来管理包的工具，包含下载安装、更新、卸载、上传...  
+ npm是用来管理包的工具，包含下载安装、更新、卸载、上传...  
   npm在安装nodejs的时候会附带的安装 
-  ``` 
-- [1. 登录npm](#1)
-- [2. 查看npm版本](#2)
-- [3. npm帮助](#3)
-- [4. 切换仓库镜像](#4)
-- [5. 创建package.json](#5)
-- [6. 安装/卸载包](#6)
-- [7. 发布npm](#7)
 
---------
-><h2 id='1'>1. 登录</h2>
+#### 1. 登录
 ```js
-// npm login
-username: xgz59421
-password: 同github
-email: 87256657@qq.com
-// npm whoami 查看登录
+1. 登录npm
+  npm login
+    username: xgz59421
+    password: 同github
+    email: 87256657@qq.com
+2. 查看登录
+  npm whoami 
 ```
 
-><h2 id='2'>2. 查看版本</h2>
+#### 2. 查看
 ```js
-// npm -v
-// npm config list 查看配置
+1. 查看版本
+  npm -v
+
+2. 查看配置
+  npm config list
+
+3. 查看全局安装包
+  npm list -g
+
+4. 查看本地项目安装包
+  npm list
+
+5. 查看某个模块的版本号
+  npm list webpack
+
+6. 查看帮助信息
+  npm -help (aliase -h) 
+
+7. 查看安装相关的命令帮助
+  npm install -h
 ```
 
-><h2 id='3'>3. 帮助</h2>
+#### 4. 切换仓库镜像
 ```js
-`查看帮助信息`
-// npm -help (aliase -h)  
+1. 查看当前下载仓库地址
+  npm config get registry 
 
-`查看安装相关的命令帮助`
-// npm install -h  
+2. 切换到淘宝镜像地址
+  npm config set registry https://registry.npm.taobao.org 
+
+3. 切换回原地址
+  npm config set registry http://registry.npmjs.org 
 ```
 
-><h2 id='4'>4. 切换仓库镜像</h2>
+#### 5. package.json
 ```js
-`查看当前下载仓库地址`
-// npm config get registry 
+1. 创建package.json
+ npm init -y
 
-`切换到淘宝镜像地址`
-// npm config set registry https://registry.npm.taobao.org 
+2. 根据package.json文件安装依赖
+  npm install
+  npm i
+```
+#### 6. 安装/卸载包
+```js
+1. 安装全局包
+  npm install npm uninstall lodash -g 
 
-`切换回原地址`
-// npm config set registry http://registry.npmjs.org 
+2. 安装生产依赖 dependencies
+  npm i lodash
+  npm i lodash --save
+  npm i lodash --S
+
+3. 安装开发依赖 devDependencies
+  npm i lodash --save-dev
+  npm i lodash --D
+
+4. 卸载包
+  npm uninstall lodash
+  npm uninstall lodash -g
+
+5. 安装版本
+  npm i lodash@^4.17.15
 ```
 
-><h2 id='5'>5. 创建package.json</h2>
+#### 7. 发布npm
 ```js
-// npm init -y
-```
-><h2 id='6'>6. 安装/卸载包</h2>
-```js
-`卸载包`
-// npm uninstall 
+** 上传前要切换回原地址
+  npm config set registry http://registry.npmjs.org 
 
-`根据package.json文件安装依赖`
-// npm install 
-
-`将包安装到全局目录中`(npm config list查看)
-// npm install -g 
-`安装开发依赖`(devDependencies)
-// npm install --dev
-`安装版本`
-// pm i swiper@^5  安装版本5的swiper
+1. 上传npm
+  npm publish  
 ```
 
-><h2 id='7'>7. 发布npm</h2>
-```js
-`上传前要切换回原地址`
-// npm config set registry http://registry.npmjs.org 
-
-`上传npm`
-// npm publish  
-```
 
 
