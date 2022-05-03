@@ -37,6 +37,9 @@
 
 7. 查看安装相关的命令帮助
   npm install -h
+
+8. 处理npm i因版本问题导致的报错
+  npm i --legacy-peer-deps
 ```
 
 #### 4. 切换仓库镜像

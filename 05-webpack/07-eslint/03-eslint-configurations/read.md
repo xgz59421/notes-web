@@ -1,3 +1,7 @@
+#### eslint 配置文件解析
+```js
+npx eslint ./02-configuration.js
+
 module.exports = {
   // 指定环境
   env: {
@@ -25,3 +29,5 @@ module.exports = {
     "jQuery": "readonly"
   }
 }
+
+```

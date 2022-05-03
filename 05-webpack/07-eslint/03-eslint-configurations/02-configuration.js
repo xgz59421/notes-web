@@ -7,4 +7,4 @@ let a = new Promise()
 
 // alert(11) 
 
-// jQuery("#abc")
+// jQuery("#abc")  // "jQuery": "readonly" 
