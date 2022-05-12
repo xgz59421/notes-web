@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server",
-    "build": "webpack"
+    "build": "webpack",
+    "lint": "eslint --fix --ext .js,.vue src"
   },
   "dependencies": {
     "react": "^16.13.1",
