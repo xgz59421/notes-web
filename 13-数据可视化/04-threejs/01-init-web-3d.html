@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>绘制立方体</title>
+  <script src="./three.min.js"></script>
+</head>
+
+<body>
+  <script>
+    /**
+    01 场景 
+    02 相机： 分类 位置
+    03 渲染器：大小 颜色
+    04 几何体：
+    */
+    // 创建场景
+    const scene = new THREE.Scene()
+    // 创建 透视相机
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000)
+    // 创建渲染器
+    const renderer = new THREE.WebGLRenderer({
+      antialias: true // 抗锯齿渲染
+    })
+    renderer.setClearColor(0xffffff)
+    renderer.setSize(window.innerWidth, window.innerHeight)
+
+    document.body.appendChild(renderer.domElement)
+
+    // 创建立方体
+    const geometry = new THREE.BoxGeometry(1, 1, 1)
+    // 立方体外形材质
+    const material = new THREE.MeshBasicMaterial({
+      color: 0x285b41,
+      wireframe: true // 以线条方式渲染
+    })
+
+    const cube = new THREE.Mesh(geometry, material)
+    scene.add(cube)
+    // 默认相机和 物体都在 0, 0, 0 就是说相机在物体内部
+    camera.position.z = 4
+    // cube.rotation.y = 1
+    // renderer.render(scene, camera)
+
+    function animate() {
+      requestAnimationFrame(animate)
+      cube.rotation.y += 0.01
+      cube.rotation.x += 0.01
+      renderer.render(scene, camera)
+    }
+    animate()
+  </script>
+</body>
+
+</html>

@@ -1,4 +1,0 @@
-#!/bin/sh
-
-# 打印
-echo "before commit"

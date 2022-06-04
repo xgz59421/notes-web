@@ -59,3 +59,4 @@
   console.log(p1);
   p1.work();
   // console.log(p1.eage);
+  p1.eage = 19
