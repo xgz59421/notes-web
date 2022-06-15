@@ -3,9 +3,19 @@ https://jestjs.io/zh-Hans/
 ```js
 jest是facebook出品的一个 javascript 开源测试框架。
 相对其他测试框架，其一大特点就是就是内置了常用的测试工具。
-比如零配置、自带断言、测试覆盖率工具等功能，
-实现了开箱即用
+jest 适用但不局限于使用以下技术的项目：Babel,、TypeScript、 Node、 React、Angular、Vue 等
+
+Jest 主要特点：
+● 零配置
+● 自带断言
+● 快照测试
+● Jest 的测试用例是并行执行的，而且只执行发生改变的文件所对应的测试，提升了测试速度。
+● 测试覆盖率
+● Mock 模拟
 ```
+
+##### 安装
+npm install --save-dev jest
 
 ##### 解决 vscode 中 jest 代码提示问题
 npm i -D @types/jest (必须安装到项目的根目录, 不安装也无所谓, 只是个提示)

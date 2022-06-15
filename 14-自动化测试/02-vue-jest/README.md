@@ -1,11 +1,39 @@
-## vue jest
+# vue 应用测试
 [![codecov](https://codecov.io/gh/xgz59421/notes-web/branch/main/graph/badge.svg?token=BZ706ITAAG)](https://codecov.io/gh/xgz59421/notes-web)
 
+## vue test utils
+```
+@/tests/unit
+```
+
+## vue TDD
+```
+@/src/components/TodoApp/__tests__
+```
+
+## vue BDD
+```
+@/tests/feature/TodoApp.spec.js
+```
+
 #### Vue Test Utils 常用技巧
+```
 参考：https://vue-test-utils.vuejs.org/zh/guides/common-tips.html。
+
+mount 深渲染
+shallowMount 浅渲染
+
+```
 
 #### 配合 TypeScript 使用
 参考：https://vue-test-utils.vuejs.org/zh/guides/#%E9%85%8D%E5%90%88-typescript-%E4%BD%BF%E7%94%A8。
+
+#### 在 Vue 应用中集成 Jest
+```
+● 方式一：使用 Vue CLI 创建项目的时候。
+● 方式二：在一个已有的 Vue CLI 创建的项目中配置 Jest：vue add unit-jest
+● 方式三：手动配置。
+```
 
 #### test:unit
 npm run test:unit
