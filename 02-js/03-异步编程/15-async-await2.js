@@ -1,11 +1,11 @@
-function sayhellow(str) {
-  return new Promise((resolve, reject)=>{
-    console.log(str,"say hi!");
-    resolve(str)
+function sayhellow(name) {
+  return new Promise((resolve, reject) => {
+    console.log(name, "say hi!");
+    resolve(name) // 返回name字符串
   })
-  
+
 }
-(async function () {
+(async function() {
   await sayhellow('tom')
   console.log('tom end');
   await sayhellow('jack')
@@ -15,4 +15,3 @@ function sayhellow(str) {
   await sayhellow('lily')
   console.log('lily end');
 })();
-
