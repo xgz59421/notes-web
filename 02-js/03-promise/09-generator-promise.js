@@ -31,9 +31,22 @@ function * main () {
   }
 }
 
+// const result = g.next()
+// result.value.then(data => {
+//   const result2 = g.next(data)
+//   if (result2.done) return
+//   result2.value.then(data => {
+//     const result3 = g.next(data)
+//     if (result3.done) return
+//     result3.value.then(data => {
+//       g.next(data)
+//     })
+//   })
+// })
+
+// 优化
 function co (generator) {
   const g = generator()
-
   function handleResult (result) {
     if (result.done) return // 生成器函数结束
     result.value.then(data => {
@@ -42,26 +55,9 @@ function co (generator) {
       g.throw(error)
     })
   }
-
   handleResult(g.next())
 }
+// 社区 http://github.com/tj/co 更完善的库
 
 co(main)
 
-// const result = g.next()
-
-// result.value.then(data => {
-//   const result2 = g.next(data)
-
-//   if (result2.done) return
-
-//   result2.value.then(data => {
-//     const result3 = g.next(data)
-
-//     if (result3.done) return
-
-//     result3.value.then(data => {
-//       g.next(data)
-//     })
-//   })
-// })
