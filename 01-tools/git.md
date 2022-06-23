@@ -36,6 +36,16 @@
   git checkout -b aa 创建并切换到aa分支
   git branch -d aa 删除分支
 ```
+#### git将一个分支上的代码提交到另一个分支
+```
+git add . 
+git commit
+git log (查看提交日志SHA-1 (63ea070b325))
+git checkout B (切换到B分支)
+git pull
+git cherry-pick 63ea070b325
+git push
+```
 
 # github
 ```bash
