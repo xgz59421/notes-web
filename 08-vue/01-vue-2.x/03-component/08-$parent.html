@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>$parent</title>
+  <script src="../../js/vue.js"></script>
+  <style>
+    .parent {
+      border: palegreen 1px solid;
+    }
+    .child {
+      border:paleturquoise 1px solid;
+    }
+    .son {
+      border:navajowhite 1px solid;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" class="parent">
+    parent
+    <child-component/>
+  </div>
+
+  <script>
+    let sonComponent = {
+      template: `
+      <div class="son">
+        son<br>
+        $parent.$parent.title：{{ $parent.$parent.title }}<br>
+        <button @click="$parent.$parent.handle">获取 $parent.$parent.title</button>
+        <button @click="$parent.$parent.title = '我说师爷还会仙风云体术'">改变 $parent.$parent.title</button>
+      </div>`
+    }
+
+    let childComponent = {
+      template: `
+      <div class="child">
+        child<br>
+        $parent.title：{{ $parent.title }}<br>
+        <button @click="$parent.handle">获取 $parent.title</button>
+        <button @click="$parent.title = '师傅说师爷还会天师符法'">改变 $parent.title</button>
+        <son-component></son-component>
+      </div>`,
+      components: {
+        sonComponent
+      }
+    }
+
+    let vm = new Vue({
+      el: '#app',
+      data() {
+        return {
+          title: '师爷说我会酒神咒'
+        }
+      },
+      components: {
+        childComponent
+      },
+      methods: {
+        handle() {
+          console.log(this.title)
+        }
+      }
+    })
+    console.log(vm)
+  </script>
+</body>
+
+</html>

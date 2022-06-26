@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-text</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h2>{{msg1}}</h2>
+    <h2 v-text="msg1"></h2>
+    <h2 v-text="`李逍遥说:${msg1}`"></h2>
+    <h2>{{msg2}}</h2>
+    <h2 v-text="msg2"></h2>
+    <h2 v-text="msg3.toFixed(3)"></h2>
+  </div>
+
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        msg1: "hello world",
+        msg2: `来自&lt;&lt;<a href="javascript:;">新华社</a>&gt;&gt;的消息`,
+        msg3: 15
+      }
+    });
+  </script>
+</body>
+
+</html>

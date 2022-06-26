@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-bind</title>
+  <script src="../../js/vue.js"></script>
+  <style>
+    .static {
+      font-size: 14px;
+      color: limegreen;
+    }
+    .active {
+      text-decoration:underline;
+    }
+    .text-danger {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="static" v-bind:class="{ active: isActive, 'text-danger': hasError }">千里崎岖不辞苦，仗剑江湖为红颜</div>
+    <div :class="classObject">逍遥江湖，纵横四海</div>
+    <div :class="[{ active: isActive }, 'text-danger']">等一切结束后，我们就去游山玩水，吃遍天下珍味</div>
+    
+  </div>
+
+  <script>
+    let vm = new Vue({
+      el: "#app",
+      data: {
+        isActive: true,
+        hasError: false,
+        // classObject: {
+        //   active: true,
+        //   'text-danger': true
+        // }
+      },
+      computed: {
+        classObject: function () {
+          return {
+            active: this.isActive && !this.hasError,
+            'text-danger': this.hasError
+          }
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

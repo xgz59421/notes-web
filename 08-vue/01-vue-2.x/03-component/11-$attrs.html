@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>$attrs</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    $attrs: 把父组件中非prop属性绑定到内部组件
+    <my-input required class="theme-dark" data-test="test" placeholder="请输入"/>
+  </div>
+
+  <script>
+    // 从父组件传给自定义子组件的属性，
+    // 如果没有 prop 接收, 会自动设置到子组件内部的最外层标签上
+    
+    // 1. 没有prop接收
+    // let myInput = {
+    //   template: `<input type="text" class="form-control">`
+    // }
+    // 结果为:
+    //====><input type="text" placeholder="请输入" class="form-control theme-dark" required="required" data-test="test">
+
+    // 2. 有prop接收
+    // let myInput = {
+    //   template: `<input type="text" class="form-control" :placeholder="placeholder">`,
+    //   // props 不能使用class 和 style 这两个属性
+    //   props: ['placeholder', /*'style', 'class'*/] ,
+    //   
+    // }
+    // 结果为: 同1
+    //====><input type="text" placeholder="请输入" class="form-control theme-dark" required="required" data-test="test">
+
+    // 3. inheritAttrs: false (禁止继承父组件传入的非 prop 属性)
+    // let myInput = {
+    //   template: `<input type="text" class="form-control">`,
+    //   inheritAttrs: false 
+    // } 
+    // 结果为: 
+    // <input type="text" placeholder="请输入" class="form-control theme-dark">
+
+    // 4. v-bind="$attrs" 把外部传入的非 prop 属性设置给希望的标签上
+    //    class 和 style 依然放在最外层
+    let myInput = {
+      template: `
+      <div>
+        <input type="text" v-bind="$attrs" class="form-control">
+      </div>`,
+      inheritAttrs: false // 禁止继承父组件传入的非 prop 属性
+    }
+    // 结果为: 
+    // <div class="theme-dark">
+    //   <input type="text" required="required" data-test="test" placeholder="请输入" class="form-control">
+    // </div>
+    
+    let vm = new Vue({
+      el: '#app',
+      components: {
+        myInput
+      }
+    })
+    console.log(vm)
+  </script>
+</body>
+
+</html>

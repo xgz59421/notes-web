@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>props down event up</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <todo></todo>
+  </div>
+  <script>
+    let todoAdd = {
+      template: `
+      <div>
+        <input v-model='todoitem' type="text" @keyup.enter='add'>
+        <button @click='add'>+</button>
+      </div>`,
+      data() {
+        return {
+          todoitem: ''
+        }
+      },
+      methods: {
+        add() {
+          this.$emit('add', this.todoitem);
+          this.todoitem = ''
+        }
+      },
+    }
+
+    let todoList = {
+      props: ['todolist'],
+      template: `
+      <ul>
+        <li v-for='(item, index) in todolist'>
+          {{index+1}}. {{item}}
+          <a href="javascript:;" @click='del(index)'>x</a>
+        </li>
+      </ul>`,
+      methods: {
+        del(index) {
+          this.$emit('del', index)
+        }
+      },
+    }
+
+    Vue.component('todo', {
+      template: `
+      <div>
+        <todo-add @add='add'></todo-add>
+        <todo-list :todolist='todolist' @del='del'></todo-list>
+      </div>`,
+      components: {
+        todoAdd,
+        todoList
+      },
+      data() {
+        return {
+          todolist: ['吃', '喝', '拉']
+        }
+      },
+      methods: {
+        add(item) {
+          this.todolist.push(item)
+        },
+        del(index) {
+          this.todolist.splice(index, 1)
+        }
+      },
+    });
+
+    let vm = new Vue({
+      el: '#app',
+    })
+    console.log(vm)
+  </script>
+</body>
+
+</html>

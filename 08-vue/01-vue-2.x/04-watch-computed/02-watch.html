@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>watch</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <input type="text" v-model="kws"><button @click="search">百度一下</button>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        kws: "",
+        timer: 0
+      },
+      methods: {
+        search() {
+          //节流
+          clearTimeout(this.timer);
+          this.timer = setTimeout(() => {
+            if (this.kws.trim() !== "") {
+              console.log(`搜索 ${this.kws} 相关的内容`);
+            }
+          }, 500);
+
+        }
+      },
+      watch: {
+        // 方法名 要与 监视的属性名字一样
+        kws() {
+          this.search();
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

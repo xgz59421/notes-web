@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>$listener</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    listener: 把父组件中的DOM对象的原生事件绑定到内部组件
+    <my-input required placeholder="请输入" class="theme-dark" @focus="onFocus" @input="onInput" data-test="test"/>
+  </div>
+
+  <script>
+    // let myInput = {
+    //   template: `
+    //   <div>
+    //     <input type="text" v-bind="$attrs" class="form-control" @focus="$emit('focus', $event)" @input="$emit('input', $event)"/>
+    //   </div>`,
+    //   inheritAttrs: false // 禁止继承父组件传入的非 prop 属性
+    // }
+
+    let myInput = {
+      template: `
+      <div>
+        <input type="text" v-bind="$attrs" class="form-control" v-on="$listeners"/>
+      </div>`,
+      inheritAttrs: false // 禁止继承父组件传入的非 prop 属性
+    }
+
+    let vm = new Vue({
+      el: '#app',
+      components: {
+        myInput
+      },
+      methods: {
+        onFocus(e) {
+          console.log(e)
+        },
+        onInput(e) {
+          console.log(e.target.value)
+        }
+      }
+    })
+    console.log(vm)
+  </script>
+</body>
+
+</html>

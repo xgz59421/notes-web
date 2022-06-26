@@ -4,7 +4,7 @@
   "description": "",
   "author": "",
   "scripts": {
-    "start": "vue serve"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "main": "index.js",
   "dependencies": {

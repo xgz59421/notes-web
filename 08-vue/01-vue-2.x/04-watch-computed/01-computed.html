@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>computed属性</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="(p,i) in cart" :key="i">
+        {{p.id}} |
+        {{p.name}} |
+        ¥{{p.price.toFixed(2)}} |
+        {{p.count}} |
+        小计:¥{{(p.price*p.count).toFixed(2)}}
+      </li>
+    </ul>
+    <button @click="addprice">addprice</button>
+    <!-- computed为 计算属性 不是方法-->
+    <!-- 1.计算属性的值会被Vue 缓存起来 -->
+    <!-- 2.methods每次都会执行 -->
+    <h1>1总价: ¥{{total}}</h1>
+    <h1>2总价: ¥{{m_total()}}</h1>
+  </div>
+  
+  <script>
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        cart: [
+          { id: 1, name: "华为", price: 5599, count: 2 },
+          { id: 2, name: "小米", price: 3399, count: 3 },
+          { id: 3, name: "苹果", price: 8999, count: 1 }
+        ]
+      },
+      methods: {
+        m_total() {
+          var sum = 0;
+          for (var p of this.cart) {
+            sum += p.price * p.count
+          }
+          console.log("m_total")
+          return sum.toFixed(2)
+        },
+        addprice() {
+          this.cart.push({
+            id: 3,
+            name: "苹果",
+            price: 8899,
+            count: 1
+          })
+        }
+      },
+      computed: {
+        total() {
+          var sum = 0
+          for (var p of this.cart) {
+            sum += p.price * p.count
+          }
+          console.log("computed")
+          return sum.toFixed(2)
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

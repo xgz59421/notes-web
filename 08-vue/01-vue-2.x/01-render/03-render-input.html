@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>render</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <myinput :value='mydata' @setinput='setinput'></myinput>
+    <p>{{mydata}}</p>
+  </div>
+
+  <script>
+    Vue.component('myinput', {
+      props: ['value'],
+      render: function(createElement) {
+        var self = this
+        return createElement('input', {
+          domProps: {
+            value: self.value
+          },
+          on: {
+            input: function(event) {
+              self.$emit('setinput', event.target.value)
+            }
+          }
+        })
+      }
+    });
+    var vm = new Vue({
+      el: '#app',
+      data() {
+        return {
+          mydata: ''
+        }
+      },
+      methods: {
+        setinput(value) {
+          this.mydata = value;
+        }
+      },
+    });
+  </script>
+</body>
+
+</html>

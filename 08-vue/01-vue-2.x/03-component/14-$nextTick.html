@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>extend</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <p v-html='msg'></p>
+    <button @click='msgChange'>button change</button>
+  </div>
+
+  <script>
+    let vm = new Vue({
+      el: '#app',
+      data() {
+        return {
+          msg: 0
+        }
+      },
+      methods: {
+        msgChange() {
+          this.msg += 1;
+          // console.log(this)
+          // $el.textContent dom元素上文本的值
+          console.log(this.$el.textContent) // => '未更新'
+          this.$nextTick(() => console.log(this.$el.textContent)) // => '已更新'
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

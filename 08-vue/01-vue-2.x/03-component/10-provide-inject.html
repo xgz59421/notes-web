@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>$parent</title>
+  <script src="../../js/vue.js"></script>
+  <style>
+    .parent {
+      border: palegreen 1px solid;
+    }
+    .child {
+      border:paleturquoise 1px solid;
+    }
+    .son {
+      border:navajowhite 1px solid;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" class="parent">
+    * provide inject 不是响应式数据
+    <br/>
+    parent<br>
+    title：{{ title }}
+    <child-component/>
+  </div>
+
+  <script>
+    let sonComponent = {
+      inject: ['title', 'handle'],
+      template: `
+      <div class="son">
+        son<br/>
+        title：{{ title }}<br>
+        <button @click="handle">获取 title</button>
+        <button @click="title='仙风云体术'">改变 title</button>
+      </div>`
+    }
+
+    let childComponent = {
+      inject: ['title', 'handle'],
+      template: `
+      <div class="child">
+        child<br/>
+        title：{{ title }}<br>
+        <button @click="handle">获取 title</button>
+        <button @click="title='天师符法'">改变 title</button>
+        <son-component></son-component>
+      </div>`,
+      components: {
+        sonComponent
+      }
+    }
+
+    let vm = new Vue({
+      el: '#app',
+      data() {
+        return {
+          title: '酒神咒'
+        }
+      },
+      provide () {
+        return {
+          title: this.title,
+          handle: this.handle
+        }
+      },
+      components: {
+        childComponent
+      },
+      methods: {
+        handle() {
+          console.log(this.title)
+        }
+      }
+    })
+    console.log(vm)
+  </script>
+</body>
+
+</html>

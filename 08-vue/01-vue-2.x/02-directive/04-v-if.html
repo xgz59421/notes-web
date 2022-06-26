@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-if</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div>
+      <h1 v-if="!isLogin">
+        <a href="javascript:;" @click="login">登录</a>
+      </h1>
+      <h1 v-else>
+        hi 李逍遥,
+        <a href="javascript:;" @click="isLogin=false">注销</a>
+      </h1>
+    </div>
+  </div>
+  
+  <script>
+    let vm = new Vue({
+      el: "#app",
+      data: {
+        isLogin: false
+      },
+      methods: {
+        login() {
+          alert("登录成功");
+          this.isLogin = true
+        }
+      }
+    })
+    console.log(vm)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>全局组件注册</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <my-counter></my-counter>
+      <my-counter></my-counter>
+      <my-counter></my-counter>
+    </ul>
+  </div>
+
+  <script>
+    Vue.component("my-counter", {
+      template: `
+      <li>
+        <button @click = "minus">-</button>
+        <span>&emsp;{{n}}&emsp;</span>
+        <button @click = "add">+</button>
+      </li>`,
+      // data: {n:1},
+      // data: function() { return { n: 1 } },
+      data() {
+        return {
+          n: 1
+        }
+      },
+      methods: {
+        minus() { this.n-- },
+        add() { this.n++ }
+      }
+    });
+
+    new Vue({
+      el: "#app",
+      data: {},
+      methods: {}
+    });
+  </script>
+</body>
+
+</html>

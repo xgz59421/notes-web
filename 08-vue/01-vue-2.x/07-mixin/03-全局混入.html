@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03mixin</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+  </div>
+  <script>
+    // 为自定义的选项 'myOption' 注入一个处理器。
+    Vue.mixin({
+      created: function () {
+        var myOption = this.$options.myOption
+        if (myOption) {
+          console.log(myOption)
+        }
+      }
+    })
+
+    var vm = new Vue({
+      myOption: 'hello!'
+    })
+    // => "hello!"
+  </script>
+</body>
+
+</html>

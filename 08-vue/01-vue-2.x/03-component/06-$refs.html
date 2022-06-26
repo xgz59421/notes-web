@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>$refs</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <my-input ref="mytxt"></my-input>
+    <button @click="getfocus">获取焦点</button>
+  </div>
+
+  <script>
+    let myInput = {
+      template: `
+      <div>
+        <input v-model="value" type="text" ref="input" placeholder='请输入'>
+      </div>`,
+      data() {
+        return {
+          value: ''
+        }
+      },
+      methods: {
+        focus() {
+          // this.$refs.input 就是dom元素
+          this.$refs.input.focus()
+        }
+      }
+    }
+
+    let vm = new Vue({
+      el: '#app',
+      components: {
+        myInput
+      },
+      methods: {
+        getfocus() {
+          this.$refs.mytxt.focus()
+          this.$refs.mytxt.value = 'hello'
+        }
+      }
+    })
+    console.log(vm)
+  </script>
+</body>
+
+</html>

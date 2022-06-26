@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>$event</title>
+  <script src="../../js/vue.js"></script>
+  <style>
+    #pop1,
+    #pop2 {
+      width: 200px;
+      height: 150px;
+      background-color: lightgreen;
+    }
+
+    #pop2 {
+      background-color: lightpink;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div id="pop1" @click="run"></div>
+    <div id="pop2" @click="say(`pop2`,$event)"></div>
+    <input v-model='key' @change="changeHandle($event)">
+  </div>
+  <script>
+    let vm = new Vue({
+      el: "#app",
+      data: {
+        key: ''
+      },
+      methods: {
+        run(event) {
+          alert(`x:${event.offsetX},y:${event.offsetY}`);
+        },
+        say(name, event) {
+          alert(`点在了${name}上, x:${event.offsetX},y:${event.offsetY}`);
+        },
+        changeHandle(event) {
+          console.log('event', event)
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
