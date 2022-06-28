@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>props</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+  <script>
+    new Vue({
+      'el': '#app',
+      props: {
+        demoString: {
+          type: String,
+          default: '',
+          required: true
+        },
+        demoNumber: {
+          type: Number,
+          default: 0
+        },
+        demoBoolean: {
+          type: Boolean,
+          default: true
+        },
+        demoArray: {
+          type: Array,
+          default: () => []
+        },
+        demoObject: {
+          type: Object,
+          default: () => ({})
+        },
+        demoObject: {
+          type: Object,
+          default: function() {
+            return {}
+          }
+        },
+        demoFunction: {
+          type: Function,
+          default: function() {}
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
