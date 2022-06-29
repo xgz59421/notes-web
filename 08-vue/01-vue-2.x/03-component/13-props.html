@@ -31,6 +31,12 @@
           type: Array,
           default: () => []
         },
+        demoArray: {
+          type: Array,
+          default: function () {
+            return []
+          }
+        },
         demoObject: {
           type: Object,
           default: () => ({})
@@ -44,6 +50,13 @@
         demoFunction: {
           type: Function,
           default: function() {}
+        },
+        demoReg: {
+          type: RegExp
+        },
+        demoValue: {
+          type: [Array, String],
+          default: ''
         }
       }
     });

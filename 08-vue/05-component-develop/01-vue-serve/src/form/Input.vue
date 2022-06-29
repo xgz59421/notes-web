@@ -7,7 +7,7 @@
 <script>
 export default {
   name: 'LgInput',
-  inheritAttrs: false,
+  inheritAttrs: false, // 禁用父组件传递过来的属性, 添加到 父组件div上面 (class, style除外)
   props: {
     value: {
       type: String

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>路由守卫/元信息</title>
+
+  <script src="../js/vue.js"></script>
+  <script src="../js/vue-router.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <p>
+      <router-link to="/user/foo">/user/foo</router-link> <br>
+      <router-link to="/user/foo/profile">/user/foo/profile</router-link> <br>
+      <router-link to="/user/foo/posts">/user/foo/posts</router-link>
+    </p>
+    <router-view></router-view>
+  </div>
+  <script>
+    const User = {
+      template: `
+        <div class="user">
+          <h2>User {{ $route.params.id }}</h2>
+          <router-view></router-view>
+        </div>
+      `
+    }
+    const UserHome = { template: '<div>Home</div>' }
+    const UserProfile = { template: '<div>Profile</div>' }
+    const UserPosts = { template: '<div>Posts</div>' }
+    // 路由字典
+    const router = new VueRouter({
+      routes: [
+        { path: '/user/:id', component: User,
+          children: [
+            { path: '', component: UserHome ,meta: {title: '路由守卫/元信息'}},
+            { path: 'profile', component: UserProfile, meta: {title: '2'} },
+            { path: 'posts', component: UserPosts, meta: {title: '3'} }
+          ]
+        }
+      ]
+    })
+    
+    /* 路由发生变化修改页面title */
+    router.beforeEach((to, from, next) => {
+      if (to.meta.title) {
+        document.title = to.meta.title
+      }
+      next()
+    })
+    var vm = new Vue({
+      el: "#app",
+      router,
+      watch: {
+        $route(){
+          console.log(this.$route);
+          console.log(this.$route.meta);
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
