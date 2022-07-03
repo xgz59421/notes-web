@@ -24,7 +24,8 @@
 // 1. 添加多个包
 // yarn add bootstrap jquery 
 // 2. 添加指定版本的包
-// yarn add jquery@2.1.4
+// yarn add jquery@2.1.4\
+// yarn add webpack@4  // 实际安装的版本是4.0.11(当前日期的最新版本)
 ```
 #### 4. 更新
 ```js

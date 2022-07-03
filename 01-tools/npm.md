@@ -7,10 +7,13 @@
 #### 1. 登录
 ```js
 1. 登录npm
+  切换回原地址 
+  npm config set registry https://registry.npmjs.org
   npm login
     username: xgz59421
     password: 同github
     email: 87256657@qq.com
+    Enter one-time password: 看邮件
 2. 查看登录
   npm whoami 
 ```
@@ -48,10 +51,10 @@
   npm config get registry 
 
 2. 切换到淘宝镜像地址
-  npm config set registry https://registry.npm.taobao.org 
+  npm config set registry https://registry.npm.taobao.org
 
 3. 切换回原地址
-  npm config set registry http://registry.npmjs.org 
+  npm config set registry https://registry.npmjs.org
 ```
 
 #### 5. package.json
@@ -88,7 +91,7 @@
 #### 7. 发布npm
 ```js
 ** 上传前要切换回原地址
-  npm config set registry http://registry.npmjs.org 
+  npm config set registry https://registry.npmjs.org 
 
 1. 上传npm
   npm publish  
