@@ -11,10 +11,8 @@ const isDev = process.env.NODE_ENV !== 'production'
 // 公共插件配置
 const plugins = [
   vue({
-    // Dynamically inject css as a <style> tag
-    css: true,
-    // Explicitly convert template to render function
-    compileTemplate: true
+    css: true, // css 引入到 style中
+    compileTemplate: true // 编译render函数
   }),
   json(),
   nodeResolve(),
@@ -40,18 +38,18 @@ module.exports = fs.readdirSync(root)
     const pkg = require(path.resolve(root, item, 'package.json'))
     return {
       input: path.resolve(root, item, 'index.js'),
+      // 打出两类包, 一个cjs, 一个es
       output: [
-        {
-          exports: 'auto',
-          file: path.resolve(root, item, pkg.main),
-          format: 'cjs'
-        },
-        {
-          exports: 'auto',
-          file: path.join(root, item, pkg.module),
-          format: 'es'
-        },
-      ],
+      {
+        exports: 'auto',
+        file: path.resolve(root, item, pkg.main),
+        format: 'cjs'
+      },
+      {
+        exports: 'auto',
+        file: path.join(root, item, pkg.module),
+        format: 'es'
+      }, ],
       plugins: plugins
     }
   })

@@ -1,0 +1,16 @@
+{
+  "name": "zh-button",
+  "version": "0.0.2",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "xgz59421",
+  "license": "MIT",
+  "dependencies": {
+    "element-ui": "^2.15.9"
+  },
+  "gitHead": "d1d09dbd8c7afa196573866683d236573f2e13d8"
+}
