@@ -25,7 +25,7 @@
     <div class="static" v-bind:class="{ active: isActive, 'text-danger': hasError }">千里崎岖不辞苦，仗剑江湖为红颜</div>
     <div :class="classObject">逍遥江湖，纵横四海</div>
     <div :class="[{ active: isActive }, 'text-danger']">等一切结束后，我们就去游山玩水，吃遍天下珍味</div>
-    
+    <div :class="[isActive && 'active', hasError && 'text-danger']">你相信时光倒流吗</div>
   </div>
 
   <script>

@@ -71,3 +71,12 @@ babel的桥接:
   "plop": "plop"
 },
 ```
+
+#### plop
+```
+安装: 
+  yarn add plop -W -D
+运行打包:
+  yarn plop
+  输入组件名字
+```
