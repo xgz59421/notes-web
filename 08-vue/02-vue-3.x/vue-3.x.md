@@ -8,8 +8,8 @@ https://v3.cn.vuejs.org/
 - [4. Composition API](#4)
 - [5. 响应系统升级](#5)
 - [6. 编译优化](#6)
-- [7. vue3.x 响应式系统的实现原理](#7)
-- [8. vite](#8)
+- [7. vite](#7)
+- [8. vue3.x 响应式系统的实现原理](#8)
 
 --------
 
@@ -129,7 +129,34 @@ https://vue-next-template-explorer.netlify.app/
 5. 缓冲事件处理函数
 ```
 
-#### <div id='7'>7. vue3.0 响应式系统的实现原理</div>
+#### <div id='7'>7. vite</div>
+```js
+vite 是一个面向现代浏览器的一个更轻，更快的web应用开发工具
+它基于ECMAScript标准原生模块系统实现
+
+1. Vite vs Vue-cli:
+  Vite 在开发模式下不需要打包可以直接运行
+  Vue-cli 开发模式下必须对项目打包才可运行
+  vite打包: rollup (基于es module)
+  Vue-cli打包: webpack
+
+2. 特性: 
+  1. 快速冷启动
+  2. 模块热更新
+  3. 按需编译
+  4. 开箱即用
+
+3. 创建项目: 
+  方式一:
+    npm init vite-app 项目名
+    npm install
+    npm run dev
+  方式二:
+    npm init vite-app --template react
+    npm init vite-app --template preact
+```
+
+#### <div id='8'>8. vue3.0 响应式系统的实现原理</div>
 
 ```js
 1、reactive:
@@ -161,21 +188,3 @@ WeakMap 中有 target 属性，则判断 target 属性的 map 值中是否有 ke
 
 ```
 
-#### <div id='8'>8. vite</div>
-```js
-vite 是一个面向现代浏览器的一个更轻，更快的web应用开发工具
-它基于ECMAScript标准原生模块系统实现
-
-`特性`: 
-  1. 快速冷启动
-  2. 模块热更新
-  3. 按需编译
-  4. 开箱即用
-`Vite vs Vue-CLI`:
-  Vite 在开发模式下不需要打包可以直接运行
-  Vue-CLI 开发模式下必须对项目打包才可运行
-`创建项目`: 
-  npm init vite-app 项目名
-  npm install
-  npm run dev
-```

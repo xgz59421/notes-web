@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>浏览器加载模块的方式</title>
 </head>
 <body>
   <div id="app">Hello World</div>
@@ -13,6 +13,9 @@
     })
 
   </script>
+  <!-- type="module" 不支持ie -->
+  <!-- type="module" 默认延迟加载, dom树之后, DOMContentLoaded之前  -->
+  <!-- vite 就是使用了type="module"这种方式 -->
   <script type="module" src="./modules/index.js"></script>
 </body>
 </html>
