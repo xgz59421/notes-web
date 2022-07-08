@@ -1,5 +1,14 @@
-- package.json中, 配置 scripts
+## npm scripts
+
+#### 单独运行 sass
+```
+每次都需要重新编译过于繁琐
+cmd: sass scss/main.scss css/style.css
+```
+
+#### npm scripts
 ```json
+package.json
   "scripts": {
     // --watch 监视sass
     "build": "sass scss/main.scss css/style.css --watch",
@@ -11,5 +20,3 @@
   },
 ```
 
-- 单独运行 sass: 
-  cmd: sass scss/main.scss css/style.css

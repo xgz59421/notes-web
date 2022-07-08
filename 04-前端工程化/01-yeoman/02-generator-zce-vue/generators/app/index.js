@@ -1,6 +1,7 @@
 const Generator = require('yeoman-generator')
 
 module.exports = class extends Generator {
+  // 命令行交互
   prompting () {
     return this.prompt([
       {

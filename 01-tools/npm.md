@@ -94,7 +94,8 @@
   npm config set registry https://registry.npmjs.org 
 
 1. 上传npm
-  npm publish  
+  npm publish
+  npm publish  --registry https://registry.npmjs.org 
 ```
 
 
