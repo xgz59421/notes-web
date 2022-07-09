@@ -7,19 +7,13 @@ module.exports = grunt => {
   //     bar: '456'
   //   }
   // })
-
-  // // yarn grunt build
-  // // yarn grunt build:foo
-  // grunt.registerMultiTask('build', function () {
-  //   // console.log(`task: build`);
-  //   console.log(`task: build, target: ${this.target}, data: ${this.data}`)
-  // })
-
+  
   // yarn grunt build
   // yarn grunt build:foo
   // yarn grunt build:bar
   grunt.initConfig({
     build: {
+      // options不能作为任务, 而是任务的配置选项
       options: {
         msg: 'task options'
       },
@@ -34,5 +28,6 @@ module.exports = grunt => {
 
   grunt.registerMultiTask('build', function () {
     console.log(this.options())
+    console.log(`task: build, target: ${this.target}, data: ${this.data}`)
   })
 }

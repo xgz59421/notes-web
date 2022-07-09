@@ -4,7 +4,7 @@ module.exports = grunt => {
     clean: {
       // temp: 'temp/app.js'
       // temp: 'temp/*.js'
-      temp: 'temp/**'
+      temp: 'temp/**'  // 删除temp下所有的文件(包括子文件)
     }
   })
   // yarn grunt clean 

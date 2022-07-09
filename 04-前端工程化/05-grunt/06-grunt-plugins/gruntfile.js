@@ -6,7 +6,7 @@ module.exports = grunt => {
     sass: {
       options: {
         sourceMap: true,
-        implementation: sass
+        implementation: sass // 处理sass编译
       },
       main: {
         files: {
@@ -29,7 +29,7 @@ module.exports = grunt => {
     watch: {
       js: {
         files: ['src/js/*.js'],
-        tasks: ['babel']
+        tasks: ['babel']  // 需要执行的任务
       },
       css: {
         files: ['src/scss/*.scss'],
@@ -43,6 +43,6 @@ module.exports = grunt => {
   // 1. yarn grunt sass
   // 2. yarn grunt babel
   // 3. yarn grunt watch
-  // 4. yarn grunt 
+  // 4. yarn grunt // 执行default里所有的任务
   grunt.registerTask('default', ['sass', 'babel', 'watch'])
 }
