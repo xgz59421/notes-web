@@ -27,3 +27,10 @@ yarn add gulp-clean-css --dev
 # 判断读取流中的文件
 yarn add gulp-if --dev
 ```
+
+#### 后续问题
+```
+gulp-sass 不会自主安装 sass, node-sass
+加载sass插件也发生了变化
+  plugins.sass(require('sass'))
+```

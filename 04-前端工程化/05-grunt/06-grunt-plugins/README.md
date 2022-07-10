@@ -8,3 +8,11 @@ yarn add load-grunt-tasks --dev
 # 监视 自动编译
 yarn add grunt-contrib-watch --dev
 ```
+
+#### 运行
+```
+yarn grunt sass
+yarn grunt babel
+yarn grunt watch
+yarn grunt // 执行default里所有的任务
+``` 

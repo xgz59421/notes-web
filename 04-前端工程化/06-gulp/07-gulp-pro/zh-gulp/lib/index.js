@@ -36,7 +36,7 @@ const clean = () => {
 
 const style = () => {
   return src(config.build.paths.styles, { base: config.build.src, cwd: config.build.src })
-    .pipe(plugins.sass({ outputStyle: 'expanded' }))
+    .pipe(plugins.sass(require('sass'))({ outputStyle: 'expanded' }))
     .pipe(dest(config.build.temp))
     .pipe(bs.reload({ stream: true }))
 }

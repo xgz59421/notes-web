@@ -14,46 +14,18 @@ const loadPlugins = require('gulp-load-plugins')
 
 const plugins = loadPlugins()
 const bs = browserSync.create()
-
-// 传入html模板的参数
-const data = {
-  menus: [
-  {
-    name: 'Home',
-    icon: 'aperture',
-    link: 'index.html'
-  },
-  {
-    name: 'Features',
-    link: 'features.html'
-  },
-  {
-    name: 'About',
-    link: 'about.html'
-  },
-  {
-    name: 'Contact',
-    link: '#',
-    children: [
-    {
-      name: 'Twitter',
-      link: 'https://twitter.com/w_zce'
-    },
-    {
-      name: 'About',
-      link: 'https://weibo.com/zceme'
-    },
-    {
-      name: 'divider'
-    },
-    {
-      name: 'About',
-      link: 'https://github.com/zce'
-    }]
-  }],
-  pkg: require('./package.json'),
-  date: new Date()
+const cwd = process.cwd()
+let config = {
+  // default config
+  build: {}
 }
+
+try {
+  // 传入html模板的参数
+  const loadConfig = require(`${cwd}/pages.config.js`)
+  config = Object.assign({}, config, loadConfig)
+} catch (e) {}
+
 // 删除文件
 const clean = () => {
   return del(['dist', 'temp'])
@@ -70,7 +42,7 @@ const clean = () => {
 // _开头的不会copy
 const style = () => {
   return src('src/assets/styles/*.scss', { base: 'src' })
-    .pipe(plugins.sass({ outputStyle: 'expanded' })) // 配置expanded {}完全展开
+    .pipe(plugins.sass(require('sass'))({ outputStyle: 'expanded' })) // 配置expanded {}完全展开
     .pipe(dest('temp'))
     .pipe(bs.reload({ stream: true })) // 刷新浏览器
 }
@@ -85,7 +57,7 @@ const script = () => {
 const page = () => {
   // 'src/**/*.html' // 读取任意html文件
   return src('src/*.html', { base: 'src' })
-    .pipe(plugins.swig({ data, defaults: { cache: false } })) // 防止模板缓存导致页面不能及时更新
+    .pipe(plugins.swig({ data: config.data, defaults: { cache: false } })) // 防止模板缓存导致页面不能及时更新
     .pipe(dest('temp'))
     .pipe(bs.reload({ stream: true }))
 }

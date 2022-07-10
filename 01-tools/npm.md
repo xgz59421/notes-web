@@ -1,11 +1,13 @@
 ## npm
+```
 官方链接: 
  [https://docs.npmjs.com/cli/v6](https://docs.npmjs.com/cli/v6)
  npm是用来管理包的工具，包含下载安装、更新、卸载、上传...  
   npm在安装nodejs的时候会附带的安装 
+```
 
 #### 1. 登录
-```js
+```bash
 1. 登录npm
   切换回原地址 
   npm config set registry https://registry.npmjs.org
@@ -19,7 +21,7 @@
 ```
 
 #### 2. 查看
-```js
+```bash
 1. 查看版本
   npm -v
 
@@ -46,7 +48,7 @@
 ```
 
 #### 4. 切换仓库镜像
-```js
+```bash
 1. 查看当前下载仓库地址
   npm config get registry 
 
@@ -58,7 +60,7 @@
 ```
 
 #### 5. package.json
-```js
+```bash
 1. 创建package.json
  npm init -y
 
@@ -67,7 +69,7 @@
   npm i
 ```
 #### 6. 安装/卸载包
-```js
+```bash
 1. 安装全局包
   npm install npm uninstall lodash -g 
 
@@ -89,13 +91,34 @@
 ```
 
 #### 7. 发布npm
-```js
-** 上传前要切换回原地址
-  npm config set registry https://registry.npmjs.org 
+```bash
+发布npm前要切换回原地址
+npm config set registry https://registry.npmjs.org 
+npm publish
+或
+npm publish  --registry https://registry.npmjs.org 
+```
 
-1. 上传npm
-  npm publish
-  npm publish  --registry https://registry.npmjs.org 
+#### 8. npm link
+```bash
+假如我们想自己开发一个依赖包, 每次修改都要重新发布到npm比较麻烦
+可以本地测试一下依赖包的源码
+
+具体用法:
+1. cd到模块目录,进行全局link:
+  npm link
+
+  查看全局安装包
+  npm list -g
+
+2. cd到项目目录: 
+  npm link 模块名(package.json中的name)
+
+3. 解除link:
+  解除项目和模块link项目目录下:
+    npm unlink 模块名
+  解除模块全局link模块目录下:
+    npm unlink 模块名
 ```
 
 
