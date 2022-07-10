@@ -18,7 +18,7 @@ exports.default = () => {
       const input = chunk.toString()
       // 去掉空格, 注释
       const output = input.replace(/\s+/g, '').replace(/\/\*.+?\*\//g, '')
-      callback(null, output)
+      callback(null, output) // 参数1位错误对象, 没错误传null
     }
   })
 
