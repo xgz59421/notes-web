@@ -1,12 +1,9 @@
-## gulp-demo-link
+## gulp-demo-publish
 
 #### 使用说明
 ```bash
-npm list -g
-把zh-gulp link到全局: npm link
-
-进入本项目
-npm link zh-gulp
+npm i 
+npm i zh-gulp -D
 
 "scripts": {
   "clean": "zh-gulp clean",

@@ -92,6 +92,9 @@
 
 #### 7. 发布npm
 ```bash
+npm whoami 查看是否登录npm
+其他的具体查看 第一章
+
 发布npm前要切换回原地址
 npm config set registry https://registry.npmjs.org 
 npm publish

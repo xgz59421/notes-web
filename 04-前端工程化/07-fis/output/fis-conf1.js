@@ -3,9 +3,9 @@ fis.match('*.{js,scss,png}', {
 })
 
 fis.match('**/*.scss', {
-  rExt: '.css',
+  rExt: '.css',  // 修改文件名
   parser: fis.plugin('node-sass'),
-  optimizer: fis.plugin('clean-css')
+  optimizer: fis.plugin('clean-css')  // 压缩, 内置的插件
 })
 
 fis.match('**/*.js', {
