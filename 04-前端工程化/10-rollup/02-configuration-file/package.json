@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "zce <w@zce.me> (https://zce.me)",
   "license": "MIT",
+  "scripts": {
+    "rollup": "rollup --config"
+  },
   "devDependencies": {
     "rollup": "^1.26.3"
   }
