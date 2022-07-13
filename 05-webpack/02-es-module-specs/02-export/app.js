@@ -1,4 +1,3 @@
-
 import { name, hello, Person } from './module.js'
 console.log(name)
 console.log(hello)

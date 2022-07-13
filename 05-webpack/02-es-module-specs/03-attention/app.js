@@ -10,7 +10,7 @@ console.log(name, age)
 // 而是直接导入模块成员的引用地址，
 // 也就是说 import 得到的变量与 export 导入的变量在内存中是同一块空间。
 // 一旦模块中成员修改了，这里也会同时修改，
-setTimeout(function () {
+setTimeout(function() {
   console.log(name, age)
 }, 1500)
 

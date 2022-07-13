@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_48_http_compress=self.webpackChunk_48_http_compress||[]).push([[826],{586:function(){var e=document.createElement("span");e.className="abc",e.innerHTML="前端开发",document.body.appendChild(e)}},function(e){var n;n=586,e(e.s=n)}]);

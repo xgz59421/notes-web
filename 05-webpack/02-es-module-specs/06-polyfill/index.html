@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>ES Module 浏览器环境 Polyfill</title>
 </head>
+
 <body>
   <!-- nomodule 只会在不支持es modules的浏览器中工作 -->
-  <script nomodule>
+  <!-- <script nomodule>
     alert('111')
-  </script>
+  </script> -->
+  
+  <!-- 这种兼容方式效率非常差, 只适合了解, 学习一下, 生产不要用 -->
   <script nomodule src="https://unpkg.com/promise-polyfill@8.1.3/dist/polyfill.min.js"></script>
   <script nomodule src="https://unpkg.com/browser-es-module-loader@0.4.1/dist/babel-browser-build.js"></script>
   <script nomodule src="https://unpkg.com/browser-es-module-loader@0.4.1/dist/browser-es-module-loader.js"></script>
@@ -19,4 +23,5 @@
     console.log(foo)
   </script>
 </body>
+
 </html>

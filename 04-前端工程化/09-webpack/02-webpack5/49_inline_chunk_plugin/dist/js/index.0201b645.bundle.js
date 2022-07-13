@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_49_inline_chunk_plugin=self.webpackChunk_49_inline_chunk_plugin||[]).push([[826],{586:function(){var n=document.createElement("span");n.className="abc",n.innerHTML="前端开发",document.body.appendChild(n)}},function(n){var e;e=586,n(n.s=e)}]);

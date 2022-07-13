@@ -7,7 +7,7 @@
 
 var name = 'foo module'
 
-function hello () {console.log('hello')}
+function hello() { console.log('hello') }
 
 class Person {}
 
@@ -15,8 +15,7 @@ export { name, hello, Person }
 
 // as
 export {
-  name as default,
+  name as
+  default,
   hello as fooHello
 }
-
-

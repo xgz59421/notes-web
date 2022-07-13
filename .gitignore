@@ -10,7 +10,6 @@ yarn-error.log*
 pnpm-debug.log*
 
 .cache
-.tmp
 .nuxt
 .temp
 

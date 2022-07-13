@@ -13,6 +13,6 @@ export { name, age }
 
 // export 'foo' // 同样错误的用法
 
-setTimeout(function () {
+setTimeout(function() {
   name = 'ben'
 }, 1000)

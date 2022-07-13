@@ -1,0 +1,2 @@
+不使用loader, 使用命令行单独转换less
+npx lessc ./src/css/login.less ./dist_less/index.css

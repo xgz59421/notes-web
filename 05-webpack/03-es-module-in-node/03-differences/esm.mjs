@@ -1,4 +1,4 @@
-// ESM 中没有模块全局成员了
+// ESM 中没有 CommonJS模块全局成员了
 
 // // 加载模块函数
 // console.log(require)
@@ -30,3 +30,6 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 console.log(__filename)
 console.log(__dirname)
+
+
+// node --experimental-modules .\index.mjs

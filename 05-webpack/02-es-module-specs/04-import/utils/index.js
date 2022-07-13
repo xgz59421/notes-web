@@ -1,3 +1,3 @@
-export function lowercase (input) {
+export function lowercase(input) {
   return input.toLowerCase()
 }
