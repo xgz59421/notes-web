@@ -11,6 +11,7 @@ import('jquery').then($ => {
   $(document.body).append(`<img src="${logo}" />`)
 })
 
+// 模块热替换
 if (module.hot) {
   module.hot.accept(() => {
     console.log('hmr')

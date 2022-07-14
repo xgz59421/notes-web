@@ -12,6 +12,7 @@ https://eslint.bootcss.com/
 
 #### <div id='1'>1. eslint</div>
 ```js
+http://eslint.cn/docs/user-guide/configuring#configuring-rules
 1. eslint 安装 
   // yarn add eslint --dev
 2. 创建 .eslintrc.js 
