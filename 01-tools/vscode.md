@@ -9,6 +9,13 @@
 7. live server
 8. CSS Peek 跳转 css 定义
 9. code runner 
+10. path-alias
+{
+  "pathAlias.aliasMap": {
+    "@": "${cwd}/src",
+    "@utils": "${cwd}/src/utils"
+  }
+}
 ```
 "code-runner.runInTerminal": true
 报错解决:
