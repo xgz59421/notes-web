@@ -9,13 +9,6 @@
 7. live server
 8. CSS Peek 跳转 css 定义
 9. code runner 
-10. path-alias
-{
-  "pathAlias.aliasMap": {
-    "@": "${cwd}/src",
-    "@utils": "${cwd}/src/utils"
-  }
-}
 ```
 "code-runner.runInTerminal": true
 报错解决:
@@ -67,6 +60,13 @@ setting.json 配置:
     ```
 23. REST Client 接口调试
 24. Babel JavaScript  语法高亮显示
+25. path-alias
+{
+  "pathAlias.aliasMap": {
+    "@": "${cwd}/src",
+    "@utils": "${cwd}/src/utils"
+  }
+}
 
 
 ### vscode 快捷键
