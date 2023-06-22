@@ -1,11 +1,71 @@
 {
-  // 开启/禁用javascript 验证
-  "javascript.validate.enable": true,
-  // 底部状态栏颜色
-  "workbench.colorCustomizations": {
-    "statusBar.background": "#323232",
-    "statusBar.noFolderBackground": "#1A1A1A",
-    "statusBar.debuggingBackground": "#511f1f"
+  // vscode目前放大倍数
+  "window.zoomLevel": 1,
+  // 换行
+  "editor.wordWrap": "on",
+  // 隐藏map
+  "editor.fontSize": 16,
+  // 多光标
+  "editor.multiCursorModifier": "ctrlCmd",
+  // 删除文件夹一个文件时的斜杠
+  "explorer.compactFolders": false,
+  // 隐藏map
+  "editor.minimap.enabled": false,
+  // 保存格式化
+  "editor.formatOnSave": true,
+  // 默认格式化工具
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[html]": {
+    "editor.defaultFormatter": "HookyQR.beautify"
   },
-  "liveServer.settings.port": 5501
+  "[css]": {
+    "editor.defaultFormatter": "HookyQR.beautify"
+    // "editor.formatOnSave": false
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "HookyQR.beautify"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.semi": false, // 句尾是否填加分号
+  "prettier.singleQuote": true, //是否使用单引号
+  "prettier.trailingComma": "none", //禁止随时添加逗号
+  "prettier.tabWidth": 2, // 缩进字节数
+  "prettier.useTabs": false, // 缩进不使用tab，使用空格
+  "prettier.printWidth": 200, //每行代码的限制长度
+  "prettier.proseWrap": "never", // 文本换行
+  "prettier.bracketSpacing": true, // 在对象字面量的花括号内侧使用空格作为间隔
+  // "prettier.disableLanguages": ["vue"], // 不格式化vue文件，vue文件的格式化单独设置
+  // "prettier.eslintIntegration": false, //不让prettier使用eslint的代码格式进行校验
+  "prettier.ignorePath": ".prettierignore", // 不使用prettier格式化的文件填写在项目的.prettierignore文件中
+  "prettier.jsxSingleQuote": false, // 在jsx中使用单引号代替双引号
+  "prettier.arrowParens": "avoid", // 箭头函数一个参数不加括号
+  // 配置 beautify
+  "beautify.config": {
+    "brace_style": "none,preserve-inline",
+    "indent_size": 2
+  },
+  // vscode 不显示的文件
+  "files.exclude": {
+    "**/*.doc": true,
+    "**/*.docx": true,
+    "**/*.psd": true
+  },
+  // 为多个文件扩展名设置同一种语言模式
+  "files.associations": {
+    "*.cjson": "jsonc",
+    "*.wxss": "css",
+    "*.wxs": "javascript"
+  },
+  "workbench.iconTheme": "vscode-icons",
+  // "workbench.colorTheme": "One Dark Pro Darker",
+  // 设置运行结果在终端里输出
+  // "code-runner.runInTerminal": true,
+  "typescript.locale": "zh-CN",
+  "vetur.completion.scaffoldSnippetSources": {
+    "workspace": "💼",
+    "user": "🗒️",
+    "vetur": "✌"
+  }
 }
