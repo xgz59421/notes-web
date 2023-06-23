@@ -1,18 +1,23 @@
+function fun() {
+  console.log(1)
+}
+fun()
 
-function fun() {console.log(1);}
-fun();
+function fun() {
+  console.log(2)
+}
+fun()
 
-function fun() {console.log(2);}
-fun();
+var fun1 = function () {
+  console.log(10)
+}
+fun1()
 
-
-var fun1 = function () {console.log(10);}
-fun1();
-
-var fun1 = function () {console.log(20);}
-fun1();
-
-
+var fun1 = function () {
+  console.log(20)
+}
+fun1()
+// 2 2 10 20
 
 //声明提前 最后 第二个fun 会覆盖第一个 fun  然后输出 fun() fun()
 
