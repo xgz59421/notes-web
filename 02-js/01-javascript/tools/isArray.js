@@ -3,6 +3,18 @@
 let arr = [1, 2, 3, 4, 5]
 let obj = {}
 
+//
+if (Array.isArray === undefined) {
+  Array.isArray = function (obj) {
+    console.log('use my isArray')
+    return obj.__proto__ == Array.prototype
+    // return Object.getPrototypeOf(obj) == Array.prototype;
+    // return obj.constructor == Array;
+    // return obj instanceof(Array);
+  }
+}
+console.log('Array.isArray:', Array.isArray(arr), Array.isArray(obj))
+
 // 1. Array.isArray
 console.log(Array.isArray(arr))
 

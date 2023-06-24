@@ -63,7 +63,7 @@
   "workbench.iconTheme": "vscode-icons",
   // "workbench.colorTheme": "One Dark Pro Darker",
   // 设置运行结果在终端里输出
-  "code-runner.runInTerminal": true,
+  // "code-runner.runInTerminal": true,
   "typescript.locale": "zh-CN",
   "vetur.completion.scaffoldSnippetSources": {
     "workspace": "💼",

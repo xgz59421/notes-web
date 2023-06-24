@@ -6,7 +6,7 @@ console.log('obj2', obj2)
 
 // 下面​​Object.assign​​方法实行的是深拷贝
 let person = {
-  name: 'xia',
+  name: 'lily',
   age: 25,
   height: 160
 }

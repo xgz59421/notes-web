@@ -5,14 +5,15 @@
  */
 // reduceRight 执行顺序与reduce相反
 
-var arrary = [1, 2, 3, 4, 5];
+var arrary = [1, 2, 3, 4, 5]
 // 遍历求和
-var sum = arrary.reduce((total, curVal, i, arr) => {
-    console.log('总数:',total, '当前值:',curVal)
+var sum = arrary.reduce(
+  (total, curVal, i, arr) => {
+    console.log('总数:', total, '当前值:', curVal)
     return total + curVal
-  },
+  }
   // 5
 )
 
-console.log("原数组", arrary)
-console.log("reduce:", sum)
+console.log('原数组', arrary)
+console.log('reduce:', sum)
