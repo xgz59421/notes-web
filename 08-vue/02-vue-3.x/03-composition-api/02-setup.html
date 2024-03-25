@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>createApp</title>
+  <title>setup</title>
 </head>
 
 <body>
@@ -14,18 +14,24 @@
   </div>
   <script type="module">
     import { createApp } from './node_modules/vue/dist/vue.esm-browser.js'
-    // createApp创建一个vue对象（可以data、props等选项）
+
     const app = createApp({
-      data() {
+      // compositionAPI入口
+      setup () {
+        // 第一个参数 props
+        // 第二个参数 context -> { attrs、emit、slots }
+        // setup内无法通过this获取组件实例（props解析后，组件创建前执行）
+        const position = {
+          x: 0,
+          y: 0
+        }
         return {
-          position: {
-            x: 0,
-            y: 0
-          }
+          position
         }
       },
       mounted() {
-        console.log(this.position)
+        this.position.x = 100 // 页面没有渲染position改过的值，此时的position不是响应式的对象
+        console.log(this)
       }
     })
     // 打印查看app

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>ref</title>
 </head>
+
 <body>
   <div id="app">
     <button @click="increase">按钮</button>
@@ -14,7 +16,9 @@
     import { createApp, ref } from './node_modules/vue/dist/vue.esm-browser.js'
     
     function useCount () {
-      const count = ref(0)
+      // const count = 1
+      // ref 可以把基本类型数据包装成响应式对象(只有一个属性：value)
+      const count = ref(1)
       return {
         count,
         increase: () => {
@@ -28,8 +32,12 @@
         return {
           ...useCount()
         }        
-      }
+      },
+      mounted() {
+        console.log(this)
+      },
     }).mount('#app')
   </script>
 </body>
+
 </html>
