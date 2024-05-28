@@ -4,11 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>watchEffect</title>
+  <title>watchEffect(watch简化版)</title>
 </head>
 
 <body>
   <div id="app">
+    <p>watchEffect 会立即执行一次监听函数</p>
+    <p>watchEffect 返回一个取消监听的函数</p>
     <button @click="increase">increase</button>
     <button @click="stop">stop</button>
     <br>
@@ -21,6 +23,8 @@
     createApp({
       setup () {
         const count = ref(0)
+        // 1. 监听打印count值
+        // 2. 返回一个函数取消监听
         const stop = watchEffect(() => {
           console.log(count.value)
         })
