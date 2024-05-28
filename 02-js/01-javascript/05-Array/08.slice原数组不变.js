@@ -10,15 +10,17 @@ console.log('array', array)
 console.log('array.slice()', array.slice())
 // [1, 2, 3, 4, 5, 6]
 console.log('array.slice(0)', array.slice(0))
-// [4, 5, 6]
+// [1, 2, 3, 4, 5, 6]
 console.log('array.slice(3)', array.slice(3))
-// [5, 6]
+// [4, 5, 6]
 console.log('array.slice(-2)', array.slice(-2))
-// [4]
+// [5, 6]
 console.log('array.slice(3,4)', array.slice(3, 4))
-// [4, 5]
+// [4]
 console.log('array.slice(-3,-1)', array.slice(-3, -1))
+// [4, 5]
 console.log('array', array)
+// [1, 2, 3, 4, 5, 6]
 
 // console.log('-------obj转数组--------');
 // var obj = { 0: 'a', 1: 'b', length: 2 }
