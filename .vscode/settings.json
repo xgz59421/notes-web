@@ -23,7 +23,7 @@
     // "editor.formatOnSave": false
   },
   "[javascript]": {
-    // "editor.defaultFormatter": "HookyQR.beautify"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
